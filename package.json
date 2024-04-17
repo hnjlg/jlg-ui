@@ -1,0 +1,28 @@
+{
+    "name": "new_jlg_ui",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "preinstall": "pnpm recursive run preinstall",
+        "commitlint": "commitlint --config commitlint.config.ts -e -V",
+        "pre-commit": "pnpm recursive run pre-commit",
+        "prepare": "husky install"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@commitlint/cli": "^18.2.0",
+        "@commitlint/config-conventional": "^18.1.0",
+        "husky": "^8.0.3",
+        "lodash-unified": "^1.0.3"
+    },
+    "engines": {
+        "node": "18.12.x"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    }
+}
