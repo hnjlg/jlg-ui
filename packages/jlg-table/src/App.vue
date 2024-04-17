@@ -10,6 +10,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+import { clg } from 'jlg-utils';
+
+clg();
+
 interface RowVO {
 	id: number;
 	name: string;

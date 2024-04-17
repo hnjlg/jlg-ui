@@ -15,7 +15,8 @@
 	},
 	"dependencies": {
 		"vue": "^3.4.21",
-		"vxe-table": "^4.5.22"
+		"vxe-table": "^4.5.22",
+		"jlg-utils": "workspace:^1.0.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.23.2",

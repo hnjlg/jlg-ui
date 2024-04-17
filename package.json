@@ -23,6 +23,7 @@
         "node": "18.12.x"
     },
     "devDependencies": {
+        "@changesets/cli": "^2.27.1",
         "concurrently": "^8.2.2"
     }
 }
