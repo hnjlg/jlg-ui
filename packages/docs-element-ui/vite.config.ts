@@ -27,8 +27,11 @@ export default defineConfig({
 			include: ['src/**/*.ts', 'src/**/*.vue', 'src/*.ts', 'src/*.vue'],
 		}),
 		dts({
+			rollupTypes: true,
+			// 是否将以 '.vue.d.ts' 结尾的文件名转换为 '.d.ts'
+			cleanVueFileName: true,
 			// 读取tsconfig.json include字段
-			tsconfigPath: 'tsconfig.node.json',
+			tsconfigPath: 'tsconfig.json',
 		}),
 	],
 	build: {
