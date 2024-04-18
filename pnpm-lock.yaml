@@ -28,17 +28,13 @@ importers:
         specifier: ^8.2.2
         version: 8.2.2
 
-  packages/jlg-table:
+  packages/docs-jlg-element-plus: {}
+
+  packages/jlg-form:
     dependencies:
-      jlg-utils:
-        specifier: workspace:^1.0.0
-        version: link:../jlg-utils
       vue:
         specifier: ^3.4.21
         version: 3.4.23(typescript@5.4.5)
-      vxe-table:
-        specifier: ^4.5.22
-        version: 4.5.22(vue@3.4.23(typescript@5.4.5))
     devDependencies:
       '@babel/core':
         specifier: ^7.23.2
@@ -106,8 +102,6 @@ importers:
       vue-tsc:
         specifier: ^1.8.5
         version: 1.8.27(typescript@5.4.5)
-
-  packages/jlg-utils: {}
 
 packages:
 
@@ -1046,9 +1040,6 @@ packages:
 
   dom-serializer@2.0.0:
     resolution: {integrity: sha512-wIkAryiqt/nV5EQKqQpo3SToSOV9J0DnbJqwK7Wv/Trc92zIAYZ4FlMu+JPFW1DfGFt81ZTCGgDEabffXeLyJg==}
-
-  dom-zindex@1.0.1:
-    resolution: {integrity: sha512-M/MERVDZ8hguvjl6MAlLWSLYLS7PzEyXaTb5gEeJ+SF+e9iUC0sdvlzqe91MMDHBoy+nqw7wKcUOrDSyvMCrRg==}
 
   domelementtype@2.3.0:
     resolution: {integrity: sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==}
@@ -2632,11 +2623,6 @@ packages:
       typescript:
         optional: true
 
-  vxe-table@4.5.22:
-    resolution: {integrity: sha512-bUmn6KSL9FE0Dfrsw7VjJAS8tratL1OBIDVzt1djgijU6WAwyp3697POkMR9TZ4HHvV6uGDSCuGzUUXGFodvVQ==}
-    peerDependencies:
-      vue: ^3.2.28
-
   wcwidth@1.0.1:
     resolution: {integrity: sha1-8LDc+RW8X/FSivrbLA4XtTLaL+g=}
 
@@ -2681,9 +2667,6 @@ packages:
   write-file-atomic@4.0.2:
     resolution: {integrity: sha512-7KxauUdBmSdWnmpaGFg+ppNjKF8uNLry8LyzjauQDOVONfFLNKrKvQOxZ/VuTIcS/gge/YNahf5RIIQWTSarlg==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
-
-  xe-utils@3.5.24:
-    resolution: {integrity: sha512-22TRz/qaRNcPTQi2SHNU19FqHogctQvVkFu09/smPdbkwOXNS9tUZ4EwA2bJ7HFkdWtnELrxFpCt58LS2HCojA==}
 
   xml-name-validator@4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
@@ -3867,8 +3850,6 @@ snapshots:
       domelementtype: 2.3.0
       domhandler: 5.0.3
       entities: 4.5.0
-
-  dom-zindex@1.0.1: {}
 
   domelementtype@2.3.0: {}
 
@@ -5543,12 +5524,6 @@ snapshots:
     optionalDependencies:
       typescript: 5.4.5
 
-  vxe-table@4.5.22(vue@3.4.23(typescript@5.4.5)):
-    dependencies:
-      dom-zindex: 1.0.1
-      vue: 3.4.23(typescript@5.4.5)
-      xe-utils: 3.5.24
-
   wcwidth@1.0.1:
     dependencies:
       defaults: 1.0.4
@@ -5608,8 +5583,6 @@ snapshots:
     dependencies:
       imurmurhash: 0.1.4
       signal-exit: 3.0.7
-
-  xe-utils@3.5.24: {}
 
   xml-name-validator@4.0.0: {}
 

@@ -14,9 +14,7 @@
 		"style": "stylelint \"./**/*.{css,scss,sass,vue,html}\" --fix"
 	},
 	"dependencies": {
-		"vue": "^3.4.21",
-		"vxe-table": "^4.5.22",
-		"jlg-utils": "workspace:^1.0.0"
+		"vue": "^3.4.21"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.23.2",

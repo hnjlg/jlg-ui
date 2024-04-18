@@ -1,3 +1,0 @@
-{
-	"src/**/*.{ts,vue}": ["prettier --write", "eslint --fix", "stylelint \"./**/*.{css,scss,sass,vue,html}\" --fix"]
-}
