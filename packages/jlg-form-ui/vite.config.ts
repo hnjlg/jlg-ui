@@ -18,7 +18,7 @@ export default defineConfig({
 			imports: ['vue'],
 			dirs: [],
 			resolvers: [ElementPlusResolver()],
-			// dts: 'auto-imports.d.ts',
+			dts: 'auto-imports.d.ts',
 		}),
 		Components({
 			resolvers: [ElementPlusResolver()],

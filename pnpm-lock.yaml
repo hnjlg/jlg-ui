@@ -31,8 +31,117 @@ importers:
         specifier: ^2.7.0
         version: 2.7.0(vue@3.4.23(typescript@5.4.5))
       jlg-form-ui:
-        specifier: workspace:^0.0.11
+        specifier: workspace:^0.0.12
         version: link:../jlg-form-ui
+      jlg-ui:
+        specifier: workspace:^0.0.1
+        version: link:../jlg-ui
+      normalize.css:
+        specifier: ^8.0.1
+        version: 8.0.1
+      vue:
+        specifier: ^3.4.21
+        version: 3.4.23(typescript@5.4.5)
+      vue-router:
+        specifier: ^4.0.14
+        version: 4.3.2(vue@3.4.23(typescript@5.4.5))
+    devDependencies:
+      '@babel/core':
+        specifier: ^7.23.2
+        version: 7.24.4
+      '@babel/eslint-parser':
+        specifier: ^7.22.15
+        version: 7.24.1(@babel/core@7.24.4)(eslint@8.57.0)
+      '@typescript-eslint/eslint-plugin':
+        specifier: ^6.10.0
+        version: 6.21.0(@typescript-eslint/parser@6.21.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/parser':
+        specifier: ^6.10.0
+        version: 6.21.0(eslint@8.57.0)(typescript@5.4.5)
+      '@vitejs/plugin-vue':
+        specifier: ^4.2.3
+        version: 4.6.2(vite@4.5.3(@types/node@20.12.7)(less@4.2.0)(sass@1.75.0))(vue@3.4.23(typescript@5.4.5))
+      eslint:
+        specifier: ^8.53.0
+        version: 8.57.0
+      eslint-config-prettier:
+        specifier: ^9.0.0
+        version: 9.1.0(eslint@8.57.0)
+      eslint-plugin-prettier:
+        specifier: ^5.0.1
+        version: 5.1.3(@types/eslint@8.56.9)(eslint-config-prettier@9.1.0(eslint@8.57.0))(eslint@8.57.0)(prettier@3.2.5)
+      eslint-plugin-vue:
+        specifier: ^9.18.1
+        version: 9.25.0(eslint@8.57.0)
+      lint-staged:
+        specifier: ^15.0.2
+        version: 15.2.2
+      postcss:
+        specifier: ^8.4.31
+        version: 8.4.38
+      postcss-html:
+        specifier: ^1.5.0
+        version: 1.6.0
+      postcss-scss:
+        specifier: ^4.0.4
+        version: 4.0.9(postcss@8.4.38)
+      prettier:
+        specifier: ^3.0.3
+        version: 3.2.5
+      sass:
+        specifier: ^1.51.0
+        version: 1.75.0
+      stylelint:
+        specifier: ^14.11.0
+        version: 14.16.1
+      stylelint-config-prettier:
+        specifier: ^9.0.3
+        version: 9.0.5(stylelint@14.16.1)
+      stylelint-config-recommended-scss:
+        specifier: ^7.0.0
+        version: 7.0.0(postcss@8.4.38)(stylelint@14.16.1)
+      stylelint-config-standard:
+        specifier: ^28.0.0
+        version: 28.0.0(stylelint@14.16.1)
+      stylelint-config-standard-vue:
+        specifier: ^1.0.0
+        version: 1.0.0(postcss-html@1.6.0)(stylelint@14.16.1)
+      stylelint-order:
+        specifier: ^5.0.0
+        version: 5.0.0(stylelint@14.16.1)
+      stylelint-scss:
+        specifier: ^4.3.0
+        version: 4.7.0(stylelint@14.16.1)
+      typescript:
+        specifier: ^5.0.2
+        version: 5.4.5
+      unplugin-auto-import:
+        specifier: ^0.17.5
+        version: 0.17.5(@vueuse/core@9.13.0(vue@3.4.23(typescript@5.4.5)))(rollup@3.29.4)
+      unplugin-vue-components:
+        specifier: ^0.26.0
+        version: 0.26.0(@babel/parser@7.24.4)(rollup@3.29.4)(vue@3.4.23(typescript@5.4.5))
+      unplugin-vue-define-options:
+        specifier: ^1.4.3
+        version: 1.4.3(rollup@3.29.4)(vue@3.4.23(typescript@5.4.5))
+      vite:
+        specifier: ^4.4.5
+        version: 4.5.3(@types/node@20.12.7)(less@4.2.0)(sass@1.75.0)
+      vite-plugin-dts:
+        specifier: ^3.8.3
+        version: 3.8.3(@types/node@20.12.7)(rollup@3.29.4)(typescript@5.4.5)(vite@4.5.3(@types/node@20.12.7)(less@4.2.0)(sass@1.75.0))
+      vite-plugin-eslint:
+        specifier: ^1.8.1
+        version: 1.8.1(eslint@8.57.0)(vite@4.5.3(@types/node@20.12.7)(less@4.2.0)(sass@1.75.0))
+      vue-tsc:
+        specifier: ^1.8.5
+        version: 1.8.27(typescript@5.4.5)
+
+  packages/jlg-form-ui:
+    dependencies:
+      element-plus:
+        specifier: ^2.7.0
+        version: 2.7.0(vue@3.4.23(typescript@5.4.5))
       vue:
         specifier: ^3.4.21
         version: 3.4.23(typescript@5.4.5)
@@ -128,7 +237,7 @@ importers:
         specifier: ^1.8.5
         version: 1.8.27(typescript@5.4.5)
 
-  packages/jlg-form-ui:
+  packages/jlg-ui:
     dependencies:
       element-plus:
         specifier: ^2.7.0
@@ -875,6 +984,9 @@ packages:
 
   '@vue/compiler-ssr@3.4.23':
     resolution: {integrity: sha512-hb6Uj2cYs+tfqz71Wj6h3E5t6OKvb4MVcM2Nl5i/z1nv1gjEhw+zYaNOV+Xwn+SSN/VZM0DgANw5TuJfxfezPg==}
+
+  '@vue/devtools-api@6.6.1':
+    resolution: {integrity: sha512-LgPscpE3Vs0x96PzSSB4IGVSZXZBZHpfxs+ZA1d+VEPwHdOXowy/Y2CsvCAIFrf+ssVU1pD1jidj505EpUnfbA==}
 
   '@vue/language-core@1.8.27':
     resolution: {integrity: sha512-L8Kc27VdQserNaCUNiSFdDl9LWT24ly8Hpwf1ECy3aFb9m6bDhBGQYOujDm21N7EW3moKIOKEanQwe1q5BK+mA==}
@@ -2218,6 +2330,9 @@ packages:
   normalize-wheel-es@1.2.0:
     resolution: {integrity: sha512-Wj7+EJQ8mSuXr2iWfnujrimU35R2W4FAErEyTmJoJ7ucwTn2hOUSsRehMb5RSYkxXGTM7Y9QpvPmp++w5ftoJw==}
 
+  normalize.css@8.0.1:
+    resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
+
   npm-run-path@4.0.1:
     resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
     engines: {node: '>=8'}
@@ -3063,6 +3178,11 @@ packages:
     engines: {node: ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: '>=6.0.0'
+
+  vue-router@4.3.2:
+    resolution: {integrity: sha512-hKQJ1vDAZ5LVkKEnHhmm1f9pMiWIBNGF5AwU67PdH7TyXCj/a4hTccuUuYCAMgJK6rO/NVYtQIEN3yL8CECa7Q==}
+    peerDependencies:
+      vue: ^3.2.0
 
   vue-template-compiler@2.7.16:
     resolution: {integrity: sha512-AYbUWAJHLGGQM7+cNTELw+KsOG9nl2CnSv467WobS5Cv9uk3wFcnr1Etsz2sEIHEZvw1U+o9mRlEO6QbZvUPGQ==}
@@ -4036,6 +4156,8 @@ snapshots:
     dependencies:
       '@vue/compiler-dom': 3.4.23
       '@vue/shared': 3.4.23
+
+  '@vue/devtools-api@6.6.1': {}
 
   '@vue/language-core@1.8.27(typescript@5.4.5)':
     dependencies:
@@ -5520,6 +5642,8 @@ snapshots:
 
   normalize-wheel-es@1.2.0: {}
 
+  normalize.css@8.0.1: {}
+
   npm-run-path@4.0.1:
     dependencies:
       path-key: 3.1.1
@@ -6402,6 +6526,11 @@ snapshots:
       semver: 7.6.0
     transitivePeerDependencies:
       - supports-color
+
+  vue-router@4.3.2(vue@3.4.23(typescript@5.4.5)):
+    dependencies:
+      '@vue/devtools-api': 6.6.1
+      vue: 3.4.23(typescript@5.4.5)
 
   vue-template-compiler@2.7.16:
     dependencies:

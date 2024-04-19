@@ -1,6 +1,8 @@
 import { createApp } from 'vue';
-import 'jlg-form-ui/dist/style.css';
 import App from '@/App.vue';
+import Router from '@/router';
+import 'normalize.css';
+import 'jlg-form-ui/dist/style.css';
 
 const app = createApp(App);
-app.mount('#app');
+app.use(Router).mount('#app');

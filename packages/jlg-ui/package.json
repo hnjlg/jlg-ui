@@ -1,5 +1,5 @@
 {
-	"name": "docs-element-ui",
+	"name": "jlg-ui",
 	"private": false,
 	"version": "0.0.1",
 	"type": "commonjs",
@@ -12,19 +12,34 @@
 		"pre-commit": "concurrently \"tsc\" \"lint-staged\"",
 		"preinstall": "npx only-allow pnpm"
 	},
-	"keyword": "vue3 jlg element-plus docs",
+	"files": [
+		"package.json",
+		"README.md",
+		"packages",
+		"dist"
+	],
+	"main": "dist/jlg-ui.umd.js",
+	"module": "dist/jlg-ui.es.js",
+	"types": "dist/packages/index.d.ts",
+	"style": "dist/style.css",
+	"exports": {
+		".": {
+			"import": "./dist/jlg-ui.es.js",
+			"require": "./dist/jlg-ui.umd.js",
+			"types": "./dist/packages/index.d.ts"
+		},
+		"./dist/style.css": "./dist/style.css"
+	},
+	"license": "MIT",
+	"keyword": "vue3 jlg element-plus ui",
 	"author": {
 		"name": "Jie",
 		"email": "1765659336@qq.com"
 	},
-	"description": "组件库文档",
+	"description": "基于element-plus二次封装的UI组件库",
 	"dependencies": {
 		"element-plus": "^2.7.0",
-		"jlg-form-ui": "workspace:^0.0.12",
-		"jlg-ui": "workspace:^0.0.1",
-		"normalize.css": "^8.0.1",
-		"vue": "^3.4.21",
-		"vue-router": "^4.0.14"
+		"vue": "^3.4.21"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.23.2",
