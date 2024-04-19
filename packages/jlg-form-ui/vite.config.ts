@@ -33,7 +33,7 @@ export default defineConfig({
 	],
 	build: {
 		lib: {
-			entry: path.resolve(__dirname, 'src/packages/index.ts'),
+			entry: path.resolve(__dirname, 'packages/index.ts'),
 			name: 'jlg-form-ui',
 			fileName: (format) => `jlg-form-ui.${format}.js`,
 		},

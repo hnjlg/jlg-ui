@@ -7,10 +7,10 @@
 		"allowSyntheticDefaultImports": true
 	},
 	"include": [
-		"src/packages/**/*.ts",
-		"src/packages/**/*.d.ts",
-		"src/packages/**/*.tsx",
-		"src/packages/**/*.vue",
+		"packages/**/*.ts",
+		"packages/**/*.d.ts",
+		"packages/**/*.tsx",
+		"packages/**/*.vue",
 		"auto-imports.d.ts",
 	],
 	"exclude": [

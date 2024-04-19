@@ -1,7 +1,7 @@
 {
 	"name": "jlg-form-ui",
 	"private": false,
-	"version": "0.0.11",
+	"version": "0.0.12",
 	"type": "commonjs",
 	"scripts": {
 		"dev": "vite",
@@ -20,13 +20,13 @@
 	],
 	"main": "dist/jlg-form-ui.umd.js",
 	"module": "dist/jlg-form-ui.es.js",
-	"types": "dist/src/packages/index.d.ts",
+	"types": "dist/packages/index.d.ts",
 	"style": "dist/style.css",
 	"exports": {
 		".": {
 			"import": "./dist/jlg-form-ui.es.js",
 			"require": "./dist/jlg-form-ui.umd.js",
-			"types": "./dist/src/packages/index.d.ts"
+			"types": "./dist/packages/index.d.ts"
 		},
 		"./dist/style.css": "./dist/style.css"
 	},
