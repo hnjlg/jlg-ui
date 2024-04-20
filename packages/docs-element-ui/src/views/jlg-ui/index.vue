@@ -1,12 +1,14 @@
 <template>
 	<div class="jlg-ui">
 		<div class="left-menu">
-			<el-menu :default-active="route.name">
+			<el-menu :default-active="route.name" @select="menuSelect">
 				<el-sub-menu index="JlgMenu">
 					<template #title>
 						<span>Jlg Menu</span>
 					</template>
 					<el-menu-item index="JlgMenuBaseUse">基础使用</el-menu-item>
+					<el-menu-item index="JlgMenuMenuIcon">菜单图标</el-menu-item>
+					<el-menu-item index="JlgMenuMenuStyle">自定义样式</el-menu-item>
 				</el-sub-menu>
 				<el-menu-item index="2">
 					<span>Other</span>
@@ -28,13 +30,21 @@
 
 <script setup lang="ts">
 import { keepAliveRoutes } from '@/router';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 defineOptions({
 	name: 'JlgUi',
 });
 
 const route = useRoute();
+
+const router = useRouter();
+
+const menuSelect = (index: string) => {
+	router.push({
+		name: index,
+	});
+};
 </script>
 
 <style scoped lang="scss">

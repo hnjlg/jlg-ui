@@ -42,10 +42,30 @@ export const routes: RouteRecordRaw[] = [
 					{
 						path: '/system-index/jlg-ui/jlg-menu-base-use',
 						name: 'JlgMenuBaseUse',
-						component: () => import('@/views/jlg-ui/pages/base-use/index.vue'),
+						component: () => import('@/views/jlg-ui/pages/menu/base-use/index.vue'),
 						meta: {
 							keepAlive: true,
 							title: 'JlgMenu 基础使用',
+							transition: 'slide-right',
+						},
+					},
+					{
+						path: '/system-index/jlg-ui/jlg-menu-menu-icon',
+						name: 'JlgMenuMenuIcon',
+						component: () => import('@/views/jlg-ui/pages/menu/menu-icon/index.vue'),
+						meta: {
+							keepAlive: true,
+							title: 'JlgMenu 菜单图标',
+							transition: 'slide-right',
+						},
+					},
+					{
+						path: '/system-index/jlg-ui/jlg-menu-menu-style',
+						name: 'JlgMenuMenuStyle',
+						component: () => import('@/views/jlg-ui/pages/menu/menu-style/index.vue'),
+						meta: {
+							keepAlive: true,
+							title: 'JlgMenu 自定义样式',
 							transition: 'slide-right',
 						},
 					},

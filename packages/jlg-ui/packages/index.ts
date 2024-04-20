@@ -1,4 +1,5 @@
 import { App } from 'vue';
+import './theme.scss';
 import JlgMenu from './menu'; // 引入封装好的组件
 
 export { JlgMenu }; //实现按需引入*
