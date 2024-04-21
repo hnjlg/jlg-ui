@@ -69,6 +69,16 @@ export const routes: RouteRecordRaw[] = [
 							transition: 'slide-right',
 						},
 					},
+					{
+						path: '/system-index/jlg-ui/jlg-grid-layout-base-use',
+						name: 'JlgGridLayoutBaseUse',
+						component: () => import('@/views/jlg-ui/pages/grid-layout/base-use/index.vue'),
+						meta: {
+							keepAlive: true,
+							title: 'JlgGridLayout 基础使用',
+							transition: 'slide-right',
+						},
+					},
 				],
 			},
 		],

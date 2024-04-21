@@ -10,9 +10,12 @@
 					<el-menu-item index="JlgMenuMenuIcon">菜单图标</el-menu-item>
 					<el-menu-item index="JlgMenuMenuStyle">自定义样式</el-menu-item>
 				</el-sub-menu>
-				<el-menu-item index="2">
-					<span>Other</span>
-				</el-menu-item>
+				<el-sub-menu index="JlgGridLayout">
+					<template #title>
+						<span>Jlg GridLayout</span>
+					</template>
+					<el-menu-item index="JlgGridLayoutBaseUse">基础使用</el-menu-item>
+				</el-sub-menu>
 			</el-menu>
 		</div>
 		<div class="center-content">
