@@ -1,5 +1,9 @@
 <template>
-	<jlg-form style="height: 800px" :grid-layout-props="gridLayoutProps" :form-props="formProps" :form-json="formJson"></jlg-form>
+	<jlg-form v-model="formData" style="height: 800px" :grid-layout-props="gridLayoutProps" :form-props="formProps" :form-json="formJson">
+		<template #el-slot>
+			<div>插槽内容</div>
+		</template>
+	</jlg-form>
 </template>
 
 <script setup lang="ts">
@@ -11,6 +15,14 @@ defineOptions({
 	name: 'FormBaseUse',
 });
 
+const formData = ref({
+	name: '张三',
+	age: 8,
+	sex: 1,
+	level: 1,
+	select: 1,
+});
+
 const formJson = ref<I_JlgForm_Props['formJson']>([
 	{
 		formItemProps: {
@@ -19,10 +31,10 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 		},
 		gridCellProps: {
 			width: 2,
-			height: 1,
+			height: 2,
 		},
 		type: E_JlgForm_FormType.输入框,
-		key: 'name',
+		field: 'name',
 	},
 	{
 		formItemProps: {
@@ -34,7 +46,7 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 			height: 1,
 		},
 		type: E_JlgForm_FormType.数字输入框,
-		key: 'age',
+		field: 'age',
 	},
 	{
 		formItemProps: {
@@ -46,7 +58,43 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 			height: 1,
 		},
 		type: E_JlgForm_FormType.单选框,
-		key: 'sex',
+		field: 'sex',
+	},
+	{
+		formItemProps: {
+			label: '等级',
+			size: 'small',
+		},
+		gridCellProps: {
+			width: 1,
+			height: 1,
+		},
+		type: E_JlgForm_FormType.评分,
+		field: 'level',
+	},
+	{
+		formItemProps: {
+			label: '下拉选择',
+			size: 'small',
+		},
+		gridCellProps: {
+			width: 1,
+			height: 1,
+		},
+		type: E_JlgForm_FormType.选择框,
+		field: 'select',
+	},
+	{
+		formItemProps: {
+			label: '插槽',
+			size: 'small',
+		},
+		gridCellProps: {
+			width: 1,
+			height: 1,
+		},
+		type: E_JlgForm_FormType.选择框,
+		field: 'slot',
 	},
 ]);
 
@@ -55,12 +103,12 @@ const formProps = ref<I_JlgForm_Props['formProps']>({
 });
 
 const gridLayoutProps = ref<I_JlgForm_Props['gridLayoutProps']>({
-	padding: '20px',
+	padding: '0px',
 	flow: 'row',
-	rows: 5,
+	rows: 10,
 	columns: 5,
 	gap: '10px',
 	inline: true,
-	border: false,
+	border: true,
 });
 </script>
