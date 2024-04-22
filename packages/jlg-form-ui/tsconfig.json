@@ -33,7 +33,10 @@
 				"src/*"
 			]
 		},
-		"types": [],
+		"types": [
+			"unplugin-vue-define-options",
+			"@types/node"
+		],
 		"allowSyntheticDefaultImports": true
 	},
 	"include": [],

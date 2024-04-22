@@ -148,6 +148,9 @@ importers:
       element-plus:
         specifier: ^2.7.0
         version: 2.7.0(vue@3.4.23(typescript@5.4.5))
+      jlg-ui:
+        specifier: workspace:^0.0.1
+        version: link:../jlg-ui
       vue:
         specifier: ^3.4.21
         version: 3.4.23(typescript@5.4.5)

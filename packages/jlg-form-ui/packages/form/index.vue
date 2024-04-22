@@ -1,39 +1,37 @@
 <template>
-	<el-form :inline="true" :model="formInline">
-		<el-form-item label="Approved by">
-			<el-input v-model="formInline.user" placeholder="Approved by" clearable />
-		</el-form-item>
-		<el-form-item label="Activity zone">
-			<el-select v-model="formInline.region" placeholder="Activity zone" clearable>
-				<el-option label="Zone one" value="shanghai" />
-				<el-option label="Zone two" value="beijing" />
-			</el-select>
-		</el-form-item>
-		<el-form-item label="Activity time">
-			<el-date-picker v-model="formInline.date" type="date" placeholder="Pick a date" clearable />
-		</el-form-item>
-		<el-form-item>
-			<el-button type="primary" @click="onSubmit">{{ props.test }}</el-button>
-		</el-form-item>
+	<el-form v-bind="props.formProps">
+		<jlg-grid-layout v-bind="props.gridLayoutProps">
+			<jlg-grid-cell v-for="formItem in props.formJson" :key="formItem.key" v-bind="formItem.gridCellProps">
+				<el-form-item v-bind="formItem.formItemProps">
+					<component :is="renderFormItemComponent(formItem)"></component>
+				</el-form-item>
+			</jlg-grid-cell>
+		</jlg-grid-layout>
 	</el-form>
 </template>
 
 <script setup lang="ts">
-import { I_JlgForm_Props } from './type';
-
-const props = withDefaults(defineProps<I_JlgForm_Props>(), {});
+import { I_JlgForm_Props, E_JlgForm_FormType, I_JlgForm_FormJsonItem } from './type';
+import { JlgGridLayout, JlgGridCell } from 'jlg-ui';
+import Input from './components/input/index.vue';
+import InputNumber from './components/number/index.vue';
+import Radio from './components/radio/index.vue';
 
 defineOptions({
 	name: 'JlgForm',
 });
 
-const formInline = reactive({
-	user: '',
-	region: '',
-	date: '',
-});
+const props = withDefaults(defineProps<I_JlgForm_Props>(), {});
 
-const onSubmit = () => {
-	console.log('submit!');
+const renderFormItemComponent = (formItem: I_JlgForm_FormJsonItem) => {
+	switch (formItem.type) {
+		case E_JlgForm_FormType.输入框:
+			// return h(defineAsyncComponent(() => import('./components/input/index.vue')));
+			return Input;
+		case E_JlgForm_FormType.数字输入框:
+			return InputNumber;
+		case E_JlgForm_FormType.单选框:
+			return Radio;
+	}
 };
 </script>

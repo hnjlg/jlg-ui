@@ -39,7 +39,8 @@
 	"description": "基于element-plus二次封装的表单解决方案",
 	"dependencies": {
 		"element-plus": "^2.7.0",
-		"vue": "^3.4.21"
+		"vue": "^3.4.21",
+		"jlg-ui": "workspace:^0.0.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.23.2",
