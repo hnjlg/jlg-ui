@@ -34,6 +34,9 @@ const searchType = defineModel<number>('searchType', { required: true, default: 
 		box-shadow: 1px 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
 		border-bottom-right-radius: 0;
 		border-top-right-radius: 0;
+		&.is-focus {
+			box-shadow: 1px 0 0 1px var(--el-border-color-hover) inset;
+		}
 		&:hover {
 			box-shadow: 1px 0 0 1px var(--el-border-color-hover) inset;
 		}
