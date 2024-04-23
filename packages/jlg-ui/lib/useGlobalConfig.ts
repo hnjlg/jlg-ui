@@ -9,7 +9,6 @@ const GlobalConfig: T_Global_Config_Props = {
 	tableFilter: {
 		titleAlign: 'left',
 		titleWidth: 95,
-		items: [],
 		folding: false,
 	},
 };

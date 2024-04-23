@@ -25,7 +25,7 @@
 						</el-tooltip>
 					</template>
 					<template #default>
-						<component :is="renderContentTitle(item)" v-model="form[item.field]" :item="item" />
+						<component :is="renderContentTitle(item)" v-model="form[item.field]" v-model:search-type="item.searchType" :item="item" />
 					</template>
 				</el-form-item>
 			</div>
@@ -55,6 +55,7 @@ import { ArrowUp, ArrowDown } from '@element-plus/icons-vue';
 import isString from 'xe-utils/isString';
 import isNumber from 'xe-utils/isNumber';
 import FilterText from './compontent/filter-text.vue';
+import FilterInputNumber from './compontent/filter-input-number.vue';
 
 defineOptions({
 	name: 'TableFilter',
@@ -63,13 +64,13 @@ const refForm = ref<FormInstance>();
 const props = withDefaults(defineProps<I_Table_Filter_Props>(), {
 	titleAlign: () => GlobalConfig.tableFilter.titleAlign,
 	titleWidth: () => GlobalConfig.tableFilter.titleWidth,
-	items: () => GlobalConfig.tableFilter.items,
 	folding: () => GlobalConfig.tableFilter.folding,
 });
+const itemsModelValue = defineModel<I_Table_Filter_Item[]>('items', { required: true });
 
 const form = reactive({});
 
-const items = computed(() => props.items.filter((item) => item.visible !== false));
+const items = computed(() => itemsModelValue.value.filter((item) => item.visible !== false && item.quickSearch));
 
 const isShowTooltip = ref(false);
 function visibleTooltip(event: Event, labelText: string) {
@@ -92,8 +93,10 @@ const renderContentTitle = (item: I_Table_Filter_Item) => {
 	switch (item.type) {
 		case 'text':
 			return FilterText;
+		case 'number':
+			return FilterInputNumber;
 		default:
-			return h('el-input', { value: '', placeholder: '请输入' });
+			return FilterText;
 	}
 };
 function isStringNumber(val: string | number) {
@@ -113,8 +116,8 @@ function addUnit(value?: string | number, defaultUnit = 'px') {
 
 // 设置初始值
 function handleInitialValue() {
-	props.items.forEach((item) => {
-		form[item.field] = item.resetValue;
+	itemsModelValue.value.forEach((item) => {
+		form[item.field] = item.defaultValue;
 	});
 }
 

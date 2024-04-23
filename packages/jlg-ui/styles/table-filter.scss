@@ -12,6 +12,9 @@
       height: 0;
       overflow: hidden;
     }
+    :deep(.el-form-item__content){
+      margin-right: var(--jlg-filter-margin-right);
+    }
   }
   .table-filter__operation{
     width: 100%;

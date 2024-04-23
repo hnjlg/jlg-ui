@@ -1,0 +1,32 @@
+.jlg-filter-wrap {
+  width: 100%;
+  .jlg-filter-label {
+    max-width: 200px;
+    height: 24px;
+    line-height: 24px;
+    mix-blend-mode: normal;
+    color: var(--el-text-color-regular);
+    font-size: 14px;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .jlg-filter-content{
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .slot-select {
+    width: 50px;
+    flex-shrink: 0;
+    :deep(.el-select__wrapper) {
+      border: none;
+      padding: 4px 4px;
+      font-size: 12px;
+      box-shadow: none;
+      .el-icon {
+        font-size: 12px;
+      }
+    }
+  }
+}
