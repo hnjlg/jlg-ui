@@ -1,0 +1,42 @@
+@import 'cssvar';
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .table-filter__card {
+    width: var(--jlg-phones-phones-per-row); /* 每行一个元素 */
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .table-filter__card {
+    width: var(--jlg-landscape-phones-per-row); /* 每行两个元素 */
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .table-filter__card {
+    width:  var(--jlg-tablets-per-row);; /* 每行三个元素 */
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .table-filter__card {
+    width:  var(--jlg-desktops-per-row); /* 每行四个元素 */
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .table-filter__card {
+    width:  var(--jlg-large-desktops-per-row); /* 每行四个元素 */
+  }
+}
+
+/* Extra large devices (large desktops, 1600px and up) */
+@media (min-width: 1600px) {
+  .table-filter__card {
+    width:  var(--jlg-huge-desktops-per-row); /* 每行五个元素 */
+  }
+}
