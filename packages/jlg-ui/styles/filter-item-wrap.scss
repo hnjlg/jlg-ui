@@ -1,5 +1,8 @@
 .jlg-filter-wrap {
+  /* 根据设计稿调整高度*/
+  --el-component-size: 30px;
   width: 100%;
+
   .jlg-filter-label {
     max-width: 200px;
     height: 24px;
@@ -12,21 +15,123 @@
     white-space: nowrap;
     overflow: hidden;
   }
-  .jlg-filter-content{
+
+  .jlg-filter-content {
     display: flex;
     flex-wrap: nowrap;
+
+    :deep(.el-input__wrapper) {
+      box-shadow: none;
+      border: 1px solid var(--el-input-border-color, var(--el-border-color));
+      transform: translateZ(0);
+      transition: border-color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);
+
+      &.is-focus {
+        border-color: var(--el-color-primary);
+      }
+    }
   }
+
+  .is-search-type {
+    :deep(.el-input__wrapper) {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
   .slot-select {
     width: 50px;
     flex-shrink: 0;
+    background-color: var(--jlg-filter-select-background);
+    border: 1px solid var(--el-input-border-color, var(--el-border-color));
+    border-left: none;
+    position: relative;
+    left: -1px;
+    border-bottom-right-radius: var(--el-border-radius-base);
+    border-top-right-radius: var(--el-border-radius-base);
+    transform: translateZ(0);
+    transition: border-color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);
+
     :deep(.el-select__wrapper) {
-      border: none;
       padding: 4px 4px;
       font-size: 12px;
       box-shadow: none;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      background-color: var(--jlg-filter-select-background);
+      /* 根据设计稿调整高度*/
+      min-height: var(--el-component-size);
+
+      .el-select__placeholder {
+        color: var(--jlg-filter-select-color);
+        left: 2px;
+        min-width: 24px;
+      }
+
       .el-icon {
         font-size: 12px;
       }
     }
+
+    &.is-focus {
+      border-color: var(--el-color-primary);
+    }
+  }
+}
+
+/**
+*  覆盖数字输入框默认样式
+ */
+.filter-input-number {
+  .el-input-number {
+    width: 100%;
+  }
+
+  :deep(.el-input__wrapper) {
+    padding: 1px 11px;
+
+    .el-input__inner {
+      text-align: left;
+    }
+  }
+
+  :deep(.el-input-number__decrease) {
+    display: none;
+  }
+
+  :deep(.el-input-number__increase) {
+    display: none;
+  }
+}
+
+/**
+*  覆盖下拉框默认样式
+ */
+.filter-select {
+  :deep(.el-select__wrapper) {
+    box-shadow: none;
+    border: 1px solid var(--el-input-border-color, var(--el-border-color));
+    transform: translateZ(0);
+    transition: border-color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);
+
+    &.is-focused {
+      border-color: var(--el-color-primary);
+    }
+  }
+
+  .is-search-type {
+    .select {
+      :deep(.el-select__wrapper) {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        max-height: 32px;
+      }
+    }
+  }
+  .el-date-editor{
+    --el-date-editor-width: 100%;
+    --el-date-editor-monthrange-width: 100%;
+    --el-date-editor-daterange-width: 100%;
+    --el-date-editor-datetimerange-width:100%;
   }
 }
