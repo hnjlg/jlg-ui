@@ -1,5 +1,5 @@
 <template>
-	<pre>{{ items }}</pre>
+	<!--	<pre>{{ items }}</pre>-->
 	<TableFilter v-model:items="items"></TableFilter>
 	<el-button @click="onClick">修改searchType</el-button>
 </template>
@@ -7,11 +7,29 @@
 <script setup lang="ts">
 import TableFilter from '@pac/table-filter/index.vue';
 import { I_Table_Filter_Item } from '../../../../packages/table-filter/type';
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 
 defineOptions({
 	name: 'TableFilterBaseUse',
 });
+
+const options = ref<ListItem[]>([]);
+const loading = ref(false);
+const remoteMethod = (query: string) => {
+	if (query !== '') {
+		loading.value = true;
+		setTimeout(() => {
+			loading.value = false;
+			options.value = list.filter((item) => {
+				return item.label.toLowerCase().includes(query.toLowerCase());
+			});
+		}, 200);
+	} else {
+		options.value = [];
+	}
+};
+
+const selectOptions = ref([]);
 const items = reactive<I_Table_Filter_Item[]>([]);
 const items2 = reactive<I_Table_Filter_Item[]>([
 	{
@@ -34,24 +52,34 @@ const items2 = reactive<I_Table_Filter_Item[]>([
 	{
 		field: 'remoteSelect',
 		title: '远程检索远程检索111',
-		type: 'remoteSelect',
+		type: 'select',
 		searchType: 0,
 		titleOverflow: 'ellipsis',
 		quickSearch: true,
-		isPure: true,
+		isPure: false,
+		props: {
+			multiple: true,
+			remote: true,
+			options: options,
+			remoteMethod: remoteMethod,
+		},
 	},
 	{
 		field: 'select',
 		title: '选择',
 		type: 'select',
 		searchType: 0,
-		visible: false,
+		visible: true,
 		quickSearch: true,
-		isPure: true,
+		isPure: false,
+		props: {
+			multiple: false,
+			options: selectOptions,
+		},
 	},
 	{
 		field: 'time',
-		title: '日期',
+		title: '时间',
 		type: 'time',
 		searchType: 0,
 		quickSearch: true,
@@ -60,10 +88,13 @@ const items2 = reactive<I_Table_Filter_Item[]>([
 	{
 		field: 'timeSlot',
 		title: '时间段',
-		type: 'timeSlot',
+		type: 'time',
 		searchType: 0,
 		quickSearch: true,
 		isPure: true,
+		props: {
+			isRange: true,
+		},
 	},
 	{
 		field: 'datetimeRange',
@@ -90,11 +121,79 @@ const items2 = reactive<I_Table_Filter_Item[]>([
 		isPure: true,
 	},
 ]);
+
+const states = [
+	'Alabama',
+	'Alaska',
+	'Arizona',
+	'Arkansas',
+	'California',
+	'Colorado',
+	'Connecticut',
+	'Delaware',
+	'Florida',
+	'Georgia',
+	'Hawaii',
+	'Idaho',
+	'Illinois',
+	'Indiana',
+	'Iowa',
+	'Kansas',
+	'Kentucky',
+	'Louisiana',
+	'Maine',
+	'Maryland',
+	'Massachusetts',
+	'Michigan',
+	'Minnesota',
+	'Mississippi',
+	'Missouri',
+	'Montana',
+	'Nebraska',
+	'Nevada',
+	'New Hampshire',
+	'New Jersey',
+	'New Mexico',
+	'New York',
+	'North Carolina',
+	'North Dakota',
+	'Ohio',
+	'Oklahoma',
+	'Oregon',
+	'Pennsylvania',
+	'Rhode Island',
+	'South Carolina',
+	'South Dakota',
+	'Tennessee',
+	'Texas',
+	'Utah',
+	'Vermont',
+	'Virginia',
+	'Washington',
+	'West Virginia',
+	'Wisconsin',
+	'Wyoming',
+];
+const list = states.map((item): ListItem => {
+	return { value: `value:${item}`, label: `label:${item}` };
+});
+
+interface ListItem {
+	value: string;
+	label: string;
+}
 onMounted(() => {
 	/// 模拟异步请求
 	setTimeout(() => {
 		items.push(...items2);
 	}, 1500);
+	setTimeout(() => {
+		selectOptions.value = [
+			{ label: '选项1', value: 1 },
+			{ label: '选项2', value: 2 },
+			{ label: '选项3', value: 3 },
+		];
+	}, 2000);
 });
 
 function onClick() {

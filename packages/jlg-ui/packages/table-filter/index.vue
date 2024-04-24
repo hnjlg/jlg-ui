@@ -30,8 +30,8 @@
 				</el-form-item>
 			</div>
 			<div class="table-filter__card">
-				<el-button>查询</el-button>
-				<el-button @click="handleReset">重置</el-button>
+				<el-button class="save-btn" type="primary">查询</el-button>
+				<el-button class="reset-btn" @click="handleReset">重置</el-button>
 			</div>
 		</div>
 		<!--  展开/折叠 操作区域   -->
@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { CSSProperties, nextTick, onMounted, ref } from 'vue';
+import { CSSProperties, nextTick, ref } from 'vue';
 import { I_Table_Filter_Props, I_Table_Filter_Item } from './type';
 import { ElTooltip, FormInstance } from 'element-plus';
 import GlobalConfig from '../../lib/useGlobalConfig';
@@ -56,6 +56,8 @@ import isString from 'xe-utils/isString';
 import isNumber from 'xe-utils/isNumber';
 import FilterText from './compontent/filter-text.vue';
 import FilterInputNumber from './compontent/filter-input-number.vue';
+import FilterSelect from './compontent/filter-select.vue';
+import FilterTime from './compontent/filter-time.vue';
 
 defineOptions({
 	name: 'TableFilter',
@@ -71,6 +73,12 @@ const itemsModelValue = defineModel<I_Table_Filter_Item[]>('items', { required: 
 const form = reactive({});
 
 const items = computed(() => itemsModelValue.value.filter((item) => item.visible !== false && item.quickSearch));
+
+/// 监听items变化，设置初始值,设置完初始值后，停止监听
+const stopWatch = watch(items, () => {
+	handleInitialValue();
+	stopWatch();
+});
 
 const isShowTooltip = ref(false);
 function visibleTooltip(event: Event, labelText: string) {
@@ -95,16 +103,22 @@ const renderContentTitle = (item: I_Table_Filter_Item) => {
 			return FilterText;
 		case 'number':
 			return FilterInputNumber;
+		case 'select':
+			return FilterSelect;
+		case 'time':
+			return FilterTime;
 		default:
 			return FilterText;
 	}
 };
+
 function isStringNumber(val: string | number) {
 	if (!isString(val)) {
 		return false;
 	}
 	return !Number.isNaN(Number(val));
 }
+
 function addUnit(value?: string | number, defaultUnit = 'px') {
 	if (!value) return '';
 	if (isNumber(value) || isStringNumber(value)) {
@@ -131,10 +145,6 @@ function handleReset() {
 function handleFolding() {
 	isFolding.value = !isFolding.value;
 }
-
-onMounted(() => {
-	handleInitialValue();
-});
 
 defineExpose({
 	handleReset,

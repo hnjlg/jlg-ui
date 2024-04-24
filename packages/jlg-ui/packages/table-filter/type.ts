@@ -6,7 +6,7 @@ type T_Vxe_Form_Item_Props_Pick = 'title' | 'field' | 'titleWidth' | 'className'
 type Align = 'left' | 'top' | 'right' | '' | null;
 
 export declare interface I_Table_Filter_Item extends Pick<VxeFormItemProps, T_Vxe_Form_Item_Props_Pick> {
-	type: 'text' | 'number' | 'remoteSelect' | 'select' | 'time' | 'timeSlot' | 'datetimeRange' | 'dayTime' | 'treeSelect';
+	type: 'text' | 'number' | 'select' | 'time' | 'datetimeRange' | 'dayTime' | 'treeSelect';
 	/**
 	 * 默认值
 	 */
@@ -27,6 +27,10 @@ export declare interface I_Table_Filter_Item extends Pick<VxeFormItemProps, T_Vx
 	 * 是否为纯净模式（不显示筛选类型）
 	 */
 	isPure?: boolean;
+	/**
+	 * element-plus 表单组件的其余参数与事件
+	 */
+	props?: Record<string, any>;
 }
 
 export declare interface I_Table_Filter_Props {
