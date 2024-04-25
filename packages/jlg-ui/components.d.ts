@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     BaseUse: typeof import('./src/components/grid-layout/base-use/index.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
     ElDivider: typeof import('element-plus/es')['ElDivider']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']
@@ -21,6 +22,7 @@ declare module 'vue' {
     ElSelect: typeof import('element-plus/es')['ElSelect']
     ElSelectV2: typeof import('element-plus/es')['ElSelectV2']
     ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
+    ElTreeSelect: typeof import('element-plus/es')['ElTreeSelect']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

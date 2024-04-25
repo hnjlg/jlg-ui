@@ -128,10 +128,19 @@
       }
     }
   }
-  .el-date-editor{
+}
+
+/*
+* 覆盖日期选择器默认宽度
+*/
+.jlg-filter-content{
+  :deep(.el-date-editor) {
     --el-date-editor-width: 100%;
     --el-date-editor-monthrange-width: 100%;
     --el-date-editor-daterange-width: 100%;
-    --el-date-editor-datetimerange-width:100%;
+    --el-date-editor-datetimerange-width: 100%;
+    &.is-active{
+      border-color: var(--el-color-primary);
+    }
   }
 }

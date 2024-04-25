@@ -6,7 +6,7 @@ type T_Vxe_Form_Item_Props_Pick = 'title' | 'field' | 'titleWidth' | 'className'
 type Align = 'left' | 'top' | 'right' | '' | null;
 
 export declare interface I_Table_Filter_Item extends Pick<VxeFormItemProps, T_Vxe_Form_Item_Props_Pick> {
-	type: 'text' | 'number' | 'select' | 'time' | 'datetimeRange' | 'dayTime' | 'treeSelect';
+	type: 'text' | 'number' | 'select' | 'time' | 'date' | 'independentDate' | 'treeSelect';
 	/**
 	 * 默认值
 	 */

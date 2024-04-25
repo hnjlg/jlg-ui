@@ -58,6 +58,9 @@ import FilterText from './compontent/filter-text.vue';
 import FilterInputNumber from './compontent/filter-input-number.vue';
 import FilterSelect from './compontent/filter-select.vue';
 import FilterTime from './compontent/filter-time.vue';
+import FilterDate from './compontent/filter-date.vue';
+import FilterTreeSelect from './compontent/filter-tree-select.vue';
+import FilterIndependentDate from './compontent/filter-independent-date.vue';
 
 defineOptions({
 	name: 'TableFilter',
@@ -107,6 +110,12 @@ const renderContentTitle = (item: I_Table_Filter_Item) => {
 			return FilterSelect;
 		case 'time':
 			return FilterTime;
+		case 'date':
+			return FilterDate;
+		case 'independentDate':
+			return FilterIndependentDate;
+		case 'treeSelect':
+			return FilterTreeSelect;
 		default:
 			return FilterText;
 	}

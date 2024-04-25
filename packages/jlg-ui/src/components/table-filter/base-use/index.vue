@@ -29,6 +29,77 @@ const remoteMethod = (query: string) => {
 	}
 };
 
+const data = [
+	{
+		value: '1',
+		label: 'Level one 1',
+		children: [
+			{
+				value: '1-1',
+				label: 'Level two 1-1',
+				children: [
+					{
+						value: '1-1-1',
+						label: 'Level three 1-1-1',
+					},
+				],
+			},
+		],
+	},
+	{
+		value: '2',
+		label: 'Level one 2',
+		children: [
+			{
+				value: '2-1',
+				label: 'Level two 2-1',
+				children: [
+					{
+						value: '2-1-1',
+						label: 'Level three 2-1-1',
+					},
+				],
+			},
+			{
+				value: '2-2',
+				label: 'Level two 2-2',
+				children: [
+					{
+						value: '2-2-1',
+						label: 'Level three 2-2-1',
+					},
+				],
+			},
+		],
+	},
+	{
+		value: '3',
+		label: 'Level one 3',
+		children: [
+			{
+				value: '3-1',
+				label: 'Level two 3-1',
+				children: [
+					{
+						value: '3-1-1',
+						label: 'Level three 3-1-1',
+					},
+				],
+			},
+			{
+				value: '3-2',
+				label: 'Level two 3-2',
+				children: [
+					{
+						value: '3-2-1',
+						label: 'Level three 3-2-1',
+					},
+				],
+			},
+		],
+	},
+];
+
 const selectOptions = ref([]);
 const items = reactive<I_Table_Filter_Item[]>([]);
 const items2 = reactive<I_Table_Filter_Item[]>([
@@ -46,6 +117,7 @@ const items2 = reactive<I_Table_Filter_Item[]>([
 		title: '数字',
 		type: 'number',
 		searchType: 0,
+		defaultValue: 999,
 		quickSearch: true,
 		isPure: false,
 	},
@@ -54,6 +126,7 @@ const items2 = reactive<I_Table_Filter_Item[]>([
 		title: '远程检索远程检索111',
 		type: 'select',
 		searchType: 0,
+		defaultValue: ['value:California'],
 		titleOverflow: 'ellipsis',
 		quickSearch: true,
 		isPure: false,
@@ -71,6 +144,7 @@ const items2 = reactive<I_Table_Filter_Item[]>([
 		searchType: 0,
 		visible: true,
 		quickSearch: true,
+		defaultValue: 1,
 		isPure: false,
 		props: {
 			multiple: false,
@@ -81,6 +155,7 @@ const items2 = reactive<I_Table_Filter_Item[]>([
 		field: 'time',
 		title: '时间',
 		type: 'time',
+		defaultValue: '2024-04-25T05:39:51.000Z',
 		searchType: 0,
 		quickSearch: true,
 		isPure: true,
@@ -99,15 +174,28 @@ const items2 = reactive<I_Table_Filter_Item[]>([
 	{
 		field: 'datetimeRange',
 		title: '日期和时间范围',
-		type: 'datetimeRange',
+		type: 'date',
+		searchType: 0,
+		quickSearch: true,
+		isPure: true,
+		props: {
+			type: 'daterange',
+			'unlink-panels': false,
+		},
+	},
+	{
+		field: 'date',
+		title: '日期',
+		type: 'date',
 		searchType: 0,
 		quickSearch: true,
 		isPure: true,
 	},
 	{
-		field: 'dayTime',
-		title: '时间',
-		type: 'dayTime',
+		field: 'independentDate',
+		title: '独立日期',
+		type: 'independentDate',
+		defaultValue: ['2023-09-01', '2023-09-30'],
 		searchType: 0,
 		quickSearch: true,
 		isPure: true,
@@ -119,6 +207,9 @@ const items2 = reactive<I_Table_Filter_Item[]>([
 		searchType: 0,
 		quickSearch: true,
 		isPure: true,
+		props: {
+			data: data,
+		},
 	},
 ]);
 
