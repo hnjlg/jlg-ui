@@ -1,11 +1,10 @@
 <template>
 	<el-form ref="refForm" class="table-filter" :model="form">
-		<pre>{{ form }}</pre>
 		<div class="table-filter__container" :class="'is--' + (isFolding ? 'folding' : 'unfold')">
 			<div v-for="item in items" :key="item.field" class="table-filter__card" :class="item.className">
 				<el-form-item
 					:prop="item.field"
-					:label-position="item.titleAlign"
+					:label-position="item.titleAlign ?? props.titleAlign"
 					:label-width="item.titleWidth != null ? item.titleWidth : props.titleWidth"
 				>
 					<template #label>
@@ -29,15 +28,15 @@
 					</template>
 				</el-form-item>
 			</div>
-			<div class="table-filter__card">
-				<el-button class="save-btn" type="primary">查询</el-button>
+			<div v-show="!isFolding" class="table-filter__card">
+				<el-button class="save-btn" type="primary" @click="handleSave">查询</el-button>
 				<el-button class="reset-btn" @click="handleReset">重置</el-button>
 			</div>
 		</div>
 		<!--  展开/折叠 操作区域   -->
 		<div class="table-filter__operation">
 			<el-divider>
-				<div class="table-filter__divider" @click="handleFolding">
+				<div class="table-filter__divider" @click="handleFolding(!isFolding)">
 					<span style="margin-right: 5px">{{ isFolding ? '展开筛选' : '收起筛选' }}</span>
 					<el-icon><ArrowDown v-if="isFolding" /> <ArrowUp v-else /></el-icon>
 				</div>
@@ -48,10 +47,10 @@
 
 <script setup lang="ts">
 import { CSSProperties, nextTick, ref } from 'vue';
-import { I_Table_Filter_Props, I_Table_Filter_Item } from './type';
+import { I_Table_Filter_Item, I_Table_Filter_Props } from './type';
 import { ElTooltip, FormInstance } from 'element-plus';
 import GlobalConfig from '../../lib/useGlobalConfig';
-import { ArrowUp, ArrowDown } from '@element-plus/icons-vue';
+import { ArrowDown, ArrowUp } from '@element-plus/icons-vue';
 import isString from 'xe-utils/isString';
 import isNumber from 'xe-utils/isNumber';
 import FilterText from './compontent/filter-text.vue';
@@ -70,7 +69,13 @@ const props = withDefaults(defineProps<I_Table_Filter_Props>(), {
 	titleAlign: () => GlobalConfig.tableFilter.titleAlign,
 	titleWidth: () => GlobalConfig.tableFilter.titleWidth,
 	folding: () => GlobalConfig.tableFilter.folding,
+	beforeSave: GlobalConfig.tableFilter.beforeSave,
 });
+const emit = defineEmits<{
+	save: [data: Record<string, any>];
+	reset: [data: Record<string, any>];
+}>();
+
 const itemsModelValue = defineModel<I_Table_Filter_Item[]>('items', { required: true });
 
 const form = reactive({});
@@ -94,8 +99,10 @@ function visibleTooltip(event: Event, labelText: string) {
 }
 const labelStyle = (item: I_Table_Filter_Item): CSSProperties => {
 	const labelWidth = addUnit(item.titleWidth || props?.titleWidth || '');
-	if (labelWidth) return { width: labelWidth };
-	return {};
+	let titleAlign = item.titleAlign || props.titleAlign;
+	if (titleAlign === 'top' || titleAlign === '') titleAlign = 'left';
+	if (labelWidth) return { width: labelWidth, textAlign: titleAlign };
+	return { textAlign: titleAlign, width: '' };
 };
 
 const isFolding = ref(props.folding);
@@ -143,21 +150,42 @@ function handleInitialValue() {
 		form[item.field] = item.defaultValue;
 	});
 }
+function getFormData() {
+	if (props.beforeSave && typeof props.beforeSave === 'function') {
+		return props.beforeSave(form, items.value);
+	}
+	return form;
+}
+
+/// 查询
+function handleSave() {
+	if (props.beforeSave && typeof props.beforeSave === 'function') {
+		const data = props.beforeSave(form, items.value);
+		emit('save', data);
+		return;
+	}
+	emit('save', form);
+}
 
 /// 重置查询条件
 function handleReset() {
 	nextTick(() => {
 		refForm.value?.resetFields();
 		handleInitialValue();
+		emit('reset', form);
 	});
 }
-function handleFolding() {
-	isFolding.value = !isFolding.value;
+
+function handleFolding(bool: boolean) {
+	isFolding.value = bool;
 }
 
 defineExpose({
 	handleReset,
 	handleInitialValue,
+	handleFolding,
+	getFormData,
+	rawFormData: form,
 });
 </script>
 

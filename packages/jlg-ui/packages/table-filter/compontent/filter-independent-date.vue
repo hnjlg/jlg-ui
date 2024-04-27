@@ -8,6 +8,8 @@
 					type="date"
 					placeholder="开始日期"
 					:disabled-date="disabledStartDate"
+					:format="format"
+					:value-format="valueFormat"
 					@focus="isFocus = true"
 					@blur="isFocus = false"
 				/>
@@ -17,6 +19,8 @@
 					type="date"
 					placeholder="结束日期"
 					:disabled-date="disabledEndDate"
+					:format="format"
+					:value-format="valueFormat"
 					@focus="isFocus = true"
 					@blur="isFocus = false"
 				/>
@@ -27,6 +31,8 @@
 
 <script setup lang="ts">
 import { I_Table_Filter_Item } from '../../table-filter/type';
+import { computed } from 'vue';
+import GlobalConfig from '../../../lib/useGlobalConfig';
 
 defineOptions({
 	name: 'FilterIndependentDatePicker',
@@ -39,6 +45,9 @@ defineModel<number>('searchType', { required: true, default: 0 });
 const startTime = ref<string | Date>('');
 const endTime = ref<string | Date>('');
 const isFocus = ref(false);
+
+const format = computed(() => props.item.props?.format ?? GlobalConfig.datePickerFormat);
+const valueFormat = computed(() => props.item.props?.valueFormat ?? GlobalConfig.datePickerValueFormat);
 
 const disabledStartDate = (date: Date) => {
 	if (endTime.value) {

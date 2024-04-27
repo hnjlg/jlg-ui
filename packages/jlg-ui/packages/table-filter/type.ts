@@ -37,7 +37,9 @@ export declare interface I_Table_Filter_Props {
 	// 所有项的标题对齐方式
 	titleAlign?: Align;
 	// 所有项的标题宽度
-	titleWidth: VxeFormPropTypes.TitleWidth;
+	titleWidth?: VxeFormPropTypes.TitleWidth;
 	// 是否折叠
-	folding: boolean;
+	folding?: boolean;
+	// 提交前之前的钩子，参数为表单数据和筛选项配置。可用于对表单数据进一步处理
+	beforeSave?: (formData: Record<string, any>, filterConfig: I_Table_Filter_Item[]) => Record<string, any>;
 }
