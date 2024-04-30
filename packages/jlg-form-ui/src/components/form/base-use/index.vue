@@ -7,8 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import JlgForm from '@pac/form/index.vue';
-import { I_JlgForm_Props, E_JlgForm_FormType } from '../../../../packages/form/type';
+import { I_JlgForm_Props, E_JlgForm_FormType } from '@pac/form/type';
 import { ref } from 'vue';
 
 defineOptions({

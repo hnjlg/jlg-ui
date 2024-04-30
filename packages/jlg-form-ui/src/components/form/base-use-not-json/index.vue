@@ -14,15 +14,11 @@
 				<jlg-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
 			</jlg-select>
 		</jlg-form-item>
+		{{ select }}
 	</div>
 </template>
 
 <script setup lang="ts">
-import JlgInput from '@pac/input/index.vue';
-import JlgSelect from '@pac/select/index.vue';
-import JlgOption from '@pac/option/index.vue';
-import JlgFormItem from '@pac/form-item/index.vue';
-
 import { ref } from 'vue';
 
 defineOptions({

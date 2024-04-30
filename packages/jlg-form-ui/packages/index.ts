@@ -1,14 +1,13 @@
+import { ElTooltipContentProps, InputProps, SelectContext } from 'element-plus';
 import { App } from 'vue';
 import 'jlg-ui/dist/style.css';
+import JlgInput from './input';
 import JlgForm from './form'; // 引入封装好的组件
 import JlgDatePicker from './date-picker';
 import JlgFormItem from './form-item';
-import JlgInput from './input';
 import JlgOption from './option';
 import JlgSelect from './select';
 import JlgTimeSelect from './time-select';
-
-import { ElTooltipContentProps, InputProps, SelectContext } from 'element-plus';
 
 export { JlgForm, JlgDatePicker, JlgFormItem, JlgInput, JlgOption, JlgSelect, JlgTimeSelect }; //实现按需引入*
 
@@ -35,6 +34,22 @@ export const globalComponentConfig: I_Global_Component_Config = {
 	},
 };
 
+const traversalReplacement = (source, oldConfig, key?: string) => {
+	if (typeof source !== 'object' || source == null) {
+		return source;
+	}
+	const target = key ? oldConfig[key] : oldConfig;
+	for (const key in source) {
+		if (Object.prototype.hasOwnProperty.call(source, key)) {
+			if (typeof source[key] === 'object' && source[key] !== null) {
+				target[key] = traversalReplacement(source[key], target, key);
+			} else {
+				target[key] = source[key];
+			}
+		}
+	}
+};
+
 const install = function (
 	app: App<Element>,
 	config?: {
@@ -56,21 +71,5 @@ const install = function (
 if (typeof window !== 'undefined' && (window as any).Vue) {
 	install((window as any).Vue);
 }
-
-const traversalReplacement = (source, oldConfig, key?: string) => {
-	if (typeof source !== 'object' || source == null) {
-		return source;
-	}
-	const target = key ? oldConfig[key] : oldConfig;
-	for (const key in source) {
-		if (Object.prototype.hasOwnProperty.call(source, key)) {
-			if (typeof source[key] === 'object' && source[key] !== null) {
-				target[key] = traversalReplacement(source[key], target, key);
-			} else {
-				target[key] = source[key];
-			}
-		}
-	}
-};
 
 export default { install }; // 批量的引入*

@@ -10,9 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import GridLayout from '@pac/grid-layout/index.vue';
-import GridCell from '@pac/grid-cell/index.vue';
-
 defineOptions({
 	name: 'GridLayoutBaseUse',
 });
