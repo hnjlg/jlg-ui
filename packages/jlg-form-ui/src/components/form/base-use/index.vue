@@ -1,5 +1,5 @@
 <template>
-	<jlg-form v-model="formData" style="height: 800px" :grid-layout-props="gridLayoutProps" :form-props="formProps" :form-json="formJson">
+	<jlg-form v-model="formData" :grid-layout-props="gridLayoutProps" :form-props="formProps" :form-json="formJson">
 		<template #el-slot>
 			<div>插槽内容</div>
 		</template>
@@ -27,7 +27,7 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 	{
 		formItemProps: {
 			label: '姓名',
-			size: 'large',
+			size: 'small',
 		},
 		gridCellProps: {
 			width: 2,
@@ -105,10 +105,9 @@ const formProps = ref<I_JlgForm_Props['formProps']>({
 const gridLayoutProps = ref<I_JlgForm_Props['gridLayoutProps']>({
 	padding: '0px',
 	flow: 'row',
-	rows: 10,
 	columns: 5,
 	gap: '10px',
 	inline: true,
-	border: true,
+	border: false,
 });
 </script>

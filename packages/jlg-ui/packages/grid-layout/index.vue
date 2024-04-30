@@ -11,7 +11,7 @@ defineOptions({
 	name: 'GridLayout',
 });
 
-const props = withDefaults(defineProps<I_Grid_Layout_Props>(), { inline: false, width: '100%', height: '100%', border: false });
+const props = withDefaults(defineProps<I_Grid_Layout_Props>(), { inline: false, width: '100%', height: 'auto', border: false });
 
 provide('grid-layout-props', props);
 
