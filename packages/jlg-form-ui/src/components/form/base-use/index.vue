@@ -1,7 +1,7 @@
 <template>
 	<jlg-form v-model="formData" :grid-layout-props="gridLayoutProps" :form-props="formProps" :form-json="formJson">
-		<template #el-slot>
-			<div>插槽内容</div>
+		<template #el-slot="{ field, elComponentsProps }">
+			<div>插槽内容{{ field }}{{ elComponentsProps }}</div>
 		</template>
 	</jlg-form>
 </template>
@@ -59,6 +59,12 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 		},
 		type: E_JlgForm_FormType.单选框,
 		field: 'sex',
+		elComponentsProps: {
+			radioOptions: [
+				{ value: 1, label: '男', title: '男' },
+				{ value: 2, label: '女', title: '女' },
+			],
+		},
 	},
 	{
 		formItemProps: {
@@ -83,6 +89,23 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 		},
 		type: E_JlgForm_FormType.选择框,
 		field: 'select',
+		elComponentsProps: {
+			optionOptions: [
+				{
+					label: 'option1',
+					value: 1,
+				},
+				{
+					label: 'option2',
+					value: 2,
+					disabled: true,
+				},
+				{
+					label: 'option3',
+					value: 3,
+				},
+			],
+		},
 	},
 	{
 		formItemProps: {
@@ -95,6 +118,9 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 		},
 		type: E_JlgForm_FormType.选择框,
 		field: 'slot',
+		elComponentsProps: {
+			optionOptions: [],
+		},
 	},
 ]);
 

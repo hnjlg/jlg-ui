@@ -4,7 +4,7 @@
 		<jlg-grid-layout v-bind="props.gridLayoutProps">
 			<jlg-grid-cell v-for="formItem in props.formJson" :key="formItem.field" v-bind="formItem.gridCellProps">
 				<el-form-item v-bind="formItem.formItemProps">
-					<slot :name="'el-' + formItem.field">
+					<slot :name="'el-' + formItem.field" :field="formItem.field" :el-components-props="formItem.elComponentsProps">
 						<component
 							:is="renderFormItemComponent(formItem)"
 							:field="formItem.field"

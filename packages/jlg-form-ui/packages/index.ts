@@ -1,4 +1,5 @@
 import { App } from 'vue';
+import 'jlg-ui/dist/style.css';
 import JlgForm from './form'; // 引入封装好的组件
 import JlgDatePicker from './date-picker';
 import JlgFormItem from './form-item';

@@ -1,4 +1,4 @@
-import { FormProps, FormItemProps, InputProps, InputNumberProps, RadioGroupProps, RateProps, ISelectProps } from 'element-plus';
+import { FormProps, FormItemProps, InputProps, InputNumberProps, RadioGroupProps, RateProps, ISelectProps, RadioProps } from 'element-plus';
 import { I_Grid_Cell_Props } from 'jlg-ui/dist/packages/grid-cell/type';
 import { I_Grid_Layout_Props } from 'jlg-ui/dist/packages/grid-layout/type';
 
@@ -8,6 +8,12 @@ export enum E_JlgForm_FormType {
 	单选框 = 'radio',
 	评分 = 'rate',
 	选择框 = 'select',
+}
+
+export declare interface IOptionProps {
+	value: string | number | boolean | object;
+	label: string | number;
+	disabled: boolean;
 }
 
 export declare interface I_JlgForm_FormJsonItem_Base {
@@ -28,7 +34,9 @@ export declare interface I_JlgForm_FormJsonItem_InputNumber extends I_JlgForm_Fo
 
 export declare interface I_JlgForm_FormJsonItem_Radio extends I_JlgForm_FormJsonItem_Base {
 	type: E_JlgForm_FormType.单选框;
-	elComponentsProps?: Partial<RadioGroupProps>;
+	elComponentsProps: Partial<RadioGroupProps> & {
+		radioOptions: (Partial<RadioProps> & { title: string | number | boolean })[];
+	};
 }
 
 export declare interface I_JlgForm_FormJsonItem_Rate extends I_JlgForm_FormJsonItem_Base {
@@ -38,7 +46,7 @@ export declare interface I_JlgForm_FormJsonItem_Rate extends I_JlgForm_FormJsonI
 
 export declare interface I_JlgForm_FormJsonItem_Select extends I_JlgForm_FormJsonItem_Base {
 	type: E_JlgForm_FormType.选择框;
-	elComponentsProps?: Partial<ISelectProps>;
+	elComponentsProps: Partial<ISelectProps> & { optionOptions: Partial<IOptionProps>[] };
 }
 
 export declare type T_JlgForm_FormJsonItem =

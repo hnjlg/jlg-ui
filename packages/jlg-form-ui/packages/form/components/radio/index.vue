@@ -1,7 +1,6 @@
 <template>
 	<el-radio-group v-model="props.formData[props.field]" v-bind="props.elComponentsProps">
-		<el-radio :value="1" size="large">男</el-radio>
-		<el-radio :value="2" size="large">女</el-radio>
+		<el-radio v-for="radio in props.elComponentsProps.radioOptions" :key="radio.value" v-bind="radio">{{ radio.title }}</el-radio>
 	</el-radio-group>
 </template>
 

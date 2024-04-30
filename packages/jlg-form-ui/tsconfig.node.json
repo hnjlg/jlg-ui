@@ -12,6 +12,7 @@
 		"packages/**/*.tsx",
 		"packages/**/*.vue",
 		"auto-imports.d.ts",
+		"node_modules/jlg-ui"
 	],
 	"exclude": [
 		"dist",
