@@ -1,10 +1,12 @@
 <template>
-	<el-form-item v-bind="props">
+	<el-form-item v-bind="mergeFormItemPropsComputed">
 		<!-- Form Item 插槽 -->
 		<template v-if="slots.label">
-			<slot name="label" :label="props.label">
-				<el-tooltip :content="props.label" placement="top" :disabled="isShowTooltip">
-					<span class="text-overflow-hidden" :style="labelStyle" @mouseover="($event) => visibleTooltip($event)">{{ props.label }}</span>
+			<slot name="label" :label="mergeFormItemPropsComputed.label">
+				<el-tooltip :content="mergeFormItemPropsComputed.label" placement="top" :disabled="isShowTooltip">
+					<span class="text-overflow-hidden" :style="labelStyle" @mouseover="($event) => visibleTooltip($event)">{{
+						mergeFormItemPropsComputed.label
+					}}</span>
 				</el-tooltip>
 			</slot>
 		</template>
@@ -16,15 +18,17 @@
 </template>
 
 <script setup lang="ts">
-import { formContextKey, FormItemProps } from 'element-plus';
+import { formContextKey } from 'element-plus';
 import { useSlots, CSSProperties } from 'vue';
 import { isNumber, isString } from 'lodash-unified';
+import { T_Jlg_FormItem_Props } from './type';
+import { globalComponentConfig } from '../index';
 
 defineOptions({
 	name: 'JlgFormItem',
 });
 
-const props = withDefaults(defineProps<Partial<FormItemProps>>(), {});
+const props = withDefaults(defineProps<T_Jlg_FormItem_Props>(), {});
 
 const slots = useSlots();
 
@@ -52,19 +56,26 @@ const labelStyle = computed<CSSProperties>(() => {
 	if (formContext?.labelPosition === 'top') {
 		return {};
 	}
-	const labelWidth = addUnit(props.labelWidth || formContext?.labelWidth || '');
+	const labelWidth = addUnit(mergeFormItemPropsComputed.value.labelWidth || formContext?.labelWidth || '');
 	if (labelWidth) return { width: labelWidth };
 	return {};
 });
 
 const visibleTooltip = (event) => {
-	if (!props.label) {
+	if (!mergeFormItemPropsComputed.value.label) {
 		isShowTooltip.value = true;
 		return;
 	}
 	const { offsetWidth, scrollWidth } = event.target as HTMLElement;
 	isShowTooltip.value = offsetWidth >= scrollWidth;
 };
+
+const mergeFormItemPropsComputed = computed(() => {
+	return {
+		...globalComponentConfig.form,
+		...props,
+	};
+});
 </script>
 
 <style scoped lang="scss">

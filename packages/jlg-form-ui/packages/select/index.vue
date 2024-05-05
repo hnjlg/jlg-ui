@@ -6,9 +6,12 @@
 			:placeholder="placeholderComputed"
 			@update:model-value="updateModelValue"
 		>
-			<template v-for="(index, name) in slots" #[name]>
-				<slot :name="name" />
+			<template v-for="(index, name) in slots">
+				<slot v-if="name !== 'default'" :name="name" />
 			</template>
+			<slot>
+				<el-option v-for="option in mergeSelectPropsComputed.optionOptions" :key="option.value" v-bind="option" />
+			</slot>
 		</el-select>
 	</jlg-tooltip>
 </template>

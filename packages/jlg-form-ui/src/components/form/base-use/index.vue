@@ -1,5 +1,6 @@
 <template>
-	<jlg-form v-model="formData" :grid-layout-props="gridLayoutProps" :form-props="formProps" :form-json="formJson">
+	{{ formData }}
+	<jlg-form v-model="formData" :grid-layout-props="gridLayoutProps" :form-json="formJson" label-position="top">
 		<template #el-slot="{ field, elComponentsProps }">
 			<div>插槽内容{{ field }}{{ elComponentsProps }}</div>
 		</template>
@@ -7,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { I_JlgForm_Props, E_JlgForm_FormType } from '@pac/form/type';
+import { T_JlgForm_Props, E_JlgForm_FormType } from '@pac/form/type';
 import { ref } from 'vue';
 
 defineOptions({
@@ -22,7 +23,7 @@ const formData = ref({
 	select: 1,
 });
 
-const formJson = ref<I_JlgForm_Props['formJson']>([
+const formJson = ref<T_JlgForm_Props['formJson']>([
 	{
 		formItemProps: {
 			label: '姓名',
@@ -46,6 +47,10 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 		},
 		type: E_JlgForm_FormType.数字输入框,
 		field: 'age',
+		controls: true,
+		elComponentsProps: {
+			controls: true,
+		},
 	},
 	{
 		formItemProps: {
@@ -108,6 +113,38 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 	},
 	{
 		formItemProps: {
+			label: '日期',
+			size: 'small',
+		},
+		gridCellProps: {
+			width: 1,
+			height: 1,
+		},
+		type: E_JlgForm_FormType.日期,
+		field: 'datePicker',
+		elComponentsProps: {
+			type: 'date',
+		},
+	},
+	{
+		formItemProps: {
+			label: '时间',
+			size: 'small',
+		},
+		gridCellProps: {
+			width: 1,
+			height: 1,
+		},
+		type: E_JlgForm_FormType.时间,
+		field: 'timeSelect',
+		elComponentsProps: {
+			start: '08:30',
+			step: '00:15',
+			end: '18:30',
+		},
+	},
+	{
+		formItemProps: {
 			label: '插槽',
 			size: 'small',
 		},
@@ -123,11 +160,7 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 	},
 ]);
 
-const formProps = ref<I_JlgForm_Props['formProps']>({
-	labelPosition: 'top',
-});
-
-const gridLayoutProps = ref<I_JlgForm_Props['gridLayoutProps']>({
+const gridLayoutProps = ref<T_JlgForm_Props['gridLayoutProps']>({
 	padding: '0px',
 	flow: 'row',
 	columns: 5,

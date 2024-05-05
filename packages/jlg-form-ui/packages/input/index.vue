@@ -60,7 +60,7 @@ const placeholderComputed = computed(() => {
 	if (mergeInputPropsComputed.value.placeholder) {
 		return mergeInputPropsComputed.value.placeholder;
 	} else if (context && context.label) {
-		const maxLengthText = props.maxlength ? `，最大可输入${props.maxlength}个字` : '';
+		const maxLengthText = mergeInputPropsComputed.value.maxlength ? `，最大可输入${mergeInputPropsComputed.value.maxlength}个字` : '';
 		return `请输入${context.label}${maxLengthText}`;
 	} else {
 		return '请输入';
