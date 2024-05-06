@@ -12,12 +12,15 @@
 import JlgTooltip from '../tooltip/index.vue';
 import { globalComponentConfig } from '../index';
 import { T_Jlg_TimeSelect_Props } from './type';
+import { useAttrs } from 'vue';
 
 defineOptions({
 	name: 'JlgTimeSelect',
 });
 
 const props = withDefaults(defineProps<T_Jlg_TimeSelect_Props>(), {});
+
+const attrs = useAttrs();
 
 const emits = defineEmits<{
 	(e: 'update:modelValue', v: T_Jlg_TimeSelect_Props['modelValue']): void;
@@ -40,6 +43,7 @@ const mergeTimeSelectPropsComputed = computed(() => {
 	return {
 		...globalComponentConfig.timeSelect,
 		...props,
+		...attrs,
 	};
 });
 </script>

@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { formContextKey } from 'element-plus';
-import { useSlots, CSSProperties } from 'vue';
+import { useSlots, CSSProperties, useAttrs } from 'vue';
 import { isNumber, isString } from 'lodash-unified';
 import { T_Jlg_FormItem_Props } from './type';
 import { globalComponentConfig } from '../index';
@@ -29,6 +29,8 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<T_Jlg_FormItem_Props>(), {});
+
+const attrs = useAttrs();
 
 const slots = useSlots();
 
@@ -74,6 +76,7 @@ const mergeFormItemPropsComputed = computed(() => {
 	return {
 		...globalComponentConfig.form,
 		...props,
+		...attrs,
 	};
 });
 </script>

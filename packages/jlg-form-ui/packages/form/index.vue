@@ -26,7 +26,7 @@ import InputNumber from '../input-number/index.vue';
 import Select from '../select/index.vue';
 import DatePicker from '../date-picker/index.vue';
 import TimeSelect from '../time-select/index.vue';
-import type { Component } from 'vue';
+import { type Component, useAttrs } from 'vue';
 
 defineOptions({
 	name: 'JlgForm',
@@ -34,10 +34,13 @@ defineOptions({
 
 const props = withDefaults(defineProps<T_JlgForm_Props>(), {});
 
+const attrs = useAttrs();
+
 const mergeFormPropsComputed = computed(() => {
 	return {
 		...globalComponentConfig.form,
 		...props,
+		...attrs,
 	};
 });
 
@@ -61,4 +64,3 @@ const renderFormItemComponent = (formItem: T_JlgForm_FormJsonItem): Component =>
 	}
 };
 </script>
-../input-number/index.vue

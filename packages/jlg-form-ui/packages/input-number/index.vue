@@ -7,6 +7,7 @@
 <script setup lang="ts">
 import { globalComponentConfig } from '../index';
 import { T_Jlg_Input_Number_Props } from './type';
+import { useAttrs } from 'vue';
 
 defineOptions({
 	name: 'JlgInputNumber',
@@ -15,6 +16,8 @@ defineOptions({
 const props = withDefaults(defineProps<T_Jlg_Input_Number_Props>(), {
 	controls: true,
 });
+
+const attrs = useAttrs();
 
 const emits = defineEmits<{
 	(e: 'update:modelValue', v: T_Jlg_Input_Number_Props['modelValue']): void;
@@ -37,6 +40,7 @@ const mergeNumberPropsComputed = computed(() => {
 	return {
 		...globalComponentConfig.inputNumber,
 		...props,
+		...attrs,
 	};
 });
 </script>

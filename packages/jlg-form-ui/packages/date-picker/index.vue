@@ -9,12 +9,15 @@
 import JlgTooltip from '../tooltip/index.vue';
 import { globalComponentConfig } from '../index';
 import { T_Jlg_DatePicker_Props } from './type';
+import { useAttrs } from 'vue';
 
 defineOptions({
 	name: 'JlgDatePicker',
 });
 
 const props = withDefaults(defineProps<T_Jlg_DatePicker_Props>(), {});
+
+const attrs = useAttrs();
 
 const emits = defineEmits<{
 	(e: 'update:modelValue', v: T_Jlg_DatePicker_Props['modelValue']): void;
@@ -37,6 +40,7 @@ const mergeDatePickerPropsComputed = computed(() => {
 	return {
 		...globalComponentConfig.datePicker,
 		...props,
+		...attrs,
 	};
 });
 </script>

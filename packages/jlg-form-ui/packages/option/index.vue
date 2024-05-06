@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { useSlots } from 'vue';
+import { useSlots, useAttrs } from 'vue';
 import { globalComponentConfig } from '../index';
 import { I_Jlg_Option_Props } from './type';
 
@@ -17,12 +17,15 @@ defineOptions({
 
 const props = withDefaults(defineProps<I_Jlg_Option_Props>(), {});
 
+const attrs = useAttrs();
+
 const slots = useSlots();
 
 const mergeOptionPropsComputed = computed(() => {
 	return {
 		...globalComponentConfig.option,
 		...props,
+		...attrs,
 	};
 });
 </script>

@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { useSlots } from 'vue';
+import { useSlots, useAttrs } from 'vue';
 import { I_Jlg_Input_Emits, T_Jlg_Input_Props } from './type';
 import { globalComponentConfig } from '../index';
 import JlgTooltip from '../tooltip/index.vue';
@@ -29,6 +29,8 @@ defineOptions({
 const slots = useSlots();
 
 const props = withDefaults(defineProps<T_Jlg_Input_Props>(), {});
+
+const attrs = useAttrs();
 
 const emits = defineEmits<I_Jlg_Input_Emits>();
 
@@ -52,6 +54,7 @@ const mergeInputPropsComputed = computed(() => {
 	return {
 		...globalComponentConfig.input,
 		...props,
+		...attrs,
 	};
 });
 

@@ -21,6 +21,7 @@ import JlgTooltip from '../tooltip/index.vue';
 import { globalComponentConfig } from '../index';
 import { I_Jlg_Select_Emits, T_Jlg_Select_Props } from './type';
 import { FormItemContext, formItemContextKey, useLocale } from 'element-plus';
+import { useAttrs } from 'vue';
 
 defineOptions({
 	name: 'JlgSelect',
@@ -29,6 +30,8 @@ defineOptions({
 const slots = useSlots();
 
 const props = withDefaults(defineProps<T_Jlg_Select_Props>(), {});
+
+const attrs = useAttrs();
 
 const emits = defineEmits<I_Jlg_Select_Emits>();
 
@@ -54,6 +57,7 @@ const mergeSelectPropsComputed = computed(() => {
 	return {
 		...globalComponentConfig.select,
 		...props,
+		...attrs,
 	};
 });
 

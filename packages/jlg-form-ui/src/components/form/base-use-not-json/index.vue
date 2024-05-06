@@ -21,7 +21,7 @@
 			</jlg-grid-cell>
 			<jlg-grid-cell :width="1" :height="1">
 				<jlg-form-item label="number">
-					<jlg-input-number v-model="formData.number"> </jlg-input-number>
+					<jlg-input-number v-model="formData.number" @change="valueChange"> </jlg-input-number>
 				</jlg-form-item>
 			</jlg-grid-cell>
 			<jlg-grid-cell :width="1" :height="1">
@@ -86,6 +86,10 @@ const options = [
 		label: 'Option5',
 	},
 ];
+
+const valueChange = (v) => {
+	console.log(v);
+};
 </script>
 
 <style scoped lang="scss"></style>
