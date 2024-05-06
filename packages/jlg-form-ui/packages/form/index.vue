@@ -22,7 +22,7 @@ import { globalComponentConfig } from '../index';
 import Input from '../input/index.vue';
 import InputNumber from '../input-number/index.vue';
 // import Radio from './components/radio/index.vue';
-// import Rate from './components/rate/index.vue';
+import Rate from '../rate/index.vue';
 import Select from '../select/index.vue';
 import DatePicker from '../date-picker/index.vue';
 import TimeSelect from '../time-select/index.vue';
@@ -53,8 +53,8 @@ const renderFormItemComponent = (formItem: T_JlgForm_FormJsonItem): Component =>
 			return InputNumber;
 		// case E_JlgForm_FormType.单选框:
 		// 	return Radio;
-		// case E_JlgForm_FormType.评分:
-		// 	return Rate;
+		case E_JlgForm_FormType.评分:
+			return Rate;
 		case E_JlgForm_FormType.日期:
 			return DatePicker;
 		case E_JlgForm_FormType.时间:

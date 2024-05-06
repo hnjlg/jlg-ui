@@ -5,7 +5,7 @@ import { T_Jlg_Tooltip_Props } from './tooltip/type';
 import { T_Jlg_Input_Props } from './input/type';
 import { T_Jlg_Select_Props } from './select/type';
 import { T_Jlg_TimeSelect_Props } from './time-select/type';
-import { T_Jlg_Input_Number_Props } from './input-number/type';
+import { T_Jlg_InputNumber_Props } from './input-number/type';
 import { T_Jlg_DatePicker_Props } from './date-picker/type';
 import { default as JlgTooltip } from './tooltip';
 import { default as JlgInputNumber } from './input-number';
@@ -20,23 +20,26 @@ import { App } from 'vue';
 
 export { JlgForm, JlgDatePicker, JlgFormItem, JlgInput, JlgOption, JlgSelect, JlgTimeSelect, JlgInputNumber, JlgTooltip };
 type DeepPartial<T> = {
-    [U in keyof T]?: T[U] extends object ? DeepPartial<T[U]> : T[U];
+	[U in keyof T]?: T[U] extends object ? DeepPartial<T[U]> : T[U];
 };
 interface I_Global_Component_Config {
-    tooltip: Partial<T_Jlg_Tooltip_Props>;
-    form: DeepPartial<T_JlgForm_Props>;
-    formItem: DeepPartial<T_Jlg_FormItem_Props>;
-    input: DeepPartial<T_Jlg_Input_Props>;
-    select: DeepPartial<T_Jlg_Select_Props>;
-    option: DeepPartial<I_Jlg_Option_Props>;
-    timeSelect: DeepPartial<T_Jlg_TimeSelect_Props>;
-    inputNumber: DeepPartial<T_Jlg_Input_Number_Props>;
-    datePicker: DeepPartial<T_Jlg_DatePicker_Props>;
+	tooltip: Partial<T_Jlg_Tooltip_Props>;
+	form: DeepPartial<T_JlgForm_Props>;
+	formItem: DeepPartial<T_Jlg_FormItem_Props>;
+	input: DeepPartial<T_Jlg_Input_Props>;
+	select: DeepPartial<T_Jlg_Select_Props>;
+	option: DeepPartial<I_Jlg_Option_Props>;
+	timeSelect: DeepPartial<T_Jlg_TimeSelect_Props>;
+	inputNumber: DeepPartial<T_Jlg_InputNumber_Props>;
+	datePicker: DeepPartial<T_Jlg_DatePicker_Props>;
 }
 export declare const globalComponentConfig: I_Global_Component_Config;
 declare const _default: {
-    install: (app: App<Element>, config?: {
-        componentConfig?: I_Global_Component_Config;
-    }) => void;
+	install: (
+		app: App<Element>,
+		config?: {
+			componentConfig?: I_Global_Component_Config;
+		}
+	) => void;
 };
 export default _default;

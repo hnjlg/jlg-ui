@@ -1,11 +1,12 @@
-import { FormProps, FormItemProps, RadioGroupProps, RateProps, RadioProps } from 'element-plus';
+import { FormProps, FormItemProps, RadioGroupProps, RadioProps } from 'element-plus';
 import { I_Grid_Cell_Props } from 'jlg-ui/dist/packages/grid-cell/type';
 import { I_Grid_Layout_Props } from 'jlg-ui/dist/packages/grid-layout/type';
 import { T_Jlg_Input_Props } from '../input/type';
 import { T_Jlg_Select_Props } from '../select/type';
-import { T_Jlg_Input_Number_Props } from '../input-number/type';
+import { T_Jlg_InputNumber_Props } from '../input-number/type';
 import { T_Jlg_DatePicker_Props } from '../date-picker/type';
 import { T_Jlg_TimeSelect_Props } from '../time-select/type';
+import { T_Jlg_Rate_Props } from '../rate/type';
 
 export enum E_JlgForm_FormType {
 	输入框 = 'input',
@@ -30,7 +31,7 @@ export declare interface I_JlgForm_FormJsonItem_Input extends I_JlgForm_FormJson
 
 export declare interface I_JlgForm_FormJsonItem_InputNumber extends I_JlgForm_FormJsonItem_Base {
 	type: E_JlgForm_FormType.数字输入框;
-	elComponentsProps?: T_Jlg_Input_Number_Props;
+	elComponentsProps?: T_Jlg_InputNumber_Props;
 }
 
 export declare interface I_JlgForm_FormJsonItem_Radio extends I_JlgForm_FormJsonItem_Base {
@@ -42,7 +43,7 @@ export declare interface I_JlgForm_FormJsonItem_Radio extends I_JlgForm_FormJson
 
 export declare interface I_JlgForm_FormJsonItem_Rate extends I_JlgForm_FormJsonItem_Base {
 	type: E_JlgForm_FormType.评分;
-	elComponentsProps?: Partial<RateProps>;
+	elComponentsProps?: T_Jlg_Rate_Props;
 }
 
 export declare interface I_JlgForm_FormJsonItem_Select extends I_JlgForm_FormJsonItem_Base {

@@ -9,6 +9,8 @@
 					emits('update:modelValue', v);
 				}
 			"
+			@mouseenter="mouseenter"
+			@mouseleave="mouseleave"
 		>
 			<template v-for="(index, name) in slots">
 				<slot v-if="name !== 'default'" :name="name" />
@@ -49,7 +51,8 @@ const toolTipShow = ref(false);
 const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
-			disabled: !toolTipShow.value,
+			disabled: !mergeSelectPropsComputed.value.disabled,
+			visible: toolTipShow.value,
 			content: String(props.modelValue),
 		},
 		...globalComponentConfig.tooltip,
@@ -78,6 +81,20 @@ const placeholderComputed = computed(() => {
 		return '请选择';
 	}
 });
+
+const mouseenter = () => {
+	if (!mergeSelectPropsComputed.value.disabled) {
+		return;
+	}
+	toolTipShow.value = true;
+};
+
+const mouseleave = () => {
+	if (!mergeSelectPropsComputed.value.disabled) {
+		return;
+	}
+	toolTipShow.value = false;
+};
 </script>
 
 <style scoped></style>

@@ -5,8 +5,9 @@
 			v-bind="mergeInputPropsComputed"
 			:placeholder="placeholderComputed"
 			@update:model-value="updateModelValue"
-			@focus="focusInput"
 			@blur="blurInput"
+			@mouseenter="mouseenter"
+			@mouseleave="mouseleave"
 		>
 			<template v-for="(index, name) in slots">
 				<slot :name="name" />
@@ -42,7 +43,8 @@ const toolTipShow = ref(false);
 const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
-			disabled: !toolTipShow.value,
+			disabled: !mergeInputPropsComputed.value.disabled,
+			visible: toolTipShow.value,
 			content: String(props.modelValue),
 		},
 		...globalComponentConfig.tooltip,
@@ -74,16 +76,24 @@ const updateModelValue = (v) => {
 	emits('update:modelValue', v);
 };
 
-const focusInput = (event) => {
-	toolTipShow.value = true;
-	emits('focus', event);
-};
-
 const blurInput = (event) => {
-	toolTipShow.value = false;
 	// 去除两端空格
 	emits('update:modelValue', String(props.modelValue ?? '').trim());
 	emits('blur', event);
+};
+
+const mouseenter = () => {
+	if (!mergeInputPropsComputed.value.disabled) {
+		return;
+	}
+	toolTipShow.value = true;
+};
+
+const mouseleave = () => {
+	if (!mergeInputPropsComputed.value.disabled) {
+		return;
+	}
+	toolTipShow.value = false;
 };
 </script>
 

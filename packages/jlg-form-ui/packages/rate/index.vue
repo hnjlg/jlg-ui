@@ -1,8 +1,8 @@
 <template>
 	<jlg-tooltip v-bind="mergeTooltipPropsComputed">
-		<el-input-number
+		<el-rate
 			:model-value="props.modelValue"
-			v-bind="mergeNumberPropsComputed"
+			v-bind="mergeRatePropsComputed"
 			@update:model-value="(v) => emits('update:modelValue', v)"
 			@mouseenter="mouseenter"
 			@mouseleave="mouseleave"
@@ -12,52 +12,52 @@
 
 <script setup lang="ts">
 import { globalComponentConfig } from '../index';
-import { I_Jlg_InputNumber_Emits, T_Jlg_InputNumber_Props } from './type';
+import { I_Jlg_Rate_Emits, T_Jlg_Rate_Props } from './type';
 import { useAttrs } from 'vue';
 
 defineOptions({
-	name: 'JlgInputNumber',
+	name: 'JlgRate',
 });
 
-const props = withDefaults(defineProps<T_Jlg_InputNumber_Props>(), {
-	controls: true,
+const props = withDefaults(defineProps<T_Jlg_Rate_Props>(), {
+	max: 5,
 });
 
 const attrs = useAttrs();
 
-const emits = defineEmits<I_Jlg_InputNumber_Emits>();
+const emits = defineEmits<I_Jlg_Rate_Emits>();
 
 const toolTipShow = ref(false);
 
 const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
-			disabled: !mergeNumberPropsComputed.value.disabled,
+			disabled: !mergeRatePropsComputed.value.disabled,
 			visible: toolTipShow.value,
-			content: String(props.modelValue),
+			content: `${String(props.modelValue)}/${mergeRatePropsComputed.value.max}`,
 		},
 		...globalComponentConfig.tooltip,
 		...(props.toolTipProps ?? {}),
 	};
 });
 
-const mergeNumberPropsComputed = computed(() => {
+const mergeRatePropsComputed = computed(() => {
 	return {
-		...globalComponentConfig.inputNumber,
+		...globalComponentConfig.rate,
 		...props,
 		...attrs,
 	};
 });
 
 const mouseenter = () => {
-	if (!mergeNumberPropsComputed.value.disabled) {
+	if (!mergeRatePropsComputed.value.disabled) {
 		return;
 	}
 	toolTipShow.value = true;
 };
 
 const mouseleave = () => {
-	if (!mergeNumberPropsComputed.value.disabled) {
+	if (!mergeRatePropsComputed.value.disabled) {
 		return;
 	}
 	toolTipShow.value = false;

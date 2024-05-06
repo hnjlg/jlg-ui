@@ -34,6 +34,11 @@
 					<jlg-time-select v-model="formData.timeSelect" start="08:30" step="00:15" end="18:30" />
 				</jlg-form-item>
 			</jlg-grid-cell>
+			<jlg-grid-cell :width="1" :height="1">
+				<jlg-form-item label="rate">
+					<jlg-rate v-model="formData.rate" />
+				</jlg-form-item>
+			</jlg-grid-cell>
 		</jlg-grid-layout>
 	</jlg-form>
 </template>
@@ -53,6 +58,7 @@ const formData = ref({
 	number: 0,
 	datePicker: '',
 	timeSelect: '',
+	rate: 0,
 });
 
 const gridLayoutProps = ref<T_JlgForm_Props['gridLayoutProps']>({

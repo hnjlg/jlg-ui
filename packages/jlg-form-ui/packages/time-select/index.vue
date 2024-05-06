@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import JlgTooltip from '../tooltip/index.vue';
 import { globalComponentConfig } from '../index';
-import { T_Jlg_TimeSelect_Props } from './type';
+import { T_Jlg_TimeSelect_Props, I_Jlg_TimeSelect_Emits } from './type';
 import { useAttrs } from 'vue';
 import { FormItemContext, formItemContextKey } from 'element-plus';
 
@@ -24,9 +24,7 @@ const props = withDefaults(defineProps<T_Jlg_TimeSelect_Props>(), {});
 
 const attrs = useAttrs();
 
-const emits = defineEmits<{
-	(e: 'update:modelValue', v: T_Jlg_TimeSelect_Props['modelValue']): void;
-}>();
+const emits = defineEmits<I_Jlg_TimeSelect_Emits>();
 
 const context: FormItemContext | undefined = inject(formItemContextKey);
 
@@ -35,7 +33,8 @@ const toolTipShow = ref(false);
 const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
-			disabled: !toolTipShow.value,
+			disabled: !mergeTimeSelectPropsComputed.value.disabled,
+			visible: toolTipShow.value,
 			content: String(props.modelValue),
 		},
 		...globalComponentConfig.tooltip,
