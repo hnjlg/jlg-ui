@@ -127,6 +127,7 @@ const formJson = ref<T_JlgForm_Props['formJson']>([
 					value: 3,
 				},
 			],
+			multiple: true,
 		},
 	},
 	{

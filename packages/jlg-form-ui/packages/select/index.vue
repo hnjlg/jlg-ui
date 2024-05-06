@@ -1,6 +1,8 @@
 <template>
+	{{ valueText }}
 	<jlg-tooltip v-bind="mergeTooltipPropsComputed">
 		<el-select
+			ref="_ref"
 			:model-value="props.modelValue"
 			v-bind="mergeSelectPropsComputed"
 			:placeholder="placeholderComputed"
@@ -28,7 +30,6 @@ import JlgOption from '../option/index.vue';
 import { globalComponentConfig } from '../index';
 import { I_Jlg_Select_Emits, T_Jlg_Select_Props } from './type';
 import { FormItemContext, formItemContextKey, useLocale } from 'element-plus';
-import { useAttrs } from 'vue';
 import { E_JlgForm_FormType, T_Add_Gather_Fn } from '../form/type';
 
 defineOptions({
@@ -43,6 +44,8 @@ const emits = defineEmits<I_Jlg_Select_Emits>();
 
 const slots = useSlots();
 
+const _ref = ref(null);
+
 // formItem传递的context
 const context: FormItemContext | undefined = inject(formItemContextKey);
 
@@ -50,7 +53,7 @@ const { t } = useLocale();
 
 const toolTipShow = ref(false);
 
-const valueText = computed(() => String(props.modelValue ?? ''));
+const valueText = ref('');
 
 const mergeTooltipPropsComputed = computed(() => {
 	return {
@@ -116,6 +119,22 @@ const mouseleave = () => {
 	}
 	toolTipShow.value = false;
 };
+
+watch(
+	() => _ref.value?.states.selected,
+	(newValue) => {
+		if (!newValue) return;
+		valueText.value = mergeSelectPropsComputed.value.multiple ? newValue.map((i) => i.currentLabel).join(';') : newValue.currentLabel;
+	},
+	{
+		deep: true,
+		immediate: true,
+	}
+);
+
+defineExpose({
+	_ref,
+});
 </script>
 
 <style scoped></style>
