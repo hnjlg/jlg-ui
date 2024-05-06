@@ -1,15 +1,96 @@
 import { App } from 'vue';
+import 'jlg-ui/dist/style.css';
+import JlgInput from './input';
 import JlgForm from './form'; // 引入封装好的组件
+import JlgDatePicker from './date-picker';
+import JlgFormItem from './form-item';
+import JlgOption from './option';
+import JlgSelect from './select';
+import JlgTimeSelect from './time-select';
+import JlgInputNumber from './input-number';
+import JlgTooltip from './tooltip';
+import { T_Jlg_DatePicker_Props } from './date-picker/type';
+import { T_Jlg_Input_Number_Props } from './input-number/type';
+import { T_Jlg_TimeSelect_Props } from './time-select/type';
+import { T_Jlg_Select_Props } from './select/type';
+import { T_Jlg_Input_Props } from './input/type';
+import { T_Jlg_Tooltip_Props } from './tooltip/type';
+import { T_JlgForm_Props } from './form/type';
+import { I_Jlg_Option_Props } from './option/type';
+import { T_Jlg_FormItem_Props } from './form-item/type';
 
-export { JlgForm }; //实现按需引入*
+export { JlgForm, JlgDatePicker, JlgFormItem, JlgInput, JlgOption, JlgSelect, JlgTimeSelect, JlgInputNumber, JlgTooltip }; //实现按需引入*
 
-const components = [JlgForm]; // 将来如果有其它组件,都可以写到这个数组里
+const components = [JlgForm, JlgDatePicker, JlgFormItem, JlgInput, JlgOption, JlgSelect, JlgTimeSelect, JlgInputNumber, JlgTooltip];
 
-const install = function (app: App<Element>) {
+type DeepPartial<T> = {
+	[U in keyof T]?: T[U] extends object ? DeepPartial<T[U]> : T[U];
+};
+
+interface I_Global_Component_Config {
+	tooltip: Partial<T_Jlg_Tooltip_Props>;
+	form: DeepPartial<T_JlgForm_Props>;
+	formItem: DeepPartial<T_Jlg_FormItem_Props>;
+	input: DeepPartial<T_Jlg_Input_Props>;
+	select: DeepPartial<T_Jlg_Select_Props>;
+	option: DeepPartial<I_Jlg_Option_Props>;
+	timeSelect: DeepPartial<T_Jlg_TimeSelect_Props>;
+	inputNumber: DeepPartial<T_Jlg_Input_Number_Props>;
+	datePicker: DeepPartial<T_Jlg_DatePicker_Props>;
+}
+
+export const globalComponentConfig: I_Global_Component_Config = {
+	tooltip: {
+		showAfter: 600,
+		placement: 'top',
+		effect: 'dark',
+	},
+	form: {},
+	formItem: {},
+	input: {
+		showWordLimit: false,
+		clearable: true,
+	},
+	select: {
+		placeholder: '',
+	},
+	option: {},
+	timeSelect: {},
+	inputNumber: {},
+	datePicker: {},
+};
+
+const traversalReplacement = (source, oldConfig, key?: string) => {
+	if (typeof source !== 'object' || source == null) {
+		return source;
+	}
+	const target = key ? oldConfig[key] : oldConfig;
+	for (const key in source) {
+		if (Object.prototype.hasOwnProperty.call(source, key)) {
+			if (typeof source[key] === 'object' && source[key] !== null) {
+				target[key] = traversalReplacement(source[key], target, key);
+			} else {
+				target[key] = source[key];
+			}
+		}
+	}
+};
+
+const install = function (
+	app: App<Element>,
+	config?: {
+		componentConfig?: I_Global_Component_Config;
+	}
+) {
 	components.forEach((component) => {
 		if (!component.name) return;
 		app.component(component.name, component);
 	});
+	// 自定义组件默认配置
+	if (config && config.componentConfig) {
+		traversalReplacement(config.componentConfig, globalComponentConfig);
+	}
+	Object.freeze(globalComponentConfig);
 };
 
 // 支持使用标签的方式引入

@@ -7,7 +7,6 @@
 </template>
 
 <script setup lang="ts">
-import JlgMenu from '@pac/menu/index.vue';
 import { ref } from 'vue';
 
 defineOptions({

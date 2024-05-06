@@ -1,14 +1,14 @@
 <template>
-	<jlg-form v-model="formData" style="height: 800px" :grid-layout-props="gridLayoutProps" :form-props="formProps" :form-json="formJson">
-		<template #el-slot>
-			<div>插槽内容</div>
+	{{ formData }}
+	<jlg-form v-model="formData" :grid-layout-props="gridLayoutProps" :form-json="formJson" label-position="top">
+		<template #el-slot="{ field, elComponentsProps }">
+			<div>插槽内容{{ field }}{{ elComponentsProps }}</div>
 		</template>
 	</jlg-form>
 </template>
 
 <script setup lang="ts">
-import JlgForm from '@pac/form/index.vue';
-import { I_JlgForm_Props, E_JlgForm_FormType } from '../../../../packages/form/type';
+import { T_JlgForm_Props, E_JlgForm_FormType } from '@pac/form/type';
 import { ref } from 'vue';
 
 defineOptions({
@@ -23,11 +23,11 @@ const formData = ref({
 	select: 1,
 });
 
-const formJson = ref<I_JlgForm_Props['formJson']>([
+const formJson = ref<T_JlgForm_Props['formJson']>([
 	{
 		formItemProps: {
 			label: '姓名',
-			size: 'large',
+			size: 'small',
 		},
 		gridCellProps: {
 			width: 2,
@@ -47,6 +47,10 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 		},
 		type: E_JlgForm_FormType.数字输入框,
 		field: 'age',
+		controls: true,
+		elComponentsProps: {
+			controls: true,
+		},
 	},
 	{
 		formItemProps: {
@@ -59,6 +63,12 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 		},
 		type: E_JlgForm_FormType.单选框,
 		field: 'sex',
+		elComponentsProps: {
+			radioOptions: [
+				{ value: 1, label: '男', title: '男' },
+				{ value: 2, label: '女', title: '女' },
+			],
+		},
 	},
 	{
 		formItemProps: {
@@ -83,6 +93,55 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 		},
 		type: E_JlgForm_FormType.选择框,
 		field: 'select',
+		elComponentsProps: {
+			optionOptions: [
+				{
+					label: 'option1',
+					value: 1,
+				},
+				{
+					label: 'option2',
+					value: 2,
+					disabled: true,
+				},
+				{
+					label: 'option3',
+					value: 3,
+				},
+			],
+		},
+	},
+	{
+		formItemProps: {
+			label: '日期',
+			size: 'small',
+		},
+		gridCellProps: {
+			width: 1,
+			height: 1,
+		},
+		type: E_JlgForm_FormType.日期,
+		field: 'datePicker',
+		elComponentsProps: {
+			type: 'date',
+		},
+	},
+	{
+		formItemProps: {
+			label: '时间',
+			size: 'small',
+		},
+		gridCellProps: {
+			width: 1,
+			height: 1,
+		},
+		type: E_JlgForm_FormType.时间,
+		field: 'timeSelect',
+		elComponentsProps: {
+			start: '08:30',
+			step: '00:15',
+			end: '18:30',
+		},
 	},
 	{
 		formItemProps: {
@@ -95,20 +154,18 @@ const formJson = ref<I_JlgForm_Props['formJson']>([
 		},
 		type: E_JlgForm_FormType.选择框,
 		field: 'slot',
+		elComponentsProps: {
+			optionOptions: [],
+		},
 	},
 ]);
 
-const formProps = ref<I_JlgForm_Props['formProps']>({
-	labelPosition: 'top',
-});
-
-const gridLayoutProps = ref<I_JlgForm_Props['gridLayoutProps']>({
+const gridLayoutProps = ref<T_JlgForm_Props['gridLayoutProps']>({
 	padding: '0px',
 	flow: 'row',
-	rows: 10,
 	columns: 5,
 	gap: '10px',
 	inline: true,
-	border: true,
+	border: false,
 });
 </script>
