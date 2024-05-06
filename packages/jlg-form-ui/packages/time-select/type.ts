@@ -3,6 +3,7 @@ import { TimeSelectProps } from 'element-plus/es/components/time-select/src/time
 
 export declare type T_Jlg_TimeSelect_Props = {
 	toolTipProps?: ElTooltipContentProps;
+	gatherProps?: object;
 } & TimeSelectProps;
 
 export declare interface I_Jlg_TimeSelect_Emits {

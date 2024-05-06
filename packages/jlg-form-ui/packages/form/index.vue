@@ -26,7 +26,8 @@ import Rate from '../rate/index.vue';
 import Select from '../select/index.vue';
 import DatePicker from '../date-picker/index.vue';
 import TimeSelect from '../time-select/index.vue';
-import { type Component, useAttrs } from 'vue';
+import { type Component } from 'vue';
+import useGather from './hooks/gather';
 
 defineOptions({
 	name: 'JlgForm',
@@ -63,4 +64,10 @@ const renderFormItemComponent = (formItem: T_JlgForm_FormJsonItem): Component =>
 			return Select;
 	}
 };
+
+const { getGatherData } = useGather(mergeFormPropsComputed);
+
+defineExpose({
+	getGatherData,
+});
 </script>

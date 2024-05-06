@@ -9,7 +9,6 @@
 <script setup lang="ts">
 import { globalComponentConfig } from '../index';
 import { T_Jlg_Tooltip_Props } from './type';
-import { useAttrs, useSlots } from 'vue';
 
 defineOptions({
 	name: 'JlgTooltip',

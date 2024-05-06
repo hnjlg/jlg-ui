@@ -15,9 +15,10 @@
 </template>
 
 <script setup lang="ts">
+import { FormItemContext, formItemContextKey } from 'element-plus';
+import { E_JlgForm_FormType, T_Add_Gather_Fn } from '../form/type';
 import { globalComponentConfig } from '../index';
 import { I_Jlg_InputNumber_Emits, T_Jlg_InputNumber_Props } from './type';
-import { useAttrs, useSlots } from 'vue';
 
 defineOptions({
 	name: 'JlgInputNumber',
@@ -35,12 +36,14 @@ const slots = useSlots();
 
 const toolTipShow = ref(false);
 
+const valueText = computed(() => String(props.modelValue ?? ''));
+
 const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
 			disabled: !mergeNumberPropsComputed.value.disabled,
 			visible: toolTipShow.value,
-			content: String(props.modelValue),
+			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
 		...(props.toolTipProps ?? {}),
@@ -53,6 +56,25 @@ const mergeNumberPropsComputed = computed(() => {
 		...props,
 		...attrs,
 	};
+});
+
+const context: FormItemContext | undefined = inject(formItemContextKey);
+
+const formAddGatherFn: T_Add_Gather_Fn = inject('formAddGatherFn');
+
+onMounted(() => {
+	formAddGatherFn({
+		formItemLabel: context.label,
+		fn() {
+			return {
+				label: context.label ?? '',
+				key: context.prop ?? '',
+				value: valueText.value,
+				type: E_JlgForm_FormType.数字输入框,
+				...(mergeNumberPropsComputed.value.gatherProps ?? {}),
+			};
+		},
+	});
 });
 
 const mouseenter = () => {

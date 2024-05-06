@@ -15,6 +15,7 @@ import { globalComponentConfig } from '../index';
 import { T_Jlg_TimeSelect_Props, I_Jlg_TimeSelect_Emits } from './type';
 import { useAttrs } from 'vue';
 import { FormItemContext, formItemContextKey } from 'element-plus';
+import { E_JlgForm_FormType, T_Add_Gather_Fn } from '../form/type';
 
 defineOptions({
 	name: 'JlgTimeSelect',
@@ -30,12 +31,14 @@ const context: FormItemContext | undefined = inject(formItemContextKey);
 
 const toolTipShow = ref(false);
 
+const valueText = computed(() => String(props.modelValue ?? ''));
+
 const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
 			disabled: !mergeTimeSelectPropsComputed.value.disabled,
 			visible: toolTipShow.value,
-			content: String(props.modelValue),
+			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
 		...(props.toolTipProps ?? {}),
@@ -58,6 +61,23 @@ const placeholderComputed = computed(() => {
 	} else {
 		return '请选择';
 	}
+});
+
+const formAddGatherFn: T_Add_Gather_Fn = inject('formAddGatherFn');
+
+onMounted(() => {
+	formAddGatherFn({
+		formItemLabel: context.label,
+		fn() {
+			return {
+				label: context.label ?? '',
+				key: context.prop ?? '',
+				value: valueText.value,
+				type: E_JlgForm_FormType.时间,
+				...(mergeTimeSelectPropsComputed.value.gatherProps ?? {}),
+			};
+		},
+	});
 });
 </script>
 

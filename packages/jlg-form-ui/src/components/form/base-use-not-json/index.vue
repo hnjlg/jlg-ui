@@ -1,9 +1,10 @@
 <template>
+	<el-button @click="gather">收集数据</el-button>
 	{{ formData }}
-	<jlg-form label-position="top">
+	<jlg-form ref="JlgFormRef" label-position="top" :gather-props="{ col: 1, allCol: 3 }">
 		<jlg-grid-layout v-bind="gridLayoutProps">
 			<jlg-grid-cell :width="1" :height="1">
-				<jlg-form-item label="Input测试placeholder">
+				<jlg-form-item label="Input测试placeholder" prop="input">
 					<jlg-input
 						v-model="formData.input"
 						:tool-tip-props="{
@@ -60,6 +61,8 @@ defineOptions({
 	name: 'FormBaseUseNotJson',
 });
 
+const JlgFormRef = ref();
+
 const formData = ref({
 	input: '',
 	select: 1,
@@ -104,6 +107,10 @@ const options = [
 
 const valueChange = (v) => {
 	console.log(v);
+};
+
+const gather = () => {
+	console.log(JlgFormRef.value.getGatherData());
 };
 </script>
 

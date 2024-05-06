@@ -17,8 +17,8 @@
 import JlgTooltip from '../tooltip/index.vue';
 import { globalComponentConfig } from '../index';
 import { T_Jlg_DatePicker_Props, I_Jlg_DatePicker_Emits } from './type';
-import { useAttrs, useSlots } from 'vue';
 import { FormItemContext, formItemContextKey } from 'element-plus';
+import { T_Add_Gather_Fn } from '../form/type';
 
 defineOptions({
 	name: 'JlgDatePicker',
@@ -36,12 +36,14 @@ const context: FormItemContext | undefined = inject(formItemContextKey);
 
 const toolTipShow = ref(false);
 
+const valueText = computed(() => String(props.modelValue ?? ''));
+
 const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
 			disabled: !mergeDatePickerPropsComputed.value.disabled,
 			visible: toolTipShow.value,
-			content: String(props.modelValue),
+			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
 		...(props.toolTipProps ?? {}),
@@ -64,6 +66,23 @@ const placeholderComputed = computed(() => {
 	} else {
 		return '请选择日期';
 	}
+});
+
+const formAddGatherFn: T_Add_Gather_Fn = inject('formAddGatherFn');
+
+onMounted(() => {
+	formAddGatherFn({
+		formItemLabel: context.label,
+		fn() {
+			return {
+				label: context.label ?? '',
+				key: context.prop ?? '',
+				value: valueText.value,
+				type: mergeDatePickerPropsComputed.value.type,
+				...(mergeDatePickerPropsComputed.value.gatherProps ?? {}),
+			};
+		},
+	});
 });
 </script>
 

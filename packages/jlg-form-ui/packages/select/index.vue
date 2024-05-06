@@ -29,6 +29,7 @@ import { globalComponentConfig } from '../index';
 import { I_Jlg_Select_Emits, T_Jlg_Select_Props } from './type';
 import { FormItemContext, formItemContextKey, useLocale } from 'element-plus';
 import { useAttrs } from 'vue';
+import { E_JlgForm_FormType, T_Add_Gather_Fn } from '../form/type';
 
 defineOptions({
 	name: 'JlgSelect',
@@ -49,12 +50,14 @@ const { t } = useLocale();
 
 const toolTipShow = ref(false);
 
+const valueText = computed(() => String(props.modelValue ?? ''));
+
 const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
 			disabled: !mergeSelectPropsComputed.value.disabled,
 			visible: toolTipShow.value,
-			content: String(props.modelValue),
+			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
 		...(props.toolTipProps ?? {}),
@@ -81,6 +84,23 @@ const placeholderComputed = computed(() => {
 	} else {
 		return '请选择';
 	}
+});
+
+const formAddGatherFn: T_Add_Gather_Fn = inject('formAddGatherFn');
+
+onMounted(() => {
+	formAddGatherFn({
+		formItemLabel: context.label,
+		fn() {
+			return {
+				label: context.label ?? '',
+				key: context.prop ?? '',
+				value: valueText.value,
+				type: E_JlgForm_FormType.选择框,
+				...(mergeSelectPropsComputed.value.gatherProps ?? {}),
+			};
+		},
+	});
 });
 
 const mouseenter = () => {

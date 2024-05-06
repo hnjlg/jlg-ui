@@ -11,6 +11,7 @@ export declare type T_Jlg_RadioGroup_Props = {
 	textColor?: string;
 	name?: string;
 	validateEvent?: boolean;
+	gatherProps?: object;
 };
 
 export declare interface I_Jlg_RadioGroup_Emits {

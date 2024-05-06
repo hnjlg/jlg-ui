@@ -7,7 +7,6 @@
 </template>
 
 <script setup lang="ts">
-import { useSlots, useAttrs } from 'vue';
 import { globalComponentConfig } from '../index';
 import { I_Jlg_Option_Props } from './type';
 

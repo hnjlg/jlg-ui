@@ -1,6 +1,11 @@
 import { T_JlgForm_Props } from './type';
 
-declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_JlgForm_Props>, {}>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_JlgForm_Props>, {}>>>, {}, {}>, Partial<Record<string, (_: {
+declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_JlgForm_Props>, {}>, {
+    getGatherData: () => {
+        type: string;
+        data: any[];
+    };
+}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_JlgForm_Props>, {}>>>, {}, {}>, Partial<Record<string, (_: {
     field: string | number;
     elComponentsProps: import('../input/type').T_Jlg_Input_Props | import('../select/type').T_Jlg_Select_Props | import('../input-number/type').T_Jlg_InputNumber_Props | import('../date-picker/type').T_Jlg_DatePicker_Props | import('../time-select/type').T_Jlg_TimeSelect_Props | import('../rate/type').T_Jlg_Rate_Props | import('../radio-group/type').T_Jlg_RadioGroup_Props;
 }) => any>> & {

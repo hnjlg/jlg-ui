@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { formContextKey } from 'element-plus';
-import { useSlots, CSSProperties, useAttrs } from 'vue';
+import { CSSProperties } from 'vue';
 import { isNumber, isString } from 'lodash-unified';
 import { T_Jlg_FormItem_Props } from './type';
 import { globalComponentConfig } from '../index';

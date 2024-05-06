@@ -17,11 +17,11 @@
 </template>
 
 <script setup lang="ts">
-import { useSlots, useAttrs } from 'vue';
 import { I_Jlg_Input_Emits, T_Jlg_Input_Props } from './type';
 import { globalComponentConfig } from '../index';
 import JlgTooltip from '../tooltip/index.vue';
 import { FormItemContext, formItemContextKey } from 'element-plus';
+import { T_Add_Gather_Fn } from '../form/type';
 
 defineOptions({
 	name: 'JlgInput',
@@ -29,7 +29,9 @@ defineOptions({
 
 const slots = useSlots();
 
-const props = withDefaults(defineProps<T_Jlg_Input_Props>(), {});
+const props = withDefaults(defineProps<T_Jlg_Input_Props>(), {
+	type: 'text',
+});
 
 const attrs = useAttrs();
 
@@ -40,12 +42,14 @@ const context: FormItemContext | undefined = inject(formItemContextKey);
 
 const toolTipShow = ref(false);
 
+const valueText = computed(() => String(props.modelValue ?? ''));
+
 const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
 			disabled: !mergeInputPropsComputed.value.disabled,
 			visible: toolTipShow.value,
-			content: String(props.modelValue),
+			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
 		...(props.toolTipProps ?? {}),
@@ -95,6 +99,23 @@ const mouseleave = () => {
 	}
 	toolTipShow.value = false;
 };
+
+const formAddGatherFn: T_Add_Gather_Fn = inject('formAddGatherFn');
+
+onMounted(() => {
+	formAddGatherFn({
+		formItemLabel: context.label,
+		fn() {
+			return {
+				label: context.label ?? '',
+				key: context.prop ?? '',
+				value: valueText.value,
+				type: mergeInputPropsComputed.value.type,
+				...(mergeInputPropsComputed.value.gatherProps ?? {}),
+			};
+		},
+	});
+});
 </script>
 
 <style scoped lang="scss"></style>

@@ -12,6 +12,8 @@
 </template>
 
 <script setup lang="ts">
+import { FormItemContext, formItemContextKey } from 'element-plus';
+import { E_JlgForm_FormType, T_Add_Gather_Fn } from '../form/type';
 import { globalComponentConfig } from '../index';
 import { I_Jlg_Rate_Emits, T_Jlg_Rate_Props } from './type';
 import { useAttrs } from 'vue';
@@ -30,12 +32,14 @@ const emits = defineEmits<I_Jlg_Rate_Emits>();
 
 const toolTipShow = ref(false);
 
+const valueText = computed(() => `${String(props.modelValue ?? 0)}/${mergeRatePropsComputed.value.max}`);
+
 const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
 			disabled: !mergeRatePropsComputed.value.disabled,
 			visible: toolTipShow.value,
-			content: `${String(props.modelValue)}/${mergeRatePropsComputed.value.max}`,
+			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
 		...(props.toolTipProps ?? {}),
@@ -48,6 +52,25 @@ const mergeRatePropsComputed = computed(() => {
 		...props,
 		...attrs,
 	};
+});
+
+const context: FormItemContext | undefined = inject(formItemContextKey);
+
+const formAddGatherFn: T_Add_Gather_Fn = inject('formAddGatherFn');
+
+onMounted(() => {
+	formAddGatherFn({
+		formItemLabel: context.label,
+		fn() {
+			return {
+				label: context.label ?? '',
+				key: context.prop ?? '',
+				value: valueText.value,
+				type: E_JlgForm_FormType.评分,
+				...(mergeRatePropsComputed.value.gatherProps ?? {}),
+			};
+		},
+	});
 });
 
 const mouseenter = () => {

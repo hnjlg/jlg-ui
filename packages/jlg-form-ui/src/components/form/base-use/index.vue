@@ -1,6 +1,14 @@
 <template>
+	<el-button @click="gather">收集数据</el-button>
 	{{ formData }}
-	<jlg-form v-model="formData" :grid-layout-props="gridLayoutProps" :form-json="formJson" label-position="top">
+	<jlg-form
+		ref="JlgFormRef"
+		v-model="formData"
+		:grid-layout-props="gridLayoutProps"
+		:form-json="formJson"
+		label-position="top"
+		:gather-props="{ col: 1, allCol: 3 }"
+	>
 		<template #el-slot="{ field, elComponentsProps }">
 			<div>插槽内容{{ field }}{{ elComponentsProps }}</div>
 		</template>
@@ -15,6 +23,8 @@ defineOptions({
 	name: 'FormBaseUse',
 });
 
+const JlgFormRef = ref();
+
 const formData = ref({
 	name: '张三',
 	age: 8,
@@ -28,6 +38,7 @@ const formJson = ref<T_JlgForm_Props['formJson']>([
 		formItemProps: {
 			label: '姓名',
 			size: 'small',
+			prop: 'name',
 		},
 		gridCellProps: {
 			width: 2,
@@ -35,6 +46,13 @@ const formJson = ref<T_JlgForm_Props['formJson']>([
 		},
 		type: E_JlgForm_FormType.输入框,
 		field: 'name',
+		elComponentsProps: {
+			gatherProps: {
+				col: 2,
+				allCol: 5,
+				ignore: true,
+			},
+		},
 	},
 	{
 		formItemProps: {
@@ -168,4 +186,8 @@ const gridLayoutProps = ref<T_JlgForm_Props['gridLayoutProps']>({
 	inline: true,
 	border: false,
 });
+
+const gather = () => {
+	console.log(JlgFormRef.value.getGatherData());
+};
 </script>

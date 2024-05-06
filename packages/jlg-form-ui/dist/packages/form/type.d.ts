@@ -1,3 +1,4 @@
+import { T_Jlg_FormItem_Props } from '../form-item/type';
 import { T_Jlg_RadioGroup_Props } from '../radio-group/type';
 import { T_Jlg_Rate_Props } from '../rate/type';
 import { T_Jlg_TimeSelect_Props } from '../time-select/type';
@@ -11,7 +12,7 @@ import { FormProps, FormItemProps } from 'element-plus';
 
 export declare enum E_JlgForm_FormType {
     输入框 = "input",
-    数字输入框 = "number",
+    数字输入框 = "input-number",
     单选框 = "radio",
     评分 = "rate",
     选择框 = "select",
@@ -54,6 +55,11 @@ export declare interface I_JlgForm_FormJsonItem_TimeSelect extends I_JlgForm_For
 export declare type T_JlgForm_FormJsonItem = I_JlgForm_FormJsonItem_Input | I_JlgForm_FormJsonItem_InputNumber | I_JlgForm_FormJsonItem_Radio | I_JlgForm_FormJsonItem_Rate | I_JlgForm_FormJsonItem_Select | I_JlgForm_FormJsonItem_DatePicker | I_JlgForm_FormJsonItem_TimeSelect;
 export declare type T_JlgForm_Props = {
     modelValue: object;
-    formJson: T_JlgForm_FormJsonItem[];
-    gridLayoutProps: I_Grid_Layout_Props;
+    formJson?: T_JlgForm_FormJsonItem[];
+    gridLayoutProps?: I_Grid_Layout_Props;
+    gatherProps?: object;
 } & FormProps;
+export declare type T_Add_Gather_Fn = (config: {
+    formItemLabel: T_Jlg_FormItem_Props['label'];
+    fn: () => object;
+}) => void;
