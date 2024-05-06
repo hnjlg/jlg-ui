@@ -1,0 +1,34 @@
+.table-filter{
+  width:100%;
+  //background:red;
+  overflow: hidden;
+  .table-filter__container{
+    width: calc(100% + 16px);
+    display: flex;
+    align-content: space-between;
+    flex-flow: wrap;
+    transition: height 0.3s;
+    &.is--folding{
+      height: 0;
+      overflow: hidden;
+    }
+    :deep(.el-form-item__content){
+      margin-right: var(--jlg-filter-margin-right);
+    }
+  }
+  .table-filter__operation{
+    width: 100%;
+    .table-filter__divider{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      color: var(--el-color-primary);
+    }
+  }
+  .text-overflow-hidden {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
