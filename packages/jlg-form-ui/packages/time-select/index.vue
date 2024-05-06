@@ -3,6 +3,7 @@
 		<el-time-select
 			:model-value="props.modelValue"
 			v-bind="mergeTimeSelectPropsComputed"
+			:placeholder="placeholderComputed"
 			@update:model-value="(v) => emits('update:modelValue', v)"
 		/>
 	</jlg-tooltip>
@@ -13,6 +14,7 @@ import JlgTooltip from '../tooltip/index.vue';
 import { globalComponentConfig } from '../index';
 import { T_Jlg_TimeSelect_Props } from './type';
 import { useAttrs } from 'vue';
+import { FormItemContext, formItemContextKey } from 'element-plus';
 
 defineOptions({
 	name: 'JlgTimeSelect',
@@ -25,6 +27,8 @@ const attrs = useAttrs();
 const emits = defineEmits<{
 	(e: 'update:modelValue', v: T_Jlg_TimeSelect_Props['modelValue']): void;
 }>();
+
+const context: FormItemContext | undefined = inject(formItemContextKey);
 
 const toolTipShow = ref(false);
 
@@ -45,6 +49,16 @@ const mergeTimeSelectPropsComputed = computed(() => {
 		...props,
 		...attrs,
 	};
+});
+
+const placeholderComputed = computed(() => {
+	if (mergeTimeSelectPropsComputed.value.placeholder) {
+		return mergeTimeSelectPropsComputed.value.placeholder;
+	} else if (context) {
+		return `请选择${context.label}`;
+	} else {
+		return '请选择';
+	}
 });
 </script>
 

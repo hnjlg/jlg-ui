@@ -4,7 +4,11 @@
 			:model-value="props.modelValue"
 			v-bind="mergeSelectPropsComputed"
 			:placeholder="placeholderComputed"
-			@update:model-value="updateModelValue"
+			@update:model-value="
+				(v) => {
+					emits('update:modelValue', v);
+				}
+			"
 		>
 			<template v-for="(index, name) in slots">
 				<slot v-if="name !== 'default'" :name="name" />
@@ -74,10 +78,6 @@ const placeholderComputed = computed(() => {
 		return '请选择';
 	}
 });
-
-const updateModelValue = (v) => {
-	emits('update:modelValue', v);
-};
 </script>
 
 <style scoped></style>

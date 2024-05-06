@@ -26,12 +26,12 @@
 			</jlg-grid-cell>
 			<jlg-grid-cell :width="1" :height="1">
 				<jlg-form-item label="date-picker">
-					<jlg-date-picker v-model="formData.datePicker" type="date" placeholder="Pick a day" />
+					<jlg-date-picker v-model="formData.datePicker" type="date" />
 				</jlg-form-item>
 			</jlg-grid-cell>
 			<jlg-grid-cell :width="1" :height="1">
-				<jlg-form-item label="number">
-					<jlg-time-select v-model="formData.timeSelect" start="08:30" step="00:15" end="18:30" placeholder="Select time" />
+				<jlg-form-item label="time-select">
+					<jlg-time-select v-model="formData.timeSelect" start="08:30" step="00:15" end="18:30" />
 				</jlg-form-item>
 			</jlg-grid-cell>
 		</jlg-grid-layout>

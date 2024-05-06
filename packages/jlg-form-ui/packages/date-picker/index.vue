@@ -1,6 +1,11 @@
 <template>
 	<jlg-tooltip v-bind="mergeTooltipPropsComputed">
-		<el-date-picker :model-value="props.modelValue" v-bind="mergeDatePickerPropsComputed" @update:model-value="(v) => emits('update:modelValue', v)">
+		<el-date-picker
+			:model-value="props.modelValue"
+			v-bind="mergeDatePickerPropsComputed"
+			:placeholder="placeholderComputed"
+			@update:model-value="(v) => emits('update:modelValue', v)"
+		>
 		</el-date-picker>
 	</jlg-tooltip>
 </template>
@@ -10,6 +15,7 @@ import JlgTooltip from '../tooltip/index.vue';
 import { globalComponentConfig } from '../index';
 import { T_Jlg_DatePicker_Props } from './type';
 import { useAttrs } from 'vue';
+import { FormItemContext, formItemContextKey } from 'element-plus';
 
 defineOptions({
 	name: 'JlgDatePicker',
@@ -22,6 +28,8 @@ const attrs = useAttrs();
 const emits = defineEmits<{
 	(e: 'update:modelValue', v: T_Jlg_DatePicker_Props['modelValue']): void;
 }>();
+
+const context: FormItemContext | undefined = inject(formItemContextKey);
 
 const toolTipShow = ref(false);
 
@@ -42,6 +50,16 @@ const mergeDatePickerPropsComputed = computed(() => {
 		...props,
 		...attrs,
 	};
+});
+
+const placeholderComputed = computed(() => {
+	if (mergeDatePickerPropsComputed.value.placeholder) {
+		return mergeDatePickerPropsComputed.value.placeholder;
+	} else if (context) {
+		return `请选择${context.label}`;
+	} else {
+		return '请选择日期';
+	}
 });
 </script>
 
