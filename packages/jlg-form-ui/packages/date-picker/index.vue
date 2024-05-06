@@ -6,6 +6,9 @@
 			:placeholder="placeholderComputed"
 			@update:model-value="(v) => emits('update:modelValue', v)"
 		>
+			<template v-for="(index, name) in slots">
+				<slot :name="name" />
+			</template>
 		</el-date-picker>
 	</jlg-tooltip>
 </template>
@@ -14,7 +17,7 @@
 import JlgTooltip from '../tooltip/index.vue';
 import { globalComponentConfig } from '../index';
 import { T_Jlg_DatePicker_Props, I_Jlg_DatePicker_Emits } from './type';
-import { useAttrs } from 'vue';
+import { useAttrs, useSlots } from 'vue';
 import { FormItemContext, formItemContextKey } from 'element-plus';
 
 defineOptions({
@@ -26,6 +29,8 @@ const props = withDefaults(defineProps<T_Jlg_DatePicker_Props>(), {});
 const attrs = useAttrs();
 
 const emits = defineEmits<I_Jlg_DatePicker_Emits>();
+
+const slots = useSlots();
 
 const context: FormItemContext | undefined = inject(formItemContextKey);
 

@@ -6,7 +6,8 @@
 			@update:model-value="(v) => emits('update:modelValue', v)"
 			@mouseenter="mouseenter"
 			@mouseleave="mouseleave"
-		/>
+		>
+		</el-rate>
 	</jlg-tooltip>
 </template>
 

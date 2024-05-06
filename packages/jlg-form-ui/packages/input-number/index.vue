@@ -6,14 +6,18 @@
 			@update:model-value="(v) => emits('update:modelValue', v)"
 			@mouseenter="mouseenter"
 			@mouseleave="mouseleave"
-		/>
+		>
+			<template v-for="(index, name) in slots">
+				<slot :name="name" />
+			</template>
+		</el-input-number>
 	</jlg-tooltip>
 </template>
 
 <script setup lang="ts">
 import { globalComponentConfig } from '../index';
 import { I_Jlg_InputNumber_Emits, T_Jlg_InputNumber_Props } from './type';
-import { useAttrs } from 'vue';
+import { useAttrs, useSlots } from 'vue';
 
 defineOptions({
 	name: 'JlgInputNumber',
@@ -26,6 +30,8 @@ const props = withDefaults(defineProps<T_Jlg_InputNumber_Props>(), {
 const attrs = useAttrs();
 
 const emits = defineEmits<I_Jlg_InputNumber_Emits>();
+
+const slots = useSlots();
 
 const toolTipShow = ref(false);
 
