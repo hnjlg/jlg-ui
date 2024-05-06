@@ -1,11 +1,9 @@
 import { T_Jlg_Input_Props } from './type';
 
 declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_Input_Props>, {}>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-    focus: (event: FocusEvent) => void;
     blur: (event: FocusEvent) => void;
     "update:modelValue": (value: import('element-plus/es/utils/index.mjs').EpPropMergeType<(new (...args: any[]) => string | number) | (() => string | number) | ((new (...args: any[]) => string | number) | (() => string | number))[], unknown, unknown>) => void;
 }, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_Input_Props>, {}>>> & {
-    onFocus?: (event: FocusEvent) => any;
     onBlur?: (event: FocusEvent) => any;
     "onUpdate:modelValue"?: (value: import('element-plus/es/utils/index.mjs').EpPropMergeType<(new (...args: any[]) => string | number) | (() => string | number) | ((new (...args: any[]) => string | number) | (() => string | number))[], unknown, unknown>) => any;
 }, {}, {}>, Partial<Record<NonNullable<string | number>, (_: {}) => any>>>;

@@ -21,7 +21,7 @@ import { JlgGridLayout, JlgGridCell } from 'jlg-ui';
 import { globalComponentConfig } from '../index';
 import Input from '../input/index.vue';
 import InputNumber from '../input-number/index.vue';
-// import Radio from './components/radio/index.vue';
+import RadioGroup from '../radio-group/index.vue';
 import Rate from '../rate/index.vue';
 import Select from '../select/index.vue';
 import DatePicker from '../date-picker/index.vue';
@@ -51,8 +51,8 @@ const renderFormItemComponent = (formItem: T_JlgForm_FormJsonItem): Component =>
 			return Input;
 		case E_JlgForm_FormType.数字输入框:
 			return InputNumber;
-		// case E_JlgForm_FormType.单选框:
-		// 	return Radio;
+		case E_JlgForm_FormType.单选框:
+			return RadioGroup;
 		case E_JlgForm_FormType.评分:
 			return Rate;
 		case E_JlgForm_FormType.日期:

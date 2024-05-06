@@ -39,6 +39,14 @@
 					<jlg-rate v-model="formData.rate" />
 				</jlg-form-item>
 			</jlg-grid-cell>
+			<jlg-grid-cell :width="1" :height="1">
+				<jlg-form-item label="radio">
+					<jlg-radio-group v-model="formData.radio">
+						<jlg-radio value="1" size="small">Option 1</jlg-radio>
+						<jlg-radio value="2" size="small">Option 2</jlg-radio>
+					</jlg-radio-group>
+				</jlg-form-item>
+			</jlg-grid-cell>
 		</jlg-grid-layout>
 	</jlg-form>
 </template>
@@ -59,6 +67,7 @@ const formData = ref({
 	datePicker: '',
 	timeSelect: '',
 	rate: 0,
+	radio: '',
 });
 
 const gridLayoutProps = ref<T_JlgForm_Props['gridLayoutProps']>({

@@ -16,7 +16,7 @@
 				<slot v-if="name !== 'default'" :name="name" />
 			</template>
 			<slot>
-				<el-option v-for="option in mergeSelectPropsComputed.optionOptions" :key="option.value" v-bind="option" />
+				<jlg-option v-for="option in mergeSelectPropsComputed.optionOptions" :key="option.value" v-bind="option" />
 			</slot>
 		</el-select>
 	</jlg-tooltip>
@@ -24,6 +24,7 @@
 
 <script setup lang="ts">
 import JlgTooltip from '../tooltip/index.vue';
+import JlgOption from '../option/index.vue';
 import { globalComponentConfig } from '../index';
 import { I_Jlg_Select_Emits, T_Jlg_Select_Props } from './type';
 import { FormItemContext, formItemContextKey, useLocale } from 'element-plus';
@@ -33,13 +34,13 @@ defineOptions({
 	name: 'JlgSelect',
 });
 
-const slots = useSlots();
-
 const props = withDefaults(defineProps<T_Jlg_Select_Props>(), {});
 
 const attrs = useAttrs();
 
 const emits = defineEmits<I_Jlg_Select_Emits>();
+
+const slots = useSlots();
 
 // formItem传递的context
 const context: FormItemContext | undefined = inject(formItemContextKey);
