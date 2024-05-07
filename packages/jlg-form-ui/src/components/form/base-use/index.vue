@@ -30,7 +30,7 @@ const formData = ref({
 	age: 8,
 	sex: 1,
 	level: 1,
-	select: 1,
+	select: [1],
 });
 
 const formJson = ref<T_JlgForm_Props['formJson']>([

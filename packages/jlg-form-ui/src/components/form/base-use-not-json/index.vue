@@ -13,8 +13,8 @@
 					></jlg-input>
 				</jlg-form-item>
 			</jlg-grid-cell>
-			<jlg-grid-cell :width="1" :height="1">
-				<jlg-form-item label="Select测试placeholder">
+			<jlg-grid-cell v-for="i in 30" :key="i" :width="1" :height="1">
+				<jlg-form-item :label="'Select测试placeholder' + i">
 					<jlg-select v-model="formData.select">
 						<jlg-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
 					</jlg-select>
@@ -53,7 +53,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { T_JlgForm_Props } from '@pac/form/type';
 import { JlgGridLayout, JlgGridCell } from 'jlg-ui';
 
@@ -82,28 +82,14 @@ const gridLayoutProps = ref<T_JlgForm_Props['gridLayoutProps']>({
 	border: false,
 });
 
-const options = [
-	{
-		value: 1,
-		label: 'Option1',
-	},
-	{
-		value: 2,
-		label: 'Option2',
-	},
-	{
-		value: 3,
-		label: 'Option3',
-	},
-	{
-		value: 4,
-		label: 'Option4',
-	},
-	{
-		value: 5,
-		label: 'Option5',
-	},
-];
+const options = computed(() => {
+	return new Array(10).fill(0, 0, 10).map((i, index) => {
+		return {
+			value: index,
+			label: 'Option' + index,
+		};
+	});
+});
 
 const valueChange = (v) => {
 	console.log(v);

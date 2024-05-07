@@ -1,5 +1,4 @@
 <template>
-	{{ valueText }}
 	<jlg-tooltip v-bind="mergeTooltipPropsComputed">
 		<el-select
 			ref="_ref"
@@ -36,7 +35,9 @@ defineOptions({
 	name: 'JlgSelect',
 });
 
-const props = withDefaults(defineProps<T_Jlg_Select_Props>(), {});
+const props = withDefaults(defineProps<T_Jlg_Select_Props>(), {
+	persistent: true,
+});
 
 const attrs = useAttrs();
 
