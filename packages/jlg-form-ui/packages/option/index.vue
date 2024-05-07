@@ -14,9 +14,7 @@ defineOptions({
 	name: 'JlgOption',
 });
 
-const props = withDefaults(defineProps<I_Jlg_Option_Props>(), {
-	created: true,
-});
+const props = withDefaults(defineProps<I_Jlg_Option_Props>(), {});
 
 const attrs = useAttrs();
 

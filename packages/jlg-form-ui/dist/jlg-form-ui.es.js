@@ -15106,7 +15106,7 @@ const KT = H({
   props: {
     value: { type: [String, Number, Boolean, Object] },
     label: {},
-    created: { type: Boolean, default: !0 },
+    created: { type: Boolean },
     disabled: { type: Boolean }
   },
   setup(e) {
@@ -15132,6 +15132,7 @@ const KT = H({
   props: {
     toolTipProps: {},
     optionOptions: {},
+    gatherProps: {},
     emptyValues: {},
     valueOnClear: {},
     name: {},
@@ -15242,9 +15243,7 @@ const KT = H({
                 k !== "default" ? ie(_.$slots, k, { key: 0 }) : re("", !0)
               ], 64))), 256)),
               ie(_.$slots, "default", {}, () => [
-                (T(!0), N(Se, null, Ne(s(g).optionOptions, (E) => (T(), ne(to, Ke({
-                  key: E.value
-                }, E), null, 16))), 128))
+                (T(!0), N(Se, null, Ne(r.optionOptions, (E, k) => (T(), ne(to, Ke({ key: k }, E), null, 16))), 128))
               ])
             ]),
             _: 3

@@ -7,8 +7,8 @@ import { T_Jlg_InputNumber_Props } from '../input-number/type';
 import { T_Jlg_DatePicker_Props } from '../date-picker/type';
 import { T_Jlg_TimeSelect_Props } from '../time-select/type';
 import { T_Jlg_Rate_Props } from '../rate/type';
-import { T_Jlg_RadioGroup_Props } from '../radio-group/type';
 import { T_Jlg_FormItem_Props } from '../form-item/type';
+import { T_Jlg_RadioGroup_Props } from '../radio-group/type';
 
 export enum E_JlgForm_FormType {
 	输入框 = 'input',

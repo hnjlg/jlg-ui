@@ -3,7 +3,10 @@
 		"target": "esnext",
 		"useDefineForClassFields": true,
 		"module": "esnext",
-		"lib": ["esnext", "dom"],
+		"lib": [
+			"esnext",
+			"dom"
+		],
 		// 不生成map文件
 		"sourceMap": false,
 		/* Bundler mode */
@@ -26,10 +29,16 @@
 		"skipLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"],
-			"@pac/*": ["packages/*"]
+			"@/*": [
+				"src/*"
+			],
+			"@pac/*": [
+				"packages/*"
+			]
 		},
-		"types": ["unplugin-vue-define-options"],
+		"types": [
+			"unplugin-vue-define-options"
+		],
 		"allowSyntheticDefaultImports": true
 	},
 	"include": [],

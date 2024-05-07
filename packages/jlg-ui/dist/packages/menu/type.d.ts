@@ -10,5 +10,5 @@ export declare interface I_JlgMenu_MenuDataItem {
 export declare interface I_JlgMenu_Props {
     menuData: I_JlgMenu_MenuDataItem[];
     defaultActive?: I_JlgMenu_MenuDataItem['index'];
-    elPopoverProps?: Partial<PopoverProps>;
+    elPopoverProps?: PopoverProps;
 }

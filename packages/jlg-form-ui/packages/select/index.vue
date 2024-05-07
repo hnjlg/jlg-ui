@@ -17,7 +17,7 @@
 				<slot v-if="name !== 'default'" :name="name" />
 			</template>
 			<slot>
-				<jlg-option v-for="option in mergeSelectPropsComputed.optionOptions" :key="option.value" v-bind="option" />
+				<jlg-option v-for="(option, index) in props.optionOptions" :key="index" v-bind="option" />
 			</slot>
 		</el-select>
 	</jlg-tooltip>
@@ -35,7 +35,7 @@ defineOptions({
 	name: 'JlgSelect',
 });
 
-const props = withDefaults(defineProps<T_Jlg_Select_Props>(), {
+const props: T_Jlg_Select_Props = withDefaults(defineProps<T_Jlg_Select_Props>(), {
 	persistent: true,
 });
 
