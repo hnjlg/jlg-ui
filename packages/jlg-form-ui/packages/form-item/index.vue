@@ -1,6 +1,5 @@
 <template>
-	<el-form-item v-bind="mergeFormItemPropsComputed">
-		<!-- Form Item 插槽 -->
+	<el-form-item ref="_ref" v-bind="mergeFormItemPropsComputed">
 		<template v-if="slots.label">
 			<slot name="label" :label="mergeFormItemPropsComputed.label">
 				<el-tooltip :content="mergeFormItemPropsComputed.label" placement="top" :disabled="isShowTooltip">
@@ -19,20 +18,26 @@
 
 <script setup lang="ts">
 import { formContextKey } from 'element-plus';
-import { useSlots, CSSProperties, useAttrs } from 'vue';
+import { CSSProperties } from 'vue';
 import { isNumber, isString } from 'lodash-unified';
 import { T_Jlg_FormItem_Props } from './type';
 import { globalComponentConfig } from '../index';
+import { FormValidatorRules, E_FormValidatorRulesValidateFunEnum } from '../rule';
+import { T_Assign_Rules_Fn } from '../form/type';
 
 defineOptions({
 	name: 'JlgFormItem',
 });
 
-const props = withDefaults(defineProps<T_Jlg_FormItem_Props>(), {});
+const props = withDefaults(defineProps<T_Jlg_FormItem_Props>(), {
+	showMessage: true,
+});
 
 const attrs = useAttrs();
 
 const slots = useSlots();
+
+const _ref = ref(null);
 
 const isShowTooltip = ref(false);
 
@@ -53,6 +58,8 @@ const addUnit = (value?: string | number, defaultUnit = 'px') => {
 };
 
 const formContext = inject(formContextKey);
+
+const assignRulesFn: T_Assign_Rules_Fn = inject('assignRulesFn');
 
 const labelStyle = computed<CSSProperties>(() => {
 	if (formContext?.labelPosition === 'top') {
@@ -78,6 +85,30 @@ const mergeFormItemPropsComputed = computed(() => {
 		...props,
 		...attrs,
 	};
+});
+
+watch(
+	() => [mergeFormItemPropsComputed.value.validateRules, mergeFormItemPropsComputed.value.prop],
+	(newValue: [T_Jlg_FormItem_Props['validateRules'], T_Jlg_FormItem_Props['prop']]) => {
+		if (!newValue[0] || newValue[1] === undefined) {
+			assignRulesFn();
+		} else {
+			const record = String(newValue[1]);
+			assignRulesFn({
+				record,
+				recordValidate: new FormValidatorRules({
+					[record]: [[E_FormValidatorRulesValidateFunEnum.必填校验], [E_FormValidatorRulesValidateFunEnum.小数位校验, 0]],
+				}),
+			});
+		}
+	},
+	{
+		immediate: true,
+	}
+);
+
+defineExpose({
+	_ref,
 });
 </script>
 

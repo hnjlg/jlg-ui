@@ -1,15 +1,19 @@
-import { FormProps, FormItemProps, RadioGroupProps, RateProps, RadioProps } from 'element-plus';
+import { FormProps } from 'element-plus';
 import { I_Grid_Cell_Props } from 'jlg-ui/dist/packages/grid-cell/type';
 import { I_Grid_Layout_Props } from 'jlg-ui/dist/packages/grid-layout/type';
 import { T_Jlg_Input_Props } from '../input/type';
 import { T_Jlg_Select_Props } from '../select/type';
-import { T_Jlg_Input_Number_Props } from '../input-number/type';
+import { T_Jlg_InputNumber_Props } from '../input-number/type';
 import { T_Jlg_DatePicker_Props } from '../date-picker/type';
 import { T_Jlg_TimeSelect_Props } from '../time-select/type';
+import { T_Jlg_Rate_Props } from '../rate/type';
+import { T_Jlg_FormItem_Props } from '../form-item/type';
+import { T_Jlg_RadioGroup_Props } from '../radio-group/type';
+import { FormValidatorRules } from '../rule';
 
 export enum E_JlgForm_FormType {
 	输入框 = 'input',
-	数字输入框 = 'number',
+	数字输入框 = 'input-number',
 	单选框 = 'radio',
 	评分 = 'rate',
 	选择框 = 'select',
@@ -20,7 +24,7 @@ export enum E_JlgForm_FormType {
 export declare interface I_JlgForm_FormJsonItem_Base {
 	field: string | number;
 	gridCellProps: I_Grid_Cell_Props;
-	formItemProps?: FormItemProps;
+	formItemProps?: T_Jlg_FormItem_Props;
 }
 
 export declare interface I_JlgForm_FormJsonItem_Input extends I_JlgForm_FormJsonItem_Base {
@@ -30,19 +34,17 @@ export declare interface I_JlgForm_FormJsonItem_Input extends I_JlgForm_FormJson
 
 export declare interface I_JlgForm_FormJsonItem_InputNumber extends I_JlgForm_FormJsonItem_Base {
 	type: E_JlgForm_FormType.数字输入框;
-	elComponentsProps?: T_Jlg_Input_Number_Props;
+	elComponentsProps?: T_Jlg_InputNumber_Props;
 }
 
 export declare interface I_JlgForm_FormJsonItem_Radio extends I_JlgForm_FormJsonItem_Base {
 	type: E_JlgForm_FormType.单选框;
-	elComponentsProps: Partial<RadioGroupProps> & {
-		radioOptions: (Partial<RadioProps> & { title: string | number | boolean })[];
-	};
+	elComponentsProps: T_Jlg_RadioGroup_Props;
 }
 
 export declare interface I_JlgForm_FormJsonItem_Rate extends I_JlgForm_FormJsonItem_Base {
 	type: E_JlgForm_FormType.评分;
-	elComponentsProps?: Partial<RateProps>;
+	elComponentsProps?: T_Jlg_Rate_Props;
 }
 
 export declare interface I_JlgForm_FormJsonItem_Select extends I_JlgForm_FormJsonItem_Base {
@@ -71,6 +73,11 @@ export declare type T_JlgForm_FormJsonItem =
 
 export declare type T_JlgForm_Props = {
 	modelValue: object;
-	formJson: T_JlgForm_FormJsonItem[];
-	gridLayoutProps: I_Grid_Layout_Props;
+	formJson?: T_JlgForm_FormJsonItem[];
+	gridLayoutProps?: I_Grid_Layout_Props;
+	gatherProps?: object;
 } & FormProps;
+
+export declare type T_Add_Gather_Fn = (config: { formItemLabel: T_Jlg_FormItem_Props['label']; fn: () => object }) => void;
+
+export declare type T_Assign_Rules_Fn = (source?: { record: T_Jlg_FormItem_Props['prop']; recordValidate: FormValidatorRules }) => void;

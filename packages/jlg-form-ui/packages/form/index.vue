@@ -1,14 +1,15 @@
 <template>
-	<el-form v-bind="mergeFormPropsComputed">
+	{{ furnishMergeFormPropsComputed.rules }}
+	<el-form ref="_ref" v-bind="furnishMergeFormPropsComputed">
 		<slot>
 			<jlg-grid-layout v-bind="props.gridLayoutProps">
 				<jlg-grid-cell v-for="formItem in props.formJson" :key="formItem.field" v-bind="formItem.gridCellProps">
-					<el-form-item v-bind="formItem.formItemProps">
+					<jlg-form-item v-bind="formItem.formItemProps">
 						<slot :name="'el-' + formItem.field" :field="formItem.field" :el-components-props="formItem.elComponentsProps">
 							<component :is="renderFormItemComponent(formItem)" v-model="props.modelValue[formItem.field]" v-bind="formItem.elComponentsProps">
 							</component>
 						</slot>
-					</el-form-item>
+					</jlg-form-item>
 				</jlg-grid-cell>
 			</jlg-grid-layout>
 		</slot>
@@ -21,26 +22,43 @@ import { JlgGridLayout, JlgGridCell } from 'jlg-ui';
 import { globalComponentConfig } from '../index';
 import Input from '../input/index.vue';
 import InputNumber from '../input-number/index.vue';
-// import Radio from './components/radio/index.vue';
-// import Rate from './components/rate/index.vue';
+import RadioGroup from '../radio-group/index.vue';
+import Rate from '../rate/index.vue';
 import Select from '../select/index.vue';
 import DatePicker from '../date-picker/index.vue';
 import TimeSelect from '../time-select/index.vue';
-import { type Component, useAttrs } from 'vue';
+import JlgFormItem from '../form-item/index.vue';
+import { type Component } from 'vue';
+import useGather from './hooks/gather';
+import useRule from './hooks/rule';
 
 defineOptions({
 	name: 'JlgForm',
 });
 
-const props = withDefaults(defineProps<T_JlgForm_Props>(), {});
+const props = withDefaults(defineProps<T_JlgForm_Props>(), {
+	showMessage: true,
+	validateOnRuleChange: true,
+});
 
 const attrs = useAttrs();
+
+const _ref = ref(null);
 
 const mergeFormPropsComputed = computed(() => {
 	return {
 		...globalComponentConfig.form,
 		...props,
 		...attrs,
+	};
+});
+
+const { assignRules } = useRule(mergeFormPropsComputed);
+
+const furnishMergeFormPropsComputed = computed(() => {
+	return {
+		...mergeFormPropsComputed.value,
+		rules: assignRules.value,
 	};
 });
 
@@ -51,10 +69,10 @@ const renderFormItemComponent = (formItem: T_JlgForm_FormJsonItem): Component =>
 			return Input;
 		case E_JlgForm_FormType.数字输入框:
 			return InputNumber;
-		// case E_JlgForm_FormType.单选框:
-		// 	return Radio;
-		// case E_JlgForm_FormType.评分:
-		// 	return Rate;
+		case E_JlgForm_FormType.单选框:
+			return RadioGroup;
+		case E_JlgForm_FormType.评分:
+			return Rate;
 		case E_JlgForm_FormType.日期:
 			return DatePicker;
 		case E_JlgForm_FormType.时间:
@@ -63,4 +81,11 @@ const renderFormItemComponent = (formItem: T_JlgForm_FormJsonItem): Component =>
 			return Select;
 	}
 };
+
+const { getGatherData } = useGather(mergeFormPropsComputed);
+
+defineExpose({
+	getGatherData,
+	_ref,
+});
 </script>

@@ -9,8 +9,11 @@ import JlgSelect from './select';
 import JlgTimeSelect from './time-select';
 import JlgInputNumber from './input-number';
 import JlgTooltip from './tooltip';
+import JlgRate from './rate';
+import JlgRadioGroup from './radio-group';
+import JlgRadio from './radio';
 import { T_Jlg_DatePicker_Props } from './date-picker/type';
-import { T_Jlg_Input_Number_Props } from './input-number/type';
+import { T_Jlg_InputNumber_Props } from './input-number/type';
 import { T_Jlg_TimeSelect_Props } from './time-select/type';
 import { T_Jlg_Select_Props } from './select/type';
 import { T_Jlg_Input_Props } from './input/type';
@@ -18,10 +21,41 @@ import { T_Jlg_Tooltip_Props } from './tooltip/type';
 import { T_JlgForm_Props } from './form/type';
 import { I_Jlg_Option_Props } from './option/type';
 import { T_Jlg_FormItem_Props } from './form-item/type';
+import { T_Jlg_Rate_Props } from './rate/type';
+import { T_Jlg_RadioGroup_Props } from './radio-group/type';
+import { T_Jlg_Radio_Props } from './radio/type';
+import { FormValidatorRules } from './rule';
 
-export { JlgForm, JlgDatePicker, JlgFormItem, JlgInput, JlgOption, JlgSelect, JlgTimeSelect, JlgInputNumber, JlgTooltip }; //实现按需引入*
+export {
+	JlgForm,
+	JlgDatePicker,
+	JlgFormItem,
+	JlgInput,
+	JlgOption,
+	JlgSelect,
+	JlgTimeSelect,
+	JlgInputNumber,
+	JlgTooltip,
+	JlgRate,
+	JlgRadioGroup,
+	JlgRadio,
+	FormValidatorRules,
+}; //实现按需引入*
 
-const components = [JlgForm, JlgDatePicker, JlgFormItem, JlgInput, JlgOption, JlgSelect, JlgTimeSelect, JlgInputNumber, JlgTooltip];
+const components = [
+	JlgForm,
+	JlgDatePicker,
+	JlgFormItem,
+	JlgInput,
+	JlgOption,
+	JlgSelect,
+	JlgTimeSelect,
+	JlgInputNumber,
+	JlgTooltip,
+	JlgRate,
+	JlgRadioGroup,
+	JlgRadio,
+];
 
 type DeepPartial<T> = {
 	[U in keyof T]?: T[U] extends object ? DeepPartial<T[U]> : T[U];
@@ -35,8 +69,11 @@ interface I_Global_Component_Config {
 	select: DeepPartial<T_Jlg_Select_Props>;
 	option: DeepPartial<I_Jlg_Option_Props>;
 	timeSelect: DeepPartial<T_Jlg_TimeSelect_Props>;
-	inputNumber: DeepPartial<T_Jlg_Input_Number_Props>;
+	inputNumber: DeepPartial<T_Jlg_InputNumber_Props>;
 	datePicker: DeepPartial<T_Jlg_DatePicker_Props>;
+	rate: DeepPartial<T_Jlg_Rate_Props>;
+	radioGroup: DeepPartial<T_Jlg_RadioGroup_Props>;
+	radio: DeepPartial<T_Jlg_Radio_Props>;
 }
 
 export const globalComponentConfig: I_Global_Component_Config = {
@@ -58,6 +95,9 @@ export const globalComponentConfig: I_Global_Component_Config = {
 	timeSelect: {},
 	inputNumber: {},
 	datePicker: {},
+	rate: {},
+	radioGroup: {},
+	radio: {},
 };
 
 const traversalReplacement = (source, oldConfig, key?: string) => {

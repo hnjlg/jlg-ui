@@ -1,10 +1,24 @@
 import { T_Jlg_DatePicker_Props } from './type';
 
-declare const _default: import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_DatePicker_Props>, {}>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_DatePicker_Props>, {
+    editable: boolean;
+    clearable: boolean;
+    validateEvent: boolean;
+    teleported: boolean;
+}>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (v: import('element-plus/es/utils/index.mjs').EpPropMergeType<(new (...args: any[]) => string | number | Date | [import('element-plus').DateModelType, import('element-plus').DateModelType]) | (() => import('element-plus').ModelValueType) | ((new (...args: any[]) => string | number | Date | [import('element-plus').DateModelType, import('element-plus').DateModelType]) | (() => import('element-plus').ModelValueType))[], unknown, unknown>) => void;
-}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_DatePicker_Props>, {}>>> & {
+}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_DatePicker_Props>, {
+    editable: boolean;
+    clearable: boolean;
+    validateEvent: boolean;
+    teleported: boolean;
+}>>> & {
     "onUpdate:modelValue"?: (v: import('element-plus/es/utils/index.mjs').EpPropMergeType<(new (...args: any[]) => string | number | Date | [import('element-plus').DateModelType, import('element-plus').DateModelType]) | (() => import('element-plus').ModelValueType) | ((new (...args: any[]) => string | number | Date | [import('element-plus').DateModelType, import('element-plus').DateModelType]) | (() => import('element-plus').ModelValueType))[], unknown, unknown>) => any;
-}, {}, {}>;
+}, {
+    readonly clearable: import('element-plus/es/utils/index.mjs').EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly validateEvent: import('element-plus/es/utils/index.mjs').EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    readonly editable: import('element-plus/es/utils/index.mjs').EpPropMergeType<BooleanConstructor, unknown, unknown>;
+}, {}>, Partial<Record<NonNullable<string | number>, (_: {}) => any>>>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
 type __VLS_TypePropsToRuntimeProps<T> = {
@@ -23,3 +37,8 @@ type __VLS_WithDefaults<P, D> = {
 type __VLS_Prettify<T> = {
     [K in keyof T]: T[K];
 } & {};
+type __VLS_WithTemplateSlots<T, S> = T & {
+    new (): {
+        $slots: S;
+    };
+};

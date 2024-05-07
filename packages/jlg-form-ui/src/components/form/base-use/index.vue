@@ -1,6 +1,17 @@
 <template>
+	<el-button @click="gather">收集数据</el-button>
+	<el-button @click="validator">校验</el-button>
 	{{ formData }}
-	<jlg-form v-model="formData" :grid-layout-props="gridLayoutProps" :form-json="formJson" label-position="top">
+	<jlg-form
+		ref="JlgFormRef"
+		v-model="formData"
+		:grid-layout-props="gridLayoutProps"
+		:form-json="formJson"
+		label-position="top"
+		:gather-props="{ col: 1, allCol: 3 }"
+		:rules="rules"
+		:model="formData"
+	>
 		<template #el-slot="{ field, elComponentsProps }">
 			<div>插槽内容{{ field }}{{ elComponentsProps }}</div>
 		</template>
@@ -9,18 +20,25 @@
 
 <script setup lang="ts">
 import { T_JlgForm_Props, E_JlgForm_FormType } from '@pac/form/type';
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
+import { E_FormValidatorRulesValidateFunEnum } from '@pac/rule';
 
 defineOptions({
 	name: 'FormBaseUse',
 });
+
+const JlgFormRef = ref();
 
 const formData = ref({
 	name: '张三',
 	age: 8,
 	sex: 1,
 	level: 1,
-	select: 1,
+	select: [1, 2],
+});
+
+const rules = reactive({
+	name: [{ required: true, message: 'Please input input', trigger: 'blur' }],
 });
 
 const formJson = ref<T_JlgForm_Props['formJson']>([
@@ -28,6 +46,7 @@ const formJson = ref<T_JlgForm_Props['formJson']>([
 		formItemProps: {
 			label: '姓名',
 			size: 'small',
+			prop: 'name',
 		},
 		gridCellProps: {
 			width: 2,
@@ -35,6 +54,13 @@ const formJson = ref<T_JlgForm_Props['formJson']>([
 		},
 		type: E_JlgForm_FormType.输入框,
 		field: 'name',
+		elComponentsProps: {
+			gatherProps: {
+				col: 2,
+				allCol: 5,
+				ignore: true,
+			},
+		},
 	},
 	{
 		formItemProps: {
@@ -94,6 +120,7 @@ const formJson = ref<T_JlgForm_Props['formJson']>([
 		type: E_JlgForm_FormType.选择框,
 		field: 'select',
 		elComponentsProps: {
+			disabled: true,
 			optionOptions: [
 				{
 					label: 'option1',
@@ -109,12 +136,15 @@ const formJson = ref<T_JlgForm_Props['formJson']>([
 					value: 3,
 				},
 			],
+			multiple: true,
 		},
 	},
 	{
 		formItemProps: {
 			label: '日期',
 			size: 'small',
+			prop: 'datePicker',
+			validateRules: [[E_FormValidatorRulesValidateFunEnum.必填校验]],
 		},
 		gridCellProps: {
 			width: 1,
@@ -168,4 +198,19 @@ const gridLayoutProps = ref<T_JlgForm_Props['gridLayoutProps']>({
 	inline: true,
 	border: false,
 });
+
+const gather = () => {
+	console.log(JlgFormRef.value.getGatherData());
+};
+
+const validator = () => {
+	JlgFormRef.value._ref.validate((valid, fields) => {
+		if (valid) {
+			alert('submit!');
+		} else {
+			console.log(fields);
+			alert('error submit!');
+		}
+	});
+};
 </script>

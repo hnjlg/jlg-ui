@@ -5,8 +5,9 @@
 			v-bind="mergeInputPropsComputed"
 			:placeholder="placeholderComputed"
 			@update:model-value="updateModelValue"
-			@focus="focusInput"
 			@blur="blurInput"
+			@mouseenter="mouseenter"
+			@mouseleave="mouseleave"
 		>
 			<template v-for="(index, name) in slots">
 				<slot :name="name" />
@@ -16,11 +17,11 @@
 </template>
 
 <script setup lang="ts">
-import { useSlots, useAttrs } from 'vue';
 import { I_Jlg_Input_Emits, T_Jlg_Input_Props } from './type';
 import { globalComponentConfig } from '../index';
 import JlgTooltip from '../tooltip/index.vue';
 import { FormItemContext, formItemContextKey } from 'element-plus';
+import { T_Add_Gather_Fn } from '../form/type';
 
 defineOptions({
 	name: 'JlgInput',
@@ -28,7 +29,10 @@ defineOptions({
 
 const slots = useSlots();
 
-const props = withDefaults(defineProps<T_Jlg_Input_Props>(), {});
+const props = withDefaults(defineProps<T_Jlg_Input_Props>(), {
+	type: 'text',
+	validateEvent: true,
+});
 
 const attrs = useAttrs();
 
@@ -39,11 +43,14 @@ const context: FormItemContext | undefined = inject(formItemContextKey);
 
 const toolTipShow = ref(false);
 
+const valueText = computed(() => String(props.modelValue ?? ''));
+
 const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
-			disabled: !toolTipShow.value,
-			content: String(props.modelValue),
+			disabled: !mergeInputPropsComputed.value.disabled,
+			visible: toolTipShow.value,
+			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
 		...(props.toolTipProps ?? {}),
@@ -74,17 +81,43 @@ const updateModelValue = (v) => {
 	emits('update:modelValue', v);
 };
 
-const focusInput = (event) => {
-	toolTipShow.value = true;
-	emits('focus', event);
-};
-
 const blurInput = (event) => {
-	toolTipShow.value = false;
 	// 去除两端空格
 	emits('update:modelValue', String(props.modelValue ?? '').trim());
 	emits('blur', event);
 };
+
+const mouseenter = () => {
+	if (!mergeInputPropsComputed.value.disabled) {
+		return;
+	}
+	toolTipShow.value = true;
+};
+
+const mouseleave = () => {
+	if (!mergeInputPropsComputed.value.disabled) {
+		return;
+	}
+	toolTipShow.value = false;
+};
+
+const formAddGatherFn: T_Add_Gather_Fn | undefined = inject('formAddGatherFn');
+
+onMounted(() => {
+	formAddGatherFn &&
+		formAddGatherFn({
+			formItemLabel: context.label,
+			fn() {
+				return {
+					label: context.label ?? '',
+					key: context.prop ?? '',
+					value: valueText.value,
+					type: mergeInputPropsComputed.value.type,
+					...(mergeInputPropsComputed.value.gatherProps ?? {}),
+				};
+			},
+		});
+});
 </script>
 
 <style scoped lang="scss"></style>

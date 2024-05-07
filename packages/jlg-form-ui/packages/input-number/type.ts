@@ -1,5 +1,10 @@
 import { ElTooltipContentProps, InputNumberProps } from 'element-plus';
 
-export declare type T_Jlg_Input_Number_Props = {
+export declare type T_Jlg_InputNumber_Props = {
 	toolTipProps?: ElTooltipContentProps;
+	gatherProps?: object;
 } & InputNumberProps;
+
+export declare interface I_Jlg_InputNumber_Emits {
+	(e: 'update:modelValue', value: T_Jlg_InputNumber_Props['modelValue']): void;
+}

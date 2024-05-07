@@ -41,6 +41,7 @@
 		"@element-plus/hooks": "^0.0.5",
 		"@element-plus/icons-vue": "^2.3.1",
 		"@element-plus/utils": "^0.0.5",
+		"async-validator": "^4.2.5",
 		"element-plus": "^2.7.0",
 		"jlg-ui": "workspace:^0.0.1",
 		"lodash-unified": "^1.0.3",

@@ -1,3 +1,7 @@
+import { FormValidatorRules } from './rule';
+import { T_Jlg_Radio_Props } from './radio/type';
+import { T_Jlg_RadioGroup_Props } from './radio-group/type';
+import { T_Jlg_Rate_Props } from './rate/type';
 import { T_Jlg_FormItem_Props } from './form-item/type';
 import { I_Jlg_Option_Props } from './option/type';
 import { T_JlgForm_Props } from './form/type';
@@ -5,8 +9,11 @@ import { T_Jlg_Tooltip_Props } from './tooltip/type';
 import { T_Jlg_Input_Props } from './input/type';
 import { T_Jlg_Select_Props } from './select/type';
 import { T_Jlg_TimeSelect_Props } from './time-select/type';
-import { T_Jlg_Input_Number_Props } from './input-number/type';
+import { T_Jlg_InputNumber_Props } from './input-number/type';
 import { T_Jlg_DatePicker_Props } from './date-picker/type';
+import { default as JlgRadio } from './radio';
+import { default as JlgRadioGroup } from './radio-group';
+import { default as JlgRate } from './rate';
 import { default as JlgTooltip } from './tooltip';
 import { default as JlgInputNumber } from './input-number';
 import { default as JlgTimeSelect } from './time-select';
@@ -18,7 +25,7 @@ import { default as JlgForm } from './form';
 import { default as JlgInput } from './input';
 import { App } from 'vue';
 
-export { JlgForm, JlgDatePicker, JlgFormItem, JlgInput, JlgOption, JlgSelect, JlgTimeSelect, JlgInputNumber, JlgTooltip };
+export { JlgForm, JlgDatePicker, JlgFormItem, JlgInput, JlgOption, JlgSelect, JlgTimeSelect, JlgInputNumber, JlgTooltip, JlgRate, JlgRadioGroup, JlgRadio, FormValidatorRules, };
 type DeepPartial<T> = {
     [U in keyof T]?: T[U] extends object ? DeepPartial<T[U]> : T[U];
 };
@@ -30,8 +37,11 @@ interface I_Global_Component_Config {
     select: DeepPartial<T_Jlg_Select_Props>;
     option: DeepPartial<I_Jlg_Option_Props>;
     timeSelect: DeepPartial<T_Jlg_TimeSelect_Props>;
-    inputNumber: DeepPartial<T_Jlg_Input_Number_Props>;
+    inputNumber: DeepPartial<T_Jlg_InputNumber_Props>;
     datePicker: DeepPartial<T_Jlg_DatePicker_Props>;
+    rate: DeepPartial<T_Jlg_Rate_Props>;
+    radioGroup: DeepPartial<T_Jlg_RadioGroup_Props>;
+    radio: DeepPartial<T_Jlg_Radio_Props>;
 }
 export declare const globalComponentConfig: I_Global_Component_Config;
 declare const _default: {

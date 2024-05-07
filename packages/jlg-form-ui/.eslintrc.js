@@ -53,6 +53,7 @@ module.exports = {
 		getCurrentInstance: 'readonly',
 		ComponentInternalInstance: 'readonly',
 		useSlots: 'readonly',
+		useAttrs: 'readonly',
 		onUnmounted: 'readonly',
 		ComputedRef: 'readonly',
 		unref: 'readonly',

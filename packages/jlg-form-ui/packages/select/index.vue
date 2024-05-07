@@ -1,16 +1,23 @@
 <template>
 	<jlg-tooltip v-bind="mergeTooltipPropsComputed">
 		<el-select
+			ref="_ref"
 			:model-value="props.modelValue"
 			v-bind="mergeSelectPropsComputed"
 			:placeholder="placeholderComputed"
-			@update:model-value="updateModelValue"
+			@update:model-value="
+				(v) => {
+					emits('update:modelValue', v);
+				}
+			"
+			@mouseenter="mouseenter"
+			@mouseleave="mouseleave"
 		>
 			<template v-for="(index, name) in slots">
 				<slot v-if="name !== 'default'" :name="name" />
 			</template>
 			<slot>
-				<el-option v-for="option in mergeSelectPropsComputed.optionOptions" :key="option.value" v-bind="option" />
+				<jlg-option v-for="(option, index) in props.optionOptions" :key="index" v-bind="option" />
 			</slot>
 		</el-select>
 	</jlg-tooltip>
@@ -18,22 +25,30 @@
 
 <script setup lang="ts">
 import JlgTooltip from '../tooltip/index.vue';
+import JlgOption from '../option/index.vue';
 import { globalComponentConfig } from '../index';
 import { I_Jlg_Select_Emits, T_Jlg_Select_Props } from './type';
 import { FormItemContext, formItemContextKey, useLocale } from 'element-plus';
-import { useAttrs } from 'vue';
+import { E_JlgForm_FormType, T_Add_Gather_Fn } from '../form/type';
 
 defineOptions({
 	name: 'JlgSelect',
 });
 
-const slots = useSlots();
-
-const props = withDefaults(defineProps<T_Jlg_Select_Props>(), {});
+const props: T_Jlg_Select_Props = withDefaults(defineProps<T_Jlg_Select_Props>(), {
+	reserveKeyword: true,
+	validateEvent: true,
+	persistent: true,
+	teleported: true,
+});
 
 const attrs = useAttrs();
 
 const emits = defineEmits<I_Jlg_Select_Emits>();
+
+const slots = useSlots();
+
+const _ref = ref(null);
 
 // formItem传递的context
 const context: FormItemContext | undefined = inject(formItemContextKey);
@@ -42,11 +57,14 @@ const { t } = useLocale();
 
 const toolTipShow = ref(false);
 
+const valueText = ref('');
+
 const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
-			disabled: !toolTipShow.value,
-			content: String(props.modelValue),
+			disabled: !mergeSelectPropsComputed.value.disabled,
+			visible: toolTipShow.value,
+			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
 		...(props.toolTipProps ?? {}),
@@ -75,9 +93,53 @@ const placeholderComputed = computed(() => {
 	}
 });
 
-const updateModelValue = (v) => {
-	emits('update:modelValue', v);
+const formAddGatherFn: T_Add_Gather_Fn | undefined = inject('formAddGatherFn');
+
+onMounted(() => {
+	formAddGatherFn &&
+		formAddGatherFn({
+			formItemLabel: context.label,
+			fn() {
+				return {
+					label: context.label ?? '',
+					key: context.prop ?? '',
+					value: valueText.value,
+					type: E_JlgForm_FormType.选择框,
+					...(mergeSelectPropsComputed.value.gatherProps ?? {}),
+				};
+			},
+		});
+});
+
+const mouseenter = () => {
+	if (!mergeSelectPropsComputed.value.disabled) {
+		return;
+	}
+	toolTipShow.value = true;
 };
+
+const mouseleave = () => {
+	if (!mergeSelectPropsComputed.value.disabled) {
+		return;
+	}
+	toolTipShow.value = false;
+};
+
+watch(
+	() => _ref.value?.states.selected,
+	(newValue) => {
+		if (!newValue) return;
+		valueText.value = mergeSelectPropsComputed.value.multiple ? newValue.map((i) => i.currentLabel).join(';') : newValue.currentLabel;
+	},
+	{
+		deep: true,
+		immediate: true,
+	}
+);
+
+defineExpose({
+	_ref,
+});
 </script>
 
 <style scoped></style>
