@@ -29,10 +29,6 @@ const mergeOptionPropsComputed = computed(() => {
 		...attrs,
 	};
 });
-
-onMounted(() => {
-	console.log('onMounted');
-});
 </script>
 
 <style scoped></style>

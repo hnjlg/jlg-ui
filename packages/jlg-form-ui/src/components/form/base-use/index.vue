@@ -30,7 +30,7 @@ const formData = ref({
 	age: 8,
 	sex: 1,
 	level: 1,
-	select: [1],
+	select: [1, 2],
 });
 
 const formJson = ref<T_JlgForm_Props['formJson']>([
@@ -112,6 +112,7 @@ const formJson = ref<T_JlgForm_Props['formJson']>([
 		type: E_JlgForm_FormType.选择框,
 		field: 'select',
 		elComponentsProps: {
+			disabled: true,
 			optionOptions: [
 				{
 					label: 'option1',

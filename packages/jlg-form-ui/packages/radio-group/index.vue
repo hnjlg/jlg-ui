@@ -1,5 +1,6 @@
 <template>
 	<el-radio-group
+		ref="_ref"
 		:model-value="props.modelValue"
 		v-bind="mergeRadioGroupPropsComputed"
 		@update:model-value="
@@ -22,7 +23,8 @@ import { globalComponentConfig } from '../index';
 import { T_Jlg_RadioGroup_Props, I_Jlg_RadioGroup_Emits } from './type';
 import JlgRadio from '../radio/index.vue';
 import { E_JlgForm_FormType, T_Add_Gather_Fn } from '../form/type';
-import { FormItemContext, formItemContextKey } from 'element-plus';
+import { FormItemContext, formItemContextKey, RadioInstance } from 'element-plus';
+import { T_Jlg_Radio_Props } from '../radio/type';
 
 defineOptions({
 	name: 'JlgRadioGroup',
@@ -38,7 +40,9 @@ const emits = defineEmits<I_Jlg_RadioGroup_Emits>();
 
 const slots = useSlots();
 
-const valueText = computed(() => String(props.modelValue ?? ''));
+const _ref = ref(null);
+
+const valueText = ref<T_Jlg_Radio_Props['value']>();
 
 const mergeRadioGroupPropsComputed = computed(() => {
 	return {
@@ -66,6 +70,24 @@ onMounted(() => {
 		},
 	});
 });
+
+const radioRefSet: Ref<Set<RadioInstance>> = ref(new Set());
+provide('radioRefSet', radioRefSet);
+
+watch(
+	() => [radioRefSet, props.modelValue],
+	(newValue) => {
+		radioRefSet.value.forEach((i) => {
+			i.value === newValue[1] && (valueText.value = i.label);
+		});
+	},
+	{
+		deep: true,
+		immediate: true,
+	}
+);
+
+defineExpose({ _ref });
 </script>
 
 <style scoped lang="scss"></style>
