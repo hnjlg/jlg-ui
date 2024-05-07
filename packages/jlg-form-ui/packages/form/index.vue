@@ -33,7 +33,10 @@ defineOptions({
 	name: 'JlgForm',
 });
 
-const props = withDefaults(defineProps<T_JlgForm_Props>(), {});
+const props = withDefaults(defineProps<T_JlgForm_Props>(), {
+	showMessage: true,
+	validateOnRuleChange: true,
+});
 
 const attrs = useAttrs();
 

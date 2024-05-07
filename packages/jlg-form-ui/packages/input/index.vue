@@ -31,6 +31,7 @@ const slots = useSlots();
 
 const props = withDefaults(defineProps<T_Jlg_Input_Props>(), {
 	type: 'text',
+	validateEvent: true,
 });
 
 const attrs = useAttrs();

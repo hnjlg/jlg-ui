@@ -26,6 +26,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<T_Jlg_InputNumber_Props>(), {
 	controls: true,
+	validateEvent: true,
 });
 
 const attrs = useAttrs();

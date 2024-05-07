@@ -21,7 +21,10 @@ defineOptions({
 	name: 'JlgTimeSelect',
 });
 
-const props = withDefaults(defineProps<T_Jlg_TimeSelect_Props>(), {});
+const props = withDefaults(defineProps<T_Jlg_TimeSelect_Props>(), {
+	editable: true,
+	clearable: true,
+});
 
 const attrs = useAttrs();
 

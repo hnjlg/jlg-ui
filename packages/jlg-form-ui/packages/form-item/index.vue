@@ -27,7 +27,9 @@ defineOptions({
 	name: 'JlgFormItem',
 });
 
-const props = defineProps<T_Jlg_FormItem_Props>();
+const props = withDefaults(defineProps<T_Jlg_FormItem_Props>(), {
+	showMessage: true,
+});
 
 const attrs = useAttrs();
 

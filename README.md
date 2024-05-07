@@ -24,7 +24,3 @@
 `...new_jlg_ui\packages\jlg-form-ui> pnpm run dev` 表单组件库
 
 `...new_jlg_ui\packages\jlg-ui> pnpm run dev` 新版组件库
-
-# problem
-
-select初次加载currentLabel值是modelValue的value值（暂解决方案使用persistent渲染option来触发setSelected从而得到正确的值）

@@ -36,7 +36,10 @@ defineOptions({
 });
 
 const props: T_Jlg_Select_Props = withDefaults(defineProps<T_Jlg_Select_Props>(), {
+	reserveKeyword: true,
+	validateEvent: true,
 	persistent: true,
+	teleported: true,
 });
 
 const attrs = useAttrs();

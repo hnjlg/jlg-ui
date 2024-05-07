@@ -1,17 +1,26 @@
 import { T_Jlg_Select_Props } from './type';
 
 declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_Select_Props>, {
+    reserveKeyword: boolean;
+    validateEvent: boolean;
     persistent: boolean;
+    teleported: boolean;
 }>, {
     _ref: globalThis.Ref<any>;
 }, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (value: undefined) => void;
 }, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_Select_Props>, {
+    reserveKeyword: boolean;
+    validateEvent: boolean;
     persistent: boolean;
+    teleported: boolean;
 }>>> & {
     "onUpdate:modelValue"?: (value: undefined) => any;
 }, {
     persistent: import('element-plus/es/utils/index.mjs').EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    teleported: import('element-plus/es/utils/index.mjs').EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    validateEvent: import('element-plus/es/utils/index.mjs').EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    reserveKeyword: import('element-plus/es/utils/index.mjs').EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }, {}>, Partial<Record<NonNullable<string | number>, (_: {}) => any>> & {
     default?(_: {}): any;
 }>;

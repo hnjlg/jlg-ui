@@ -9,7 +9,6 @@ declare module 'vue' {
   export interface GlobalComponents {
     BaseUse: typeof import('./src/components/form/base-use/index.vue')['default']
     BaseUseNotJson: typeof import('./src/components/form/base-use-not-json/index.vue')['default']
-    ElButton: typeof import('element-plus/es')['ElButton']
     ElDatePicker: typeof import('element-plus/es')['ElDatePicker']
     ElForm: typeof import('element-plus/es')['ElForm']
     ElFormItem: typeof import('element-plus/es')['ElFormItem']

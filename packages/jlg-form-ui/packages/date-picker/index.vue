@@ -24,7 +24,12 @@ defineOptions({
 	name: 'JlgDatePicker',
 });
 
-const props = withDefaults(defineProps<T_Jlg_DatePicker_Props>(), {});
+const props = withDefaults(defineProps<T_Jlg_DatePicker_Props>(), {
+	editable: true,
+	clearable: true,
+	validateEvent: true,
+	teleported: true,
+});
 
 const attrs = useAttrs();
 
