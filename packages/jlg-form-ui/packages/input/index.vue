@@ -100,21 +100,22 @@ const mouseleave = () => {
 	toolTipShow.value = false;
 };
 
-const formAddGatherFn: T_Add_Gather_Fn = inject('formAddGatherFn');
+const formAddGatherFn: T_Add_Gather_Fn | undefined = inject('formAddGatherFn');
 
 onMounted(() => {
-	formAddGatherFn({
-		formItemLabel: context.label,
-		fn() {
-			return {
-				label: context.label ?? '',
-				key: context.prop ?? '',
-				value: valueText.value,
-				type: mergeInputPropsComputed.value.type,
-				...(mergeInputPropsComputed.value.gatherProps ?? {}),
-			};
-		},
-	});
+	formAddGatherFn &&
+		formAddGatherFn({
+			formItemLabel: context.label,
+			fn() {
+				return {
+					label: context.label ?? '',
+					key: context.prop ?? '',
+					value: valueText.value,
+					type: mergeInputPropsComputed.value.type,
+					...(mergeInputPropsComputed.value.gatherProps ?? {}),
+				};
+			},
+		});
 });
 </script>
 

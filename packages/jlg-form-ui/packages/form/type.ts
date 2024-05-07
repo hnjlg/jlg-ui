@@ -75,6 +75,6 @@ export declare type T_JlgForm_Props = {
 	formJson?: T_JlgForm_FormJsonItem[];
 	gridLayoutProps?: I_Grid_Layout_Props;
 	gatherProps?: object;
-} & FormProps;
+} & Omit<FormProps, 'showMessage' | 'hideRequiredAsterisk'>;
 
 export declare type T_Add_Gather_Fn = (config: { formItemLabel: T_Jlg_FormItem_Props['label']; fn: () => object }) => void;

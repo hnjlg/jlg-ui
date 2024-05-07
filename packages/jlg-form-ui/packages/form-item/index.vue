@@ -1,6 +1,5 @@
 <template>
-	<el-form-item v-bind="mergeFormItemPropsComputed">
-		<!-- Form Item 插槽 -->
+	<el-form-item ref="_ref" v-bind="mergeFormItemPropsComputed">
 		<template v-if="slots.label">
 			<slot name="label" :label="mergeFormItemPropsComputed.label">
 				<el-tooltip :content="mergeFormItemPropsComputed.label" placement="top" :disabled="isShowTooltip">
@@ -28,11 +27,13 @@ defineOptions({
 	name: 'JlgFormItem',
 });
 
-const props = withDefaults(defineProps<T_Jlg_FormItem_Props>(), {});
+const props = defineProps<T_Jlg_FormItem_Props>();
 
 const attrs = useAttrs();
 
 const slots = useSlots();
+
+const _ref = ref(null);
 
 const isShowTooltip = ref(false);
 
@@ -78,6 +79,10 @@ const mergeFormItemPropsComputed = computed(() => {
 		...props,
 		...attrs,
 	};
+});
+
+defineExpose({
+	_ref,
 });
 </script>
 

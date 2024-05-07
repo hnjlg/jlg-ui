@@ -1,5 +1,5 @@
 <template>
-	<el-form v-bind="mergeFormPropsComputed">
+	<el-form ref="_ref" v-bind="mergeFormPropsComputed">
 		<slot>
 			<jlg-grid-layout v-bind="props.gridLayoutProps">
 				<jlg-grid-cell v-for="formItem in props.formJson" :key="formItem.field" v-bind="formItem.gridCellProps">
@@ -37,6 +37,8 @@ const props = withDefaults(defineProps<T_JlgForm_Props>(), {});
 
 const attrs = useAttrs();
 
+const _ref = ref(null);
+
 const mergeFormPropsComputed = computed(() => {
 	return {
 		...globalComponentConfig.form,
@@ -69,5 +71,6 @@ const { getGatherData } = useGather(mergeFormPropsComputed);
 
 defineExpose({
 	getGatherData,
+	_ref,
 });
 </script>

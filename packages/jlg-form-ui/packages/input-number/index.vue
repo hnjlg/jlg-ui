@@ -60,21 +60,22 @@ const mergeNumberPropsComputed = computed(() => {
 
 const context: FormItemContext | undefined = inject(formItemContextKey);
 
-const formAddGatherFn: T_Add_Gather_Fn = inject('formAddGatherFn');
+const formAddGatherFn: T_Add_Gather_Fn | undefined = inject('formAddGatherFn');
 
 onMounted(() => {
-	formAddGatherFn({
-		formItemLabel: context.label,
-		fn() {
-			return {
-				label: context.label ?? '',
-				key: context.prop ?? '',
-				value: valueText.value,
-				type: E_JlgForm_FormType.数字输入框,
-				...(mergeNumberPropsComputed.value.gatherProps ?? {}),
-			};
-		},
-	});
+	formAddGatherFn &&
+		formAddGatherFn({
+			formItemLabel: context.label,
+			fn() {
+				return {
+					label: context.label ?? '',
+					key: context.prop ?? '',
+					value: valueText.value,
+					type: E_JlgForm_FormType.数字输入框,
+					...(mergeNumberPropsComputed.value.gatherProps ?? {}),
+				};
+			},
+		});
 });
 
 const mouseenter = () => {

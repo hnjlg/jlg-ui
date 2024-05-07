@@ -1,7 +1,8 @@
 <template>
 	<el-button @click="gather">收集数据</el-button>
+	<el-button @click="validator">校验</el-button>
 	{{ formData }}
-	<jlg-form ref="JlgFormRef" label-position="top" :gather-props="{ col: 1, allCol: 3 }">
+	<jlg-form ref="JlgFormRef" label-position="top" :gather-props="{ col: 1, allCol: 3 }" :model="formData" :rules="rules">
 		<jlg-grid-layout v-bind="gridLayoutProps">
 			<jlg-grid-cell :width="1" :height="1">
 				<jlg-form-item label="Input测试placeholder" prop="input">
@@ -53,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, reactive, ref } from 'vue';
 import { T_JlgForm_Props } from '@pac/form/type';
 import { JlgGridLayout, JlgGridCell } from 'jlg-ui';
 
@@ -71,6 +72,10 @@ const formData = ref({
 	timeSelect: '',
 	rate: 0,
 	radio: '',
+});
+
+const rules = reactive({
+	input: [{ required: true, message: 'Please input input', trigger: 'blur' }],
 });
 
 const gridLayoutProps = ref<T_JlgForm_Props['gridLayoutProps']>({
@@ -97,6 +102,17 @@ const valueChange = (v) => {
 
 const gather = () => {
 	console.log(JlgFormRef.value.getGatherData());
+};
+
+const validator = () => {
+	JlgFormRef.value._ref.validate((valid, fields) => {
+		if (valid) {
+			alert('submit!');
+		} else {
+			console.log(fields);
+			alert('error submit!');
+		}
+	});
 };
 </script>
 

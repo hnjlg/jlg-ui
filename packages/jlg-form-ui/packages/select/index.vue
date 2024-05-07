@@ -90,21 +90,22 @@ const placeholderComputed = computed(() => {
 	}
 });
 
-const formAddGatherFn: T_Add_Gather_Fn = inject('formAddGatherFn');
+const formAddGatherFn: T_Add_Gather_Fn | undefined = inject('formAddGatherFn');
 
 onMounted(() => {
-	formAddGatherFn({
-		formItemLabel: context.label,
-		fn() {
-			return {
-				label: context.label ?? '',
-				key: context.prop ?? '',
-				value: valueText.value,
-				type: E_JlgForm_FormType.选择框,
-				...(mergeSelectPropsComputed.value.gatherProps ?? {}),
-			};
-		},
-	});
+	formAddGatherFn &&
+		formAddGatherFn({
+			formItemLabel: context.label,
+			fn() {
+				return {
+					label: context.label ?? '',
+					key: context.prop ?? '',
+					value: valueText.value,
+					type: E_JlgForm_FormType.选择框,
+					...(mergeSelectPropsComputed.value.gatherProps ?? {}),
+				};
+			},
+		});
 });
 
 const mouseenter = () => {
