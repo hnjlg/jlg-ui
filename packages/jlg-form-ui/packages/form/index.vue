@@ -1,14 +1,15 @@
 <template>
-	<el-form ref="_ref" v-bind="mergeFormPropsComputed">
+	{{ furnishMergeFormPropsComputed.rules }}
+	<el-form ref="_ref" v-bind="furnishMergeFormPropsComputed">
 		<slot>
 			<jlg-grid-layout v-bind="props.gridLayoutProps">
 				<jlg-grid-cell v-for="formItem in props.formJson" :key="formItem.field" v-bind="formItem.gridCellProps">
-					<el-form-item v-bind="formItem.formItemProps">
+					<jlg-form-item v-bind="formItem.formItemProps">
 						<slot :name="'el-' + formItem.field" :field="formItem.field" :el-components-props="formItem.elComponentsProps">
 							<component :is="renderFormItemComponent(formItem)" v-model="props.modelValue[formItem.field]" v-bind="formItem.elComponentsProps">
 							</component>
 						</slot>
-					</el-form-item>
+					</jlg-form-item>
 				</jlg-grid-cell>
 			</jlg-grid-layout>
 		</slot>
@@ -26,8 +27,10 @@ import Rate from '../rate/index.vue';
 import Select from '../select/index.vue';
 import DatePicker from '../date-picker/index.vue';
 import TimeSelect from '../time-select/index.vue';
+import JlgFormItem from '../form-item/index.vue';
 import { type Component } from 'vue';
 import useGather from './hooks/gather';
+import useRule from './hooks/rule';
 
 defineOptions({
 	name: 'JlgForm',
@@ -47,6 +50,15 @@ const mergeFormPropsComputed = computed(() => {
 		...globalComponentConfig.form,
 		...props,
 		...attrs,
+	};
+});
+
+const { assignRules } = useRule(mergeFormPropsComputed);
+
+const furnishMergeFormPropsComputed = computed(() => {
+	return {
+		...mergeFormPropsComputed.value,
+		rules: assignRules.value,
 	};
 });
 

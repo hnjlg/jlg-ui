@@ -1,3 +1,4 @@
+import { FormValidatorRules } from './rule';
 import { T_Jlg_Radio_Props } from './radio/type';
 import { T_Jlg_RadioGroup_Props } from './radio-group/type';
 import { T_Jlg_Rate_Props } from './rate/type';
@@ -24,7 +25,7 @@ import { default as JlgForm } from './form';
 import { default as JlgInput } from './input';
 import { App } from 'vue';
 
-export { JlgForm, JlgDatePicker, JlgFormItem, JlgInput, JlgOption, JlgSelect, JlgTimeSelect, JlgInputNumber, JlgTooltip, JlgRate, JlgRadioGroup, JlgRadio, };
+export { JlgForm, JlgDatePicker, JlgFormItem, JlgInput, JlgOption, JlgSelect, JlgTimeSelect, JlgInputNumber, JlgTooltip, JlgRate, JlgRadioGroup, JlgRadio, FormValidatorRules, };
 type DeepPartial<T> = {
     [U in keyof T]?: T[U] extends object ? DeepPartial<T[U]> : T[U];
 };

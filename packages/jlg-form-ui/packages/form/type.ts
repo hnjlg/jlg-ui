@@ -1,4 +1,4 @@
-import { FormProps, FormItemProps } from 'element-plus';
+import { FormProps } from 'element-plus';
 import { I_Grid_Cell_Props } from 'jlg-ui/dist/packages/grid-cell/type';
 import { I_Grid_Layout_Props } from 'jlg-ui/dist/packages/grid-layout/type';
 import { T_Jlg_Input_Props } from '../input/type';
@@ -9,6 +9,7 @@ import { T_Jlg_TimeSelect_Props } from '../time-select/type';
 import { T_Jlg_Rate_Props } from '../rate/type';
 import { T_Jlg_FormItem_Props } from '../form-item/type';
 import { T_Jlg_RadioGroup_Props } from '../radio-group/type';
+import { FormValidatorRules } from '../rule';
 
 export enum E_JlgForm_FormType {
 	输入框 = 'input',
@@ -23,7 +24,7 @@ export enum E_JlgForm_FormType {
 export declare interface I_JlgForm_FormJsonItem_Base {
 	field: string | number;
 	gridCellProps: I_Grid_Cell_Props;
-	formItemProps?: FormItemProps;
+	formItemProps?: T_Jlg_FormItem_Props;
 }
 
 export declare interface I_JlgForm_FormJsonItem_Input extends I_JlgForm_FormJsonItem_Base {
@@ -78,3 +79,5 @@ export declare type T_JlgForm_Props = {
 } & FormProps;
 
 export declare type T_Add_Gather_Fn = (config: { formItemLabel: T_Jlg_FormItem_Props['label']; fn: () => object }) => void;
+
+export declare type T_Assign_Rules_Fn = (source?: { record: T_Jlg_FormItem_Props['prop']; recordValidate: FormValidatorRules }) => void;

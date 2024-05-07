@@ -5,7 +5,11 @@
 	<jlg-form ref="JlgFormRef" label-position="top" :gather-props="{ col: 1, allCol: 3 }" :model="formData" :rules="rules">
 		<jlg-grid-layout v-bind="gridLayoutProps">
 			<jlg-grid-cell :width="1" :height="1">
-				<jlg-form-item label="Input测试placeholder" prop="input">
+				<jlg-form-item
+					label="Input测试placeholder"
+					prop="input"
+					:validate-rules="[[E_FormValidatorRulesValidateFunEnum.必填校验], [E_FormValidatorRulesValidateFunEnum.小数位校验, 0]]"
+				>
 					<jlg-input
 						v-model="formData.input"
 						:tool-tip-props="{
@@ -14,11 +18,9 @@
 					></jlg-input>
 				</jlg-form-item>
 			</jlg-grid-cell>
-			<jlg-grid-cell v-for="i in 30" :key="i" :width="1" :height="1">
-				<jlg-form-item :label="'Select测试placeholder' + i">
-					<jlg-select v-model="formData.select">
-						<jlg-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
-					</jlg-select>
+			<jlg-grid-cell :width="1" :height="1">
+				<jlg-form-item label="datePicker" prop="datePicker" :validate-rules="[[E_FormValidatorRulesValidateFunEnum.必填校验]]">
+					<jlg-date-picker v-model="formData.datePicker" type="date" />
 				</jlg-form-item>
 			</jlg-grid-cell>
 			<jlg-grid-cell :width="1" :height="1">
@@ -26,9 +28,11 @@
 					<jlg-input-number v-model="formData.number" @change="valueChange"> </jlg-input-number>
 				</jlg-form-item>
 			</jlg-grid-cell>
-			<jlg-grid-cell :width="1" :height="1">
-				<jlg-form-item label="date-picker">
-					<jlg-date-picker v-model="formData.datePicker" type="date" />
+			<jlg-grid-cell v-for="i in 30" :key="i" :width="1" :height="1">
+				<jlg-form-item :label="'Select测试placeholder' + i">
+					<jlg-select v-model="formData.select">
+						<jlg-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
+					</jlg-select>
 				</jlg-form-item>
 			</jlg-grid-cell>
 			<jlg-grid-cell :width="1" :height="1">
@@ -57,6 +61,7 @@
 import { computed, reactive, ref } from 'vue';
 import { T_JlgForm_Props } from '@pac/form/type';
 import { JlgGridLayout, JlgGridCell } from 'jlg-ui';
+import { E_FormValidatorRulesValidateFunEnum } from '@pac/rule';
 
 defineOptions({
 	name: 'FormBaseUseNotJson',

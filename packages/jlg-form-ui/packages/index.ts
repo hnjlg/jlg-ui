@@ -24,6 +24,7 @@ import { T_Jlg_FormItem_Props } from './form-item/type';
 import { T_Jlg_Rate_Props } from './rate/type';
 import { T_Jlg_RadioGroup_Props } from './radio-group/type';
 import { T_Jlg_Radio_Props } from './radio/type';
+import { FormValidatorRules } from './rule';
 
 export {
 	JlgForm,
@@ -38,6 +39,7 @@ export {
 	JlgRate,
 	JlgRadioGroup,
 	JlgRadio,
+	FormValidatorRules,
 }; //实现按需引入*
 
 const components = [

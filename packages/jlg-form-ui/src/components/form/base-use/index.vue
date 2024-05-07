@@ -1,5 +1,6 @@
 <template>
 	<el-button @click="gather">收集数据</el-button>
+	<el-button @click="validator">校验</el-button>
 	{{ formData }}
 	<jlg-form
 		ref="JlgFormRef"
@@ -8,6 +9,8 @@
 		:form-json="formJson"
 		label-position="top"
 		:gather-props="{ col: 1, allCol: 3 }"
+		:rules="rules"
+		:model="formData"
 	>
 		<template #el-slot="{ field, elComponentsProps }">
 			<div>插槽内容{{ field }}{{ elComponentsProps }}</div>
@@ -17,7 +20,8 @@
 
 <script setup lang="ts">
 import { T_JlgForm_Props, E_JlgForm_FormType } from '@pac/form/type';
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
+import { E_FormValidatorRulesValidateFunEnum } from '@pac/rule';
 
 defineOptions({
 	name: 'FormBaseUse',
@@ -31,6 +35,10 @@ const formData = ref({
 	sex: 1,
 	level: 1,
 	select: [1, 2],
+});
+
+const rules = reactive({
+	name: [{ required: true, message: 'Please input input', trigger: 'blur' }],
 });
 
 const formJson = ref<T_JlgForm_Props['formJson']>([
@@ -135,6 +143,8 @@ const formJson = ref<T_JlgForm_Props['formJson']>([
 		formItemProps: {
 			label: '日期',
 			size: 'small',
+			prop: 'datePicker',
+			validateRules: [[E_FormValidatorRulesValidateFunEnum.必填校验]],
 		},
 		gridCellProps: {
 			width: 1,
@@ -191,5 +201,16 @@ const gridLayoutProps = ref<T_JlgForm_Props['gridLayoutProps']>({
 
 const gather = () => {
 	console.log(JlgFormRef.value.getGatherData());
+};
+
+const validator = () => {
+	JlgFormRef.value._ref.validate((valid, fields) => {
+		if (valid) {
+			alert('submit!');
+		} else {
+			console.log(fields);
+			alert('error submit!');
+		}
+	});
 };
 </script>
