@@ -112,7 +112,6 @@ defineExpose({
 			position: absolute;
 			z-index: 999;
 			background-color: #fff;
-			font-size: 12px;
 		}
 	}
 }

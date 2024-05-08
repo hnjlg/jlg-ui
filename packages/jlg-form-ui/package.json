@@ -1,7 +1,7 @@
 {
 	"name": "jlg-form-ui",
 	"private": false,
-	"version": "0.0.21",
+	"version": "0.0.27",
 	"type": "commonjs",
 	"scripts": {
 		"dev": "vite",
@@ -15,7 +15,11 @@
 	"files": [
 		"package.json",
 		"README.md",
-		"dist"
+		"dist",
+		"global.d.ts",
+		"tags.json",
+		"attributes.json",
+		"web-types.json"
 	],
 	"main": "dist/jlg-form-ui.umd.js",
 	"module": "dist/jlg-form-ui.es.js",
@@ -77,5 +81,10 @@
 		"vite-plugin-dts": "^3.8.3",
 		"vite-plugin-eslint": "^1.8.1",
 		"vue-tsc": "^1.8.5"
-	}
+	},
+	"vetur": {
+		"tags": "tags.json",
+		"attributes": "attributes.json"
+	},
+	"web-types": "web-types.json"
 }

@@ -120,4 +120,8 @@ defineExpose({
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+
+:deep(.el-form-item__label) {
+	font-size: 12px;
+}
 </style>

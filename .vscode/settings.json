@@ -3,7 +3,8 @@
         "commitlint",
         "iconfont",
         "preinstall",
-        "stylelint"
+        "stylelint",
+        "vetur"
     ],
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true

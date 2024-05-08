@@ -24,7 +24,7 @@ export default defineConfig({
 			resolvers: [ElementPlusResolver()],
 		}),
 		eslintPlugin({
-			include: ['src/**/*.ts', 'src/**/*.vue', 'src/*.ts', 'src/*.vue'],
+			include: ['src/**/*.ts', 'src/**/*.vue', 'src/*.ts', 'src/*.vue', 'packages/**/*.ts', 'packages/**/*.vue', 'packages/*.ts', 'packages/*.vue'],
 		}),
 		dts({
 			// 读取tsconfig.json include字段
