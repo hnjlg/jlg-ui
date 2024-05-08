@@ -21,8 +21,8 @@
 	"dependencies": {
 		"@element-plus/icons-vue": "^2.3.1",
 		"element-plus": "^2.7.0",
-		"jlg-form-ui": "workspace:^0.0.12",
-		"jlg-ui": "workspace:^0.0.1",
+		"jlg-form-ui": "^0.0.14",
+		"jlg-ui": "^0.0.1",
 		"md-editor-v3": "^4.13.2",
 		"normalize.css": "^8.0.1",
 		"vue": "^3.4.21",

@@ -90,6 +90,7 @@ const mergeFormItemPropsComputed = computed(() => {
 watch(
 	() => [mergeFormItemPropsComputed.value.validateRules, mergeFormItemPropsComputed.value.prop],
 	(newValue: [T_Jlg_FormItem_Props['validateRules'], T_Jlg_FormItem_Props['prop']]) => {
+		if (!assignRulesFn) return;
 		if (!newValue[0] || newValue[1] === undefined) {
 			assignRulesFn();
 		} else {

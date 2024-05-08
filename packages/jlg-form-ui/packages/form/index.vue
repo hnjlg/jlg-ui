@@ -1,5 +1,4 @@
 <template>
-	{{ furnishMergeFormPropsComputed.rules }}
 	<el-form ref="_ref" v-bind="furnishMergeFormPropsComputed">
 		<slot>
 			<jlg-grid-layout v-bind="props.gridLayoutProps">

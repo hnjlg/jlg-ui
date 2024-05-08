@@ -34,11 +34,11 @@ importers:
         specifier: ^2.7.0
         version: 2.7.0(vue@3.4.23(typescript@5.4.5))
       jlg-form-ui:
-        specifier: workspace:^0.0.12
-        version: link:../jlg-form-ui
+        specifier: ^0.0.14
+        version: 0.0.14(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21)(typescript@5.4.5)
       jlg-ui:
-        specifier: workspace:^0.0.1
-        version: link:../jlg-ui
+        specifier: ^0.0.1
+        version: 0.0.1(typescript@5.4.5)
       md-editor-v3:
         specifier: ^4.13.2
         version: 4.13.3(@codemirror/view@6.26.3)(@lezer/common@1.2.1)(vue@3.4.23(typescript@5.4.5))
@@ -161,8 +161,8 @@ importers:
         specifier: ^2.7.0
         version: 2.7.0(vue@3.4.23(typescript@5.4.5))
       jlg-ui:
-        specifier: workspace:^0.0.1
-        version: link:../jlg-ui
+        specifier: ^0.0.2
+        version: 0.0.2(typescript@5.4.5)
       lodash-unified:
         specifier: ^1.0.3
         version: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21)
@@ -2249,6 +2249,15 @@ packages:
 
   jju@1.4.0:
     resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==}
+
+  jlg-form-ui@0.0.14:
+    resolution: {integrity: sha512-B5iKcCuxyDHLsvDn1bFNFz76Z/B15MUEycat6lnpybRGQ6o6zrGkS8JB4p3YC3l4k5Yezj9VnT5FpH9xLbaKCQ==}
+
+  jlg-ui@0.0.1:
+    resolution: {integrity: sha512-I2YWcHcDFzqm2Wt89GgiUg0lrz4jex6op+htX69h+1IoT4fDHTOJdXd/fAS3vnSjdKMsEPbmk0oFuIH9Dlkl9g==}
+
+  jlg-ui@0.0.2:
+    resolution: {integrity: sha512-is/0DNYGLyFK+DkXoGxa45GyJ3VI44M15nJAt/L/95GTnhTqDi8iiYeDTfoY6TQneqf4Mrp4pm/M9UNSxSGxXw==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -6004,6 +6013,39 @@ snapshots:
   jiti@1.21.0: {}
 
   jju@1.4.0: {}
+
+  jlg-form-ui@0.0.14(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21)(typescript@5.4.5):
+    dependencies:
+      '@element-plus/hooks': 0.0.5(vue@3.4.23(typescript@5.4.5))
+      '@element-plus/icons-vue': 2.3.1(vue@3.4.23(typescript@5.4.5))
+      '@element-plus/utils': 0.0.5(vue@3.4.23(typescript@5.4.5))
+      async-validator: 4.2.5
+      element-plus: 2.7.0(vue@3.4.23(typescript@5.4.5))
+      jlg-ui: 0.0.1(typescript@5.4.5)
+      lodash-unified: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21)
+      vue: 3.4.23(typescript@5.4.5)
+    transitivePeerDependencies:
+      - '@types/lodash-es'
+      - '@vue/composition-api'
+      - lodash
+      - lodash-es
+      - typescript
+
+  jlg-ui@0.0.1(typescript@5.4.5):
+    dependencies:
+      element-plus: 2.7.0(vue@3.4.23(typescript@5.4.5))
+      vue: 3.4.23(typescript@5.4.5)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - typescript
+
+  jlg-ui@0.0.2(typescript@5.4.5):
+    dependencies:
+      element-plus: 2.7.0(vue@3.4.23(typescript@5.4.5))
+      vue: 3.4.23(typescript@5.4.5)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - typescript
 
   js-tokens@4.0.0: {}
 

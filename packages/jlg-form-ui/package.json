@@ -1,7 +1,7 @@
 {
 	"name": "jlg-form-ui",
 	"private": false,
-	"version": "0.0.12",
+	"version": "0.0.20",
 	"type": "commonjs",
 	"scripts": {
 		"dev": "vite",
@@ -15,7 +15,6 @@
 	"files": [
 		"package.json",
 		"README.md",
-		"packages",
 		"dist"
 	],
 	"main": "dist/jlg-form-ui.umd.js",
@@ -43,7 +42,7 @@
 		"@element-plus/utils": "^0.0.5",
 		"async-validator": "^4.2.5",
 		"element-plus": "^2.7.0",
-		"jlg-ui": "workspace:^0.0.1",
+		"jlg-ui": "^0.0.2",
 		"lodash-unified": "^1.0.3",
 		"vue": "^3.4.21"
 	},
