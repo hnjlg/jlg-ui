@@ -31,6 +31,7 @@
 @media (min-width: 1200px) {
   .table-filter__card {
     width:  var(--jlg-large-desktops-per-row); /* 每行四个元素 */
+    --jlg-filter-margin-right: 20px;
   }
 }
 

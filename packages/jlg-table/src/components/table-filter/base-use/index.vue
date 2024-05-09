@@ -1,5 +1,5 @@
 <template>
-	<table-grid ref="jlgGrid" v-bind="gridOptions" style="height: 95vh" v-on="gridEvent" @checkbox-change="checkboxChange">
+	<table-grid ref="jlgGrid" class="table-grid--wrapper" v-bind="gridOptions" v-on="gridEvent" @checkbox-change="checkboxChange">
 		<template #toolbar_buttons>
 			<vxe-button @click="handleAdd">新增</vxe-button>
 			<vxe-button @click="handleDelete">删除</vxe-button>
@@ -8,10 +8,13 @@
 			<vxe-button>导出</vxe-button>
 		</template>
 		<template #toolbar_tools>
-			<el-button type="primary" @click="resetCustomEvent">恢复默认</el-button>
-			<el-button type="primary" @click="handleFlushed">刷新</el-button>
-			<el-button type="primary" @click="handleDisplayCustomization">显示自定义</el-button>
-			<vxe-button @click="zoomEvent">切换表格最大化/还原</vxe-button>
+			<!--			<el-button type="primary" @click="resetCustomEvent">恢复默认</el-button>-->
+			<el-button ref="buttonRef" type="primary" text size="small"
+				>高级筛选<el-icon style="padding-left: 5px"><ArrowDown /></el-icon
+			></el-button>
+			<el-button :icon="Refresh" circle @click="handleFlushed" />
+			<el-button :icon="Setting" circle @click="handleDisplayCustomization"></el-button>
+			<!--			<vxe-button @click="zoomEvent">切换表格最大化/还原</vxe-button>-->
 		</template>
 		<template #default_sleepDuration>
 			<img width="50" src="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt=""
@@ -36,6 +39,7 @@ import { VxeGridListeners, VxeGridPropTypes } from 'vxe-table';
 import { VxeGridDefines } from 'vxe-table/types/grid';
 import { useGetSysConfig, useSaveSysConfig } from '@pac/table-filter/useMock';
 import TableCustomTemplate, { TableCustomTemplateProps } from '../template/tableCustomTemplate/index.vue';
+import { Refresh, Setting, ArrowDown } from '@element-plus/icons-vue';
 
 defineOptions({
 	name: 'TableFilterBaseUse',
@@ -191,6 +195,7 @@ interface ListItem {
 	value: string;
 	label: string;
 }
+const buttonRef = ref();
 
 onMounted(() => {
 	/// 模拟异步请求
@@ -201,6 +206,9 @@ onMounted(() => {
 			{ label: '选项3', value: 3 },
 		];
 	}, 2000);
+
+	// jlg-grid 与 高级筛选按钮绑定
+	jlgGrid.value?.initPopoverButton(buttonRef.value);
 });
 
 interface RowVO {
@@ -306,7 +314,8 @@ const gridOptions = reactive<I_Table_Grid_Props<RowVO>>({
 		},
 		{
 			field: 'dep',
-			title: '应聘部门',
+			title: '应聘部门22',
+			showOverflow: false,
 			width: 120,
 		},
 		{
@@ -469,7 +478,7 @@ const gridOptions = reactive<I_Table_Grid_Props<RowVO>>({
 				title: '时间段',
 				type: 'time',
 				searchType: 0,
-				quickSearch: true,
+				quickSearch: false,
 				isPure: true,
 				props: {
 					isRange: true,
@@ -480,7 +489,7 @@ const gridOptions = reactive<I_Table_Grid_Props<RowVO>>({
 				title: '日期和时间范围',
 				type: 'date',
 				searchType: 0,
-				quickSearch: true,
+				quickSearch: false,
 				isPure: true,
 				props: {
 					type: 'daterange',
@@ -492,7 +501,7 @@ const gridOptions = reactive<I_Table_Grid_Props<RowVO>>({
 				title: '日期',
 				type: 'date',
 				searchType: 0,
-				quickSearch: true,
+				quickSearch: false,
 				isPure: true,
 			},
 			{
@@ -501,7 +510,7 @@ const gridOptions = reactive<I_Table_Grid_Props<RowVO>>({
 				type: 'independentDate',
 				defaultValue: ['2023-09-01', '2023-09-30'],
 				searchType: 0,
-				quickSearch: true,
+				quickSearch: false,
 				isPure: true,
 			},
 			{
@@ -509,7 +518,7 @@ const gridOptions = reactive<I_Table_Grid_Props<RowVO>>({
 				title: '树形下拉',
 				type: 'treeSelect',
 				searchType: 0,
-				quickSearch: true,
+				quickSearch: false,
 				isPure: true,
 				props: {
 					data: data,
@@ -557,9 +566,9 @@ function handleFlushed() {
 	jlgGrid.value?.refresh(false);
 }
 
-function resetCustomEvent() {
-	jlgGrid.value?.resetCustomEvent();
-}
+// function resetCustomEvent() {
+// 	jlgGrid.value?.resetCustomEvent();
+// }
 
 // 新增
 function handleAdd() {
@@ -585,12 +594,12 @@ function handleDelete() {
 function handleDelete2() {
 	jlgGrid.value?.commitProxy('delete', true);
 }
-const zoomEvent = () => {
-	const $grid = jlgGrid.value?.xGrid;
-	if ($grid) {
-		$grid.zoom();
-	}
-};
+// const zoomEvent = () => {
+// 	const $grid = jlgGrid.value?.xGrid;
+// 	if ($grid) {
+// 		$grid.zoom();
+// 	}
+// };
 
 function checkboxChange(data: VxeGridDefines.CheckboxChangeEventParams) {
 	console.log('checkboxChange', data.checked);
@@ -601,7 +610,7 @@ function handleDisplayCustomization() {
 	console.log(collectColumn);
 	if (jlgGrid.value?.renderCustomTemplate) {
 		jlgGrid.value.renderCustomTemplate<TableCustomTemplateProps>(TableCustomTemplate, {
-			xGrid: jlgGrid.value.reactData.$grid,
+			jlgGrid: jlgGrid.value,
 			beforeDestroy: () => {
 				console.log('销毁前销毁前销毁前销毁前');
 			},
@@ -610,4 +619,9 @@ function handleDisplayCustomization() {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.table-grid--wrapper {
+	width: 100%;
+	height: calc(100vh - 120px);
+}
+</style>

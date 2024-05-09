@@ -1,41 +1,53 @@
 <template>
 	<div class="jlg-table-base vxe-table--render-default">
 		<div ref="customTemplateRef" class="custom-template"></div>
-		<vxe-grid
-			ref="xGrid"
-			v-bind="{ ...props, ...tableCompEvents }"
-			:columns="propsColumns"
-			:proxy-config="computeProxyOpts"
-			@resizable-change="handleResizableChange"
-		>
-			<template #top>
-				<table-filter
-					ref="tableFilterRef"
-					v-bind="props.tableFilterConfig"
-					v-model:items="tableFilterConfig.items"
-					@reset="handleFilterReset"
-					@save="handleFilterSave"
-				></table-filter>
-				<slot name="top"></slot>
-			</template>
-			<template v-for="(_, name) in $slots" #[name]="slotData" :key="name">
-				<slot :name v-bind="slotData || {}"></slot>
-			</template>
-			<template #default_handle_operation="{ row }">
-				<slot name="default_handle_operation" :row="row"></slot>
-			</template>
-		</vxe-grid>
+		<div class="jlg-table-container">
+			<vxe-grid
+				ref="xGrid"
+				v-bind="{ ...props, ...tableCompEvents }"
+				:columns="propsColumns"
+				:proxy-config="computeProxyOpts"
+				:auto-resize="true"
+				:sync-resize="reactData.isFolding"
+				:stripe="customStore.stripe"
+				:size="customStore.size"
+				:align="customStore.align"
+				@resizable-change="handleResizableChange"
+			>
+				<template #top>
+					<div ref="formElemRef" class="jlg-grid--form-wrapper">
+						<table-filter
+							ref="tableFilterRef"
+							v-bind="props.tableFilterConfig"
+							v-model:items="tableFilterConfig.items"
+							:virtual-ref="customVirtualPopoverRef"
+							@reset="handleFilterReset"
+							@save="handleFilterSave"
+							@folding="handleFolding"
+						></table-filter>
+					</div>
+
+					<slot name="top"></slot>
+				</template>
+				<template v-for="(_, name) in $slots" #[name]="slotData" :key="name">
+					<slot :name v-bind="slotData || {}"></slot>
+				</template>
+				<template #default_handle_operation="{ row }">
+					<slot name="default_handle_operation" :row="row"></slot>
+				</template>
+			</vxe-grid>
+		</div>
 	</div>
 </template>
-<script setup lang="ts" generic="T">
+<script setup lang="ts">
 import eachTree from 'xe-utils/eachTree';
 import clone from 'xe-utils/clone';
 import findTree from 'xe-utils/findTree';
 import toArrayTree from 'xe-utils/toArrayTree';
 import findIndexOf from 'xe-utils/findIndexOf';
 import TableFilter from '../table-filter';
-import { I_Table_Grid_Props, T_Msg, T_RenderCustomTemplate } from './type';
-import { computed, nextTick, reactive, useAttrs } from 'vue';
+import { I_Table_Grid_Props, T_Msg, T_RenderCustomTemplate, T_Save_Config_Type } from './type';
+import { computed, nextTick, reactive, Ref, useAttrs } from 'vue';
 import GlobalConfig from '../../lib/useGlobalConfig';
 import { VxeGridEventProps, VxeGridInstance, VxeGridPropTypes, VxeGridDefines, VxeTableDefines } from 'vxe-table';
 import { ElMessage, ElMessageBox } from 'element-plus';
@@ -72,7 +84,7 @@ const fieldList = [
 	'renderSortNumber',
 ];
 
-const props = withDefaults(defineProps<I_Table_Grid_Props<T>>(), {
+const props = withDefaults(defineProps<I_Table_Grid_Props>(), {
 	/** 基本属性 */
 	// 表格的最小高度
 	minHeight: () => GlobalConfig.table.minHeight,
@@ -116,18 +128,50 @@ const emit = defineEmits<{
 	resizableChange: [value: VxeGridDefines.ResizableChangeEventParams];
 }>();
 
-const xGrid = ref<VxeGridInstance<T>>();
+const xGrid = ref<VxeGridInstance>();
 const customTemplateRef = ref<HTMLElement>();
+const formElemRef = ref<HTMLElement>();
 const tableFilterRef = ref<InstanceType<typeof TableFilter>>();
 
+const customVirtualPopoverRef = ref<HTMLElement>();
+
+const initPopoverButton = (popoverRef: HTMLElement | Ref<HTMLElement>) => {
+	customVirtualPopoverRef.value = unref(popoverRef);
+	const button = customVirtualPopoverRef.value?.ref || customVirtualPopoverRef.value;
+	if (!button) return;
+	button.removeEventListener('click', tableFilterRef.value.handleQuickSearch);
+	button.addEventListener('click', tableFilterRef.value.handleQuickSearch);
+	return nextTick();
+};
+const onClickOutside = () => {
+	unref(tableFilterRef).onClickOutside();
+};
+
 const tableFilterConfig = defineModel<I_Table_Filter_Props>('tableFilterConfig');
+const rawTableFilterConfig = clone(tableFilterConfig.value, true);
+const getTableFilterConfig = (deep: boolean) => {
+	return clone(tableFilterConfig.value, deep);
+};
 
 const reactData = reactive<Record<string, any>>({});
 
 // 用于存储表格自定义列的一些状态
 const customStore = reactive<Record<string, any>>({
-	visible: false,
+	// 是否带有斑马纹
+	stripe: false,
+	// 表格的尺寸
+	size: 'medium',
+	// 所有的列对齐方式
+	align: 'center',
 });
+
+const setTableGlobalConfig = (obj: Record<string, any>) => {
+	Object.keys(obj).forEach((key) => {
+		if (Object.prototype.hasOwnProperty.call(customStore, key)) {
+			customStore[key] = obj[key];
+		}
+	});
+};
 
 const operationColumn = computed<VxeTableDefines.ColumnOptions>(() => {
 	return {
@@ -142,7 +186,7 @@ const operationColumn = computed<VxeTableDefines.ColumnOptions>(() => {
 });
 
 const propsColumns = computed(() => {
-	const columns = [...props.columns];
+	const columns = clone(props.columns, true);
 	// 如果存在操作列配置
 	if (props.operationConfig) {
 		columns.push(operationColumn.value);
@@ -150,7 +194,7 @@ const propsColumns = computed(() => {
 	return columns;
 });
 // 保存原始列配置, 用于恢复
-let rawColumns = clone<VxeGridPropTypes.Columns>(propsColumns.value, true);
+const rawColumns = clone<VxeGridPropTypes.Columns>(propsColumns.value, true);
 //  当前是否存在分组列
 const isColgroup = computed(() => {
 	return rawColumns.some((item) => item.children?.length);
@@ -177,13 +221,14 @@ const beforeQuery = async (args) => {
 	const getSysConfig = props.proxyConfig?.getSysConfig ? props.proxyConfig.getSysConfig : GlobalConfig.table.proxyConfig.getSysConfig;
 	if (args.isInited && typeof getSysConfig == 'function') {
 		console.time('loadColumn');
-		const { searchData = [], columns = [] } = await getSysConfig();
+		const { searchData = [], columns = [], globalConfig = {} } = await getSysConfig();
+		setTableGlobalConfig(globalConfig);
 		if (columns.length > 0) {
 			eachTree(columns, (column) => {
 				columnResizeWidthMap.set(column.id, column.resizeWidth);
 			});
 			const _columns = mergedList(flattenArray(propsColumns.value, 'field'), flattenArray(columns, 'field'), fieldList, 'field', 'renderSortNumber');
-			rawColumns = clone<VxeGridPropTypes.Columns>(_columns, true);
+			// rawColumns = clone<VxeGridPropTypes.Columns>(_columns, true);
 			await xGrid.value?.loadColumn(_columns);
 			console.timeEnd('loadColumn');
 		}
@@ -219,7 +264,7 @@ const beforeQuery = async (args) => {
 	return args.options(args);
 };
 
-const defaultProxyConfig: VxeGridPropTypes.ProxyConfig<T> = {
+const defaultProxyConfig: VxeGridPropTypes.ProxyConfig = {
 	beforeQuery,
 	beforeColumn,
 	message: false,
@@ -229,6 +274,11 @@ const defaultProxyConfig: VxeGridPropTypes.ProxyConfig<T> = {
 const computeProxyOpts = computed(() => {
 	return Object.assign({}, GlobalConfig.table.proxyConfig, props.proxyConfig, defaultProxyConfig) as VxeGridPropTypes.ProxyConfig;
 });
+
+// 获取表单元素的宽度
+function getFormElementWidth() {
+	return formElemRef.value.offsetWidth || 0;
+}
 
 function commitProxy(code: string, msg: T_Msg = true, ...args: any[]) {
 	switch (code) {
@@ -281,7 +331,7 @@ function flattenArray(arr: any[], key: string, parentId = null) {
  * @param  orderByKey 排序字段
  * @returns 合并后的列
  * */
-function mergedList<T>(localList: T[], serverList: T[], fieldList: (keyof T)[], key: string, orderByKey = '') {
+function mergedList<D>(localList: D[], serverList: D[], fieldList: (keyof D)[], key: string, orderByKey = '') {
 	// 创建一个map，用于快速查找list2中的列
 	const serverMap = new Map(serverList.map((item) => [item[key], item]));
 	const result = localList.map((item1) => {
@@ -339,6 +389,7 @@ const columnDrop = () => {
 	headerRows.forEach((headerRow) => {
 		sortable = Sortable.create(headerRow, {
 			handle: '.vxe-header--column',
+			animation: 150,
 			onStart() {
 				const thElements = headerRow.querySelectorAll('.vxe-header--column');
 				oldColids = Array.from(thElements).map((th) => (th as HTMLElement).getAttribute('colid'));
@@ -387,7 +438,7 @@ const columnDrop = () => {
 				const currRow = items.splice(oldColumnIndex, 1)[0];
 				items.splice(newColumnIndex, 0, currRow);
 				$grid.loadColumn(collectColumn).then(() => {
-					if (storageConfig.value.autoStorage && storageConfig.value.enabled) saveConfig();
+					if (storageConfig.value.autoStorage && storageConfig.value.enabled) saveConfig('sortable');
 				});
 			},
 		});
@@ -428,7 +479,7 @@ const columnDrop2 = () => {
 			const currRow = fullColumn.splice(oldColumnIndex, 1)[0];
 			fullColumn.splice(newColumnIndex, 0, currRow);
 			$grid.loadColumn(fullColumn).then(() => {
-				if (storageConfig.value.autoStorage && storageConfig.value.enabled) saveConfig();
+				if (storageConfig.value.autoStorage && storageConfig.value.enabled) saveConfig('sortable');
 			});
 		},
 	});
@@ -459,14 +510,18 @@ const tableCompEvents: VxeGridEventProps = Object.keys(attrs).reduce((prev, key)
 	return prev;
 }, {});
 // 继承表格的events
-const handleResizableChange = (params: VxeGridDefines.ResizableChangeEventParams) => {
+const handleResizableChange = (params: any) => {
 	try {
-		if (storageConfig.value?.autoStorage === true) saveConfig();
+		if (storageConfig.value?.autoStorage === true) saveConfig('resizable');
 		emit('resizableChange', params);
 	} catch (error) {
 		console.error('Error in handleResizableChange:', error);
 	}
 };
+
+function handleFolding(bool: boolean) {
+	reactData.isFolding = bool;
+}
 
 function handleFilterSave() {
 	commitProxy('query');
@@ -477,7 +532,7 @@ function handleFilterReset() {
 }
 
 // 保存配置到服务端
-function saveConfig() {
+function saveConfig(type: T_Save_Config_Type = 'customize') {
 	const _saveSysConfig = props.proxyConfig?.saveSysConfig ? props.proxyConfig.saveSysConfig : GlobalConfig.table.proxyConfig.saveSysConfig;
 	if (typeof _saveSysConfig == 'function' && storageConfig.value.enabled) {
 		const { collectColumn } = xGrid.value.getTableColumn();
@@ -492,7 +547,7 @@ function saveConfig() {
 			}
 		});
 
-		_saveSysConfig(columns, tableFilterConfig.value.items);
+		_saveSysConfig(columns, tableFilterConfig.value.items, customStore, type);
 	}
 }
 
@@ -505,18 +560,35 @@ function refresh(refreshToFirstPage = false) {
 	}
 }
 
+// 设置表单（筛选）配置
+function setTableFilterConfig(config: I_Table_Filter_Props) {
+	tableFilterConfig.value = clone(config, true);
+}
+
 //  重置表格列配置
 function resetCustomEvent() {
-	console.log(reactData.$grid.reactData.tableLoading);
-	// reactData.$grid.reactData.tableLoading = true;
-	return new Promise<void>((resolve) => {
-		customStore.visible = false;
-		// reactData.$grid.reactData.tableLoading = false;
-		xGrid.value.loadColumn(rawColumns).then(() => {
-			resolve();
-			if (storageConfig.value.autoStorage && storageConfig.value.enabled) saveConfig();
-		});
+	// 重置表单配置
+	tableFilterConfig.value = clone(rawTableFilterConfig, true);
+	// 重置表格全局配置
+	setTableGlobalConfig({
+		// 是否带有斑马纹
+		stripe: false,
+		// 表格的尺寸
+		size: 'medium',
+		// 所有的列对齐方式
+		align: 'center',
 	});
+	return xGrid.value.loadColumn(rawColumns);
+}
+
+// 加载列配置，如果有操作列配置，自动插入操作列
+function saveCustomEvent(columns: (VxeTableDefines.ColumnOptions<any> | VxeTableDefines.ColumnInfo<any>)[]) {
+	const _columns = clone(columns, true);
+	// 如果存在操作列配置
+	if (props.operationConfig) {
+		_columns.push(operationColumn.value);
+	}
+	return xGrid.value.loadColumn(_columns);
 }
 
 const renderCustomTemplate: T_RenderCustomTemplate = (customComponent, props) => {
@@ -526,13 +598,27 @@ const renderCustomTemplate: T_RenderCustomTemplate = (customComponent, props) =>
 defineExpose({
 	xGrid,
 	reactData,
+	customStore,
 	commitProxy,
 	refresh,
 	resetCustomEvent,
+	saveCustomEvent,
 	renderCustomTemplate,
+	saveConfig,
+	getTableFilterConfig,
+	getFormElementWidth,
+	setTableGlobalConfig,
+	setTableFilterConfig,
+	initPopoverButton,
+	onClickOutside,
 });
 </script>
 <style lang="scss">
+.jlg-table-base {
+	.jlg-table-container {
+		height: 100%;
+	}
+}
 .jlg-table-base .vxe-header--row .vxe-header--column.sortable-ghost,
 .jlg-table-base .vxe-header--row .vxe-header--column.sortable-chosen {
 	background-color: #dfecfb;

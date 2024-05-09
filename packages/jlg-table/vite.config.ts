@@ -7,7 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import path from 'path';
-import dts from 'vite-plugin-dts';
+// import dts from 'vite-plugin-dts';
 import svgLoader from 'vite-svg-loader';
 
 // https://vitejs.dev/config/
@@ -27,10 +27,10 @@ export default defineConfig({
 		eslintPlugin({
 			include: ['src/**/*.ts', 'src/**/*.vue', 'src/*.ts', 'src/*.vue'],
 		}),
-		dts({
-			// 读取tsconfig.json include字段
-			tsconfigPath: 'tsconfig.node.json',
-		}),
+		// dts({
+		// 	// 读取tsconfig.json include字段
+		// 	tsconfigPath: 'tsconfig.node.json',
+		// }),
 		svgLoader(),
 	],
 	build: {

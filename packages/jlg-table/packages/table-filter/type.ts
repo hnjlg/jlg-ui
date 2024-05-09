@@ -46,5 +46,9 @@ export declare interface I_Table_Filter_Props {
 	folding?: boolean;
 	// 提交前之前的钩子，参数为表单数据和筛选项配置。可用于对表单数据进一步处理
 	beforeSave?: (formData: Record<string, any>, filterConfig: I_Table_Filter_Item[]) => Record<string, any>;
+	// 是否禁用所有组件， 如果设置为 true, 它将覆盖内部组件的 disabled 属性
+	disabled?: boolean;
+	// 标识虚拟触发时的触发元素
+	virtualRef?: HTMLElement;
 	items: I_Table_Filter_Item[];
 }

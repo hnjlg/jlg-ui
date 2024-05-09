@@ -1,6 +1,6 @@
 <template>
 	<div class="jlg-filter-wrap filter-text">
-		<div v-show="!props.item.quickSearch" class="jlg-filter-label">{{ props.item.title }}</div>
+		<div v-show="props.showLabel" class="jlg-filter-label">{{ props.item.title }}</div>
 		<div class="jlg-filter-content" :class="{ 'is-search-type': isShowSelect }">
 			<el-input
 				v-model.trim="modelValue"
@@ -28,7 +28,9 @@ defineOptions({
 	name: 'FilterText',
 });
 const modelValue = defineModel<string>({ required: true });
-const props = withDefaults(defineProps<{ item: I_Table_Filter_Item }>(), {});
+const props = withDefaults(defineProps<{ item: I_Table_Filter_Item; showLabel: boolean }>(), {
+	showLabel: false,
+});
 const searchType = defineModel<number>('searchType', { required: true, default: 0 });
 const isShowSelect = computed(() => props.item.isPure !== true && props.item.quickSearch !== true);
 const isFocus = ref(false);

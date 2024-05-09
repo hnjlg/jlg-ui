@@ -1,12 +1,10 @@
 import { App } from 'vue';
 import './theme.scss';
-import JlgMenu from './menu'; // 引入封装好的组件
-import JlgGridLayout from './grid-layout';
-import JlgGridCell from './grid-cell';
+import JlgTable from './table-base/index.vue'; // 引入封装好的组件
 
-export { JlgMenu, JlgGridLayout, JlgGridCell }; //实现按需引入*
+export { JlgTable }; //实现按需引入*
 
-const components = [JlgMenu, JlgGridLayout, JlgGridCell]; // 将来如果有其它组件,都可以写到这个数组里
+const components = [JlgTable]; // 将来如果有其它组件,都可以写到这个数组里
 
 const install = function (app: App<Element>) {
 	components.forEach((component) => {

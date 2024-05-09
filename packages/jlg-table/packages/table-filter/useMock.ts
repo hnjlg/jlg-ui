@@ -22,16 +22,18 @@ export function useGetSysConfig() {
 }
 
 // 模拟保持配置到后端
-export function useSaveSysConfig(columns: VxeTableDefines.ColumnInfo, searchData: Record<string, any>) {
+export function useSaveSysConfig(columns: VxeTableDefines.ColumnInfo, searchData: Record<string, any>, globalConfig = {}, type: string) {
 	// 将配置保存到localStorage
 	const config = {
 		columns,
 		searchData,
+		globalConfig,
 	};
 	localStorage.setItem('sysConfig', JSON.stringify(config));
 
 	setTimeout(() => {
 		console.log('columns', columns);
 		console.log('searchData', searchData);
+		console.log('type', type);
 	}, 200);
 }

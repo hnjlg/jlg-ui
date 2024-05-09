@@ -1,12 +1,12 @@
 import { I_Table_Filter_Props } from '../packages/table-filter/type';
-import { I_Table_Grid_Props } from '../packages/table-base/type';
+// import { I_Table_Grid_Props } from '../packages/table-base/type';
 
 export type T_Global_Config_Props = {
 	// 表格筛选器默认配置
 	tableFilter: I_Table_Filter_Props;
 	datePickerFormat: string;
 	datePickerValueFormat: string;
-	table: I_Table_Grid_Props;
+	table: any;
 };
 
 const GlobalConfig: T_Global_Config_Props = {

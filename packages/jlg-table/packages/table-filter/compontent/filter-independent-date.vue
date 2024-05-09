@@ -1,6 +1,6 @@
 <template>
 	<div class="jlg-filter-wrap filter-independent-date-picker">
-		<div v-show="!props.item.quickSearch" class="jlg-filter-label">{{ props.item.title }}</div>
+		<div v-show="props.showLabel" class="jlg-filter-label">{{ props.item.title }}</div>
 		<div class="jlg-filter-content">
 			<div class="jlg-filter-date__wrapper" :class="{ 'is-focus': isFocus }">
 				<el-date-picker
@@ -39,7 +39,9 @@ defineOptions({
 });
 type ModelValueType = Array<string | Date | null>;
 const modelValue = defineModel<ModelValueType>({ required: true });
-const props = withDefaults(defineProps<{ item: I_Table_Filter_Item }>(), {});
+const props = withDefaults(defineProps<{ item: I_Table_Filter_Item; showLabel: boolean }>(), {
+	showLabel: false,
+});
 defineModel<number>('searchType', { required: true, default: 0 });
 
 const startTime = ref<string | Date>('');

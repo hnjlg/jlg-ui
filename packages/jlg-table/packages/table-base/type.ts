@@ -1,7 +1,7 @@
 import { VxeGridInstance, VxeGridProps, VxeToolbarPropTypes } from 'vxe-table';
 import { I_Table_Filter_Props } from '../table-filter/type';
-import { VxeTableDataRow } from 'vxe-table/types/table';
-import { VNodeTypes } from 'vue';
+import { VxeTableDataRow, VxeTableDefines } from 'vxe-table/types/table';
+import { Ref, VNodeTypes } from 'vue';
 // import { ComponentPublicInstance } from 'vue';
 
 export type T_Msg = boolean | (() => boolean) | Promise<boolean>;
@@ -9,14 +9,24 @@ type T_Destroy = {
 	onDestroy: () => void;
 };
 export type T_RenderCustomTemplate = <P = Record<string, any>>(customComponent: VNodeTypes, props: P) => T_Destroy;
+export type T_Save_Config_Type = 'resizable' | 'sortable' | 'reset' | ' save' | 'customize';
 
 export type JlgGridInstance<T = any> = {
 	xGrid: VxeGridInstance<T>;
 	reactData: Record<string, any>;
+	customStore: Record<string, any>;
 	commitProxy: (code: string | VxeToolbarPropTypes.ButtonConfig, msg: T_Msg, ...args: any[]) => Promise<any>;
 	refresh: (refreshToFirstPage: boolean) => void;
 	resetCustomEvent: () => Promise<void>;
+	saveCustomEvent: (columns: (VxeTableDefines.ColumnOptions<any> | VxeTableDefines.ColumnInfo<any>)[]) => Promise<any>;
 	renderCustomTemplate: T_RenderCustomTemplate;
+	saveConfig: (type?: T_Save_Config_Type) => void;
+	getTableFilterConfig: (deep: boolean) => I_Table_Filter_Props;
+	getFormElementWidth: () => number;
+	setTableGlobalConfig: (data: Record<string, any>) => void;
+	setTableFilterConfig: (data: I_Table_Filter_Props) => void;
+	initPopoverButton: (popoverRef: HTMLElement | Ref<HTMLElement>) => Promise<void>;
+	onClickOutside: () => void;
 };
 
 export declare interface I_Table_Grid_Props<D = VxeTableDataRow> extends Omit<VxeGridProps<D>, 'formConfig' | 'filterConfig'> {
