@@ -1,7 +1,7 @@
 import { ElTooltipContentProps, RateProps } from 'element-plus';
 
 export declare type T_Jlg_Rate_Props = {
-    toolTipProps?: ElTooltipContentProps;
+    tooltipProps?: ElTooltipContentProps;
     gatherProps?: object;
 } & RateProps;
 export declare interface I_Jlg_Rate_Emits {

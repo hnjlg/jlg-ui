@@ -10,7 +10,7 @@
 			"vue-components": [
 				{
 					"name": "jlg-date-picker",
-					"source": { "symbol": "ElDatePicker" },
+					"source": { "symbol": "JlgDatePicker" },
 					"description": "Use Date Picker for date input.",
 					"doc-url": "https://element-plus.org/en-US/component/date-picker.html#datepicker",
 					"props": [
@@ -204,6 +204,18 @@
 							"description": "clear return value, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
 							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
 							"type": ["string", "number", "boolean", "Function"]
+						},
+						{
+							"name": "tooltip-props",
+							"description": "",
+							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
+							"type": ["ElTooltipContentProps"]
+						},
+						{
+							"name": "gather-props",
+							"description": "数据采集单独object",
+							"doc-url": "",
+							"type": ["object"]
 						}
 					],
 					"slots": [
@@ -251,7 +263,7 @@
 				},
 				{
 					"name": "jlg-form",
-					"source": { "symbol": "ElForm" },
+					"source": { "symbol": "JlgForm" },
 					"description": "Form consists of `input`, `radio`, `select`, `checkbox` and so on. With form, you can collect, verify and submit data.",
 					"doc-url": "https://element-plus.org/en-US/component/form.html#form",
 					"props": [
@@ -278,8 +290,8 @@
 							"name": "label-position",
 							"description": "Position of label. If set to `'left'` or `'right'`, `label-width` prop is also required.",
 							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["'left' | 'right' | 'top'"],
-							"default": "right"
+							"type": ["E_JlgForm_LabelPosition"],
+							"default": "left"
 						},
 						{
 							"name": "label-width",
@@ -307,7 +319,7 @@
 							"description": "Position of asterisk.",
 							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
 							"type": ["'left' | 'right'"],
-							"default": "left"
+							"default": "E_JlgForm_LabelPosition['左对齐']"
 						},
 						{
 							"name": "show-message",
@@ -362,6 +374,30 @@
 							"description": "When validation fails, it scrolls to the first error item based on the scrollIntoView option. [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView).",
 							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
 							"type": ["Record<string, any>", "boolean"]
+						},
+						{
+							"name": "model-value",
+							"description": "json渲染form绑定的formData数据源",
+							"doc-url": "",
+							"type": ["object"]
+						},
+						{
+							"name": "form-json",
+							"description": "json渲染表单各项",
+							"doc-url": "",
+							"type": ["T_JlgForm_FormJsonItem"]
+						},
+						{
+							"name": "grid-layout-props",
+							"description": "布局组件props",
+							"doc-url": "",
+							"type": ["I_Grid_Layout_Props"]
+						},
+						{
+							"name": "gather-props",
+							"description": "数据采集单独object",
+							"doc-url": "",
+							"type": ["object"]
 						}
 					],
 					"slots": [
@@ -383,12 +419,12 @@
 				},
 				{
 					"name": "jlg-form-item",
-					"source": { "symbol": "ElFormItem" },
+					"source": { "symbol": "JlgFormItem" },
 					"doc-url": "https://element-plus.org/en-US/component/form.html#formitem",
 					"props": [
 						{
 							"name": "prop",
-							"description": "A key of `model`. It could be a path of the property (e.g `a.b.0` or `['a', 'b', '0']`). In the use of `validate` and `resetFields` method, the attribute is required.",
+							"description": "仅支持string，多层级对象用a.b格式",
 							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
 							"type": ["string", "string&#91;&#93;"]
 						},
@@ -454,6 +490,12 @@
 							"description": "Validation state of formItem.",
 							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
 							"type": ["'' | 'error' | 'validating' | 'success'"]
+						},
+						{
+							"name": "validate-rules",
+							"description": "内置校验规则参数",
+							"doc-url": "",
+							"type": ["T_FormValidatorRulesOptionRecord"]
 						}
 					],
 					"slots": [
@@ -478,7 +520,7 @@
 				},
 				{
 					"name": "jlg-input-number",
-					"source": { "symbol": "ElInputNumber" },
+					"source": { "symbol": "JlgInputNumber" },
 					"description": "Input numerical values with a customizable range.",
 					"doc-url": "https://element-plus.org/en-US/component/input-number.html#input-number",
 					"props": [
@@ -598,6 +640,18 @@
 							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
 							"type": ["boolean"],
 							"default": "true"
+						},
+						{
+							"name": "tooltip-props",
+							"description": "",
+							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
+							"type": ["ElTooltipContentProps"]
+						},
+						{
+							"name": "gather-props",
+							"description": "数据采集单独object",
+							"doc-url": "",
+							"type": ["object"]
 						}
 					],
 					"slots": [
@@ -634,7 +688,7 @@
 				},
 				{
 					"name": "jlg-input",
-					"source": { "symbol": "ElInput" },
+					"source": { "symbol": "JlgInput" },
 					"description": "Input data using mouse or keyboard.",
 					"doc-url": "https://element-plus.org/en-US/component/input.html#input",
 					"props": [
@@ -831,6 +885,18 @@
 								"string[]"
 							],
 							"default": "{}"
+						},
+						{
+							"name": "tooltip-props",
+							"description": "",
+							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
+							"type": ["ElTooltipContentProps"]
+						},
+						{
+							"name": "gather-props",
+							"description": "数据采集单独object",
+							"doc-url": "",
+							"type": ["object"]
 						}
 					],
 					"slots": [
@@ -883,7 +949,7 @@
 				},
 				{
 					"name": "jlg-radio",
-					"source": { "symbol": "ElRadio" },
+					"source": { "symbol": "JlgRadio" },
 					"description": ":::warning",
 					"doc-url": "https://element-plus.org/en-US/component/radio.html#radio",
 					"props": [
@@ -930,6 +996,12 @@
 							"description": "native `name` attribute",
 							"doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
 							"type": ["string"]
+						},
+						{
+							"name": "title",
+							"description": "radio默认插槽显示的默认值",
+							"doc-url": "",
+							"type": ["'string'|'number'|'boolean'"]
 						}
 					],
 					"slots": [
@@ -951,7 +1023,7 @@
 				},
 				{
 					"name": "jlg-radio-group",
-					"source": { "symbol": "ElRadioGroup" },
+					"source": { "symbol": "JlgRadioGroup" },
 					"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup",
 					"props": [
 						{
@@ -1018,6 +1090,18 @@
 							"description": "native `id` attribute",
 							"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
 							"type": ["string"]
+						},
+						{
+							"name": "radio-options",
+							"description": "由jlg-option组件的props的数组",
+							"doc-url": "",
+							"type": ["T_Jlg_Radio_Props[]"]
+						},
+						{
+							"name": "gather-props",
+							"description": "数据采集单独object",
+							"doc-url": "",
+							"type": ["object"]
 						}
 					],
 					"slots": [
@@ -1039,7 +1123,7 @@
 				},
 				{
 					"name": "jlg-rate",
-					"source": { "symbol": "ElRate" },
+					"source": { "symbol": "JlgRate" },
 					"description": "Used for rating",
 					"doc-url": "https://element-plus.org/en-US/component/rate.html#rate",
 					"props": [
@@ -1196,6 +1280,18 @@
 							"description": "same as `aria-label` in Rate",
 							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
 							"type": ["string"]
+						},
+						{
+							"name": "tooltip-props",
+							"description": "",
+							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
+							"type": ["ElTooltipContentProps"]
+						},
+						{
+							"name": "gather-props",
+							"description": "数据采集单独object",
+							"doc-url": "",
+							"type": ["object"]
 						}
 					],
 					"js": {
@@ -1210,7 +1306,7 @@
 				},
 				{
 					"name": "jlg-select",
-					"source": { "symbol": "ElSelect" },
+					"source": { "symbol": "JlgSelect" },
 					"description": "When there are plenty of options, use a drop-down menu to display and select desired ones.",
 					"doc-url": "https://element-plus.org/en-US/component/select.html#select",
 					"props": [
@@ -1497,6 +1593,24 @@
 							"description": "clear return value, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
 							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
 							"type": ["string", "number", "boolean", "Function"]
+						},
+						{
+							"name": "tooltip-props",
+							"description": "",
+							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
+							"type": ["ElTooltipContentProps"]
+						},
+						{
+							"name": "gather-props",
+							"description": "数据采集单独object",
+							"doc-url": "",
+							"type": ["object"]
+						},
+						{
+							"name": "option-options",
+							"description": "jlg-option组件的props组成的数组，用来渲染option",
+							"doc-url": "",
+							"type": ["I_Jlg_Option_Props[]"]
 						}
 					],
 					"slots": [
@@ -1569,7 +1683,7 @@
 				},
 				{
 					"name": "jlg-option",
-					"source": { "symbol": "ElOption" },
+					"source": { "symbol": "JlgOption" },
 					"doc-url": "https://element-plus.org/en-US/component/select.html#option",
 					"props": [
 						{
@@ -1601,229 +1715,8 @@
 					]
 				},
 				{
-					"name": "jlg-time-picker",
-					"source": { "symbol": "ElTimePicker" },
-					"description": "Use Time Picker for time input.",
-					"doc-url": "https://element-plus.org/en-US/component/time-picker.html#timepicker",
-					"props": [
-						{
-							"name": "model-value",
-							"description": "binding value, if it is an array, the length should be 2",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["number", "string", "Date", "[Date, Date] | [number, number] | [string, string]"],
-							"default": "''"
-						},
-						{
-							"name": "readonly",
-							"description": "whether TimePicker is read only",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "disabled",
-							"description": "whether TimePicker is disabled",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "editable",
-							"description": "whether the input is editable",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "clearable",
-							"description": "whether to show clear button",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "size",
-							"description": "size of Input",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["'large' | 'default' | 'small'"]
-						},
-						{
-							"name": "placeholder",
-							"description": "placeholder in non-range mode",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["string"],
-							"default": "''"
-						},
-						{
-							"name": "start-placeholder",
-							"description": "placeholder for the start time in range mode",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "end-placeholder",
-							"description": "placeholder for the end time in range mode",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "is-range",
-							"description": "whether to pick a time range",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "arrow-control",
-							"description": "whether to pick time using arrow buttons",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "popper-class",
-							"description": "custom class name for TimePicker's dropdown",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["string"],
-							"default": "''"
-						},
-						{
-							"name": "range-separator",
-							"description": "range separator",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["string"],
-							"default": "'-'"
-						},
-						{
-							"name": "format",
-							"description": "format of the displayed value in the input box",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": [{ "name": "string see", "source": { "symbol": "string see" } }]
-						},
-						{
-							"name": "default-value",
-							"description": "optional, default date of the calendar",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["Date", "[Date, Date]"]
-						},
-						{
-							"name": "value-format",
-							"description": "optional, format of binding value. If not specified, the binding value will be a Date object",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": [{ "name": "string see", "source": { "symbol": "string see" } }]
-						},
-						{
-							"name": "id",
-							"description": "same as `id` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["string", "[string, string]"]
-						},
-						{
-							"name": "name",
-							"description": "same as `name` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["string"],
-							"default": "''"
-						},
-						{
-							"name": "label",
-							"description": "same as `aria-label` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "aria-label",
-							"description": "same as `aria-label` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "prefix-icon",
-							"description": "Custom prefix icon component",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
-							"default": "Clock"
-						},
-						{
-							"name": "clear-icon",
-							"description": "Custom clear icon component",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
-							"default": "CircleClose"
-						},
-						{
-							"name": "disabled-hours",
-							"description": "To specify the array of hours that cannot be selected",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["(role: string, comparingDate?: Dayjs) => number[]"]
-						},
-						{
-							"name": "disabled-minutes",
-							"description": "To specify the array of minutes that cannot be selected",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["(hour: number, role: string, comparingDate?: Dayjs) => number[]"]
-						},
-						{
-							"name": "disabled-seconds",
-							"description": "To specify the array of seconds that cannot be selected",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["(hour: number, minute: number, role: string, comparingDate?: Dayjs) => number[]"]
-						},
-						{
-							"name": "teleported",
-							"description": "whether time-picker dropdown is teleported to the body",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "tabindex",
-							"description": "input tabindex",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["string", "number"],
-							"default": "0"
-						},
-						{
-							"name": "empty-values",
-							"description": "empty values of component, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["array"]
-						},
-						{
-							"name": "value-on-clear",
-							"description": "clear return value, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
-							"doc-url": "https://element-plus.org/en-US/component/time-picker.html#attributes",
-							"type": ["string", "number", "boolean", "Function"]
-						}
-					],
-					"js": {
-						"events": [
-							{
-								"name": "change",
-								"description": "triggers when user confirms the value",
-								"doc-url": "https://element-plus.org/en-US/component/time-picker.html#events"
-							},
-							{
-								"name": "blur",
-								"description": "triggers when Input blurs",
-								"doc-url": "https://element-plus.org/en-US/component/time-picker.html#events"
-							},
-							{
-								"name": "focus",
-								"description": "triggers when Input focuses",
-								"doc-url": "https://element-plus.org/en-US/component/time-picker.html#events"
-							},
-							{
-								"name": "visible-change",
-								"description": "triggers when the TimePicker's dropdown appears/disappears",
-								"doc-url": "https://element-plus.org/en-US/component/time-picker.html#events"
-							}
-						]
-					}
-				},
-				{
 					"name": "jlg-time-select",
-					"source": { "symbol": "ElTimeSelect" },
+					"source": { "symbol": "JlgTimeSelect" },
 					"description": "Use Time Select for time input.",
 					"doc-url": "https://element-plus.org/en-US/component/time-select.html#timeselect",
 					"props": [
@@ -1945,6 +1838,18 @@
 							"description": "clear return value, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
 							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
 							"type": ["string", "number", "boolean", "Function"]
+						},
+						{
+							"name": "tooltip-props",
+							"description": "",
+							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
+							"type": ["ElTooltipContentProps"]
+						},
+						{
+							"name": "gather-props",
+							"description": "数据采集单独object",
+							"doc-url": "",
+							"type": ["object"]
 						}
 					],
 					"js": {
@@ -1969,7 +1874,7 @@
 				},
 				{
 					"name": "jlg-tooltip",
-					"source": { "symbol": "ElTooltip" },
+					"source": { "symbol": "JlgTooltip" },
 					"description": "Display prompt information for mouse hover.",
 					"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
 					"props": [

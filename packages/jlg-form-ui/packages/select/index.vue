@@ -55,7 +55,7 @@ const context: FormItemContext | undefined = inject(formItemContextKey);
 
 const { t } = useLocale();
 
-const toolTipShow = ref(false);
+const tooltipShow = ref(false);
 
 const valueText = ref('');
 
@@ -63,11 +63,11 @@ const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
 			disabled: !mergeSelectPropsComputed.value.disabled,
-			visible: toolTipShow.value,
+			visible: tooltipShow.value,
 			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
-		...(props.toolTipProps ?? {}),
+		...(props.tooltipProps ?? {}),
 	};
 });
 
@@ -115,14 +115,14 @@ const mouseenter = () => {
 	if (!mergeSelectPropsComputed.value.disabled) {
 		return;
 	}
-	toolTipShow.value = true;
+	tooltipShow.value = true;
 };
 
 const mouseleave = () => {
 	if (!mergeSelectPropsComputed.value.disabled) {
 		return;
 	}
-	toolTipShow.value = false;
+	tooltipShow.value = false;
 };
 
 watch(

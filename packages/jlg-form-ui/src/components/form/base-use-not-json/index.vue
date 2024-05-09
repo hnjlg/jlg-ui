@@ -12,7 +12,7 @@
 				>
 					<jlg-input
 						v-model="formData.input"
-						:tool-tip-props="{
+						:tooltip-props="{
 							effect: 'light',
 						}"
 					></jlg-input>

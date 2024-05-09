@@ -12073,7 +12073,7 @@ const b3 = H({
 }), Yr = /* @__PURE__ */ H({
   ...y3,
   props: {
-    toolTipProps: {},
+    tooltipProps: {},
     gatherProps: {},
     id: {},
     size: {},
@@ -12109,7 +12109,7 @@ const b3 = H({
       visible: i.value,
       content: u.value,
       ...ft.tooltip,
-      ...r.toolTipProps ?? {}
+      ...r.tooltipProps ?? {}
     })), p = w(() => ({
       ...ft.input,
       ...r,
@@ -14838,7 +14838,7 @@ const QT = H({
 }), Qr = /* @__PURE__ */ H({
   ...QT,
   props: {
-    toolTipProps: {},
+    tooltipProps: {},
     gatherProps: {},
     id: {},
     step: {},
@@ -14865,7 +14865,7 @@ const QT = H({
       visible: s.value,
       content: i.value,
       ...ft.tooltip,
-      ...n.toolTipProps ?? {}
+      ...n.tooltipProps ?? {}
     })), c = w(() => ({
       ...ft.inputNumber,
       ...n,
@@ -14962,7 +14962,6 @@ const e6 = H({
 }), to = /* @__PURE__ */ H({
   ...t6,
   props: {
-    radioOptions: {},
     size: {},
     modelValue: { type: [String, Number, Boolean] },
     disabled: { type: Boolean },
@@ -14972,6 +14971,7 @@ const e6 = H({
     textColor: {},
     name: {},
     validateEvent: { type: Boolean, default: !0 },
+    radioOptions: {},
     gatherProps: {}
   },
   emits: ["update:modelValue"],
@@ -15036,7 +15036,7 @@ const n6 = H({
 }), no = /* @__PURE__ */ H({
   ...n6,
   props: {
-    toolTipProps: {},
+    tooltipProps: {},
     gatherProps: {},
     modelValue: {},
     id: {},
@@ -15067,7 +15067,7 @@ const n6 = H({
       visible: a.value,
       content: s.value,
       ...ft.tooltip,
-      ...n.toolTipProps ?? {}
+      ...n.tooltipProps ?? {}
     })), u = w(() => ({
       ...ft.rate,
       ...n,
@@ -15139,7 +15139,7 @@ const r6 = H({
 }), oo = /* @__PURE__ */ H({
   ...o6,
   props: {
-    toolTipProps: {},
+    tooltipProps: {},
     optionOptions: {},
     gatherProps: {},
     emptyValues: {},
@@ -15192,7 +15192,7 @@ const r6 = H({
       visible: p.value,
       content: f.value,
       ...ft.tooltip,
-      ...r.toolTipProps ?? {}
+      ...r.tooltipProps ?? {}
     })), g = w(() => ({
       ...ft.select,
       ...r,
@@ -15268,7 +15268,7 @@ const a6 = H({
 }), ao = /* @__PURE__ */ H({
   ...a6,
   props: {
-    toolTipProps: {},
+    tooltipProps: {},
     gatherProps: {},
     type: {},
     emptyValues: {},
@@ -15315,7 +15315,7 @@ const a6 = H({
       visible: i.value,
       content: u.value,
       ...ft.tooltip,
-      ...n.toolTipProps ?? {}
+      ...n.tooltipProps ?? {}
     })), p = w(() => ({
       ...ft.datePicker,
       ...n,
@@ -15360,7 +15360,7 @@ const s6 = H({
 }), so = /* @__PURE__ */ H({
   ...s6,
   props: {
-    toolTipProps: {},
+    tooltipProps: {},
     gatherProps: {},
     emptyValues: {},
     valueOnClear: {},
@@ -15388,7 +15388,7 @@ const s6 = H({
       visible: s.value,
       content: i.value,
       ...ft.tooltip,
-      ...n.toolTipProps ?? {}
+      ...n.tooltipProps ?? {}
     })), c = w(() => ({
       ...ft.timeSelect,
       ...n,

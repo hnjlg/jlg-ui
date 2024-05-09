@@ -141,6 +141,14 @@
 		"type": "event",
 		"description": "triggers when the DatePicker's dropdown appears/disappears\n\n[Docs](https://element-plus.org/en-US/component/date-picker.html#events)"
 	},
+	"jlg-date-picker/tooltip-props": {
+		"type": "ElTooltipContentProps",
+		"description": "[element-plus tooltip组件Props，点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip)"
+	},
+	"jlg-date-picker/gather-props": {
+		"type": "object",
+		"description": "数据采集单独object"
+	},
 	"jlg-form/model": {
 		"type": "Record<string, any>",
 		"description": "Data of form component.\n\n[Docs](https://element-plus.org/en-US/component/form.html#form-attributes)"
@@ -154,9 +162,8 @@
 		"description": "Whether the form is inline., default: false.\n\n[Docs](https://element-plus.org/en-US/component/form.html#form-attributes)"
 	},
 	"jlg-form/label-position": {
-		"type": "'left' | 'right' | 'top'",
-		"options": ["left", "right", "top"],
-		"description": "Position of label. If set to `'left'` or `'right'`, `label-width` prop is also required., default: right.\n\n[Docs](https://element-plus.org/en-US/component/form.html#form-attributes)"
+		"type": "E_JlgForm_LabelPosition",
+		"description": "[Docs](https://element-plus.org/en-US/component/form.html#form-attributes)"
 	},
 	"jlg-form/label-width": {
 		"type": "string | number",
@@ -212,9 +219,25 @@
 		"type": "event",
 		"description": "triggers after a form item is validated\n\n[Docs](https://element-plus.org/en-US/component/form.html#form-events)"
 	},
+	"jlg-form/model-value": {
+		"type": "object",
+		"description": "json渲染form绑定的formData数据源"
+	},
+	"jlg-form/form-json": {
+		"type": "T_JlgForm_FormJsonItem",
+		"description": "json渲染表单各项"
+	},
+	"jlg-form/grid-layout-props": {
+		"type": "I_Grid_Layout_Props",
+		"description": "布局组件props"
+	},
+	"jlg-form/gather-props": {
+		"type": "object",
+		"description": "数据采集单独object"
+	},
 	"jlg-form-item/prop": {
 		"type": "string | string&#91;&#93;",
-		"description": "A key of `model`. It could be a path of the property (e.g `a.b.0` or `['a', 'b', '0']`). In the use of `validate` and `resetFields` method, the attribute is required.\n\n[Docs](https://element-plus.org/en-US/component/form.html#formitem-attributes)"
+		"description": "仅支持string，多层级对象用a.b格式 \n\n[Docs](https://element-plus.org/en-US/component/form.html#formitem-attributes)"
 	},
 	"jlg-form-item/label": {
 		"type": "string",
@@ -257,6 +280,10 @@
 		"type": "'' | 'error' | 'validating' | 'success'",
 		"options": ["", "error", "validating", "success"],
 		"description": "Validation state of formItem.\n\n[Docs](https://element-plus.org/en-US/component/form.html#formitem-attributes)"
+	},
+	"jlg-form-item/validate-rules": {
+		"type": "T_FormValidatorRulesOptionRecord",
+		"description": "内置校验规则参数"
 	},
 	"jlg-input-number/model-value": {
 		"type": "number",
@@ -344,6 +371,14 @@
 	"jlg-input-number/focus": {
 		"type": "event",
 		"description": "triggers when Input focuses\n\n[Docs](https://element-plus.org/en-US/component/input-number.html#events)"
+	},
+	"jlg-input-number/tooltip-props": {
+		"type": "ElTooltipContentProps",
+		"description": "[element-plus tooltip组件Props，点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip)"
+	},
+	"jlg-input-number/gather-props": {
+		"type": "object",
+		"description": "数据采集单独object"
 	},
 	"jlg-input/type": {
 		"type": "'text' | 'textarea' | 'password' | 'button' | 'checkbox' | 'file' | 'number' | 'radio' | ... ",
@@ -479,6 +514,14 @@
 		"type": "event",
 		"description": "triggers when the Input is cleared by clicking the clear button\n\n[Docs](https://element-plus.org/en-US/component/input.html#events)"
 	},
+	"jlg-input/tooltip-props": {
+		"type": "ElTooltipContentProps",
+		"description": "[element-plus tooltip组件Props，点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip)"
+	},
+	"jlg-input/gather-props": {
+		"type": "object",
+		"description": "数据采集单独object"
+	},
 	"jlg-radio/model-value": {
 		"type": "string | number | boolean",
 		"description": "binding value\n\n[Docs](https://element-plus.org/en-US/component/radio.html#radio-attributes)"
@@ -511,6 +554,10 @@
 	"jlg-radio/change": {
 		"type": "event",
 		"description": "triggers when the bound value changes\n\n[Docs](https://element-plus.org/en-US/component/radio.html#radio-events)"
+	},
+	"jlg-radio/title": {
+		"type": "string|number|boolean",
+		"description": "radio默认插槽显示的默认值"
 	},
 	"jlg-radio-group/model-value": {
 		"type": "string | number | boolean",
@@ -555,6 +602,14 @@
 	"jlg-radio-group/change": {
 		"type": "event",
 		"description": "triggers when the bound value changes\n\n[Docs](https://element-plus.org/en-US/component/radio.html#radiogroup-events)"
+	},
+	"jlg-radio-group/radio-options": {
+		"type": "T_Jlg_Radio_Props[]",
+		"description": "由jlg-option组件的props的数组"
+	},
+	"jlg-radio-group/gather-props": {
+		"type": "object",
+		"description": "数据采集单独object"
 	},
 	"jlg-radio-button/value": {
 		"type": "string | number | boolean",
@@ -664,6 +719,14 @@
 	"jlg-rate/change": {
 		"type": "event",
 		"description": "Triggers when rate value is changed\n\n[Docs](https://element-plus.org/en-US/component/rate.html#events)"
+	},
+	"jlg-rate/tooltip-props": {
+		"type": "ElTooltipContentProps",
+		"description": "[element-plus tooltip组件Props，点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip)"
+	},
+	"jlg-rate/gather-props": {
+		"type": "object",
+		"description": "数据采集单独object"
 	},
 	"jlg-select/model-value": {
 		"type": "string | number | boolean | object | array",
@@ -861,6 +924,18 @@
 		"type": "event",
 		"description": "triggers when Input focuses\n\n[Docs](https://element-plus.org/en-US/component/select.html#select-events)"
 	},
+	"jlg-select/tooltip-props": {
+		"type": "ElTooltipContentProps",
+		"description": "[element-plus tooltip组件Props，点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip)"
+	},
+	"jlg-select/gather-props": {
+		"type": "object",
+		"description": "数据采集单独object"
+	},
+	"jlg-select/option-options": {
+		"type": "I_Jlg_Option_Props[]",
+		"description": "jlg-option组件的props组成的数组，用来渲染option"
+	},
 	"jlg-option/value": {
 		"type": "string | number | boolean | object",
 		"description": "value of option\n\n[Docs](https://element-plus.org/en-US/component/select.html#option-attributes)"
@@ -958,6 +1033,14 @@
 	"jlg-time-select/focus": {
 		"type": "event",
 		"description": "triggers when Input focuses\n\n[Docs](https://element-plus.org/en-US/component/time-select.html#events)"
+	},
+	"jlg-time-select/tooltip-props": {
+		"type": "ElTooltipContentProps",
+		"description": "[element-plus tooltip组件Props，点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip)"
+	},
+	"jlg-time-select/gather-props": {
+		"type": "object",
+		"description": "数据采集单独object"
 	},
 	"jlg-tooltip/append-to": {
 		"type": "CSSSelector | HTMLElement",

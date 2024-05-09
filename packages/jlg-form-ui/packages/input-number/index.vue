@@ -35,7 +35,7 @@ const emits = defineEmits<I_Jlg_InputNumber_Emits>();
 
 const slots = useSlots();
 
-const toolTipShow = ref(false);
+const tooltipShow = ref(false);
 
 const valueText = computed(() => String(props.modelValue ?? ''));
 
@@ -43,11 +43,11 @@ const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
 			disabled: !mergeNumberPropsComputed.value.disabled,
-			visible: toolTipShow.value,
+			visible: tooltipShow.value,
 			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
-		...(props.toolTipProps ?? {}),
+		...(props.tooltipProps ?? {}),
 	};
 });
 
@@ -83,14 +83,14 @@ const mouseenter = () => {
 	if (!mergeNumberPropsComputed.value.disabled) {
 		return;
 	}
-	toolTipShow.value = true;
+	tooltipShow.value = true;
 };
 
 const mouseleave = () => {
 	if (!mergeNumberPropsComputed.value.disabled) {
 		return;
 	}
-	toolTipShow.value = false;
+	tooltipShow.value = false;
 };
 </script>
 

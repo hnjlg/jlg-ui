@@ -1,7 +1,6 @@
 import { T_Jlg_Radio_Props } from '../radio/type';
 
 export declare type T_Jlg_RadioGroup_Props = {
-	radioOptions?: T_Jlg_Radio_Props[];
 	size?: '' | 'default' | 'small' | 'large';
 	modelValue?: string | number | boolean;
 	disabled?: boolean;
@@ -11,6 +10,7 @@ export declare type T_Jlg_RadioGroup_Props = {
 	textColor?: string;
 	name?: string;
 	validateEvent?: boolean;
+	radioOptions?: T_Jlg_Radio_Props[];
 	gatherProps?: object;
 };
 

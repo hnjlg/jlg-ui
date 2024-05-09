@@ -4,6 +4,7 @@
         "iconfont",
         "preinstall",
         "stylelint",
+        "subtags",
         "vetur"
     ],
     "editor.formatOnSave": true,

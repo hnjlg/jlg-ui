@@ -35,9 +35,11 @@
 			"focus",
 			"calendar-change",
 			"panel-change",
-			"visible-change"
+			"visible-change",
+			"tooltip-props",
+			"gather-props"
 		],
-		"description": "Use Date Picker for date input.\n\n[Docs](https://element-plus.org/en-US/component/date-picker.html#datepicker)"
+		"description": "追加属性:\n\n tooltip-props?: [element-plus tooltip组件Props,点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip) \n\n gather-props?: 数据采集单独object \n\n [element-plus el-date-picker,点击查看](https://element-plus.org/en-US/component/date-picker.html#datepicker)"
 	},
 	"jlg-form": {
 		"attributes": [
@@ -57,14 +59,31 @@
 			"disabled",
 			"scroll-to-error",
 			"scroll-into-view-options",
-			"validate"
+			"validate",
+			"model-value",
+			"form-json",
+			"grid-layout-props",
+			"gather-props"
 		],
-		"subtags": ["el-form-item"],
-		"description": "Form consists of `input`, `radio`, `select`, `checkbox` and so on. With form, you can collect, verify and submit data.\n\n[Docs](https://element-plus.org/en-US/component/form.html#form)"
+		"subtags": ["jlg-form-item"],
+		"description": "追加属性:\n\n model-value:object,json渲染form绑定的formData数据源\n\n form-json?:T_JlgForm_FormJsonItem[],json渲染表单各项\n\n grid-layout-props?:I_Grid_Layout_Props,布局组件props\n\n gather-props?:object,数据采集单独object\n\n 重置属性:\n\n label-position?:E_JlgForm_LabelPosition,form-item标签布局位置\n\n [element-plus el-form,点击查看](https://element-plus.org/en-US/component/form.html#form)"
 	},
 	"jlg-form-item": {
-		"attributes": ["prop", "label", "label-width", "required", "rules", "error", "show-message", "inline-message", "size", "for", "validate-status"],
-		"description": "[Docs](https://element-plus.org/en-US/component/form.html#formitem)"
+		"attributes": [
+			"prop",
+			"label",
+			"label-width",
+			"required",
+			"rules",
+			"error",
+			"show-message",
+			"inline-message",
+			"size",
+			"for",
+			"validate-status",
+			"validate-rules"
+		],
+		"description": "追加属性:\n\n validate-rules?:T_FormValidatorRulesOptionRecord,内置校验规则参数\n\n 重置属性:\n\n prop?:string,仅支持string，多层级对象用a.b格式\n\n [element-plus el-form-item,点击查看](https://element-plus.org/en-US/component/form.html#formitem)"
 	},
 	"jlg-input-number": {
 		"attributes": [
@@ -88,9 +107,11 @@
 			"validate-event",
 			"change",
 			"blur",
-			"focus"
+			"focus",
+			"tooltip-props",
+			"gather-props"
 		],
-		"description": "Input numerical values with a customizable range.\n\n[Docs](https://element-plus.org/en-US/component/input-number.html#input-number)"
+		"description": "追加属性:\n\n tooltip-props?: [element-plus tooltip组件Props,点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip) \n\n gather-props?: 数据采集单独object \n\n [element-plus el-input-number,点击查看](https://element-plus.org/en-US/component/input-number.html#input-number)"
 	},
 	"jlg-input": {
 		"attributes": [
@@ -128,18 +149,34 @@
 			"focus",
 			"change",
 			"input",
-			"clear"
+			"clear",
+			"tooltip-props",
+			"gather-props"
 		],
-		"description": "Input data using mouse or keyboard.\n\n[Docs](https://element-plus.org/en-US/component/input.html#input)"
+		"description": "追加属性:\n\n tooltip-props?: [element-plus tooltip组件Props,点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip) \n\n gather-props?: 数据采集单独object \n\n [element-plus el-input,点击查看](https://element-plus.org/en-US/component/input.html#input)"
 	},
 	"jlg-radio": {
-		"attributes": ["model-value", "value", "label", "disabled", "border", "size", "name", "change"],
-		"description": ":::warning\n\n[Docs](https://element-plus.org/en-US/component/radio.html#radio)"
+		"attributes": ["model-value", "value", "label", "disabled", "border", "size", "name", "change", "title"],
+		"description": "追加属性:\n\n title?: string|number|boolean radio默认插槽显示的默认值\n\n [element-plus el-radio,点击查看](https://element-plus.org/en-US/component/radio.html#radio)"
 	},
 	"jlg-radio-group": {
-		"attributes": ["model-value", "size", "disabled", "text-color", "fill", "validate-event", "label", "aria-label", "name", "id", "change"],
-		"subtags": ["el-radio", "el-radio-button"],
-		"description": "[Docs](https://element-plus.org/en-US/component/radio.html#radiogroup)"
+		"attributes": [
+			"model-value",
+			"size",
+			"disabled",
+			"text-color",
+			"fill",
+			"validate-event",
+			"label",
+			"aria-label",
+			"name",
+			"id",
+			"change",
+			"radio-options",
+			"gather-props"
+		],
+		"subtags": ["jlg-radio", "jlg-radio-button"],
+		"description": "追加属性:\n\n radio-options?:T_Jlg_Radio_Props[] 由jlg-option组件的props的数组\n\n gather-props?:object 数据采集单独object\n\n [element-plus el-radio-group,点击查看](https://element-plus.org/en-US/component/radio.html#radiogroup)"
 	},
 	"jlg-select": {
 		"attributes": [
@@ -190,52 +227,17 @@
 			"remove-tag",
 			"clear",
 			"blur",
-			"focus"
+			"focus",
+			"tooltip-props",
+			"gather-props",
+			"option-options"
 		],
-		"subtags": ["el-option-group", "el-option"],
-		"description": "When there are plenty of options, use a drop-down menu to display and select desired ones.\n\n[Docs](https://element-plus.org/en-US/component/select.html#select)"
+		"subtags": ["jlg-option-group", "jlg-option"],
+		"description": "追加属性:\n\n tooltip-props?:[element-plus tooltip组件Props,点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip)\n\n gather-props?:object 数据采集单独object\n\n option-options?:I_Jlg_Option_Props[],jlg-option组件的props组成的数组，用来渲染option\n\n [element-plus el-select,点击查看](https://element-plus.org/en-US/component/select.html#select)"
 	},
 	"jlg-option": {
 		"attributes": ["value", "label", "disabled"],
-		"description": "[Docs](https://element-plus.org/en-US/component/select.html#option)"
-	},
-	"jlg-time-picker": {
-		"attributes": [
-			"model-value",
-			"readonly",
-			"disabled",
-			"editable",
-			"clearable",
-			"size",
-			"placeholder",
-			"start-placeholder",
-			"end-placeholder",
-			"is-range",
-			"arrow-control",
-			"popper-class",
-			"range-separator",
-			"format",
-			"default-value",
-			"value-format",
-			"id",
-			"name",
-			"label",
-			"aria-label",
-			"prefix-icon",
-			"clear-icon",
-			"disabled-hours",
-			"disabled-minutes",
-			"disabled-seconds",
-			"teleported",
-			"tabindex",
-			"empty-values",
-			"value-on-clear",
-			"change",
-			"blur",
-			"focus",
-			"visible-change"
-		],
-		"description": "Use Time Picker for time input.\n\n[Docs](https://element-plus.org/en-US/component/time-picker.html#timepicker)"
+		"description": "[element-plus el-option,点击查看](https://element-plus.org/en-US/component/select.html#option)"
 	},
 	"jlg-time-select": {
 		"attributes": [
@@ -259,9 +261,11 @@
 			"value-on-clear",
 			"change",
 			"blur",
-			"focus"
+			"focus",
+			"tooltip-props",
+			"gather-props"
 		],
-		"description": "Use Time Select for time input.\n\n[Docs](https://element-plus.org/en-US/component/time-select.html#timeselect)"
+		"description": "追加属性:\n\n tooltip-props?:[element-plus tooltip组件Props,点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip)\n\n gather-props?:object 数据采集单独object\n\n [element-plus el-time-select,点击查看](https://element-plus.org/en-US/component/time-select.html#timeselect)"
 	},
 	"jlg-tooltip": {
 		"attributes": [
@@ -290,6 +294,35 @@
 			"persistent",
 			"aria-label"
 		],
-		"description": "Display prompt information for mouse hover.\n\n[Docs](https://element-plus.org/en-US/component/tooltip.html#tooltip)"
+		"description": "[element-plus el-tooltip,点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip)"
+	},
+	"jlg-rate": {
+		"attributes": [
+			"model-value",
+			"max",
+			"size",
+			"disabled",
+			"allow-half",
+			"low-threshold",
+			"high-threshold",
+			"colors",
+			"void-color",
+			"disabled-void-color",
+			"icons",
+			"void-icon",
+			"disabled-void-icon",
+			"show-text",
+			"show-score",
+			"text-color",
+			"texts",
+			"score-template",
+			"clearable",
+			"id",
+			"label",
+			"change",
+			"tooltip-props",
+			"gather-props"
+		],
+		"description": "追加属性:\n\n tooltip-props?: [element-plus tooltip组件Props,点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip) \n\n gather-props?: 数据采集单独object \n\n [element-plus el-rate,点击查看](https://element-plus.org/en-US/component/rate.html#rate)"
 	}
 }

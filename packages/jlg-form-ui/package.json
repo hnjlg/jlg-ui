@@ -1,7 +1,7 @@
 {
 	"name": "jlg-form-ui",
 	"private": false,
-	"version": "0.0.27",
+	"version": "0.0.30",
 	"type": "commonjs",
 	"scripts": {
 		"dev": "vite",
@@ -31,7 +31,8 @@
 			"require": "./dist/jlg-form-ui.umd.js",
 			"types": "./dist/packages/index.d.ts"
 		},
-		"./dist/style.css": "./dist/style.css"
+		"./dist/style.css": "./dist/style.css",
+		"./global": "./global.d.ts"
 	},
 	"license": "MIT",
 	"keyword": "vue3 form jlg element-plus ui",

@@ -32,7 +32,7 @@ const emits = defineEmits<I_Jlg_TimeSelect_Emits>();
 
 const context: FormItemContext | undefined = inject(formItemContextKey);
 
-const toolTipShow = ref(false);
+const tooltipShow = ref(false);
 
 const valueText = computed(() => String(props.modelValue ?? ''));
 
@@ -40,11 +40,11 @@ const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
 			disabled: !mergeTimeSelectPropsComputed.value.disabled,
-			visible: toolTipShow.value,
+			visible: tooltipShow.value,
 			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
-		...(props.toolTipProps ?? {}),
+		...(props.tooltipProps ?? {}),
 	};
 });
 
