@@ -1,14 +1,14 @@
 import { VxeGridInstance, VxeGridProps, VxeToolbarPropTypes } from 'vxe-table';
 import { I_Table_Filter_Props } from '../table-filter/type';
 import { VxeTableDataRow, VxeTableDefines } from 'vxe-table/types/table';
-import { Ref, VNodeTypes } from 'vue';
+import { AppContext, Ref, VNodeTypes } from 'vue';
 // import { ComponentPublicInstance } from 'vue';
 
 export type T_Msg = boolean | (() => boolean) | Promise<boolean>;
 type T_Destroy = {
 	onDestroy: () => void;
 };
-export type T_RenderCustomTemplate = <P = Record<string, any>>(customComponent: VNodeTypes, props: P) => T_Destroy;
+export type T_RenderCustomTemplate = <P = Record<string, any>>(customComponent: VNodeTypes, appContext: AppContext, props: P) => T_Destroy;
 export type T_Save_Config_Type = 'resizable' | 'sortable' | 'reset' | ' save' | 'customize';
 
 export type JlgGridInstance<T = any> = {

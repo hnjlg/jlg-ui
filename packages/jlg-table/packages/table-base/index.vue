@@ -591,8 +591,8 @@ function saveCustomEvent(columns: (VxeTableDefines.ColumnOptions<any> | VxeTable
 	return xGrid.value.loadColumn(_columns);
 }
 
-const renderCustomTemplate: T_RenderCustomTemplate = (customComponent, props) => {
-	return useRenderCustomTemplate(customTemplateRef.value, customComponent, props);
+const renderCustomTemplate: T_RenderCustomTemplate = (customComponent, appContext, props) => {
+	return useRenderCustomTemplate(customTemplateRef.value, appContext, customComponent, props);
 };
 
 defineExpose({
