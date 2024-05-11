@@ -2898,11 +2898,11 @@ const rl = O({
 }), ut = /* @__PURE__ */ O({
   ...rl,
   props: {
-    padding: {},
+    padding: { default: "0px" },
     flow: {},
     rows: {},
     columns: {},
-    gap: {},
+    gap: { default: "0px" },
     width: { default: "100%" },
     height: { default: "auto" },
     inline: { type: Boolean, default: !1 },

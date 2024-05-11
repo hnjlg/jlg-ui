@@ -11,7 +11,14 @@ defineOptions({
 	name: 'JlgGridLayout',
 });
 
-const props = withDefaults(defineProps<I_Grid_Layout_Props>(), { inline: false, width: '100%', height: 'auto', border: false });
+const props = withDefaults(defineProps<I_Grid_Layout_Props>(), {
+	padding: '0px',
+	inline: false,
+	width: '100%',
+	height: 'auto',
+	border: false,
+	gap: '0px',
+});
 
 provide('grid-layout-props', props);
 

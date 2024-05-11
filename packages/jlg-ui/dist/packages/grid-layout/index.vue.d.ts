@@ -1,19 +1,25 @@
 import { I_Grid_Layout_Props } from './type';
 
 declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_Grid_Layout_Props>, {
+    padding: string;
     inline: boolean;
     width: string;
     height: string;
     border: boolean;
+    gap: string;
 }>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_Grid_Layout_Props>, {
+    padding: string;
     inline: boolean;
     width: string;
     height: string;
     border: boolean;
+    gap: string;
 }>>>, {
     height: string;
     width: string;
     border: boolean;
+    padding: string;
+    gap: string;
     inline: boolean;
 }, {}>, {
     default?(_: {}): any;
