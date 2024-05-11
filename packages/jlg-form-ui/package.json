@@ -1,7 +1,7 @@
 {
 	"name": "jlg-form-ui",
 	"private": false,
-	"version": "0.0.31",
+	"version": "0.0.32",
 	"type": "commonjs",
 	"scripts": {
 		"dev": "vite",
@@ -47,7 +47,7 @@
 		"@element-plus/utils": "^0.0.5",
 		"async-validator": "^4.2.5",
 		"element-plus": "^2.7.0",
-		"jlg-ui": "^0.0.2",
+		"jlg-ui": "^0.0.5",
 		"lodash-unified": "^1.0.3",
 		"vue": "^3.4.21"
 	},
