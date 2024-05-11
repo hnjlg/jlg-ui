@@ -6,7 +6,7 @@
 			:placeholder="placeholderComputed"
 			@update:model-value="updateModelValue"
 		>
-			<template v-for="(_index, name) in slots">
+			<template v-for="(_index, name) in slots" #[name]>
 				<slot :name="name" />
 			</template>
 		</el-date-picker>

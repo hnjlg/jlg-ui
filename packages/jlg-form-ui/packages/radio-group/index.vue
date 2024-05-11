@@ -9,8 +9,8 @@
 			}
 		"
 	>
-		<template v-for="(index, name) in slots">
-			<slot v-if="name !== 'default'" :name="name" />
+		<template v-for="name in slotsComputed" #[name]>
+			<slot :name="name" />
 		</template>
 		<slot>
 			<jlg-radio v-for="(option, index) in mergeRadioGroupPropsComputed.radioOptions" :key="index" v-bind="option" />
@@ -39,6 +39,10 @@ const attrs = useAttrs();
 const emits = defineEmits<I_Jlg_RadioGroup_Emits>();
 
 const slots = useSlots();
+
+const slotsComputed = computed(() => {
+	return Object.keys(slots).filter((name) => name !== 'default');
+});
 
 const _ref = ref(null);
 

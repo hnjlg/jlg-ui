@@ -44,8 +44,3 @@ And thank you to all our backers! 🙏
 <a href="https://github.com/1765659336/jlg-ui/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=1765659336/jlg-ui" />
 </a>
-
-## License
-
-Jlg-Form-Ui is open source software licensed as
-[MIT](https://github.com/element-plus/element-plus/blob/master/LICENSE).

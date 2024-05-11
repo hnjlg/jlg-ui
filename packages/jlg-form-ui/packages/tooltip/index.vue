@@ -1,6 +1,6 @@
 <template>
 	<el-tooltip v-bind="mergeTooltipPropsComputed" :trigger-keys="[]">
-		<template v-for="(index, name) in slots">
+		<template v-for="(index, name) in slots" #[name]>
 			<slot :name="name" />
 		</template>
 	</el-tooltip>
