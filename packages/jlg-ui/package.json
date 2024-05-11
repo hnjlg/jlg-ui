@@ -1,7 +1,7 @@
 {
 	"name": "jlg-ui",
 	"private": false,
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"type": "commonjs",
 	"scripts": {
 		"dev": "vite",
@@ -15,7 +15,11 @@
 	"files": [
 		"package.json",
 		"README.md",
-		"dist"
+		"dist",
+		"global.d.ts",
+		"tags.json",
+		"attributes.json",
+		"web-types.json"
 	],
 	"main": "dist/jlg-ui.umd.js",
 	"module": "dist/jlg-ui.es.js",
@@ -27,7 +31,8 @@
 			"require": "./dist/jlg-ui.umd.js",
 			"types": "./dist/packages/index.d.ts"
 		},
-		"./dist/style.css": "./dist/style.css"
+		"./dist/style.css": "./dist/style.css",
+		"./global": "./global.d.ts"
 	},
 	"license": "MIT",
 	"keyword": "vue3 jlg element-plus ui",
@@ -37,6 +42,7 @@
 	},
 	"description": "基于element-plus二次封装的UI组件库",
 	"dependencies": {
+		"@element-plus/icons-vue": "^2.3.1",
 		"element-plus": "^2.7.0",
 		"vue": "^3.4.21"
 	},
