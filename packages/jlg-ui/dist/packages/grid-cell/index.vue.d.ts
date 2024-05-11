@@ -13,11 +13,11 @@ declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__
     left: number;
     center: boolean;
 }>>>, {
+    center: boolean;
     top: number;
     height: number;
     width: number;
     left: number;
-    center: boolean;
 }, {}>, {
     default?(_: {}): any;
 }>;

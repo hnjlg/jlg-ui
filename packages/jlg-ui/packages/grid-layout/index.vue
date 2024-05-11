@@ -8,7 +8,7 @@
 import { I_Grid_Layout_Props } from './type';
 
 defineOptions({
-	name: 'GridLayout',
+	name: 'JlgGridLayout',
 });
 
 const props = withDefaults(defineProps<I_Grid_Layout_Props>(), { inline: false, width: '100%', height: 'auto', border: false });
