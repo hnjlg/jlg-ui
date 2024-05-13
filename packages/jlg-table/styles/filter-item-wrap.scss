@@ -20,7 +20,7 @@
     display: flex;
     flex-wrap: nowrap;
 
-    :deep(.el-input__wrapper) {
+   .el-input__wrapper {
       box-shadow: none;
       border: 1px solid var(--el-input-border-color, var(--el-border-color));
       transform: translateZ(0);
@@ -33,7 +33,7 @@
   }
 
   .is-search-type {
-    :deep(.el-input__wrapper) {
+    .el-input__wrapper {
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
     }
@@ -52,7 +52,7 @@
     transform: translateZ(0);
     transition: border-color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);
 
-    :deep(.el-select__wrapper) {
+    .el-select__wrapper {
       padding: 4px 4px;
       font-size: 12px;
       box-shadow: none;
@@ -87,7 +87,7 @@
     width: 100%;
   }
 
-  :deep(.el-input__wrapper) {
+  .el-input__wrapper {
     padding: 1px 11px;
 
     .el-input__inner {
@@ -95,11 +95,11 @@
     }
   }
 
-  :deep(.el-input-number__decrease) {
+  .el-input-number__decrease {
     display: none;
   }
 
-  :deep(.el-input-number__increase) {
+  .el-input-number__increase {
     display: none;
   }
 }
@@ -108,7 +108,7 @@
 *  覆盖下拉框默认样式
  */
 .filter-select {
-  :deep(.el-select__wrapper) {
+  .el-select__wrapper {
     box-shadow: none;
     border: 1px solid var(--el-input-border-color, var(--el-border-color));
     transform: translateZ(0);
@@ -121,7 +121,7 @@
 
   .is-search-type {
     .select {
-      :deep(.el-select__wrapper) {
+      .el-select__wrapper {
         border-bottom-right-radius: 0;
         border-top-right-radius: 0;
         max-height: 32px;
@@ -134,7 +134,7 @@
 * 覆盖日期选择器默认宽度
 */
 .jlg-filter-content{
-  :deep(.el-date-editor) {
+  .el-date-editor {
     --el-date-editor-width: 100%;
     --el-date-editor-monthrange-width: 100%;
     --el-date-editor-daterange-width: 100%;

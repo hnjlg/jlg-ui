@@ -8,7 +8,7 @@ import VXETable from 'vxe-table';
  * @param options 全局参数
  * @param vxeOptions vxe-table 全局参数
  */
-export const globalSetup = (options: T_Global_Config_Props, vxeOptions: VXETableConfigOptions = {}) => {
+export const globalSetup = (options?: T_Global_Config_Props, vxeOptions: VXETableConfigOptions = {}) => {
 	VXETable.config(
 		merge(
 			{
@@ -18,5 +18,5 @@ export const globalSetup = (options: T_Global_Config_Props, vxeOptions: VXETable
 			vxeOptions
 		)
 	);
-	return merge(GlobalConfig, options);
+	return merge(GlobalConfig, options || {});
 };

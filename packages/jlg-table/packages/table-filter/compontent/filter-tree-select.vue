@@ -17,7 +17,3 @@ const modelValue = defineModel<string>({ required: true });
 const props = withDefaults(defineProps<{ item: I_Table_Filter_Item }>(), {});
 defineModel<number>('searchType', { required: true, default: 0 });
 </script>
-
-<style scoped lang="scss">
-@import url('../../../styles/filter-item-wrap.scss');
-</style>

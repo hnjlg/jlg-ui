@@ -275,8 +275,3 @@ defineExpose({
 	rawFormData: form,
 });
 </script>
-
-<style scoped lang="scss">
-@import url('../../styles/table-filter.scss');
-@import url('../../styles/table-filter-card-responsive.scss');
-</style>

@@ -1,0 +1,38 @@
+.minimize-popper-container {
+  padding: 0 !important;
+
+  .el-popover__title {
+    height: 30px;
+    background-color: #f8f8f8;
+    position: relative;
+    padding: 0 9px;
+    line-height: 30px;
+    color: #333;
+  }
+
+  .minimize-modal-list {
+    padding: 0 9px;
+
+    .g-text-overflow-hidden {
+      width: 180px;
+    }
+
+    .modal-item {
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 6px 0;
+      padding: 1px 9px;
+      box-shadow: -1px 0px 5px rgb(0 0 0 / 20%);
+      border: 1px solid #c1c3c8;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #f6f6f6;
+      }
+    }
+  }
+}

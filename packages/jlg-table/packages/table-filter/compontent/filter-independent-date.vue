@@ -88,23 +88,3 @@ watch(
 	{ deep: true }
 );
 </script>
-
-<style scoped lang="scss">
-@import url('../../../styles/filter-item-wrap.scss');
-.filter-independent-date-picker {
-	.jlg-filter-date__wrapper {
-		display: flex;
-		align-items: center;
-		border-radius: var(--el-input-border-radius, var(--el-border-radius-base));
-		border: 1px solid var(--el-input-border-color, var(--el-border-color));
-		transform: translateZ(0);
-		transition: border-color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);
-		&.is-focus {
-			border-color: var(--el-color-primary);
-		}
-		:deep(.el-input__wrapper) {
-			border: none;
-		}
-	}
-}
-</style>

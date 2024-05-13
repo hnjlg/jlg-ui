@@ -35,7 +35,3 @@ const searchType = defineModel<number>('searchType', { required: true, default: 
 const isShowSelect = computed(() => props.item.isPure !== true && props.item.quickSearch !== true);
 const isFocus = ref(false);
 </script>
-
-<style scoped lang="scss">
-@import url('../../../styles/filter-item-wrap.scss');
-</style>

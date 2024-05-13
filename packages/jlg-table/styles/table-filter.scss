@@ -15,7 +15,7 @@
       overflow: hidden;
     }
 
-    :deep(.el-form-item__content) {
+    .el-form-item__content {
       margin-right: var(--jlg-filter-margin-right);
     }
   }
@@ -39,7 +39,7 @@
   }
 }
 
-:deep(.jlg-popper--quick--search) {
+.jlg-popper--quick--search {
   background: #FFFFFF;
   border-radius: 10px;
   height: auto;
