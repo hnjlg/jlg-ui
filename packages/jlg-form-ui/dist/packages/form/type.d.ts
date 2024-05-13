@@ -54,12 +54,19 @@ export declare interface I_JlgForm_FormJsonItem_TimeSelect extends I_JlgForm_For
     elComponentsProps: T_Jlg_TimeSelect_Props;
 }
 export declare type T_JlgForm_FormJsonItem = I_JlgForm_FormJsonItem_Input | I_JlgForm_FormJsonItem_InputNumber | I_JlgForm_FormJsonItem_Radio | I_JlgForm_FormJsonItem_Rate | I_JlgForm_FormJsonItem_Select | I_JlgForm_FormJsonItem_DatePicker | I_JlgForm_FormJsonItem_TimeSelect;
+export declare enum E_JlgForm_LabelPosition {
+    居上 = "top",
+    内嵌 = "top-embedded",
+    左对齐 = "left",
+    右对齐 = "right"
+}
 export declare type T_JlgForm_Props = {
     modelValue: object;
     formJson?: T_JlgForm_FormJsonItem[];
     gridLayoutProps?: I_Grid_Layout_Props;
     gatherProps?: object;
-} & FormProps;
+    labelPosition?: E_JlgForm_LabelPosition;
+} & Omit<FormProps, 'labelPosition'>;
 export declare type T_Add_Gather_Fn = (config: {
     formItemLabel: T_Jlg_FormItem_Props['label'];
     fn: () => object;

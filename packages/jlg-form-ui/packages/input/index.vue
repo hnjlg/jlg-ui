@@ -9,7 +9,7 @@
 			@mouseenter="mouseenter"
 			@mouseleave="mouseleave"
 		>
-			<template v-for="(index, name) in slots">
+			<template v-for="(index, name) in slots" #[name]>
 				<slot :name="name" />
 			</template>
 		</el-input>
@@ -41,7 +41,7 @@ const emits = defineEmits<I_Jlg_Input_Emits>();
 // formItem传递的context
 const context: FormItemContext | undefined = inject(formItemContextKey);
 
-const toolTipShow = ref(false);
+const tooltipShow = ref(false);
 
 const valueText = computed(() => String(props.modelValue ?? ''));
 
@@ -49,11 +49,11 @@ const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
 			disabled: !mergeInputPropsComputed.value.disabled,
-			visible: toolTipShow.value,
+			visible: tooltipShow.value,
 			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
-		...(props.toolTipProps ?? {}),
+		...(props.tooltipProps ?? {}),
 	};
 });
 
@@ -91,14 +91,14 @@ const mouseenter = () => {
 	if (!mergeInputPropsComputed.value.disabled) {
 		return;
 	}
-	toolTipShow.value = true;
+	tooltipShow.value = true;
 };
 
 const mouseleave = () => {
 	if (!mergeInputPropsComputed.value.disabled) {
 		return;
 	}
-	toolTipShow.value = false;
+	tooltipShow.value = false;
 };
 
 const formAddGatherFn: T_Add_Gather_Fn | undefined = inject('formAddGatherFn');

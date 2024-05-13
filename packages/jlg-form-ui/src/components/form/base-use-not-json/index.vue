@@ -2,7 +2,7 @@
 	<el-button @click="gather">收集数据</el-button>
 	<el-button @click="validator">校验</el-button>
 	{{ formData }}
-	<jlg-form ref="JlgFormRef" label-position="top" :gather-props="{ col: 1, allCol: 3 }" :model="formData" :rules="rules">
+	<jlg-form ref="JlgFormRef" :label-position="E_JlgForm_LabelPosition['内嵌']" :gather-props="{ col: 1, allCol: 3 }" :model="formData" :rules="rules">
 		<jlg-grid-layout v-bind="gridLayoutProps">
 			<jlg-grid-cell :width="1" :height="1">
 				<jlg-form-item
@@ -12,7 +12,7 @@
 				>
 					<jlg-input
 						v-model="formData.input"
-						:tool-tip-props="{
+						:tooltip-props="{
 							effect: 'light',
 						}"
 					></jlg-input>
@@ -59,7 +59,7 @@
 
 <script setup lang="ts">
 import { computed, reactive, ref } from 'vue';
-import { T_JlgForm_Props } from '@pac/form/type';
+import { T_JlgForm_Props, E_JlgForm_LabelPosition } from '@pac/form/type';
 import { JlgGridLayout, JlgGridCell } from 'jlg-ui';
 import { E_FormValidatorRulesValidateFunEnum } from '@pac/rule';
 

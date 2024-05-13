@@ -12,7 +12,7 @@ declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__
     "onUpdate:modelValue"?: (value: string | number | boolean) => any;
 }, {
     validateEvent: boolean;
-}, {}>, Partial<Record<NonNullable<string | number>, (_: {}) => any>> & {
+}, {}>, Partial<Record<string, (_: {}) => any>> & {
     default?(_: {}): any;
 }>;
 export default _default;

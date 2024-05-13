@@ -4,9 +4,9 @@
 			:model-value="props.modelValue"
 			v-bind="mergeDatePickerPropsComputed"
 			:placeholder="placeholderComputed"
-			@update:model-value="(v) => emits('update:modelValue', v)"
+			@update:model-value="updateModelValue"
 		>
-			<template v-for="(index, name) in slots">
+			<template v-for="(_index, name) in slots" #[name]>
 				<slot :name="name" />
 			</template>
 		</el-date-picker>
@@ -39,7 +39,7 @@ const slots = useSlots();
 
 const context: FormItemContext | undefined = inject(formItemContextKey);
 
-const toolTipShow = ref(false);
+const tooltipShow = ref(false);
 
 const valueText = computed(() => String(props.modelValue ?? ''));
 
@@ -47,11 +47,11 @@ const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
 			disabled: !mergeDatePickerPropsComputed.value.disabled,
-			visible: toolTipShow.value,
+			visible: tooltipShow.value,
 			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
-		...(props.toolTipProps ?? {}),
+		...(props.tooltipProps ?? {}),
 	};
 });
 
@@ -72,6 +72,8 @@ const placeholderComputed = computed(() => {
 		return '请选择日期';
 	}
 });
+
+const updateModelValue = (v: T_Jlg_DatePicker_Props['modelValue']) => emits('update:modelValue', v);
 
 const formAddGatherFn: T_Add_Gather_Fn | undefined = inject('formAddGatherFn');
 

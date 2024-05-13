@@ -1,6 +1,6 @@
 <template>
 	<el-option v-bind="mergeOptionPropsComputed">
-		<template v-for="(index, name) in slots">
+		<template v-for="(index, name) in slots" #[name]>
 			<slot :name="name" />
 		</template>
 	</el-option>

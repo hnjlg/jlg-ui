@@ -9,7 +9,7 @@ import { I_Grid_Layout_Props } from '../grid-layout/type';
 import { I_Grid_Cell_Props } from './type';
 
 defineOptions({
-	name: 'GridCell',
+	name: 'JlgGridCell',
 });
 
 const props = withDefaults(defineProps<I_Grid_Cell_Props>(), {

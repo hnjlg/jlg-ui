@@ -23,7 +23,7 @@ import { isNumber, isString } from 'lodash-unified';
 import { T_Jlg_FormItem_Props } from './type';
 import { globalComponentConfig } from '../index';
 import { FormValidatorRules, E_FormValidatorRulesValidateFunEnum } from '../rule';
-import { T_Assign_Rules_Fn } from '../form/type';
+import { E_JlgForm_LabelPosition, T_Assign_Rules_Fn } from '../form/type';
 
 defineOptions({
 	name: 'JlgFormItem',
@@ -62,7 +62,7 @@ const formContext = inject(formContextKey);
 const assignRulesFn: T_Assign_Rules_Fn = inject('assignRulesFn');
 
 const labelStyle = computed<CSSProperties>(() => {
-	if (formContext?.labelPosition === 'top') {
+	if (formContext?.labelPosition === E_JlgForm_LabelPosition['居上']) {
 		return {};
 	}
 	const labelWidth = addUnit(mergeFormItemPropsComputed.value.labelWidth || formContext?.labelWidth || '');
@@ -90,6 +90,7 @@ const mergeFormItemPropsComputed = computed(() => {
 watch(
 	() => [mergeFormItemPropsComputed.value.validateRules, mergeFormItemPropsComputed.value.prop],
 	(newValue: [T_Jlg_FormItem_Props['validateRules'], T_Jlg_FormItem_Props['prop']]) => {
+		if (!assignRulesFn) return;
 		if (!newValue[0] || newValue[1] === undefined) {
 			assignRulesFn();
 		} else {
@@ -118,5 +119,9 @@ defineExpose({
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+:deep(.el-form-item__label) {
+	font-size: 12px;
 }
 </style>

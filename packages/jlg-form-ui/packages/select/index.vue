@@ -13,8 +13,8 @@
 			@mouseenter="mouseenter"
 			@mouseleave="mouseleave"
 		>
-			<template v-for="(index, name) in slots">
-				<slot v-if="name !== 'default'" :name="name" />
+			<template v-for="name in slotsComputed" #[name]>
+				<slot :name="name" />
 			</template>
 			<slot>
 				<jlg-option v-for="(option, index) in props.optionOptions" :key="index" v-bind="option" />
@@ -48,6 +48,10 @@ const emits = defineEmits<I_Jlg_Select_Emits>();
 
 const slots = useSlots();
 
+const slotsComputed = computed(() => {
+	return Object.keys(slots).filter((name) => name !== 'default');
+});
+
 const _ref = ref(null);
 
 // formItem传递的context
@@ -55,7 +59,7 @@ const context: FormItemContext | undefined = inject(formItemContextKey);
 
 const { t } = useLocale();
 
-const toolTipShow = ref(false);
+const tooltipShow = ref(false);
 
 const valueText = ref('');
 
@@ -63,11 +67,11 @@ const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
 			disabled: !mergeSelectPropsComputed.value.disabled,
-			visible: toolTipShow.value,
+			visible: tooltipShow.value,
 			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
-		...(props.toolTipProps ?? {}),
+		...(props.tooltipProps ?? {}),
 	};
 });
 
@@ -115,14 +119,14 @@ const mouseenter = () => {
 	if (!mergeSelectPropsComputed.value.disabled) {
 		return;
 	}
-	toolTipShow.value = true;
+	tooltipShow.value = true;
 };
 
 const mouseleave = () => {
 	if (!mergeSelectPropsComputed.value.disabled) {
 		return;
 	}
-	toolTipShow.value = false;
+	tooltipShow.value = false;
 };
 
 watch(

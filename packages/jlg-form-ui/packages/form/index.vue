@@ -1,6 +1,17 @@
 <template>
-	{{ furnishMergeFormPropsComputed.rules }}
-	<el-form ref="_ref" v-bind="furnishMergeFormPropsComputed">
+	<el-form
+		ref="_ref"
+		v-bind="furnishMergeFormPropsComputed"
+		:label-position="
+			furnishMergeFormPropsComputed.labelPosition === E_JlgForm_LabelPosition['内嵌']
+				? E_JlgForm_LabelPosition['居上']
+				: furnishMergeFormPropsComputed.labelPosition
+		"
+		:class="{
+			'jlg-form': true,
+			'jlg_form_label_position_top-embedded': furnishMergeFormPropsComputed.labelPosition === E_JlgForm_LabelPosition['内嵌'],
+		}"
+	>
 		<slot>
 			<jlg-grid-layout v-bind="props.gridLayoutProps">
 				<jlg-grid-cell v-for="formItem in props.formJson" :key="formItem.field" v-bind="formItem.gridCellProps">
@@ -17,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { T_JlgForm_Props, E_JlgForm_FormType, T_JlgForm_FormJsonItem } from './type';
+import { T_JlgForm_Props, E_JlgForm_FormType, T_JlgForm_FormJsonItem, E_JlgForm_LabelPosition } from './type';
 import { JlgGridLayout, JlgGridCell } from 'jlg-ui';
 import { globalComponentConfig } from '../index';
 import Input from '../input/index.vue';
@@ -39,6 +50,7 @@ defineOptions({
 const props = withDefaults(defineProps<T_JlgForm_Props>(), {
 	showMessage: true,
 	validateOnRuleChange: true,
+	labelPosition: E_JlgForm_LabelPosition['左对齐'],
 });
 
 const attrs = useAttrs();
@@ -89,3 +101,18 @@ defineExpose({
 	_ref,
 });
 </script>
+
+<style lang="scss" scoped>
+// lable内嵌样式
+.jlg_form_label_position_top-embedded {
+	:deep(.el-form-item) {
+		padding-top: 20px;
+		.el-form-item__label {
+			transform: translate(10px, -13px);
+			position: absolute;
+			z-index: 999;
+			background-color: #fff;
+		}
+	}
+}
+</style>

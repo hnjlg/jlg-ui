@@ -8,6 +8,10 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BaseUse: typeof import('./src/components/grid-layout/base-use/index.vue')['default']
+    Collapse: typeof import('./src/components/collapse/index.vue')['default']
+    ElCollapse: typeof import('element-plus/es')['ElCollapse']
+    ElCollapseItem: typeof import('element-plus/es')['ElCollapseItem']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
     ElPopover: typeof import('element-plus/es')['ElPopover']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

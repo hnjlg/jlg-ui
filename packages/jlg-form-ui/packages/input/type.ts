@@ -1,7 +1,7 @@
 import { ElTooltipContentProps, InputProps } from 'element-plus';
 
 export declare type T_Jlg_Input_Props = {
-	toolTipProps?: ElTooltipContentProps;
+	tooltipProps?: ElTooltipContentProps;
 	gatherProps?: object;
 } & InputProps;
 

@@ -21,7 +21,7 @@ declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__
     teleported: import('element-plus/es/utils/index.mjs').EpPropMergeType<BooleanConstructor, unknown, unknown>;
     validateEvent: import('element-plus/es/utils/index.mjs').EpPropMergeType<BooleanConstructor, unknown, unknown>;
     reserveKeyword: import('element-plus/es/utils/index.mjs').EpPropMergeType<BooleanConstructor, unknown, unknown>;
-}, {}>, Partial<Record<NonNullable<string | number>, (_: {}) => any>> & {
+}, {}>, Partial<Record<string, (_: {}) => any>> & {
     default?(_: {}): any;
 }>;
 export default _default;

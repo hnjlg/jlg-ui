@@ -66,6 +66,7 @@ module.exports = {
 		NodeJS: 'readonly',
 		provide: 'readonly',
 		inject: 'readonly',
+		useAttrs: 'readonly',
 	},
 	rules: {
 		'no-prototype-builtins': 'error', // 允许使用hasOwnProperty

@@ -30,7 +30,7 @@ const attrs = useAttrs();
 
 const emits = defineEmits<I_Jlg_Rate_Emits>();
 
-const toolTipShow = ref(false);
+const tooltipShow = ref(false);
 
 const valueText = computed(() => `${String(props.modelValue ?? 0)}/${mergeRatePropsComputed.value.max}`);
 
@@ -38,11 +38,11 @@ const mergeTooltipPropsComputed = computed(() => {
 	return {
 		...{
 			disabled: !mergeRatePropsComputed.value.disabled,
-			visible: toolTipShow.value,
+			visible: tooltipShow.value,
 			content: valueText.value,
 		},
 		...globalComponentConfig.tooltip,
-		...(props.toolTipProps ?? {}),
+		...(props.tooltipProps ?? {}),
 	};
 });
 
@@ -78,14 +78,14 @@ const mouseenter = () => {
 	if (!mergeRatePropsComputed.value.disabled) {
 		return;
 	}
-	toolTipShow.value = true;
+	tooltipShow.value = true;
 };
 
 const mouseleave = () => {
 	if (!mergeRatePropsComputed.value.disabled) {
 		return;
 	}
-	toolTipShow.value = false;
+	tooltipShow.value = false;
 };
 </script>
 

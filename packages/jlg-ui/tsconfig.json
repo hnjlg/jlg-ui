@@ -37,7 +37,9 @@
 				"packages/*"
 			]
 		},
-		"types": [],
+		"types": [
+			"unplugin-vue-define-options"
+		],
 		"allowSyntheticDefaultImports": true
 	},
 	"include": [],

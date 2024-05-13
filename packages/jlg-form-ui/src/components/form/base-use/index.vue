@@ -73,7 +73,6 @@ const formJson = ref<T_JlgForm_Props['formJson']>([
 		},
 		type: E_JlgForm_FormType.数字输入框,
 		field: 'age',
-		controls: true,
 		elComponentsProps: {
 			controls: true,
 		},

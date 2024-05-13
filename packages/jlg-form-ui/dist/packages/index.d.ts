@@ -25,6 +25,7 @@ import { default as JlgForm } from './form';
 import { default as JlgInput } from './input';
 import { App } from 'vue';
 
+export * from './rule';
 export { JlgForm, JlgDatePicker, JlgFormItem, JlgInput, JlgOption, JlgSelect, JlgTimeSelect, JlgInputNumber, JlgTooltip, JlgRate, JlgRadioGroup, JlgRadio, FormValidatorRules, };
 type DeepPartial<T> = {
     [U in keyof T]?: T[U] extends object ? DeepPartial<T[U]> : T[U];

@@ -2,7 +2,7 @@ import { TimeSelectProps } from 'element-plus/es/components/time-select/src/time
 import { ElTooltipContentProps } from 'element-plus';
 
 export declare type T_Jlg_TimeSelect_Props = {
-    toolTipProps?: ElTooltipContentProps;
+    tooltipProps?: ElTooltipContentProps;
     gatherProps?: object;
 } & TimeSelectProps;
 export declare interface I_Jlg_TimeSelect_Emits {

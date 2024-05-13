@@ -1,0 +1,85 @@
+{
+	"jlg-grid-cell/top": {
+		"type": "number",
+		"description": "number 0 顶部空白份额"
+	},
+	"jlg-grid-cell/height": {
+		"type": "number",
+		"description": "number 0 占据高度份额"
+	},
+	"jlg-grid-cell/width": {
+		"type": "number",
+		"description": "number 0 占据宽度的份额"
+	},
+	"jlg-grid-cell/left": {
+		"type": "number",
+		"description": "number 0 左侧空白份额"
+	},
+	"jlg-grid-cell/center": {
+		"type": "boolean",
+		"description": "boolean false 内容是否居中"
+	},
+
+	"jlg-grid-layout/padding": {
+		"type": "string",
+		"description": "string 0px 每个网格之间的间隔"
+	},
+	"jlg-grid-layout/flow": {
+		"type": "'row' | 'column' | 'dense' | 'row dense' | 'column dense' | 'inherit' | 'initial' | 'unset'",
+		"description": "[grid-auto-flow](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-auto-flow)"
+	},
+	"jlg-grid-layout/rows": {
+		"type": "number",
+		"description": "number 将宽度分为几份"
+	},
+	"jlg-grid-layout/columns": {
+		"type": "number",
+		"description": "number 将高度分为几份"
+	},
+	"jlg-grid-layout/gap": {
+		"type": "string",
+		"description": "string 0px 间隔"
+	},
+	"jlg-grid-layout/width": {
+		"type": "string",
+		"description": "string 100% [style width](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width)"
+	},
+	"jlg-grid-layout/height": {
+		"type": "string",
+		"description": "string auto [style height](https://developer.mozilla.org/zh-CN/docs/Web/CSS/height)"
+	},
+	"jlg-grid-layout/inline": {
+		"type": "boolean",
+		"description": "boolean false 是否行内布局"
+	},
+	"jlg-grid-layout/border": {
+		"type": "boolean",
+		"description": "boolean false 是否显示边框"
+	},
+
+	"jlg-collapse/model-value": {
+		"type": "string | array",
+		"description": "currently active panel, the type is `string` in accordion mode, otherwise it is `array`, default: [].\n\n[Docs](https://element-plus.org/en-US/component/collapse.html#collapse-attributes)"
+	},
+	"jlg-collapse/accordion": {
+		"type": "boolean",
+		"description": "whether to activate accordion mode, default: false.\n\n[Docs](https://element-plus.org/en-US/component/collapse.html#collapse-attributes)"
+	},
+	"jlg-collapse/change": {
+		"type": "event",
+		"description": "triggers when active panels change, the parameter type is `string` in accordion mode, otherwise it is `array`\n\n[Docs](https://element-plus.org/en-US/component/collapse.html#collapse-events)"
+	},
+
+	"jlg-collapse-item/name": {
+		"type": "string | number",
+		"description": "unique identification of the panel\n\n[Docs](https://element-plus.org/en-US/component/collapse.html#collapse-item-attributes)"
+	},
+	"jlg-collapse-item/title": {
+		"type": "string",
+		"description": "title of the panel, default: ''.\n\n[Docs](https://element-plus.org/en-US/component/collapse.html#collapse-item-attributes)"
+	},
+	"jlg-collapse-item/disabled": {
+		"type": "boolean",
+		"description": "disable the collapse item, default: false.\n\n[Docs](https://element-plus.org/en-US/component/collapse.html#collapse-item-attributes)"
+	}
+}

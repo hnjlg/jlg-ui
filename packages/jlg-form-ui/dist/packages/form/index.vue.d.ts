@@ -1,8 +1,9 @@
-import { T_JlgForm_Props } from './type';
+import { T_JlgForm_Props, E_JlgForm_LabelPosition } from './type';
 
 declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_JlgForm_Props>, {
     showMessage: boolean;
     validateOnRuleChange: boolean;
+    labelPosition: E_JlgForm_LabelPosition;
 }>, {
     getGatherData: () => {
         type: string;
@@ -12,8 +13,10 @@ declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__
 }, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_JlgForm_Props>, {
     showMessage: boolean;
     validateOnRuleChange: boolean;
+    labelPosition: E_JlgForm_LabelPosition;
 }>>>, {
     readonly showMessage: import('element-plus/es/utils/index.mjs').EpPropMergeType<BooleanConstructor, unknown, unknown>;
+    labelPosition: E_JlgForm_LabelPosition;
     readonly validateOnRuleChange: import('element-plus/es/utils/index.mjs').EpPropMergeType<BooleanConstructor, unknown, unknown>;
 }, {}>, Partial<Record<string, (_: {
     field: string | number;
