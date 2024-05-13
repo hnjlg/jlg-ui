@@ -45,19 +45,18 @@ import clone from 'xe-utils/clone';
 import findTree from 'xe-utils/findTree';
 import toArrayTree from 'xe-utils/toArrayTree';
 import findIndexOf from 'xe-utils/findIndexOf';
-import TableFilter from '../table-filter';
+import TableFilter from '../table-filter/index.vue';
 import { I_Table_Grid_Props, T_Msg, T_RenderCustomTemplate, T_Save_Config_Type } from './type';
 import { computed, nextTick, reactive, Ref, useAttrs } from 'vue';
-import GlobalConfig from '../../lib/useGlobalConfig';
+import GlobalConfig from '../../../lib/useGlobalConfig';
 import { VxeGridEventProps, VxeGridInstance, VxeGridPropTypes, VxeGridDefines, VxeTableDefines } from 'vxe-table';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { I_Table_Filter_Item, I_Table_Filter_Props } from '../table-filter/type';
+import { I_Table_Filter_Item, I_Table_Filter_Props } from '@pac/components/table-filter/type';
 import Sortable from 'sortablejs';
 import { useRenderCustomTemplate } from './useRenderCustomTemplate';
-// import { VxeColumnPropTypes } from 'vxe-table/types/column';
 
 defineOptions({
-	name: 'TableBase',
+	name: 'JlgGrid',
 });
 
 type T_Custom_Map = {

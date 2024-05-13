@@ -13,10 +13,13 @@
 		"preinstall": "npx only-allow pnpm"
 	},
 	"files": [
-		"package.json",
-		"README.md",
-		"packages",
-		"dist"
+		"dist",
+		"lib",
+		"styles",
+		"global.d.ts"
+	],
+	"sideEffects": [
+		"./dist/style.css"
 	],
 	"main": "dist/jlg-table.umd.js",
 	"module": "dist/jlg-table.es.js",
@@ -28,18 +31,33 @@
 			"require": "./dist/jlg-table.umd.js",
 			"types": "./dist/packages/index.d.ts"
 		},
+		"./dist/":  {
+			"import": "./dist/",
+			"require": "./dist/"
+		},
 		"./dist/style.css": "./dist/style.css"
 	},
 	"license": "MIT",
-	"keyword": "vue3 jlg element-plus ui vxe-table",
-	"author": {
-		"name": "Jie",
-		"email": "1765659336@qq.com"
+	"keyword": [
+		"vue3",
+		"element-plus",
+		"vxe-table",
+		"grid",
+		"modal"
+	],
+	"description": "基于element-plus + vxe-table 二次封装的UI组件库，支持增删改查、虚拟列表、虚拟树、懒加载、快捷菜单、数据校验、树形结构、打印导出、表单渲染、数据分页、弹窗、自定义模板、渲染器、JSON 配置式",
+	"repository": {
+		"type": "git",
+		"url": "http://10.1.2.5/front-end-dependency/component/component-library/monorepo-component-plus.git"
 	},
-	"description": "基于element-plus + vxe-table 二次封装的UI组件库",
-	"dependencies": {
+	"peerDependencies": {
+		"vue": "^3.4.21",
+		"vxe-table": "^4.0.0",
+		"xe-utils": "^3.5.26",
 		"element-plus": "^2.7.0",
-		"vue": "^3.4.21"
+		"sortablejs": "^1.15.2",
+		"@element-plus/icons-vue": "^2.3.1",
+		"@types/sortablejs": "^1.15.8"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.23.2",

@@ -30,9 +30,9 @@
 </template>
 
 <script setup lang="ts">
-import { I_Table_Filter_Item } from '../../table-filter/type';
+import { I_Table_Filter_Item } from '../type';
 import { computed } from 'vue';
-import GlobalConfig from '../../../lib/useGlobalConfig';
+import GlobalConfig from '../../../../lib/useGlobalConfig';
 
 defineOptions({
 	name: 'FilterIndependentDatePicker',

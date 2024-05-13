@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import TableFilterBaseUse from './components/table-filter/base-use/index.vue';
-import ModalsContainer from '../packages/modal/index.vue';
+import ModalsContainer from '@pac/components/modal/index.vue';
 </script>
 
 <style>

@@ -42,7 +42,7 @@ import { T_Jlg_Modal_Instance, T_Modal_Options } from './type';
 import { VxeModalDefines, VxeModalInstance } from 'vxe-table';
 import { dynamicModalStore, useDynamicModal } from './index';
 import { ElButton } from 'element-plus';
-import GlobalConfig from '../../lib/useGlobalConfig';
+import GlobalConfig from '../../../lib/useGlobalConfig';
 import debounce from 'xe-utils/debounce';
 
 defineOptions({

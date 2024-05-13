@@ -297,10 +297,10 @@ import eachTree from 'xe-utils/eachTree';
 import findTree from 'xe-utils/findTree';
 import clone from 'xe-utils/clone';
 import { VxeTableDefines } from 'vxe-table/types/table';
-import { JlgGridInstance } from '@pac/table-base/type';
-import { I_Table_Filter_Item, I_Table_Filter_Props } from '@pac/table-filter/type';
+import { JlgGridInstance } from '@pac/components/table-base/type';
+import { I_Table_Filter_Item, I_Table_Filter_Props } from '@pac/components/table-filter/type';
 import Sortable from 'sortablejs';
-import TableFilter from '@pac/table-filter';
+import TableFilter from 'packages/jlg-table/packages/components/table-filter';
 
 defineOptions({
 	name: 'TableCustomTemplate',

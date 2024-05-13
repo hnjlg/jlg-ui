@@ -66,14 +66,14 @@
 <script lang="ts" setup>
 import { dynamicModalStore, useDynamicModal } from './index';
 import { T_Modal_Params } from './type';
-import GlobalConfig from '../../lib/useGlobalConfig';
+import GlobalConfig from '../../../lib/useGlobalConfig';
 import Sortable from 'sortablejs';
 import { nextTick, watch, onUnmounted, onMounted } from 'vue';
 import debounce from 'xe-utils/debounce';
 import toNumber from 'xe-utils/toNumber';
 
 defineOptions({
-	name: 'TableFilterBaseUse',
+	name: 'JlgDynamicModal',
 });
 
 const { closeModal } = useDynamicModal();

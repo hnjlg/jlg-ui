@@ -102,7 +102,7 @@
 import { CSSProperties, ref } from 'vue';
 import { I_Table_Filter_Item, I_Table_Filter_Props } from './type';
 import { ElTooltip, ElPopover, FormInstance } from 'element-plus';
-import GlobalConfig from '../../lib/useGlobalConfig';
+import GlobalConfig from '../../../lib/useGlobalConfig';
 import { ArrowDown, ArrowUp, CloseBold } from '@element-plus/icons-vue';
 import isString from 'xe-utils/isString';
 import isNumber from 'xe-utils/isNumber';

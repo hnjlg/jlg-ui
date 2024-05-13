@@ -9,7 +9,7 @@ import '@/assets/icons/iconfont.css';
 import '../styles/reset.scss';
 import '../styles/index.scss';
 
-import ModalTemplate from '../packages/modal/modal-template.vue';
+import ModalTemplate from '../packages/components/modal/modal-template.vue';
 import { globalSetup } from '../lib/config';
 // ModalTempate 设置为全局组件
 

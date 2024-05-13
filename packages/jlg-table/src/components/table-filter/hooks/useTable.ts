@@ -1,5 +1,5 @@
 import { AppContext, ref, getCurrentInstance, onMounted } from 'vue';
-import { JlgGridInstance } from '../../../../packages/table-base/type';
+import { JlgGridInstance } from '../../../../packages/components/table-base/type';
 import TableCustomTemplate, { TableCustomTemplateProps } from '../template/tableCustomTemplate/index.vue';
 
 class TableSingleton {

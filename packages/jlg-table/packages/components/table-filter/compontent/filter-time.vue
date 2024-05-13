@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { I_Table_Filter_Item } from '../../table-filter/type';
+import { I_Table_Filter_Item } from '../type';
 
 defineOptions({
 	name: 'FilterTime',

@@ -29,9 +29,9 @@
 </template>
 
 <script setup lang="ts">
-import TableGrid from '../../../../packages/table-base/index.vue';
+import TableGrid from '@pac/components/table-base/index.vue';
 import { Component, onMounted, reactive, ref } from 'vue';
-import { I_Table_Grid_Props } from '../../../../packages/table-base/type';
+import { I_Table_Grid_Props } from '@pac/components/table-base/type';
 import { ElMessage } from 'element-plus';
 import axios from 'axios';
 import { VxeGridListeners, VxeGridPropTypes } from 'vxe-table';
@@ -39,7 +39,7 @@ import { VxeGridDefines } from 'vxe-table/types/grid';
 import { useGetSysConfig, useSaveSysConfig } from '@/hooks/useMock';
 import { Refresh, Setting, ArrowDown } from '@element-plus/icons-vue';
 import { useTableComponent } from '../hooks/useTable';
-import { useDynamicModal } from '@pac/modal';
+import { useDynamicModal } from 'packages/jlg-table/packages/components/modal';
 import BaseModal from '../../modal/BaseModal.vue';
 
 defineOptions({

@@ -1,9 +1,9 @@
 import { I_Dynamic_Modal_Store, I_Modal_Controller, T_Modal_Params } from './type';
 import uniqueId from 'xe-utils/uniqueId';
 import find from 'xe-utils/find';
-// import isError from 'xe-utils/isError';
-// import { ModalEventTypes } from 'vxe-table/types/modal';
 import { nextTick, reactive, markRaw } from 'vue';
+import DynamicModal from './index.vue';
+import { withInstall } from '../../index';
 
 export const dynamicModalStore = reactive<I_Dynamic_Modal_Store>({
 	modals: [],
@@ -97,3 +97,7 @@ export const useDynamicModal = () => {
 		closeModal,
 	};
 };
+
+// 注册组件
+export const JlgDynamicModal = withInstall(DynamicModal);
+export * from './type';

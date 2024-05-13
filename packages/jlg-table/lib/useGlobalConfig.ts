@@ -1,5 +1,5 @@
-import { I_Table_Filter_Props } from '../packages/table-filter/type';
-import { I_Table_Grid_Props } from '../packages/table-base/type';
+import { I_Table_Filter_Props } from '../packages/components/table-filter/type';
+import { I_Table_Grid_Props } from '../packages/components/table-base/type';
 
 export type T_Global_Config_Props = {
 	// 表格筛选器默认配置

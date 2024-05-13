@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ModalTemplate from '../../../packages/modal/modal-template.vue';
-import { T_Jlg_Modal_Instance } from '../../../packages/modal/type';
+import ModalTemplate from '@pac/components/modal/modal-template.vue';
+import { T_Jlg_Modal_Instance } from '@pac/components/modal/type';
 import { onMounted, ref } from 'vue';
 
 defineOptions({

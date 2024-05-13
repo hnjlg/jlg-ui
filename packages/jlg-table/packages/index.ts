@@ -1,20 +1,23 @@
-import { App } from 'vue';
-import JlgTable from './table-base/index.vue'; // 引入封装好的组件
+import { App, Plugin } from 'vue';
+import components from './component';
 
-export { JlgTable }; //实现按需引入*
+type SFCWithInstall<T> = T & Plugin;
 
-const components = [JlgTable]; // 将来如果有其它组件,都可以写到这个数组里
-
-const install = function (app: App<Element>) {
-	components.forEach((component) => {
-		if (!component.name) return;
-		app.component(component.name, component);
-	});
+export const withInstall = <T>(component: T) => {
+	(component as SFCWithInstall<T>).install = (app: App) => {
+		const name = (component as any)?.name || 'UnnamedComponent';
+		app.component(name, component as SFCWithInstall<T>);
+	};
+	return component as SFCWithInstall<T>;
 };
 
-// 支持使用标签的方式引入
-if (typeof window !== 'undefined' && (window as any).Vue) {
-	install((window as any).Vue);
+export function makeInstaller(components: Plugin[]) {
+	return (app: App) => {
+		components.forEach((component) => {
+			app.use(component);
+		});
+	};
 }
-
-export default { install }; // 批量的引入*
+const install = makeInstaller(components);
+export * from './component';
+export default install;
