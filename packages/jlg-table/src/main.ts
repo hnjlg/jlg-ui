@@ -1,6 +1,5 @@
 import { createApp } from 'vue';
 import App from './App.vue';
-import '@pac/theme.scss';
 import '../styles/cssvar.scss';
 import VXETable from 'vxe-table';
 import 'vxe-table/lib/style.css';
@@ -9,8 +8,14 @@ import '@/assets/icons/iconfont.js';
 import '@/assets/icons/iconfont.css';
 import '@/styles/reset.scss';
 
+import ModalTemplate from '../packages/modal/modal-template.vue';
+import { globalSetup } from '../lib/config';
+// ModalTempate 设置为全局组件
+
 function useTable(app) {
+	app.component(ModalTemplate.name, ModalTemplate);
 	app.use(VXETable);
+	globalSetup();
 }
 
 const app = createApp(App);

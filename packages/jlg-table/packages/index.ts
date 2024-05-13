@@ -1,5 +1,4 @@
 import { App } from 'vue';
-import './theme.scss';
 import JlgTable from './table-base/index.vue'; // 引入封装好的组件
 
 export { JlgTable }; //实现按需引入*

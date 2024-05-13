@@ -261,7 +261,6 @@ const handleQuickSearchClose = () => {
 };
 // 打开快捷搜索
 const handleQuickSearch = () => {
-	console.log('打开快捷搜索');
 	isShowQuickSearch.value = true;
 };
 

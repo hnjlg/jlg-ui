@@ -220,7 +220,6 @@ const beforeColumn = (args) => {
 const beforeQuery = async (args) => {
 	const getSysConfig = props.proxyConfig?.getSysConfig ? props.proxyConfig.getSysConfig : GlobalConfig.table.proxyConfig.getSysConfig;
 	if (args.isInited && typeof getSysConfig == 'function') {
-		console.time('loadColumn');
 		const { searchData = [], columns = [], globalConfig = {} } = await getSysConfig();
 		setTableGlobalConfig(globalConfig);
 		if (columns.length > 0) {
@@ -230,7 +229,6 @@ const beforeQuery = async (args) => {
 			const _columns = mergedList(flattenArray(propsColumns.value, 'field'), flattenArray(columns, 'field'), fieldList, 'field', 'renderSortNumber');
 			// rawColumns = clone<VxeGridPropTypes.Columns>(_columns, true);
 			await xGrid.value?.loadColumn(_columns);
-			console.timeEnd('loadColumn');
 		}
 		if (searchData.length > 0) {
 			const _items = mergedList<I_Table_Filter_Item>(tableFilterConfig.value.items, searchData, ['visible', 'sortNumber'], 'field');
@@ -389,6 +387,7 @@ const columnDrop = () => {
 	headerRows.forEach((headerRow) => {
 		sortable = Sortable.create(headerRow, {
 			handle: '.vxe-header--column',
+			forceFallback: true,
 			animation: 150,
 			onStart() {
 				const thElements = headerRow.querySelectorAll('.vxe-header--column');
@@ -449,6 +448,8 @@ const columnDrop2 = () => {
 	const $grid = xGrid.value;
 	sortable = Sortable.create($grid.$el.querySelector('.body--wrapper>.vxe-table--header .vxe-header--row'), {
 		handle: '.vxe-header--column',
+		forceFallback: true,
+		animation: 150,
 		onEnd: (sortableEvent) => {
 			const targetThElem = sortableEvent.item;
 			const newIndex = sortableEvent.newIndex as number;
@@ -502,7 +503,6 @@ onUnmounted(() => {
  * 提取表格的事件
  * */
 const attrs = useAttrs();
-console.log('attrs:', attrs);
 const tableCompEvents: VxeGridEventProps = Object.keys(attrs).reduce((prev, key) => {
 	if (key.startsWith('on') && typeof attrs[key] === 'function' && key !== 'onResizableChange') {
 		prev[key] = attrs[key];

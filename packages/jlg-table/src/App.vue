@@ -7,11 +7,13 @@
 				<el-main><table-filter-base-use> </table-filter-base-use></el-main>
 			</el-container>
 		</el-container>
+		<modals-container></modals-container>
 	</div>
 </template>
 
 <script setup lang="ts">
-import TableFilterBaseUse from '@/components/table-filter/base-use/index.vue';
+import TableFilterBaseUse from './components/table-filter/base-use/index.vue';
+import ModalsContainer from '../packages/modal/index.vue';
 </script>
 
 <style>

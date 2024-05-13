@@ -12,9 +12,8 @@
 			<el-button ref="buttonRef" type="primary" text size="small"
 				>高级筛选<el-icon style="padding-left: 5px"><ArrowDown /></el-icon
 			></el-button>
-			<el-button :icon="Refresh" circle @click="handleFlushed" />
-			<el-button :icon="Setting" circle @click="handleDisplayCustomization"></el-button>
-			<!--			<vxe-button @click="zoomEvent">切换表格最大化/还原</vxe-button>-->
+			<el-button :icon="Refresh" circle @click="tableRefresh" />
+			<el-button :icon="Setting" circle @click="openSetting"></el-button>
 		</template>
 		<template #default_sleepDuration>
 			<img width="50" src="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt=""
@@ -23,31 +22,36 @@
 			<el-tag type="primary">Tag 1</el-tag>
 		</template>
 		<!--   组件内置操作列插槽（default_handle_operation 不可变） -->
-		<template #default_handle_operation>
-			<vxe-button>编辑</vxe-button>
+		<template #default_handle_operation="{ row }">
+			<vxe-button @click="handleEdit(row)">编辑</vxe-button>
 		</template>
 	</table-grid>
 </template>
 
 <script setup lang="ts">
 import TableGrid from '../../../../packages/table-base/index.vue';
-import { onMounted, reactive, ref } from 'vue';
-import { I_Table_Grid_Props, JlgGridInstance } from '../../../../packages/table-base/type';
+import { Component, onMounted, reactive, ref } from 'vue';
+import { I_Table_Grid_Props } from '../../../../packages/table-base/type';
 import { ElMessage } from 'element-plus';
 import axios from 'axios';
 import { VxeGridListeners, VxeGridPropTypes } from 'vxe-table';
 import { VxeGridDefines } from 'vxe-table/types/grid';
-import { useGetSysConfig, useSaveSysConfig } from '@pac/table-filter/useMock';
-import TableCustomTemplate, { TableCustomTemplateProps } from '../template/tableCustomTemplate/index.vue';
+import { useGetSysConfig, useSaveSysConfig } from '@/hooks/useMock';
 import { Refresh, Setting, ArrowDown } from '@element-plus/icons-vue';
+import { useTableComponent } from '../hooks/useTable';
+import { useDynamicModal } from '@pac/modal';
+import BaseModal from '../../modal/BaseModal.vue';
 
 defineOptions({
 	name: 'TableFilterBaseUse',
 });
+const TableGridComponent: Component = TableGrid;
+console.log('TableGrid', TableGridComponent);
+
+const { currentInstance, jlgGrid, buttonRef, tableRefresh, openSetting } = useTableComponent<RowVO>();
 
 const options = ref<ListItem[]>([]);
 const loading = ref(false);
-const jlgGrid = ref<JlgGridInstance<RowVO>>();
 const remoteMethod = (query: string) => {
 	if (query !== '') {
 		loading.value = true;
@@ -195,7 +199,6 @@ interface ListItem {
 	value: string;
 	label: string;
 }
-const buttonRef = ref();
 
 onMounted(() => {
 	/// 模拟异步请求
@@ -206,9 +209,6 @@ onMounted(() => {
 			{ label: '选项3', value: 3 },
 		];
 	}, 2000);
-
-	// jlg-grid 与 高级筛选按钮绑定
-	jlgGrid.value?.initPopoverButton(buttonRef.value);
 });
 
 interface RowVO {
@@ -257,7 +257,7 @@ const gridEvent: VxeGridListeners<RowVO> = {
 };
 
 const gridOptions = reactive<I_Table_Grid_Props<RowVO>>({
-	id: 'jlgGrid',
+	id: currentInstance.type.name,
 	border: true,
 	height: 'auto',
 	align: null,
@@ -397,10 +397,6 @@ const gridOptions = reactive<I_Table_Grid_Props<RowVO>>({
 		saveSysConfig: useSaveSysConfig,
 	},
 	toolbarConfig: {
-		custom: true,
-		loading: false,
-		perfect: false,
-		tools: [],
 		slots: {
 			buttons: 'toolbar_buttons',
 			tools: 'toolbar_tools',
@@ -562,9 +558,88 @@ const mockGetPageList = (params: VxeGridPropTypes.ProxyAjaxQueryParams<RowVO>) =
 	});
 };
 
-function handleFlushed() {
-	jlgGrid.value?.refresh(false);
+const { openModal } = useDynamicModal();
+function handleEdit(row: RowVO) {
+	console.log(row);
+	openModal({
+		component: BaseModal,
+		modalOptions: {
+			size: 'mini',
+			status: 'error',
+			iconStatus: 'error',
+			className: 'error',
+			title: '测试命令式动态弹窗Demo',
+			// cancelButtonText: '取消',
+			confirmButtonText: '完成',
+			// 是否锁住页面，不允许窗口之外的任何操作
+			lockView: true,
+			// 是否锁住滚动条，不允许页面滚动
+			lockScroll: true,
+			mask: true,
+			// 是否允许点击遮罩层关闭窗口
+			maskClosable: true,
+			// 是否允许按 Esc 键关闭窗口
+			escClosable: true,
+			// 是否允许窗口边缘拖动调整窗口大小
+			resize: true,
+			showHeader: true,
+			showFooter: true,
+			// 标题是否标显示最大化与还原按钮
+			showZoom: true,
+			// 是否显示关闭按钮
+			showClose: true,
+			// 是否允许通过双击头部放大或还原窗口
+			dblclickZoom: true,
+			// 是否启用窗口拖动
+			draggable: true,
+			width: 300,
+			height: 400,
+			minWidth: 200,
+			minHeight: 200,
+			// 自定义堆叠顺序（对于某些特殊场景，比如被遮挡时可能会用到）
+			zIndex: 99,
+			// 只对 resize 启用后有效，用于设置可拖动界限范围，如果为负数则允许拖动超出屏幕边界,默认0
+			marginSize: 0,
+			// 窗口打开时自动最大化显示
+			fullscreen: false,
+			transfer: true,
+			// 设置标题内容过长时显示为省略号
+			showTitleOverflow: true,
+			// 在窗口隐藏之前执行，可以返回 Error 阻止关闭，支持异步
+			beforeHideMethod: ({ type }) => {
+				console.log(`在窗口隐藏之前执行，可以返回 Error 阻止关闭，支持异步,type:${type}`);
+				// return Error('阻止关闭');
+				// return Promise.resolve(Error('阻止关闭'));
+			},
+			onHide: () => {
+				console.log('onHide 1');
+			},
+			onClose: () => {
+				console.log('onClose 1');
+			},
+			onShow: () => {
+				console.log('onShow 1');
+			},
+			onZoom: () => {
+				console.log('onZoom 1');
+			},
+			onCancel: (data) => {
+				console.log('onCancel 1', data);
+			},
+			onConfirm: (data) => {
+				console.log('onConfirm 1', data);
+			},
+			slots: {},
+		},
+		props: {
+			text: '这是传递的文本',
+		},
+	});
 }
+
+// function handleFlushed() {
+// 	jlgGrid.value?.refresh(false);
+// }
 
 // function resetCustomEvent() {
 // 	jlgGrid.value?.resetCustomEvent();
@@ -603,19 +678,6 @@ function handleDelete2() {
 
 function checkboxChange(data: VxeGridDefines.CheckboxChangeEventParams) {
 	console.log('checkboxChange', data.checked);
-}
-
-function handleDisplayCustomization() {
-	const collectColumn = jlgGrid.value.xGrid.getTableColumn().collectColumn;
-	console.log(collectColumn);
-	if (jlgGrid.value?.renderCustomTemplate) {
-		jlgGrid.value.renderCustomTemplate<TableCustomTemplateProps>(TableCustomTemplate, {
-			jlgGrid: jlgGrid.value,
-			beforeDestroy: () => {
-				console.log('销毁前销毁前销毁前销毁前');
-			},
-		});
-	}
 }
 </script>
 
