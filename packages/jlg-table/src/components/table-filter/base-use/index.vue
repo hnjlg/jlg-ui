@@ -39,7 +39,7 @@ import { VxeGridDefines } from 'vxe-table/types/grid';
 import { useGetSysConfig, useSaveSysConfig } from '@/hooks/useMock';
 import { Refresh, Setting, ArrowDown } from '@element-plus/icons-vue';
 import { useTableComponent } from '../hooks/useTable';
-import { useDynamicModal } from 'packages/jlg-table/packages/components/modal';
+import { useDynamicModal } from '@pac/components/modal';
 import BaseModal from '../../modal/BaseModal.vue';
 
 defineOptions({

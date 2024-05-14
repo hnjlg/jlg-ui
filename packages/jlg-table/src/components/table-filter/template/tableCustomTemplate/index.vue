@@ -300,7 +300,7 @@ import { VxeTableDefines } from 'vxe-table/types/table';
 import { JlgGridInstance } from '@pac/components/table-base/type';
 import { I_Table_Filter_Item, I_Table_Filter_Props } from '@pac/components/table-filter/type';
 import Sortable from 'sortablejs';
-import TableFilter from 'packages/jlg-table/packages/components/table-filter';
+import TableFilter from '@pac/components/table-filter/index.vue';
 
 defineOptions({
 	name: 'TableCustomTemplate',
@@ -557,9 +557,9 @@ function handleSaveColumn() {
 <style scoped lang="scss">
 // 内容背景色
 $jlg-tct-bgc: #fff;
-$jlg-tct-left-width: 78px;
+$jlg-tct-left-width: 0px;
 // 菜单距离顶部的距离
-$menu-margin-top: 45px;
+$menu-margin-top: 0px;
 
 .jlg-table-custom-template {
 	position: fixed;

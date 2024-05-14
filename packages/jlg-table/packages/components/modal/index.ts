@@ -3,7 +3,7 @@ import uniqueId from 'xe-utils/uniqueId';
 import find from 'xe-utils/find';
 import { nextTick, reactive, markRaw } from 'vue';
 import DynamicModal from './index.vue';
-import { withInstall } from '../../index';
+import { withInstall } from '../../../lib/install';
 
 export const dynamicModalStore = reactive<I_Dynamic_Modal_Store>({
 	modals: [],
