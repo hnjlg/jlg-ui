@@ -3,6 +3,7 @@ import uniqueId from 'xe-utils/uniqueId';
 import find from 'xe-utils/find';
 import { nextTick, reactive, markRaw } from 'vue';
 import DynamicModal from './index.vue';
+import ModalTemplate from './modal-template.vue';
 import { withInstall } from '../../../lib/install';
 
 export const dynamicModalStore = reactive<I_Dynamic_Modal_Store>({
@@ -100,4 +101,5 @@ export const useDynamicModal = () => {
 
 // 注册组件
 export const JlgDynamicModal = withInstall(DynamicModal);
+export const JlgModalTemplate = withInstall(ModalTemplate);
 export * from './type';

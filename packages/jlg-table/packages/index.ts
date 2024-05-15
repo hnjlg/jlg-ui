@@ -1,8 +1,8 @@
-import { JlgGrid, JlgDynamicModal, JlgTableFilter } from './components';
+import { JlgGrid, JlgDynamicModal, JlgTableFilter, JlgModalTemplate } from './components';
 import { makeInstaller } from '../lib/install';
 import type { Plugin } from 'vue';
 
-export const components = [JlgGrid, JlgDynamicModal, JlgTableFilter] as Plugin[];
+export const components = [JlgGrid, JlgTableFilter, JlgDynamicModal, JlgModalTemplate] as Plugin[];
 
 const install = makeInstaller(components);
 export * from './components';
