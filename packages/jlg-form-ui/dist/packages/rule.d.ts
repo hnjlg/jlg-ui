@@ -1,5 +1,5 @@
-import { FormItemRule } from 'element-plus';
 import { InternalRuleItem, RuleItem, Value } from 'async-validator/dist-types/interface';
+import { FormItemRule } from 'element-plus';
 
 export declare type U_A_ValueTypes<T> = T[keyof T];
 /**

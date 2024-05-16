@@ -1,6 +1,7 @@
 <template>
 	<jlg-tooltip v-bind="mergeTooltipPropsComputed">
 		<el-input
+			ref="_ref"
 			:model-value="props.modelValue"
 			v-bind="mergeInputPropsComputed"
 			:placeholder="placeholderComputed"
@@ -37,6 +38,8 @@ const props = withDefaults(defineProps<T_Jlg_Input_Props>(), {
 const attrs = useAttrs();
 
 const emits = defineEmits<I_Jlg_Input_Emits>();
+
+const _ref = ref(null);
 
 // formItem传递的context
 const context: FormItemContext | undefined = inject(formItemContextKey);
@@ -117,6 +120,10 @@ onMounted(() => {
 				};
 			},
 		});
+});
+
+defineExpose({
+	_ref,
 });
 </script>
 

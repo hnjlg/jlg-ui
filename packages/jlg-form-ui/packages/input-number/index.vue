@@ -1,6 +1,7 @@
 <template>
 	<jlg-tooltip v-bind="mergeTooltipPropsComputed">
 		<el-input-number
+			ref="_ref"
 			:model-value="props.modelValue"
 			v-bind="mergeNumberPropsComputed"
 			@update:model-value="(v) => emits('update:modelValue', v)"
@@ -34,6 +35,8 @@ const attrs = useAttrs();
 const emits = defineEmits<I_Jlg_InputNumber_Emits>();
 
 const slots = useSlots();
+
+const _ref = ref(null);
 
 const tooltipShow = ref(false);
 
@@ -92,6 +95,10 @@ const mouseleave = () => {
 	}
 	tooltipShow.value = false;
 };
+
+defineExpose({
+	_ref,
+});
 </script>
 
 <style scoped lang="scss"></style>

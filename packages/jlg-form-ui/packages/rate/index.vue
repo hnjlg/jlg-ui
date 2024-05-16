@@ -1,6 +1,7 @@
 <template>
 	<jlg-tooltip v-bind="mergeTooltipPropsComputed">
 		<el-rate
+			ref="_ref"
 			:model-value="props.modelValue"
 			v-bind="mergeRatePropsComputed"
 			@update:model-value="(v) => emits('update:modelValue', v)"
@@ -29,6 +30,8 @@ const props = withDefaults(defineProps<T_Jlg_Rate_Props>(), {
 const attrs = useAttrs();
 
 const emits = defineEmits<I_Jlg_Rate_Emits>();
+
+const _ref = ref(null);
 
 const tooltipShow = ref(false);
 
@@ -87,6 +90,10 @@ const mouseleave = () => {
 	}
 	tooltipShow.value = false;
 };
+
+defineExpose({
+	_ref,
+});
 </script>
 
 <style scoped lang="scss"></style>

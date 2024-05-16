@@ -1,6 +1,7 @@
 <template>
 	<jlg-tooltip v-bind="mergeTooltipPropsComputed">
 		<el-date-picker
+			ref="_ref"
 			:model-value="props.modelValue"
 			v-bind="mergeDatePickerPropsComputed"
 			:placeholder="placeholderComputed"
@@ -36,6 +37,8 @@ const attrs = useAttrs();
 const emits = defineEmits<I_Jlg_DatePicker_Emits>();
 
 const slots = useSlots();
+
+const _ref = ref(null);
 
 const context: FormItemContext | undefined = inject(formItemContextKey);
 
@@ -91,6 +94,10 @@ onMounted(() => {
 				};
 			},
 		});
+});
+
+defineExpose({
+	_ref,
 });
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-	<el-option v-bind="mergeOptionPropsComputed">
+	<el-option ref="_ref" v-bind="mergeOptionPropsComputed">
 		<template v-for="(index, name) in slots" #[name]>
 			<slot :name="name" />
 		</template>
@@ -20,12 +20,18 @@ const attrs = useAttrs();
 
 const slots = useSlots();
 
+const _ref = ref(null);
+
 const mergeOptionPropsComputed = computed(() => {
 	return {
 		...globalComponentConfig.option,
 		...props,
 		...attrs,
 	};
+});
+
+defineExpose({
+	_ref,
 });
 </script>
 

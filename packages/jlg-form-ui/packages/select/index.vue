@@ -48,11 +48,11 @@ const emits = defineEmits<I_Jlg_Select_Emits>();
 
 const slots = useSlots();
 
+const _ref = ref(null);
+
 const slotsComputed = computed(() => {
 	return Object.keys(slots).filter((name) => name !== 'default');
 });
-
-const _ref = ref(null);
 
 // formItem传递的context
 const context: FormItemContext | undefined = inject(formItemContextKey);

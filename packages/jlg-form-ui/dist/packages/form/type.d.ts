@@ -1,15 +1,15 @@
-import { FormValidatorRules } from '../rule';
-import { T_Jlg_RadioGroup_Props } from '../radio-group/type';
-import { T_Jlg_FormItem_Props } from '../form-item/type';
-import { T_Jlg_Rate_Props } from '../rate/type';
-import { T_Jlg_TimeSelect_Props } from '../time-select/type';
-import { T_Jlg_DatePicker_Props } from '../date-picker/type';
-import { T_Jlg_InputNumber_Props } from '../input-number/type';
-import { T_Jlg_Select_Props } from '../select/type';
-import { T_Jlg_Input_Props } from '../input/type';
-import { I_Grid_Layout_Props } from 'jlg-ui/dist/packages/grid-layout/type';
-import { I_Grid_Cell_Props } from 'jlg-ui/dist/packages/grid-cell/type';
 import { FormProps } from 'element-plus';
+import { I_Grid_Cell_Props } from 'jlg-ui/dist/packages/grid-cell/type';
+import { I_Grid_Layout_Props } from 'jlg-ui/dist/packages/grid-layout/type';
+import { T_Jlg_Input_Props } from '../input/type';
+import { T_Jlg_Select_Props } from '../select/type';
+import { T_Jlg_InputNumber_Props } from '../input-number/type';
+import { T_Jlg_DatePicker_Props } from '../date-picker/type';
+import { T_Jlg_TimeSelect_Props } from '../time-select/type';
+import { T_Jlg_Rate_Props } from '../rate/type';
+import { T_Jlg_FormItem_Props } from '../form-item/type';
+import { T_Jlg_RadioGroup_Props } from '../radio-group/type';
+import { FormValidatorRules } from '../rule';
 
 export declare enum E_JlgForm_FormType {
     输入框 = "input",
