@@ -135,8 +135,12 @@ const install = function (
 };
 
 // 支持使用标签的方式引入
+// if (typeof window !== 'undefined' && (window as any).Vue) {
+// 	install((window as any).Vue);
+// }
+
 if (typeof window !== 'undefined' && (window as any).Vue) {
-	install((window as any).Vue);
+	(window as any).JlgFormUi = { install };
 }
 
 export default { install }; // 批量的引入*

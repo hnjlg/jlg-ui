@@ -114,14 +114,5 @@ defineExpose({
 </script>
 
 <style scoped lang="scss">
-.text-overflow-hidden {
-	display: inline-block;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-:deep(.el-form-item__label) {
-	font-size: 12px;
-}
+@import url('./index.scss');
 </style>

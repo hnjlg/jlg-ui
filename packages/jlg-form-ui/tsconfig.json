@@ -43,7 +43,6 @@
 	},
 	"include": [
 		// "node_modules/jlg-ui"
-		"unplugin-vue-define-options"
 	],
 	"exclude": [],
 	"references": [
