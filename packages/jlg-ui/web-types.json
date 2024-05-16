@@ -2,7 +2,7 @@
     "$schema": "http://json.schemastore.org/web-types",
     "framework": "vue",
     "name": "jlg-ui",
-    "version": "0.0.6",
+    "version": "0.0.9",
     "js-types-syntax": "typescript",
     "description-markup": "markdown",
     "contributions": {
@@ -181,6 +181,40 @@
                             "default": "false"
                         }
                     ]
+                },
+                {
+                    "name": "jlg-flex-layout",
+                    "source": {
+                        "symbol": "JlgFlexLayout"
+                    },
+                    "doc-url": "",
+                    "props": [{
+                            "name": "col",
+                            "description": "number 一行摆几个元素",
+                            "doc-url": "",
+                            "type": ["number"]
+                        },
+                        {
+                            "name": "gap",
+                            "description": "string 0px 每个元素的水平间隔",
+                            "doc-url": "",
+                            "type": ["string"],
+                            "default": "10px"
+                        }
+                    ]
+                },
+                {
+                    "name": "jlg-flex-cell",
+                    "source": {
+                        "symbol": "JlgFlexCell"
+                    },
+                    "doc-url": "",
+                    "props": [{
+                        "name": "col",
+                        "description": "number 当前元素占据的份额",
+                        "doc-url": "",
+                        "type": ["number"]
+                    }]
                 }
             ],
             "attributes": []
