@@ -15,13 +15,26 @@
 		<template #corner>
 			<slot name="corner">
 				<i
+					v-if="_buttonsMap.shrink !== false"
 					:class="`vxe-modal--zoom-btn trigger--btn ${shrinkStore.isShrink ? GlobalConfig.icon.MODAL_FOLD : GlobalConfig.icon.MODAL_UNFOLD}`"
 					:title="shrinkStore.isShrink ? '展开' : '收缩'"
 					@dblclick.stop
 					@click.stop="shrinkStore.toggleShrinkEvent()"
 				></i>
-				<i :class="`vxe-modal--zoom-btn trigger--btn ${GlobalConfig.icon.SETTING_CUSTOM}`" title="设置" @dblclick.stop @click="custom"></i>
-				<i :class="`vxe-modal--zoom-btn trigger--btn ${GlobalConfig.icon.MODAL_MINUS}`" title="最小化" @dblclick.stop @click="hide"></i>
+				<i
+					v-if="_buttonsMap.custom !== false"
+					:class="`vxe-modal--zoom-btn trigger--btn ${GlobalConfig.icon.SETTING_CUSTOM}`"
+					title="设置"
+					@dblclick.stop
+					@click="custom"
+				></i>
+				<i
+					v-if="_buttonsMap.hide !== false"
+					:class="`vxe-modal--zoom-btn trigger--btn ${GlobalConfig.icon.MODAL_MINUS}`"
+					title="最小化"
+					@dblclick.stop
+					@click="hide"
+				></i>
 			</slot>
 		</template>
 		<!--   窗口底部的模板 -->
@@ -37,8 +50,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineOptions, nextTick, onMounted, reactive, useAttrs } from 'vue';
-import { T_Jlg_Modal_Instance, T_Modal_Options } from './type';
+import { defineOptions, nextTick, onMounted, reactive, useAttrs, watch } from 'vue';
+import { T_Buttons, T_Jlg_Modal_Instance, T_Modal_Options } from './type';
 import { VxeModalDefines, VxeModalInstance } from 'vxe-table';
 import { dynamicModalStore, useDynamicModal } from './index';
 import { ElButton } from 'element-plus';
@@ -60,6 +73,7 @@ const emit = defineEmits<{
 	confirm: [params: VxeModalDefines.ConfirmEventParams];
 	show: [params: VxeModalDefines.ShowEventParams];
 	zoom: [params: VxeModalDefines.ZoomEventParams];
+	custom: [params: T_Modal_Options];
 }>(); // 定义事件
 
 const attrs = useAttrs();
@@ -257,7 +271,11 @@ const hide = () => {
 
 // 手动打开自定义设置窗口
 const custom = () => {
-	alert('自定义设置');
+	return new Promise((resolve) => {
+		const params = { ...modalOptions.value };
+		emit('custom', params);
+		resolve(params);
+	});
 };
 
 // 获取当前窗口元素
@@ -312,6 +330,31 @@ const confirm = (event: Event) => {
 	xModalRef.value.dispatchEvent(type, { type }, event);
 };
 
+const _buttonsMap: { [key in T_Buttons]?: boolean } = reactive({
+	shrink: true,
+	zoom: true,
+	custom: true,
+	hide: true,
+	close: true,
+});
+
+watch(
+	() => _buttonsMap,
+	(newVal) => {
+		modalOptions.value.showZoom = newVal.zoom;
+		modalOptions.value.showClose = newVal.close;
+	},
+	{ deep: true, immediate: true }
+);
+
+const toggleCorner = (buttons: boolean | T_Buttons[]) => {
+	const _buttons = typeof buttons === 'boolean' ? ['shrink', 'zoom', 'custom', 'hide', 'close'] : buttons;
+
+	_buttons.forEach((item) => {
+		_buttonsMap[item] = typeof buttons === 'boolean' ? buttons : true;
+	});
+};
+
 // 暴露常用方法
 defineExpose<T_Jlg_Modal_Instance>({
 	open,
@@ -327,6 +370,7 @@ defineExpose<T_Jlg_Modal_Instance>({
 	cancel,
 	confirm,
 	custom,
+	toggleCorner,
 	ref: xModalRef.value,
 });
 </script>

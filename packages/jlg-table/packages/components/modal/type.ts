@@ -30,6 +30,8 @@ export interface I_Modal_Controller {
 	close: () => void;
 }
 
+export type T_Buttons = 'shrink' | 'custom' | 'zoom' | 'hide' | 'close';
+
 export interface I_Modal_Methods {
 	/**
 	 * 手动打开窗口
@@ -85,7 +87,12 @@ export interface I_Modal_Methods {
 	/**
 	 *  手动打开自定义设置窗口
 	 * */
-	custom(): void;
+	custom(): Promise<any>;
+
+	/**
+	 *  手动切换右上角操作按钮的显示隐藏
+	 * */
+	toggleCorner(val: boolean | T_Buttons[]): void;
 }
 
 export interface I_Modal_Constructor {

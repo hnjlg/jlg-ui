@@ -15,7 +15,7 @@
 				@resizable-change="handleResizableChange"
 			>
 				<template #top>
-					<div ref="formElemRef" class="jlg-grid--form-wrapper">
+					<div v-if="tableFilterConfig.items.length > 0" ref="formElemRef" class="jlg-grid--form-wrapper">
 						<table-filter
 							ref="tableFilterRef"
 							v-bind="props.tableFilterConfig"
@@ -230,7 +230,7 @@ const beforeQuery = async (args) => {
 			await xGrid.value?.loadColumn(_columns);
 		}
 		if (searchData.length > 0) {
-			const _items = mergedList<I_Table_Filter_Item>(tableFilterConfig.value.items, searchData, ['visible', 'sortNumber'], 'field');
+			const _items = mergedList<I_Table_Filter_Item>(tableFilterConfig.value?.items || [], searchData, ['visible', 'sortNumber'], 'field');
 			const formData: any = {};
 			_items.forEach((item) => {
 				formData[item.field] = item.defaultValue;
@@ -238,7 +238,7 @@ const beforeQuery = async (args) => {
 			tableFilterConfig.value.items = _items;
 			args.form = formData;
 		} else {
-			args.form = props.tableFilterConfig.items ?? [];
+			args.form = props.tableFilterConfig?.items ?? [];
 		}
 	} else {
 		args.form = tableFilterRef.value.getFormData();
@@ -386,7 +386,7 @@ const columnDrop = () => {
 	headerRows.forEach((headerRow) => {
 		sortable = Sortable.create(headerRow, {
 			handle: '.vxe-header--column',
-			forceFallback: true,
+			forceFallback: false,
 			animation: 150,
 			onStart() {
 				const thElements = headerRow.querySelectorAll('.vxe-header--column');
@@ -447,7 +447,7 @@ const columnDrop2 = () => {
 	const $grid = xGrid.value;
 	sortable = Sortable.create($grid.$el.querySelector('.body--wrapper>.vxe-table--header .vxe-header--row'), {
 		handle: '.vxe-header--column',
-		forceFallback: true,
+		forceFallback: false,
 		animation: 150,
 		onEnd: (sortableEvent) => {
 			const targetThElem = sortableEvent.item;
@@ -546,7 +546,7 @@ function saveConfig(type: T_Save_Config_Type = 'customize') {
 			}
 		});
 
-		_saveSysConfig(columns, tableFilterConfig.value.items, customStore, type);
+		_saveSysConfig(columns, tableFilterConfig.value?.items || [], customStore, type);
 	}
 }
 
