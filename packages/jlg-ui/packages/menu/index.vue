@@ -42,11 +42,13 @@
 							@click="emits('threeLevelMenuClick', threeLevelMenu, [firstLevelMenu, secondLevelMenu, threeLevelMenu])"
 						>
 							{{ threeLevelMenu.title }}
-							<show-collect
-								:is-collect="threeLevelMenu.isCollect"
-								:is-show="threeLevelMenu._isShowCollect"
-								@click.stop="emits('collectClick', threeLevelMenu, [firstLevelMenu, secondLevelMenu, threeLevelMenu])"
-							></show-collect>
+							<div class="show-collect">
+								<show-collect
+									:is-collect="threeLevelMenu.isCollect"
+									:is-show="threeLevelMenu._isShowCollect"
+									@click.stop="emits('collectClick', threeLevelMenu, [firstLevelMenu, secondLevelMenu, threeLevelMenu])"
+								></show-collect>
+							</div>
 						</div>
 					</div>
 				</dir>
@@ -127,20 +129,28 @@ watch(
 		padding-inline-start: 0px;
 
 		.second-level-menu {
-			margin-left: 20px;
+			margin-left: var(--second-level-menu-margin-left);
 			color: var(--jlg-menu-popover-color);
 			.second-level-menu-title {
-				padding: 20px;
+				padding: var(--second-level-menu-title-top-padding) var(--second-level-menu-title-right-padding) var(--second-level-menu-title-bottom-padding)
+					var(--second-level-menu-title-left-padding);
 				border-bottom: 1px solid #394341;
+				color: var(--second-level-menu-title-color);
 			}
 			.three-level-menu-title {
-				font-size: 18px;
-				padding: 20px;
+				font-size: var(--three-level-menu-title-font-size);
+				padding: var(--three-level-menu-title-top-padding) var(--three-level-menu-title-right-padding) var(--three-level-menu-title-bottom-padding)
+					var(--three-level-menu-title-left-padding);
 				display: flex;
 
 				&:hover {
 					cursor: pointer;
 					color: var(--jlg-menu-three-level-hover-bg);
+				}
+
+				.show-collect {
+					margin-left: 3px;
+					width: 20px;
 				}
 			}
 		}
@@ -152,11 +162,13 @@ watch(
 		color: var(--jlg-menu-first-level-color);
 		border-radius: var(--jlg-menu-first-level-border-radius);
 		margin: var(--jlg-menu-first-level-y-margin) var(--jlg-menu-first-level-x-margin);
+		padding: var(--jlg-menu-first-level-y-padding) var(--jlg-menu-first-level-x-padding);
 		cursor: pointer;
 
 		.jlg-menu-first-level-menu-icon {
 			width: 20px;
 			height: 20px;
+			line-height: 20px;
 			margin-right: 5px;
 		}
 

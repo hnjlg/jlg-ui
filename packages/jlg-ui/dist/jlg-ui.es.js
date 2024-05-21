@@ -3339,7 +3339,7 @@ const kt = (e, t) => {
   for (const [r, o] of t)
     n[r] = o;
   return n;
-}, ht = /* @__PURE__ */ kt(Wu, [["__scopeId", "data-v-3025145e"]]);
+}, ht = /* @__PURE__ */ kt(Wu, [["__scopeId", "data-v-1d59d28d"]]);
 ht.install = (e) => {
   e.component(ht.name, ht);
 };

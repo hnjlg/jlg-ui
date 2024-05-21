@@ -23,10 +23,25 @@
 	--jlg-menu-first-level-y-margin: 10px;
 	/* 菜单组件一级菜单项x轴margin */
 	--jlg-menu-first-level-x-margin: 0px;
+	/* 菜单组件一级菜单项y轴padding */
+	--jlg-menu-first-level-y-padding: 5px;
+	/* 菜单组件一级菜单项x轴padding */
+	--jlg-menu-first-level-x-padding: 2px;
 	// 菜单组件弹窗背景色
 	--jlg-menu-popover-bg: #151f22;
 	// 菜单组件弹窗字体颜色
 	--jlg-menu-popover-color: #ccc;
 	// 菜单组件三级菜单hover字体颜色
 	--jlg-menu-three-level-hover-bg: #2d5bac;
+	--three-level-menu-title-top-padding: 6px;
+	--three-level-menu-title-right-padding: 20px;
+	--three-level-menu-title-bottom-padding: 6px;
+	--three-level-menu-title-left-padding: 1px;
+	--three-level-menu-title-font-size: 18px;
+	--second-level-menu-margin-left: 20px;
+	--second-level-menu-title-top-padding: 8px;
+	--second-level-menu-title-right-padding: 8px;
+	--second-level-menu-title-bottom-padding: 8px;
+	--second-level-menu-title-left-padding: 1px;
+	--second-level-menu-title-color: #929598;
 }
