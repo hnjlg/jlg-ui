@@ -371,6 +371,6 @@ defineExpose<T_Jlg_Modal_Instance>({
 	confirm,
 	custom,
 	toggleCorner,
-	ref: xModalRef.value,
+	ref: xModalRef,
 });
 </script>

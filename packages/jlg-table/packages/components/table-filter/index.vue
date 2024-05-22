@@ -34,7 +34,7 @@
 			</div>
 		</div>
 		<!--  展开/折叠 操作区域   -->
-		<div class="table-filter__operation">
+		<div v-show="items.length > 0" class="table-filter__operation">
 			<el-divider>
 				<div class="table-filter__divider" @click="handleFolding(!isFolding)">
 					<span style="margin-right: 5px">{{ isFolding ? '展开筛选' : '收起筛选' }}</span>
@@ -59,6 +59,7 @@
 			:width="525"
 			virtual-triggering
 			placement="bottom"
+			:disabled="props.disabled || itemsValue.length === 0"
 			:manual="true"
 		>
 			<div v-show="isShowQuickSearch" class="jlg-popover__wrapper">
@@ -101,7 +102,7 @@
 <script setup lang="ts">
 import { CSSProperties, ref } from 'vue';
 import { I_Table_Filter_Item, I_Table_Filter_Props } from './type';
-import { ElTooltip, ElPopover, FormInstance } from 'element-plus';
+import { ElPopover, ElTooltip, FormInstance } from 'element-plus';
 import GlobalConfig from '../../../lib/useGlobalConfig';
 import { ArrowDown, ArrowUp, CloseBold } from '@element-plus/icons-vue';
 import isString from 'xe-utils/isString';
@@ -263,6 +264,31 @@ const handleQuickSearchClose = () => {
 const handleQuickSearch = () => {
 	isShowQuickSearch.value = true;
 };
+
+// 搜索弹框内存在有效数据时，触发回调
+const isSearch = ref(false);
+function hasValue(value: any) {
+	if (value === undefined || value === null) {
+		return false;
+	} else if (typeof value === 'string' && value.trim() === '') {
+		return false;
+	} else if (Array.isArray(value) && value.length === 0) {
+		return false;
+	} else return !(typeof value === 'object' && Object.keys(value).length === 0);
+}
+watch(
+	() => form,
+	() => {
+		isSearch.value = Object.values(form).some(hasValue);
+	},
+	{ deep: true }
+);
+
+watch([isShowQuickSearch, isSearch], ([newIsShowQuickSearch, newIsSearch], [oldIsShowQuickSearch, oldIsSearch]) => {
+	if (newIsShowQuickSearch !== oldIsShowQuickSearch || newIsSearch !== oldIsSearch) {
+		if (props?.onSearchStatusChange) props?.onSearchStatusChange(newIsShowQuickSearch, newIsSearch);
+	}
+});
 
 defineExpose({
 	handleReset,

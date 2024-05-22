@@ -1,4 +1,5 @@
 import { VxeModalProps, VxeModalEventProps, VxeModalInstance } from 'vxe-table';
+import { Ref } from 'vue';
 export interface I_Options {
 	[key: string]: unknown;
 }
@@ -99,7 +100,7 @@ export interface I_Modal_Constructor {
 	/**
 	 * vxe-table 的 Modal 组件原始实例,一般情况下不需要使用
 	 */
-	ref: VxeModalInstance;
+	ref: Ref<VxeModalInstance>;
 }
 
 export type T_Jlg_Modal_Instance = I_Modal_Constructor & I_Modal_Methods;

@@ -50,5 +50,6 @@ export declare interface I_Table_Filter_Props {
 	disabled?: boolean;
 	// 标识虚拟触发时的触发元素
 	virtualRef?: HTMLElement;
+	onSearchStatusChange?: (isShow: boolean, isSearch: boolean) => void;
 	items: I_Table_Filter_Item[];
 }
