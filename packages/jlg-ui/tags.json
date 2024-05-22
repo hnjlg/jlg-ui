@@ -1,27 +1,31 @@
 {
-    "jlg-grid-cell": {
-        "attributes": ["top", "height", "width", "left", "center"],
-        "description": "追加属性：\n\n top?: number 0 顶部空白份额\n\n left?: number 0 左侧空白份额\n\n width?: number 0 占据宽度的份额\n\n height?: number 0 占据高度份额\n\n center?: boolean false 内容是否居中"
-    },
-    "jlg-grid-layout": {
-        "attributes": ["padding", "flow", "rows", "columns", "gap", "width", "height", "inline", "border"],
-        "description": "追加属性：\n\n padding?: string 0px 每个网格之间的间隔\n\n flow?: [grid-auto-flow](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-auto-flow) \n\n rows: number 将宽度分为几份\n\n columns: number 将高度分为几份\n\n gap?: string 0px 间隔\n\n width?: string 100% [style width](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width)\n\n height?: string auto [style height](https://developer.mozilla.org/zh-CN/docs/Web/CSS/height) \n\n inline?: boolean false 是否行内布局\n\n border?:boolean false 是否显示边框"
-    },
-    "jlg-collapse": {
-        "attributes": ["model-value", "accordion", "change"],
-        "subtags": ["jlg-collapse-item"],
-        "description": "[element-plus el-collapse](https://element-plus.org/en-US/component/collapse.html#collapse)"
-    },
-    "jlg-collapse-item": {
-        "attributes": ["name", "title", "disabled"],
-        "description": "[element-plus el-collapse-item](https://element-plus.org/en-US/component/collapse.html#collapse-item)"
-    },
-    "jlg-flex-layout": {
-        "attributes": ["col", "gap"],
-        "description": "追加属性: \n\n col: number 一行摆几个元素\n\n gap?: string 0px 每个元素的水平间隔\n\n"
-    },
-    "jlg-flex-cell": {
-        "attributes": ["col"],
-        "description": "追加属性: \n\n col: number 当前元素占据的份额\n\n"
-    }
+	"jlg-grid-cell": {
+		"attributes": ["top", "height", "width", "left", "center"],
+		"description": "追加属性：\n\n top?: number 0 顶部空白份额\n\n left?: number 0 左侧空白份额\n\n width?: number 0 占据宽度的份额\n\n height?: number 0 占据高度份额\n\n center?: boolean false 内容是否居中"
+	},
+	"jlg-grid-layout": {
+		"attributes": ["padding", "flow", "rows", "columns", "gap", "width", "height", "inline", "border"],
+		"description": "追加属性：\n\n padding?: string 0px 每个网格之间的间隔\n\n flow?: [grid-auto-flow](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-auto-flow) \n\n rows: number 将宽度分为几份\n\n columns: number 将高度分为几份\n\n gap?: string 0px 间隔\n\n width?: string 100% [style width](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width)\n\n height?: string auto [style height](https://developer.mozilla.org/zh-CN/docs/Web/CSS/height) \n\n inline?: boolean false 是否行内布局\n\n border?:boolean false 是否显示边框"
+	},
+	"jlg-collapse": {
+		"attributes": ["model-value", "accordion", "change"],
+		"subtags": ["jlg-collapse-item"],
+		"description": "[element-plus el-collapse](https://element-plus.org/en-US/component/collapse.html#collapse)"
+	},
+	"jlg-collapse-item": {
+		"attributes": ["name", "title", "disabled"],
+		"description": "[element-plus el-collapse-item](https://element-plus.org/en-US/component/collapse.html#collapse-item)"
+	},
+	"jlg-flex-layout": {
+		"attributes": ["col", "gap"],
+		"description": "追加属性: \n\n col: number 一行摆几个元素\n\n gap?: string 0px 每个元素的水平间隔\n\n"
+	},
+	"jlg-flex-cell": {
+		"attributes": ["col"],
+		"description": "追加属性: \n\n col: number 当前元素占据的份额\n\n"
+	},
+	"jlg-menu": {
+		"attributes": ["menuData", "collectMenuKeys", "menuDataRecord", "defaultActive", "elPopoverProps"],
+		"description": "追加属性: \n\n menuData: I_JlgMenu_MenuDataItem[] 菜单树形结构数据\n\n collectMenuKeys: I_JlgMenu_MenuDataItem['key'][] 收藏的菜单key数组\n\n menuDataRecord?: T_MenuDataRecord 变基menuData属性名\n\n defaultActive?: I_JlgMenu_MenuDataItem['key'] 当前选中的菜单项key\n\n elPopoverProps?: PopoverProps [element-plus el-popover](https://element-plus.org/zh-CN/component/popover.html)设置菜单弹出框"
+	}
 }

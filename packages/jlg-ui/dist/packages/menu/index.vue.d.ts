@@ -1,12 +1,18 @@
-import { I_JlgMenu_Props, I_JlgMenu_MenuDataItem } from './type';
+import { I_Jlg_Menu_Props, T_MenuDataRecord } from './type';
 
-declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_JlgMenu_Props>, {}>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
-    collectClick: (jlgMenuDataItem: I_JlgMenu_MenuDataItem, meneArr: [I_JlgMenu_MenuDataItem, I_JlgMenu_MenuDataItem, I_JlgMenu_MenuDataItem]) => void;
-    threeLevelMenuClick: (jlgMenuDataItem: I_JlgMenu_MenuDataItem, meneArr: [I_JlgMenu_MenuDataItem, I_JlgMenu_MenuDataItem, I_JlgMenu_MenuDataItem]) => void;
-}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_JlgMenu_Props>, {}>>> & {
-    onCollectClick?: (jlgMenuDataItem: I_JlgMenu_MenuDataItem, meneArr: [I_JlgMenu_MenuDataItem, I_JlgMenu_MenuDataItem, I_JlgMenu_MenuDataItem]) => any;
-    onThreeLevelMenuClick?: (jlgMenuDataItem: I_JlgMenu_MenuDataItem, meneArr: [I_JlgMenu_MenuDataItem, I_JlgMenu_MenuDataItem, I_JlgMenu_MenuDataItem]) => any;
-}, {}, {}>, Partial<Record<string, (_: {}) => any>> & {
+declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_Jlg_Menu_Props>, {
+    menuDataRecord: () => T_MenuDataRecord;
+}>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+    collectClick: (jlgMenuDataItem: import('./type').I_JlgMenu_MenuDataItem, meneArr: [import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem]) => void;
+    threeLevelMenuClick: (jlgMenuDataItem: import('./type').I_JlgMenu_MenuDataItem, meneArr: [import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem]) => void;
+}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_Jlg_Menu_Props>, {
+    menuDataRecord: () => T_MenuDataRecord;
+}>>> & {
+    onCollectClick?: (jlgMenuDataItem: import('./type').I_JlgMenu_MenuDataItem, meneArr: [import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem]) => any;
+    onThreeLevelMenuClick?: (jlgMenuDataItem: import('./type').I_JlgMenu_MenuDataItem, meneArr: [import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem]) => any;
+}, {
+    menuDataRecord: T_MenuDataRecord;
+}, {}>, Partial<Record<string, (_: {}) => any>> & {
     logo?(_: {}): any;
 }>;
 export default _default;
