@@ -3,25 +3,21 @@ import { T_Assign_Rules_Fn, T_JlgForm_Props } from '../type';
 import { E_FormValidatorRulesValidateFunEnum } from '../../rule';
 import { cloneDeep, merge } from 'lodash-unified';
 
-function transformData(data) {
-	const transformedData: any = {};
-	for (const key in data) {
-		if (key === 'record' || key === 'recordValidate') {
-			const recordValidate = data.recordValidate;
-			transformedData.input = {};
-			for (const subKey in recordValidate) {
-				if (subKey.startsWith('input')) {
-					const newKey = subKey.split('.')[1];
-					if (Array.isArray(recordValidate[subKey])) {
-						transformedData.input[newKey] = recordValidate[subKey];
-					} else {
-						transformedData.input[newKey] = recordValidate[subKey];
-					}
-				}
-			}
+function setValue(obj, path, value) {
+	const keys = path.split('.');
+	let current = obj;
+
+	for (let i = 0; i < keys.length; i++) {
+		const key = keys[i];
+		if (i === keys.length - 1) {
+			current[key] = value;
+		} else {
+			current[key] = current[key] || {};
+			current = current[key];
 		}
 	}
-	return transformedData;
+
+	return obj;
 }
 
 export default (mergeFormPropsComputed: ComputedRef<T_JlgForm_Props>) => {
@@ -31,8 +27,7 @@ export default (mergeFormPropsComputed: ComputedRef<T_JlgForm_Props>) => {
 		if (source) {
 			const recordSplit = source.record.split('.');
 			if (recordSplit.length > 1) {
-				console.log(transformData(source));
-				assignRules.value = merge(assignRules.value, transformData(source));
+				assignRules.value = merge(assignRules.value, setValue({}, source.record, source.recordValidate[source.record]));
 			} else {
 				assignRules.value[recordSplit[0]] = [
 					...((assignRules.value[recordSplit[0]] as FormItemRule[]) ?? []),

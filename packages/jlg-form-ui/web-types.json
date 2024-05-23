@@ -1,2055 +1,2017 @@
 {
-	"$schema": "http://json.schemastore.org/web-types",
-	"framework": "vue",
-	"name": "jlg-form-ui",
-	"version": "0.0.36",
-	"js-types-syntax": "typescript",
-	"description-markup": "markdown",
-	"contributions": {
-		"html": {
-			"vue-components": [
-				{
-					"name": "jlg-date-picker",
-					"source": { "symbol": "JlgDatePicker" },
-					"description": "Use Date Picker for date input.",
-					"doc-url": "https://element-plus.org/en-US/component/date-picker.html#datepicker",
-					"props": [
-						{
-							"name": "model-value",
-							"description": "binding value, if it is an array, the length should be 2",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["number", "string", "Date", "[Date, Date] | [string, string]"],
-							"default": "''"
-						},
-						{
-							"name": "readonly",
-							"description": "whether DatePicker is read only",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "disabled",
-							"description": "whether DatePicker is disabled",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "size",
-							"description": "size of Input",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["'' | 'large' | 'default' | 'small'"]
-						},
-						{
-							"name": "editable",
-							"description": "whether the input is editable",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "clearable",
-							"description": "whether to show clear button",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "placeholder",
-							"description": "placeholder in non-range mode",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["string"],
-							"default": "''"
-						},
-						{
-							"name": "start-placeholder",
-							"description": "placeholder for the start date in range mode",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "end-placeholder",
-							"description": "placeholder for the end date in range mode",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "type",
-							"description": "type of the picker",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["'year' | 'years' |'month' | 'date' | 'dates' | 'datetime' | 'week' | 'datetimerange' | 'daterange' | 'monthrange'"],
-							"default": "date"
-						},
-						{
-							"name": "format",
-							"description": "format of the displayed value in the input box",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": [{ "name": "string see", "source": { "symbol": "string see" } }],
-							"default": "YYYY-MM-DD"
-						},
-						{
-							"name": "popper-class",
-							"description": "custom class name for DatePicker's dropdown",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "popper-options",
-							"description": "Customized popper option see more at [popper.js](https://popper.js.org/docs/v2/)",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["Partial<PopperOptions>"],
-							"default": "{}"
-						},
-						{
-							"name": "range-separator",
-							"description": "range separator",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["string"],
-							"default": "'-'"
-						},
-						{
-							"name": "default-value",
-							"description": "optional, default date of the calendar",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["Date", "[Date, Date]"]
-						},
-						{
-							"name": "default-time",
-							"description": "optional, the time value to use when selecting date range",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["Date", "[Date, Date]"]
-						},
-						{
-							"name": "value-format",
-							"description": "optional, format of binding value. If not specified, the binding value will be a Date object",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": [{ "name": "string see", "source": { "symbol": "string see" } }]
-						},
-						{
-							"name": "id",
-							"description": "same as `id` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["string", "[string, string]"]
-						},
-						{
-							"name": "name",
-							"description": "same as `name` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["string", "[string, string]"],
-							"default": "''"
-						},
-						{
-							"name": "unlink-panels",
-							"description": "unlink two date-panels in range-picker",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "prefix-icon",
-							"description": "custom prefix icon component. By default, if the value of `type` is `TimeLikeType`, the value is `Clock`, else is `Calendar`",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
-							"default": "''"
-						},
-						{
-							"name": "clear-icon",
-							"description": "custom clear icon component",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
-							"default": "CircleClose"
-						},
-						{
-							"name": "validate-event",
-							"description": "whether to trigger form validation",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "disabled-date",
-							"description": "a function determining if a date is disabled with that date as its parameter. Should return a Boolean",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["(data: Date) => boolean"]
-						},
-						{
-							"name": "shortcuts",
-							"description": "an object array to set shortcut options",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["Array<{ text: string, value: Date | Function }>"],
-							"default": "[]"
-						},
-						{
-							"name": "cell-class-name",
-							"description": "set custom className",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["(data: Date) => string"]
-						},
-						{
-							"name": "teleported",
-							"description": "whether date-picker dropdown is teleported to the body",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "empty-values",
-							"description": "empty values of component, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["array"]
-						},
-						{
-							"name": "value-on-clear",
-							"description": "clear return value, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
-							"type": ["string", "number", "boolean", "Function"]
-						},
-						{
-							"name": "tooltip-props",
-							"description": "",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
-							"type": ["ElTooltipContentProps"]
-						},
-						{
-							"name": "gather-props",
-							"description": "数据采集单独object",
-							"doc-url": "",
-							"type": ["object"]
-						}
-					],
-					"slots": [
-						{ "name": "default", "description": "custom cell content", "doc-url": "https://element-plus.org/en-US/component/date-picker.html#slots" },
-						{
-							"name": "range-separator",
-							"description": "custom range separator content",
-							"doc-url": "https://element-plus.org/en-US/component/date-picker.html#slots"
-						}
-					],
-					"js": {
-						"events": [
-							{
-								"name": "change",
-								"description": "triggers when user confirms the value",
-								"doc-url": "https://element-plus.org/en-US/component/date-picker.html#events"
-							},
-							{
-								"name": "blur",
-								"description": "triggers when Input blurs",
-								"doc-url": "https://element-plus.org/en-US/component/date-picker.html#events"
-							},
-							{
-								"name": "focus",
-								"description": "triggers when Input focuses",
-								"doc-url": "https://element-plus.org/en-US/component/date-picker.html#events"
-							},
-							{
-								"name": "calendar-change",
-								"description": "triggers when the calendar selected date is changed.",
-								"doc-url": "https://element-plus.org/en-US/component/date-picker.html#events"
-							},
-							{
-								"name": "panel-change",
-								"description": "triggers when the navigation button click.",
-								"doc-url": "https://element-plus.org/en-US/component/date-picker.html#events"
-							},
-							{
-								"name": "visible-change",
-								"description": "triggers when the DatePicker's dropdown appears/disappears",
-								"doc-url": "https://element-plus.org/en-US/component/date-picker.html#events"
-							}
-						]
-					}
-				},
-				{
-					"name": "jlg-form",
-					"source": { "symbol": "JlgForm" },
-					"description": "Form consists of `input`, `radio`, `select`, `checkbox` and so on. With form, you can collect, verify and submit data.",
-					"doc-url": "https://element-plus.org/en-US/component/form.html#form",
-					"props": [
-						{
-							"name": "model",
-							"description": "Data of form component.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["Record<string, any>"]
-						},
-						{
-							"name": "rules",
-							"description": "Validation rules of form.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": [{ "name": "FormRules", "source": { "symbol": "FormRules" } }]
-						},
-						{
-							"name": "inline",
-							"description": "Whether the form is inline.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "label-position",
-							"description": "Position of label. If set to `'left'` or `'right'`, `label-width` prop is also required.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["E_JlgForm_LabelPosition"],
-							"default": "left"
-						},
-						{
-							"name": "label-width",
-							"description": "Width of label, e.g. `'50px'`. All its direct child form items will inherit this value. `auto` is supported.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["string", "number"],
-							"default": "''"
-						},
-						{
-							"name": "label-suffix",
-							"description": "Suffix of the label.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["string"],
-							"default": "''"
-						},
-						{
-							"name": "hide-required-asterisk",
-							"description": "Whether to hide required fields should have a red asterisk (star) beside their labels.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "require-asterisk-position",
-							"description": "Position of asterisk.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["'left' | 'right'"],
-							"default": "E_JlgForm_LabelPosition['左对齐']"
-						},
-						{
-							"name": "show-message",
-							"description": "Whether to show the error message.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "inline-message",
-							"description": "Whether to display the error message inline with the form item.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "status-icon",
-							"description": "Whether to display an icon indicating the validation result.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "validate-on-rule-change",
-							"description": "Whether to trigger validation when the `rules` prop is changed.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "size",
-							"description": "Control the size of components in this form.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["'' | 'large' | 'default' | 'small'"]
-						},
-						{
-							"name": "disabled",
-							"description": "Whether to disable all components in this form. If set to `true`, it will override the `disabled` prop of the inner component.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "scroll-to-error",
-							"description": "When validation fails, scroll to the first error form entry.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "scroll-into-view-options",
-							"description": "When validation fails, it scrolls to the first error item based on the scrollIntoView option. [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView).",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
-							"type": ["Record<string, any>", "boolean"]
-						},
-						{
-							"name": "model-value",
-							"description": "json渲染form绑定的formData数据源",
-							"doc-url": "",
-							"type": ["object"]
-						},
-						{
-							"name": "form-json",
-							"description": "json渲染表单各项",
-							"doc-url": "",
-							"type": ["T_JlgForm_FormJsonItem"]
-						},
-						{
-							"name": "grid-layout-props",
-							"description": "布局组件props",
-							"doc-url": "",
-							"type": ["I_Grid_Layout_Props"]
-						},
-						{
-							"name": "gather-props",
-							"description": "数据采集单独object",
-							"doc-url": "",
-							"type": ["object"]
-						}
-					],
-					"slots": [
-						{
-							"name": "default",
-							"description": "customize default content",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#form-slots"
-						}
-					],
-					"js": {
-						"events": [
-							{
-								"name": "validate",
-								"description": "triggers after a form item is validated",
-								"doc-url": "https://element-plus.org/en-US/component/form.html#form-events"
-							}
-						]
-					}
-				},
-				{
-					"name": "jlg-form-item",
-					"source": { "symbol": "JlgFormItem" },
-					"doc-url": "https://element-plus.org/en-US/component/form.html#formitem",
-					"props": [
-						{
-							"name": "prop",
-							"description": "仅支持string，多层级对象用a.b格式",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
-							"type": ["string", "string&#91;&#93;"]
-						},
-						{
-							"name": "label",
-							"description": "Label text.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "label-width",
-							"description": "Width of label, e.g. `'50px'`. `'auto'` is supported.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
-							"type": ["string", "number"],
-							"default": "''"
-						},
-						{
-							"name": "required",
-							"description": "Whether the field is required or not, will be determined by validation rules if omitted.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
-							"type": ["boolean"]
-						},
-						{
-							"name": "rules",
-							"description": "Validation rules of form, see the [following table](#formitemrule), more advanced usage at [async-validator](https://github.com/yiminghe/async-validator).",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
-							"type": [{ "name": "Arrayable<FormItemRule>", "source": { "symbol": "Arrayable" } }]
-						},
-						{
-							"name": "error",
-							"description": "Field error message, set its value and the field will validate error and show this message immediately.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "show-message",
-							"description": "Whether to show the error message.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "inline-message",
-							"description": "Inline style validate message.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
-							"type": ["string", "boolean"],
-							"default": "''"
-						},
-						{
-							"name": "size",
-							"description": "Control the size of components in this form-item.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
-							"type": ["'' | 'large' | 'default' | 'small'"]
-						},
-						{
-							"name": "for",
-							"description": "Same as for in native label.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "validate-status",
-							"description": "Validation state of formItem.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
-							"type": ["'' | 'error' | 'validating' | 'success'"]
-						},
-						{
-							"name": "validate-rules",
-							"description": "内置校验规则参数",
-							"doc-url": "",
-							"type": ["T_FormValidatorRulesOptionRecord"]
-						}
-					],
-					"slots": [
-						{
-							"name": "default",
-							"description": "Content of Form Item.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-slots"
-						},
-						{
-							"name": "label",
-							"description": "Custom content to display on label.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-slots",
-							"type": "{ label: string }"
-						},
-						{
-							"name": "error",
-							"description": "Custom content to display validation message.",
-							"doc-url": "https://element-plus.org/en-US/component/form.html#formitem-slots",
-							"type": "{ error: string }"
-						}
-					]
-				},
-				{
-					"name": "jlg-input-number",
-					"source": { "symbol": "JlgInputNumber" },
-					"description": "Input numerical values with a customizable range.",
-					"doc-url": "https://element-plus.org/en-US/component/input-number.html#input-number",
-					"props": [
-						{
-							"name": "model-value",
-							"description": "binding value",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["number"]
-						},
-						{
-							"name": "min",
-							"description": "the minimum allowed value",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["number"],
-							"default": "-Infinity"
-						},
-						{
-							"name": "max",
-							"description": "the maximum allowed value",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["number"],
-							"default": "Infinity"
-						},
-						{
-							"name": "step",
-							"description": "incremental step",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["number"],
-							"default": "1"
-						},
-						{
-							"name": "step-strictly",
-							"description": "whether input value can only be multiple of step",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "precision",
-							"description": "precision of input value",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["number"]
-						},
-						{
-							"name": "size",
-							"description": "size of the component",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["'large' | 'default' | 'small'"],
-							"default": "default"
-						},
-						{
-							"name": "readonly",
-							"description": "same as `readonly` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "disabled",
-							"description": "whether the component is disabled",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "controls",
-							"description": "whether to enable the control buttons",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "controls-position",
-							"description": "position of the control buttons",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["'' | 'right'"]
-						},
-						{
-							"name": "name",
-							"description": "same as `name` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "label",
-							"description": "same as `aria-label` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "aria-label",
-							"description": "same as `aria-label` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "placeholder",
-							"description": "same as `placeholder` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "id",
-							"description": "same as `id` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "value-on-clear",
-							"description": "value should be set when input box is cleared",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["number", "null", "'min' | 'max'"]
-						},
-						{
-							"name": "validate-event",
-							"description": "whether to trigger form validation",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "tooltip-props",
-							"description": "",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
-							"type": ["ElTooltipContentProps"]
-						},
-						{
-							"name": "gather-props",
-							"description": "数据采集单独object",
-							"doc-url": "",
-							"type": ["object"]
-						}
-					],
-					"slots": [
-						{
-							"name": "decrease-icon",
-							"description": "custom input box button decrease icon",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#slots"
-						},
-						{
-							"name": "increase-icon",
-							"description": "custom input box button increase icon",
-							"doc-url": "https://element-plus.org/en-US/component/input-number.html#slots"
-						}
-					],
-					"js": {
-						"events": [
-							{
-								"name": "change",
-								"description": "triggers when the value changes",
-								"doc-url": "https://element-plus.org/en-US/component/input-number.html#events"
-							},
-							{
-								"name": "blur",
-								"description": "triggers when Input blurs",
-								"doc-url": "https://element-plus.org/en-US/component/input-number.html#events"
-							},
-							{
-								"name": "focus",
-								"description": "triggers when Input focuses",
-								"doc-url": "https://element-plus.org/en-US/component/input-number.html#events"
-							}
-						]
-					}
-				},
-				{
-					"name": "jlg-input",
-					"source": { "symbol": "JlgInput" },
-					"description": "Input data using mouse or keyboard.",
-					"doc-url": "https://element-plus.org/en-US/component/input.html#input",
-					"props": [
-						{
-							"name": "type",
-							"description": "type of input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["'text' | 'textarea' | 'password' | 'button' | 'checkbox' | 'file' | 'number' | 'radio' | ..."],
-							"default": "text"
-						},
-						{
-							"name": "model-value",
-							"description": "binding value",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["string", "number"]
-						},
-						{
-							"name": "maxlength",
-							"description": "same as `maxlength` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["string", "number"]
-						},
-						{
-							"name": "minlength",
-							"description": "same as `minlength` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["string", "number"]
-						},
-						{
-							"name": "show-word-limit",
-							"description": "whether show word count, only works when `type` is 'text' or 'textarea'",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "placeholder",
-							"description": "placeholder of Input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "clearable",
-							"description": "whether to show clear button, only works when `type` is not 'textarea'",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "formatter",
-							"description": "specifies the format of the value presented input.(only works when `type` is 'text')",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["(value: string | number) => string"]
-						},
-						{
-							"name": "parser",
-							"description": "specifies the value extracted from formatter input.(only works when `type` is 'text')",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["(value: string) => string"]
-						},
-						{
-							"name": "show-password",
-							"description": "whether to show toggleable password input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "disabled",
-							"description": "whether Input is disabled",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "size",
-							"description": "size of Input, works when `type` is not 'textarea'",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["'large' | 'default' | 'small'"]
-						},
-						{
-							"name": "prefix-icon",
-							"description": "prefix icon component",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }]
-						},
-						{
-							"name": "suffix-icon",
-							"description": "suffix icon component",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }]
-						},
-						{
-							"name": "rows",
-							"description": "number of rows of textarea, only works when `type` is 'textarea'",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["number"],
-							"default": "2"
-						},
-						{
-							"name": "autosize",
-							"description": "whether textarea has an adaptive height, only works when `type` is 'textarea'. Can accept an object, e.g. `{ minRows: 2, maxRows: 6 }`",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["boolean", "{ minRows?: number, maxRows?: number }"],
-							"default": "false"
-						},
-						{
-							"name": "autocomplete",
-							"description": "same as `autocomplete` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["string"],
-							"default": "off"
-						},
-						{
-							"name": "name",
-							"description": "same as `name` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "readonly",
-							"description": "same as `readonly` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "max",
-							"description": "same as `max` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes"
-						},
-						{
-							"name": "min",
-							"description": "same as `min` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes"
-						},
-						{
-							"name": "step",
-							"description": "same as `step` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes"
-						},
-						{
-							"name": "resize",
-							"description": "control the resizability",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["'none' | 'both' | 'horizontal' | 'vertical'"]
-						},
-						{
-							"name": "autofocus",
-							"description": "same as `autofocus` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "form",
-							"description": "same as `form` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "label",
-							"description": "same as `aria-label` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "aria-label",
-							"description": "same as `aria-label` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "tabindex",
-							"description": "input tabindex",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["string", "number"]
-						},
-						{
-							"name": "validate-event",
-							"description": "whether to trigger form validation",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "input-style",
-							"description": "the style of the input element or textarea element",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
-							"type": [
-								"string",
-								{ "name": "CSSProperties", "source": { "symbol": "CSSProperties", "module": "vue" } },
-								{ "name": "CSSProperties[]", "source": { "symbol": "CSSProperties", "module": "vue" } },
-								"string[]"
-							],
-							"default": "{}"
-						},
-						{
-							"name": "tooltip-props",
-							"description": "",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
-							"type": ["ElTooltipContentProps"]
-						},
-						{
-							"name": "gather-props",
-							"description": "数据采集单独object",
-							"doc-url": "",
-							"type": ["object"]
-						}
-					],
-					"slots": [
-						{
-							"name": "prefix",
-							"description": "content as Input prefix, only works when `type` is not 'textarea'",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#slots"
-						},
-						{
-							"name": "suffix",
-							"description": "content as Input suffix, only works when `type` is not 'textarea'",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#slots"
-						},
-						{
-							"name": "prepend",
-							"description": "content to prepend before Input, only works when `type` is not 'textarea'",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#slots"
-						},
-						{
-							"name": "append",
-							"description": "content to append after Input, only works when `type` is not 'textarea'",
-							"doc-url": "https://element-plus.org/en-US/component/input.html#slots"
-						}
-					],
-					"js": {
-						"events": [
-							{ "name": "blur", "description": "triggers when Input blurs", "doc-url": "https://element-plus.org/en-US/component/input.html#events" },
-							{
-								"name": "focus",
-								"description": "triggers when Input focuses",
-								"doc-url": "https://element-plus.org/en-US/component/input.html#events"
-							},
-							{
-								"name": "change",
-								"description": "triggers when the input box loses focus or the user presses Enter, only if the modelValue has changed",
-								"doc-url": "https://element-plus.org/en-US/component/input.html#events"
-							},
-							{
-								"name": "input",
-								"description": "triggers when the Input value change",
-								"doc-url": "https://element-plus.org/en-US/component/input.html#events"
-							},
-							{
-								"name": "clear",
-								"description": "triggers when the Input is cleared by clicking the clear button",
-								"doc-url": "https://element-plus.org/en-US/component/input.html#events"
-							}
-						]
-					}
-				},
-				{
-					"name": "jlg-radio",
-					"source": { "symbol": "JlgRadio" },
-					"description": ":::warning",
-					"doc-url": "https://element-plus.org/en-US/component/radio.html#radio",
-					"props": [
-						{
-							"name": "model-value",
-							"description": "binding value",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
-							"type": ["string", "number", "boolean"]
-						},
-						{
-							"name": "value",
-							"description": "the value of Radio",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
-							"type": ["string", "number", "boolean"]
-						},
-						{
-							"name": "label",
-							"description": "the label of Radio. If there's no `value`, `label` will act as `value`",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
-							"type": ["string", "number", "boolean"]
-						},
-						{
-							"name": "disabled",
-							"description": "whether Radio is disabled",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "border",
-							"description": "whether to add a border around Radio",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "size",
-							"description": "size of the Radio",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
-							"type": ["'large' | 'default' | 'small'"]
-						},
-						{
-							"name": "name",
-							"description": "native `name` attribute",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "title",
-							"description": "radio默认插槽显示的默认值",
-							"doc-url": "",
-							"type": ["'string'|'number'|'boolean'"]
-						}
-					],
-					"slots": [
-						{
-							"name": "default",
-							"description": "customize default content",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radio-slots"
-						}
-					],
-					"js": {
-						"events": [
-							{
-								"name": "change",
-								"description": "triggers when the bound value changes",
-								"doc-url": "https://element-plus.org/en-US/component/radio.html#radio-events"
-							}
-						]
-					}
-				},
-				{
-					"name": "jlg-radio-group",
-					"source": { "symbol": "JlgRadioGroup" },
-					"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup",
-					"props": [
-						{
-							"name": "model-value",
-							"description": "binding value",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
-							"type": ["string", "number", "boolean"]
-						},
-						{
-							"name": "size",
-							"description": "the size of radio buttons or bordered radios",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
-							"type": ["string"],
-							"default": "default"
-						},
-						{
-							"name": "disabled",
-							"description": "whether the nesting radios are disabled",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "text-color",
-							"description": "font color when button is active",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
-							"type": ["string"],
-							"default": "#ffffff"
-						},
-						{
-							"name": "fill",
-							"description": "border and background color when button is active",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
-							"type": ["string"],
-							"default": "#409eff"
-						},
-						{
-							"name": "validate-event",
-							"description": "whether to trigger form validation",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "label",
-							"description": "same as `aria-label` in RadioGroup",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "aria-label",
-							"description": "same as `aria-label` in RadioGroup",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "name",
-							"description": "native `name` attribute",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "id",
-							"description": "native `id` attribute",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "radio-options",
-							"description": "由jlg-option组件的props的数组",
-							"doc-url": "",
-							"type": ["T_Jlg_Radio_Props[]"]
-						},
-						{
-							"name": "gather-props",
-							"description": "数据采集单独object",
-							"doc-url": "",
-							"type": ["object"]
-						}
-					],
-					"slots": [
-						{
-							"name": "default",
-							"description": "customize default content",
-							"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-slots"
-						}
-					],
-					"js": {
-						"events": [
-							{
-								"name": "change",
-								"description": "triggers when the bound value changes",
-								"doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-events"
-							}
-						]
-					}
-				},
-				{
-					"name": "jlg-rate",
-					"source": { "symbol": "JlgRate" },
-					"description": "Used for rating",
-					"doc-url": "https://element-plus.org/en-US/component/rate.html#rate",
-					"props": [
-						{
-							"name": "model-value",
-							"description": "binding value",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["number"],
-							"default": "0"
-						},
-						{
-							"name": "max",
-							"description": "max rating score",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["number"],
-							"default": "5"
-						},
-						{
-							"name": "size",
-							"description": "size of Rate",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["'large' | 'default' | 'small'"]
-						},
-						{
-							"name": "disabled",
-							"description": "whether Rate is read-only",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "allow-half",
-							"description": "whether picking half start is allowed",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "low-threshold",
-							"description": "threshold value between low and medium level. The value itself will be included in low level",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["number"],
-							"default": "2"
-						},
-						{
-							"name": "high-threshold",
-							"description": "threshold value between medium and high level. The value itself will be included in high level",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["number"],
-							"default": "4"
-						},
-						{
-							"name": "colors",
-							"description": "colors for icons. If array, it should have 3 elements, each of which corresponds with a score level, else if object, the key should be threshold value between two levels, and the value should be corresponding color",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["string[]", "Record<number, string>"],
-							"default": "['#f7ba2a', '#f7ba2a', '#f7ba2a']"
-						},
-						{
-							"name": "void-color",
-							"description": "color of unselected icons",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["string"],
-							"default": "#c6d1de"
-						},
-						{
-							"name": "disabled-void-color",
-							"description": "color of unselected read-only icons",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["string"],
-							"default": "#eff2f7"
-						},
-						{
-							"name": "icons",
-							"description": "icon components. If array, it should have 3 elements, each of which corresponds with a score level, else if object, the key should be threshold value between two levels, and the value should be corresponding icon component",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": [
-								"string[]",
-								{ "name": "Component[]", "source": { "symbol": "Component", "module": "vue" } },
-								"Record<number, string | Component>"
-							],
-							"default": "[StarFilled, StarFilled, StarFilled]"
-						},
-						{
-							"name": "void-icon",
-							"description": "component of unselected icons",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
-							"default": "Star"
-						},
-						{
-							"name": "disabled-void-icon",
-							"description": "component of unselected read-only icons",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
-							"default": "StarFilled"
-						},
-						{
-							"name": "show-text",
-							"description": "whether to display texts",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "show-score",
-							"description": "whether to display current score. show-score and show-text cannot be true at the same time",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "text-color",
-							"description": "color of texts",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["string"],
-							"default": "''"
-						},
-						{
-							"name": "texts",
-							"description": "text array",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["string[]"],
-							"default": "['Extremely bad', 'Disappointed', 'Fair', 'Satisfied', 'Surprise']"
-						},
-						{
-							"name": "score-template",
-							"description": "score template",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["string"],
-							"default": "{value}"
-						},
-						{
-							"name": "clearable",
-							"description": "whether value can be reset to `0`",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "id",
-							"description": "native `id` attribute",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "label",
-							"description": "same as `aria-label` in Rate",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "aria-label",
-							"description": "same as `aria-label` in Rate",
-							"doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "tooltip-props",
-							"description": "",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
-							"type": ["ElTooltipContentProps"]
-						},
-						{
-							"name": "gather-props",
-							"description": "数据采集单独object",
-							"doc-url": "",
-							"type": ["object"]
-						}
-					],
-					"js": {
-						"events": [
-							{
-								"name": "change",
-								"description": "Triggers when rate value is changed",
-								"doc-url": "https://element-plus.org/en-US/component/rate.html#events"
-							}
-						]
-					}
-				},
-				{
-					"name": "jlg-select",
-					"source": { "symbol": "JlgSelect" },
-					"description": "When there are plenty of options, use a drop-down menu to display and select desired ones.",
-					"doc-url": "https://element-plus.org/en-US/component/select.html#select",
-					"props": [
-						{
-							"name": "model-value",
-							"description": "binding value",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["string", "number", "boolean", "object", "array"]
-						},
-						{
-							"name": "multiple",
-							"description": "whether multiple-select is activated",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "disabled",
-							"description": "whether Select is disabled",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "value-key",
-							"description": "unique identity key name for value, required when value is an object",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["string"],
-							"default": "value"
-						},
-						{
-							"name": "size",
-							"description": "size of Input",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["'' | 'large' | 'default' | 'small'"]
-						},
-						{
-							"name": "clearable",
-							"description": "whether select can be cleared",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "collapse-tags",
-							"description": "whether to collapse tags to a text when multiple selecting",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "collapse-tags-tooltip",
-							"description": "whether show all selected tags when mouse hover text of collapse-tags. To use this, `collapse-tags` must be true",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "multiple-limit",
-							"description": "maximum number of options user can select when `multiple` is `true`. No limit when set to 0",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["number"],
-							"default": "0"
-						},
-						{
-							"name": "name",
-							"description": "the name attribute of select input",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "effect",
-							"description": "tooltip theme, built-in theme: `dark` / `light`",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["'dark' | 'light'", "string"],
-							"default": "light"
-						},
-						{
-							"name": "autocomplete",
-							"description": "the autocomplete attribute of select input",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["string"],
-							"default": "off"
-						},
-						{
-							"name": "placeholder",
-							"description": "placeholder, default is 'Select'",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "filterable",
-							"description": "whether Select is filterable",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "allow-create",
-							"description": "whether creating new items is allowed. To use this, `filterable` must be true",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "filter-method",
-							"description": "custom filter method",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["() => void"]
-						},
-						{
-							"name": "remote",
-							"description": "whether options are loaded from server",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "remote-method",
-							"description": "custom remote search method",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["() => void"]
-						},
-						{
-							"name": "remote-show-suffix",
-							"description": "in remote search method show suffix icon",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "loading",
-							"description": "whether Select is loading data from server",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "loading-text",
-							"description": "displayed text while loading data from server, default is 'Loading'",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "no-match-text",
-							"description": "displayed text when no data matches the filtering query, you can also use slot `empty`, default is 'No matching data'",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "no-data-text",
-							"description": "displayed text when there is no options, you can also use slot `empty`, default is 'No data'",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "popper-class",
-							"description": "custom class name for Select's dropdown",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["string"],
-							"default": "''"
-						},
-						{
-							"name": "reserve-keyword",
-							"description": "when `multiple` and `filterable` is true, whether to reserve current keyword after selecting an option",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "default-first-option",
-							"description": "select first matching option on enter key. Use with `filterable` or `remote`",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "teleported",
-							"description": "whether select dropdown is teleported to the body",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "persistent",
-							"description": "when select dropdown is inactive and `persistent` is `false`, select dropdown will be destroyed",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "automatic-dropdown",
-							"description": "for non-filterable Select, this prop decides if the option menu pops up when the input is focused",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "clear-icon",
-							"description": "custom clear icon component",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
-							"default": "CircleClose"
-						},
-						{
-							"name": "fit-input-width",
-							"description": "whether the width of the dropdown is the same as the input",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "suffix-icon",
-							"description": "custom suffix icon component",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
-							"default": "ArrowDown"
-						},
-						{
-							"name": "suffix-transition",
-							"description": "animation when dropdown appears/disappears icon",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "tag-type",
-							"description": "tag type",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["'' | 'success' | 'info' | 'warning' | 'danger'"],
-							"default": "info"
-						},
-						{
-							"name": "validate-event",
-							"description": "whether to trigger form validation",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "placement",
-							"description": "position of dropdown",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": [
-								"'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'"
-							],
-							"default": "bottom-start"
-						},
-						{
-							"name": "fallback-placements",
-							"description": "list of possible positions for dropdown [popper.js](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements)",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": [{ "name": "Placement[]", "source": { "symbol": "Placement" } }],
-							"default": "['bottom-start', 'top-start', 'right', 'left']"
-						},
-						{
-							"name": "max-collapse-tags",
-							"description": "the max tags number to be shown. To use this, `collapse-tags` must be true",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["number"],
-							"default": "1"
-						},
-						{
-							"name": "popper-options",
-							"description": "[popper.js](https://popper.js.org/docs/v2/) parameters",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": [{ "name": "objectrefer to  doc", "source": { "symbol": "objectrefer to  doc" } }],
-							"default": "{}"
-						},
-						{
-							"name": "aria-label",
-							"description": "same as `aria-label` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "empty-values",
-							"description": "empty values of component, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["array"]
-						},
-						{
-							"name": "value-on-clear",
-							"description": "clear return value, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
-							"type": ["string", "number", "boolean", "Function"]
-						},
-						{
-							"name": "tooltip-props",
-							"description": "",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
-							"type": ["ElTooltipContentProps"]
-						},
-						{
-							"name": "gather-props",
-							"description": "数据采集单独object",
-							"doc-url": "",
-							"type": ["object"]
-						},
-						{
-							"name": "option-options",
-							"description": "jlg-option组件的props组成的数组，用来渲染option",
-							"doc-url": "",
-							"type": ["I_Jlg_Option_Props[]"]
-						}
-					],
-					"slots": [
-						{
-							"name": "default",
-							"description": "option component list",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-slots"
-						},
-						{
-							"name": "header",
-							"description": "content at the top of the dropdown",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-slots"
-						},
-						{
-							"name": "footer",
-							"description": "content at the bottom of the dropdown",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-slots"
-						},
-						{
-							"name": "prefix",
-							"description": "content as Select prefix",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-slots"
-						},
-						{
-							"name": "empty",
-							"description": "content when there is no options",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-slots"
-						},
-						{ "name": "tag", "description": "content as Select tag", "doc-url": "https://element-plus.org/en-US/component/select.html#select-slots" },
-						{
-							"name": "loading",
-							"description": "content as Select loading",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#select-slots"
-						}
-					],
-					"js": {
-						"events": [
-							{
-								"name": "change",
-								"description": "triggers when the selected value changes",
-								"doc-url": "https://element-plus.org/en-US/component/select.html#select-events"
-							},
-							{
-								"name": "visible-change",
-								"description": "triggers when the dropdown appears/disappears",
-								"doc-url": "https://element-plus.org/en-US/component/select.html#select-events"
-							},
-							{
-								"name": "remove-tag",
-								"description": "triggers when a tag is removed in multiple mode",
-								"doc-url": "https://element-plus.org/en-US/component/select.html#select-events"
-							},
-							{
-								"name": "clear",
-								"description": "triggers when the clear icon is clicked in a clearable Select",
-								"doc-url": "https://element-plus.org/en-US/component/select.html#select-events"
-							},
-							{
-								"name": "blur",
-								"description": "triggers when Input blurs",
-								"doc-url": "https://element-plus.org/en-US/component/select.html#select-events"
-							},
-							{
-								"name": "focus",
-								"description": "triggers when Input focuses",
-								"doc-url": "https://element-plus.org/en-US/component/select.html#select-events"
-							}
-						]
-					}
-				},
-				{
-					"name": "jlg-option",
-					"source": { "symbol": "JlgOption" },
-					"doc-url": "https://element-plus.org/en-US/component/select.html#option",
-					"props": [
-						{
-							"name": "value",
-							"description": "value of option",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#option-attributes",
-							"type": ["string", "number", "boolean", "object"]
-						},
-						{
-							"name": "label",
-							"description": "label of option, same as `value` if omitted",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#option-attributes",
-							"type": ["string", "number"]
-						},
-						{
-							"name": "disabled",
-							"description": "whether option is disabled",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#option-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						}
-					],
-					"slots": [
-						{
-							"name": "default",
-							"description": "customize default content",
-							"doc-url": "https://element-plus.org/en-US/component/select.html#option-slots"
-						}
-					]
-				},
-				{
-					"name": "jlg-time-select",
-					"source": { "symbol": "JlgTimeSelect" },
-					"description": "Use Time Select for time input.",
-					"doc-url": "https://element-plus.org/en-US/component/time-select.html#timeselect",
-					"props": [
-						{
-							"name": "model-value",
-							"description": "binding value",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "disabled",
-							"description": "whether TimeSelect is disabled",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "editable",
-							"description": "whether the input is editable",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "clearable",
-							"description": "whether to show clear button",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "size",
-							"description": "size of Input",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["'large' | 'default' | 'small'"],
-							"default": "default"
-						},
-						{
-							"name": "placeholder",
-							"description": "placeholder in non-range mode",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "name",
-							"description": "same as `name` in native input",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "effect",
-							"description": "Tooltip theme, built-in theme: `dark` / `light`",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["string", "'dark' | 'light'"],
-							"default": "light"
-						},
-						{
-							"name": "prefix-icon",
-							"description": "custom prefix icon component",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
-							"default": "Clock"
-						},
-						{
-							"name": "clear-icon",
-							"description": "custom clear icon component",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
-							"default": "CircleClose"
-						},
-						{
-							"name": "start",
-							"description": "start time",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["string"],
-							"default": "09:00"
-						},
-						{
-							"name": "end",
-							"description": "end time",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["string"],
-							"default": "18:00"
-						},
-						{
-							"name": "step",
-							"description": "time step",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["string"],
-							"default": "00:30"
-						},
-						{
-							"name": "min-time",
-							"description": "minimum time, any time before this time will be disabled",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "max-time",
-							"description": "maximum time, any time after this time will be disabled",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "format",
-							"description": "set format of time",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": [{ "name": "string see", "source": { "symbol": "string see" } }],
-							"default": "HH:mm"
-						},
-						{
-							"name": "empty-values",
-							"description": "empty values of component, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["array"]
-						},
-						{
-							"name": "value-on-clear",
-							"description": "clear return value, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
-							"doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
-							"type": ["string", "number", "boolean", "Function"]
-						},
-						{
-							"name": "tooltip-props",
-							"description": "",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
-							"type": ["ElTooltipContentProps"]
-						},
-						{
-							"name": "gather-props",
-							"description": "数据采集单独object",
-							"doc-url": "",
-							"type": ["object"]
-						}
-					],
-					"js": {
-						"events": [
-							{
-								"name": "change",
-								"description": "triggers when user confirms the value",
-								"doc-url": "https://element-plus.org/en-US/component/time-select.html#events"
-							},
-							{
-								"name": "blur",
-								"description": "triggers when Input blurs",
-								"doc-url": "https://element-plus.org/en-US/component/time-select.html#events"
-							},
-							{
-								"name": "focus",
-								"description": "triggers when Input focuses",
-								"doc-url": "https://element-plus.org/en-US/component/time-select.html#events"
-							}
-						]
-					}
-				},
-				{
-					"name": "jlg-tooltip",
-					"source": { "symbol": "JlgTooltip" },
-					"description": "Display prompt information for mouse hover.",
-					"doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
-					"props": [
-						{
-							"name": "append-to",
-							"description": "which element the tooltip CONTENT appends to",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": [{ "name": "CSSSelector", "source": { "symbol": "CSSSelector" } }, "HTMLElement"]
-						},
-						{
-							"name": "effect",
-							"description": "Tooltip theme, built-in theme: `dark` / `light`",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["'dark' | 'light'"],
-							"default": "dark"
-						},
-						{
-							"name": "content",
-							"description": "display content, can be overridden by `slot#content`",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["string"],
-							"default": "''"
-						},
-						{
-							"name": "raw-content",
-							"description": "whether `content` is treated as HTML string",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "placement",
-							"description": "position of Tooltip",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": [
-								"'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'"
-							],
-							"default": "bottom"
-						},
-						{
-							"name": "fallback-placements",
-							"description": "list of possible positions for Tooltip [popper.js](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements)",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": [{ "name": "Placement[]", "source": { "symbol": "Placement" } }]
-						},
-						{
-							"name": "visible",
-							"description": "visibility of Tooltip",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["boolean"]
-						},
-						{
-							"name": "disabled",
-							"description": "whether Tooltip is disabled",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["boolean"]
-						},
-						{
-							"name": "offset",
-							"description": "offset of the Tooltip",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["number"],
-							"default": "12"
-						},
-						{
-							"name": "transition",
-							"description": "animation name",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "popper-options",
-							"description": "[popper.js](https://popper.js.org/docs/v2/) parameters",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": [{ "name": "objectrefer to  doc", "source": { "symbol": "objectrefer to  doc" } }],
-							"default": "{}"
-						},
-						{
-							"name": "show-after",
-							"description": "delay of appearance, in millisecond",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["number"],
-							"default": "0"
-						},
-						{
-							"name": "show-arrow",
-							"description": "whether the tooltip content has an arrow",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "hide-after",
-							"description": "delay of disappear, in millisecond",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["number"],
-							"default": "200"
-						},
-						{
-							"name": "auto-close",
-							"description": "timeout in milliseconds to hide tooltip",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["number"],
-							"default": "0"
-						},
-						{
-							"name": "popper-class",
-							"description": "custom class name for Tooltip's popper",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["string"]
-						},
-						{
-							"name": "enterable",
-							"description": "whether the mouse can enter the tooltip",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "teleported",
-							"description": "whether tooltip content is teleported, if `true` it will be teleported to where `append-to` sets",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["boolean"],
-							"default": "true"
-						},
-						{
-							"name": "trigger",
-							"description": "How should the tooltip be triggered (to show)",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["'hover' | 'click' | 'focus' | 'contextmenu'"],
-							"default": "hover"
-						},
-						{
-							"name": "virtual-triggering",
-							"description": "Indicates whether virtual triggering is enabled",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["boolean"]
-						},
-						{
-							"name": "virtual-ref",
-							"description": "Indicates the reference element to which the tooltip is attached",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["HTMLElement"]
-						},
-						{
-							"name": "trigger-keys",
-							"description": "When you click the mouse to focus on the trigger element, you can define a set of keyboard codes to control the display of tooltip through the keyboard",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["Array"],
-							"default": "['Enter','Space']"
-						},
-						{
-							"name": "persistent",
-							"description": "when tooltip inactive and `persistent` is `false` , popconfirm will be destroyed",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["boolean"]
-						},
-						{
-							"name": "aria-label",
-							"description": "same as `aria-label`",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
-							"type": ["string"]
-						}
-					],
-					"slots": [
-						{
-							"name": "default",
-							"description": "Tooltip triggering & reference element",
-							"doc-url": "https://element-plus.org/en-US/component/tooltip.html#slots"
-						},
-						{ "name": "content", "description": "customize content", "doc-url": "https://element-plus.org/en-US/component/tooltip.html#slots" }
-					]
-				}
-			],
-			"attributes": []
-		}
-	}
+    "$schema": "http://json.schemastore.org/web-types",
+    "framework": "vue",
+    "name": "jlg-form-ui",
+    "version": "0.0.37",
+    "js-types-syntax": "typescript",
+    "description-markup": "markdown",
+    "contributions": {
+        "html": {
+            "vue-components": [{
+                    "name": "jlg-date-picker",
+                    "source": { "symbol": "JlgDatePicker" },
+                    "description": "Use Date Picker for date input.",
+                    "doc-url": "https://element-plus.org/en-US/component/date-picker.html#datepicker",
+                    "props": [{
+                            "name": "model-value",
+                            "description": "binding value, if it is an array, the length should be 2",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["number", "string", "Date", "[Date, Date] | [string, string]"],
+                            "default": "''"
+                        },
+                        {
+                            "name": "readonly",
+                            "description": "whether DatePicker is read only",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "disabled",
+                            "description": "whether DatePicker is disabled",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "size",
+                            "description": "size of Input",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["'' | 'large' | 'default' | 'small'"]
+                        },
+                        {
+                            "name": "editable",
+                            "description": "whether the input is editable",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "clearable",
+                            "description": "whether to show clear button",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "placeholder",
+                            "description": "placeholder in non-range mode",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["string"],
+                            "default": "''"
+                        },
+                        {
+                            "name": "start-placeholder",
+                            "description": "placeholder for the start date in range mode",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "end-placeholder",
+                            "description": "placeholder for the end date in range mode",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "type",
+                            "description": "type of the picker",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["'year' | 'years' |'month' | 'date' | 'dates' | 'datetime' | 'week' | 'datetimerange' | 'daterange' | 'monthrange'"],
+                            "default": "date"
+                        },
+                        {
+                            "name": "format",
+                            "description": "format of the displayed value in the input box",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": [{ "name": "string see", "source": { "symbol": "string see" } }],
+                            "default": "YYYY-MM-DD"
+                        },
+                        {
+                            "name": "popper-class",
+                            "description": "custom class name for DatePicker's dropdown",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "popper-options",
+                            "description": "Customized popper option see more at [popper.js](https://popper.js.org/docs/v2/)",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["Partial<PopperOptions>"],
+                            "default": "{}"
+                        },
+                        {
+                            "name": "range-separator",
+                            "description": "range separator",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["string"],
+                            "default": "'-'"
+                        },
+                        {
+                            "name": "default-value",
+                            "description": "optional, default date of the calendar",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["Date", "[Date, Date]"]
+                        },
+                        {
+                            "name": "default-time",
+                            "description": "optional, the time value to use when selecting date range",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["Date", "[Date, Date]"]
+                        },
+                        {
+                            "name": "value-format",
+                            "description": "optional, format of binding value. If not specified, the binding value will be a Date object",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": [{ "name": "string see", "source": { "symbol": "string see" } }]
+                        },
+                        {
+                            "name": "id",
+                            "description": "same as `id` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["string", "[string, string]"]
+                        },
+                        {
+                            "name": "name",
+                            "description": "same as `name` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["string", "[string, string]"],
+                            "default": "''"
+                        },
+                        {
+                            "name": "unlink-panels",
+                            "description": "unlink two date-panels in range-picker",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "prefix-icon",
+                            "description": "custom prefix icon component. By default, if the value of `type` is `TimeLikeType`, the value is `Clock`, else is `Calendar`",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
+                            "default": "''"
+                        },
+                        {
+                            "name": "clear-icon",
+                            "description": "custom clear icon component",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
+                            "default": "CircleClose"
+                        },
+                        {
+                            "name": "validate-event",
+                            "description": "whether to trigger form validation",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "disabled-date",
+                            "description": "a function determining if a date is disabled with that date as its parameter. Should return a Boolean",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["(data: Date) => boolean"]
+                        },
+                        {
+                            "name": "shortcuts",
+                            "description": "an object array to set shortcut options",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["Array<{ text: string, value: Date | Function }>"],
+                            "default": "[]"
+                        },
+                        {
+                            "name": "cell-class-name",
+                            "description": "set custom className",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["(data: Date) => string"]
+                        },
+                        {
+                            "name": "teleported",
+                            "description": "whether date-picker dropdown is teleported to the body",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "empty-values",
+                            "description": "empty values of component, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["array"]
+                        },
+                        {
+                            "name": "value-on-clear",
+                            "description": "clear return value, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#attributes",
+                            "type": ["string", "number", "boolean", "Function"]
+                        },
+                        {
+                            "name": "tooltip-props",
+                            "description": "",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
+                            "type": ["ElTooltipContentProps"]
+                        },
+                        {
+                            "name": "gather-props",
+                            "description": "数据采集单独object",
+                            "doc-url": "",
+                            "type": ["object"]
+                        }
+                    ],
+                    "slots": [
+                        { "name": "default", "description": "custom cell content", "doc-url": "https://element-plus.org/en-US/component/date-picker.html#slots" },
+                        {
+                            "name": "range-separator",
+                            "description": "custom range separator content",
+                            "doc-url": "https://element-plus.org/en-US/component/date-picker.html#slots"
+                        }
+                    ],
+                    "js": {
+                        "events": [{
+                                "name": "change",
+                                "description": "triggers when user confirms the value",
+                                "doc-url": "https://element-plus.org/en-US/component/date-picker.html#events"
+                            },
+                            {
+                                "name": "blur",
+                                "description": "triggers when Input blurs",
+                                "doc-url": "https://element-plus.org/en-US/component/date-picker.html#events"
+                            },
+                            {
+                                "name": "focus",
+                                "description": "triggers when Input focuses",
+                                "doc-url": "https://element-plus.org/en-US/component/date-picker.html#events"
+                            },
+                            {
+                                "name": "calendar-change",
+                                "description": "triggers when the calendar selected date is changed.",
+                                "doc-url": "https://element-plus.org/en-US/component/date-picker.html#events"
+                            },
+                            {
+                                "name": "panel-change",
+                                "description": "triggers when the navigation button click.",
+                                "doc-url": "https://element-plus.org/en-US/component/date-picker.html#events"
+                            },
+                            {
+                                "name": "visible-change",
+                                "description": "triggers when the DatePicker's dropdown appears/disappears",
+                                "doc-url": "https://element-plus.org/en-US/component/date-picker.html#events"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "jlg-form",
+                    "source": { "symbol": "JlgForm" },
+                    "description": "Form consists of `input`, `radio`, `select`, `checkbox` and so on. With form, you can collect, verify and submit data.",
+                    "doc-url": "https://element-plus.org/en-US/component/form.html#form",
+                    "props": [{
+                            "name": "model",
+                            "description": "Data of form component.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["Record<string, any>"]
+                        },
+                        {
+                            "name": "rules",
+                            "description": "Validation rules of form.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": [{ "name": "FormRules", "source": { "symbol": "FormRules" } }]
+                        },
+                        {
+                            "name": "inline",
+                            "description": "Whether the form is inline.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "label-position",
+                            "description": "Position of label. If set to `'left'` or `'right'`, `label-width` prop is also required.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["E_JlgForm_LabelPosition"],
+                            "default": "left"
+                        },
+                        {
+                            "name": "label-width",
+                            "description": "Width of label, e.g. `'50px'`. All its direct child form items will inherit this value. `auto` is supported.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["string", "number"],
+                            "default": "''"
+                        },
+                        {
+                            "name": "label-suffix",
+                            "description": "Suffix of the label.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["string"],
+                            "default": "''"
+                        },
+                        {
+                            "name": "hide-required-asterisk",
+                            "description": "Whether to hide required fields should have a red asterisk (star) beside their labels.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "require-asterisk-position",
+                            "description": "Position of asterisk.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["'left' | 'right'"],
+                            "default": "E_JlgForm_LabelPosition['左对齐']"
+                        },
+                        {
+                            "name": "show-message",
+                            "description": "Whether to show the error message.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "inline-message",
+                            "description": "Whether to display the error message inline with the form item.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "status-icon",
+                            "description": "Whether to display an icon indicating the validation result.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "validate-on-rule-change",
+                            "description": "Whether to trigger validation when the `rules` prop is changed.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "size",
+                            "description": "Control the size of components in this form.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["'' | 'large' | 'default' | 'small'"]
+                        },
+                        {
+                            "name": "disabled",
+                            "description": "Whether to disable all components in this form. If set to `true`, it will override the `disabled` prop of the inner component.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "scroll-to-error",
+                            "description": "When validation fails, scroll to the first error form entry.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "scroll-into-view-options",
+                            "description": "When validation fails, it scrolls to the first error item based on the scrollIntoView option. [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView).",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-attributes",
+                            "type": ["Record<string, any>", "boolean"]
+                        },
+                        {
+                            "name": "model-value",
+                            "description": "json渲染form绑定的formData数据源",
+                            "doc-url": "",
+                            "type": ["object"]
+                        },
+                        {
+                            "name": "form-json",
+                            "description": "json渲染表单各项",
+                            "doc-url": "",
+                            "type": ["T_JlgForm_FormJsonItem"]
+                        },
+                        {
+                            "name": "grid-layout-props",
+                            "description": "布局组件props",
+                            "doc-url": "",
+                            "type": ["I_Grid_Layout_Props"]
+                        },
+                        {
+                            "name": "gather-props",
+                            "description": "数据采集单独object",
+                            "doc-url": "",
+                            "type": ["object"]
+                        }
+                    ],
+                    "slots": [{
+                        "name": "default",
+                        "description": "customize default content",
+                        "doc-url": "https://element-plus.org/en-US/component/form.html#form-slots"
+                    }],
+                    "js": {
+                        "events": [{
+                            "name": "validate",
+                            "description": "triggers after a form item is validated",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#form-events"
+                        }]
+                    }
+                },
+                {
+                    "name": "jlg-form-item",
+                    "source": { "symbol": "JlgFormItem" },
+                    "doc-url": "https://element-plus.org/en-US/component/form.html#formitem",
+                    "props": [{
+                            "name": "prop",
+                            "description": "仅支持string，多层级对象用a.b格式",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
+                            "type": ["string", "string&#91;&#93;"]
+                        },
+                        {
+                            "name": "label",
+                            "description": "Label text.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "label-width",
+                            "description": "Width of label, e.g. `'50px'`. `'auto'` is supported.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
+                            "type": ["string", "number"],
+                            "default": "''"
+                        },
+                        {
+                            "name": "required",
+                            "description": "Whether the field is required or not, will be determined by validation rules if omitted.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
+                            "type": ["boolean"]
+                        },
+                        {
+                            "name": "rules",
+                            "description": "Validation rules of form, see the [following table](#formitemrule), more advanced usage at [async-validator](https://github.com/yiminghe/async-validator).",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
+                            "type": [{ "name": "Arrayable<FormItemRule>", "source": { "symbol": "Arrayable" } }]
+                        },
+                        {
+                            "name": "error",
+                            "description": "Field error message, set its value and the field will validate error and show this message immediately.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "show-message",
+                            "description": "Whether to show the error message.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "inline-message",
+                            "description": "Inline style validate message.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
+                            "type": ["string", "boolean"],
+                            "default": "''"
+                        },
+                        {
+                            "name": "size",
+                            "description": "Control the size of components in this form-item.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
+                            "type": ["'' | 'large' | 'default' | 'small'"]
+                        },
+                        {
+                            "name": "for",
+                            "description": "Same as for in native label.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "validate-status",
+                            "description": "Validation state of formItem.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-attributes",
+                            "type": ["'' | 'error' | 'validating' | 'success'"]
+                        },
+                        {
+                            "name": "validate-rules",
+                            "description": "内置校验规则参数",
+                            "doc-url": "",
+                            "type": ["T_FormValidatorRulesOptionRecord"]
+                        }
+                    ],
+                    "slots": [{
+                            "name": "default",
+                            "description": "Content of Form Item.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-slots"
+                        },
+                        {
+                            "name": "label",
+                            "description": "Custom content to display on label.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-slots",
+                            "type": "{ label: string }"
+                        },
+                        {
+                            "name": "error",
+                            "description": "Custom content to display validation message.",
+                            "doc-url": "https://element-plus.org/en-US/component/form.html#formitem-slots",
+                            "type": "{ error: string }"
+                        }
+                    ]
+                },
+                {
+                    "name": "jlg-input-number",
+                    "source": { "symbol": "JlgInputNumber" },
+                    "description": "Input numerical values with a customizable range.",
+                    "doc-url": "https://element-plus.org/en-US/component/input-number.html#input-number",
+                    "props": [{
+                            "name": "model-value",
+                            "description": "binding value",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["number"]
+                        },
+                        {
+                            "name": "min",
+                            "description": "the minimum allowed value",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["number"],
+                            "default": "-Infinity"
+                        },
+                        {
+                            "name": "max",
+                            "description": "the maximum allowed value",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["number"],
+                            "default": "Infinity"
+                        },
+                        {
+                            "name": "step",
+                            "description": "incremental step",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["number"],
+                            "default": "1"
+                        },
+                        {
+                            "name": "step-strictly",
+                            "description": "whether input value can only be multiple of step",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "precision",
+                            "description": "precision of input value",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["number"]
+                        },
+                        {
+                            "name": "size",
+                            "description": "size of the component",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["'large' | 'default' | 'small'"],
+                            "default": "default"
+                        },
+                        {
+                            "name": "readonly",
+                            "description": "same as `readonly` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "disabled",
+                            "description": "whether the component is disabled",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "controls",
+                            "description": "whether to enable the control buttons",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "controls-position",
+                            "description": "position of the control buttons",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["'' | 'right'"]
+                        },
+                        {
+                            "name": "name",
+                            "description": "same as `name` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "label",
+                            "description": "same as `aria-label` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "aria-label",
+                            "description": "same as `aria-label` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "placeholder",
+                            "description": "same as `placeholder` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "id",
+                            "description": "same as `id` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "value-on-clear",
+                            "description": "value should be set when input box is cleared",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["number", "null", "'min' | 'max'"]
+                        },
+                        {
+                            "name": "validate-event",
+                            "description": "whether to trigger form validation",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "tooltip-props",
+                            "description": "",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
+                            "type": ["ElTooltipContentProps"]
+                        },
+                        {
+                            "name": "gather-props",
+                            "description": "数据采集单独object",
+                            "doc-url": "",
+                            "type": ["object"]
+                        }
+                    ],
+                    "slots": [{
+                            "name": "decrease-icon",
+                            "description": "custom input box button decrease icon",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#slots"
+                        },
+                        {
+                            "name": "increase-icon",
+                            "description": "custom input box button increase icon",
+                            "doc-url": "https://element-plus.org/en-US/component/input-number.html#slots"
+                        }
+                    ],
+                    "js": {
+                        "events": [{
+                                "name": "change",
+                                "description": "triggers when the value changes",
+                                "doc-url": "https://element-plus.org/en-US/component/input-number.html#events"
+                            },
+                            {
+                                "name": "blur",
+                                "description": "triggers when Input blurs",
+                                "doc-url": "https://element-plus.org/en-US/component/input-number.html#events"
+                            },
+                            {
+                                "name": "focus",
+                                "description": "triggers when Input focuses",
+                                "doc-url": "https://element-plus.org/en-US/component/input-number.html#events"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "jlg-input",
+                    "source": { "symbol": "JlgInput" },
+                    "description": "Input data using mouse or keyboard.",
+                    "doc-url": "https://element-plus.org/en-US/component/input.html#input",
+                    "props": [{
+                            "name": "type",
+                            "description": "type of input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["'text' | 'textarea' | 'password' | 'button' | 'checkbox' | 'file' | 'number' | 'radio' | ..."],
+                            "default": "text"
+                        },
+                        {
+                            "name": "model-value",
+                            "description": "binding value",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["string", "number"]
+                        },
+                        {
+                            "name": "maxlength",
+                            "description": "same as `maxlength` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["string", "number"]
+                        },
+                        {
+                            "name": "minlength",
+                            "description": "same as `minlength` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["string", "number"]
+                        },
+                        {
+                            "name": "show-word-limit",
+                            "description": "whether show word count, only works when `type` is 'text' or 'textarea'",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "placeholder",
+                            "description": "placeholder of Input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "clearable",
+                            "description": "whether to show clear button, only works when `type` is not 'textarea'",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "formatter",
+                            "description": "specifies the format of the value presented input.(only works when `type` is 'text')",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["(value: string | number) => string"]
+                        },
+                        {
+                            "name": "parser",
+                            "description": "specifies the value extracted from formatter input.(only works when `type` is 'text')",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["(value: string) => string"]
+                        },
+                        {
+                            "name": "show-password",
+                            "description": "whether to show toggleable password input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "disabled",
+                            "description": "whether Input is disabled",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "size",
+                            "description": "size of Input, works when `type` is not 'textarea'",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["'large' | 'default' | 'small'"]
+                        },
+                        {
+                            "name": "prefix-icon",
+                            "description": "prefix icon component",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }]
+                        },
+                        {
+                            "name": "suffix-icon",
+                            "description": "suffix icon component",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }]
+                        },
+                        {
+                            "name": "rows",
+                            "description": "number of rows of textarea, only works when `type` is 'textarea'",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["number"],
+                            "default": "2"
+                        },
+                        {
+                            "name": "autosize",
+                            "description": "whether textarea has an adaptive height, only works when `type` is 'textarea'. Can accept an object, e.g. `{ minRows: 2, maxRows: 6 }`",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["boolean", "{ minRows?: number, maxRows?: number }"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "autocomplete",
+                            "description": "same as `autocomplete` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["string"],
+                            "default": "off"
+                        },
+                        {
+                            "name": "name",
+                            "description": "same as `name` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "readonly",
+                            "description": "same as `readonly` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "max",
+                            "description": "same as `max` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes"
+                        },
+                        {
+                            "name": "min",
+                            "description": "same as `min` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes"
+                        },
+                        {
+                            "name": "step",
+                            "description": "same as `step` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes"
+                        },
+                        {
+                            "name": "resize",
+                            "description": "control the resizability",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["'none' | 'both' | 'horizontal' | 'vertical'"]
+                        },
+                        {
+                            "name": "autofocus",
+                            "description": "same as `autofocus` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "form",
+                            "description": "same as `form` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "label",
+                            "description": "same as `aria-label` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "aria-label",
+                            "description": "same as `aria-label` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "tabindex",
+                            "description": "input tabindex",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["string", "number"]
+                        },
+                        {
+                            "name": "validate-event",
+                            "description": "whether to trigger form validation",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "input-style",
+                            "description": "the style of the input element or textarea element",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#attributes",
+                            "type": [
+                                "string",
+                                { "name": "CSSProperties", "source": { "symbol": "CSSProperties", "module": "vue" } },
+                                { "name": "CSSProperties[]", "source": { "symbol": "CSSProperties", "module": "vue" } },
+                                "string[]"
+                            ],
+                            "default": "{}"
+                        },
+                        {
+                            "name": "tooltip-props",
+                            "description": "",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
+                            "type": ["ElTooltipContentProps"]
+                        },
+                        {
+                            "name": "gather-props",
+                            "description": "数据采集单独object",
+                            "doc-url": "",
+                            "type": ["object"]
+                        }
+                    ],
+                    "slots": [{
+                            "name": "prefix",
+                            "description": "content as Input prefix, only works when `type` is not 'textarea'",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#slots"
+                        },
+                        {
+                            "name": "suffix",
+                            "description": "content as Input suffix, only works when `type` is not 'textarea'",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#slots"
+                        },
+                        {
+                            "name": "prepend",
+                            "description": "content to prepend before Input, only works when `type` is not 'textarea'",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#slots"
+                        },
+                        {
+                            "name": "append",
+                            "description": "content to append after Input, only works when `type` is not 'textarea'",
+                            "doc-url": "https://element-plus.org/en-US/component/input.html#slots"
+                        }
+                    ],
+                    "js": {
+                        "events": [
+                            { "name": "blur", "description": "triggers when Input blurs", "doc-url": "https://element-plus.org/en-US/component/input.html#events" },
+                            {
+                                "name": "focus",
+                                "description": "triggers when Input focuses",
+                                "doc-url": "https://element-plus.org/en-US/component/input.html#events"
+                            },
+                            {
+                                "name": "change",
+                                "description": "triggers when the input box loses focus or the user presses Enter, only if the modelValue has changed",
+                                "doc-url": "https://element-plus.org/en-US/component/input.html#events"
+                            },
+                            {
+                                "name": "input",
+                                "description": "triggers when the Input value change",
+                                "doc-url": "https://element-plus.org/en-US/component/input.html#events"
+                            },
+                            {
+                                "name": "clear",
+                                "description": "triggers when the Input is cleared by clicking the clear button",
+                                "doc-url": "https://element-plus.org/en-US/component/input.html#events"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "jlg-radio",
+                    "source": { "symbol": "JlgRadio" },
+                    "description": ":::warning",
+                    "doc-url": "https://element-plus.org/en-US/component/radio.html#radio",
+                    "props": [{
+                            "name": "model-value",
+                            "description": "binding value",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
+                            "type": ["string", "number", "boolean"]
+                        },
+                        {
+                            "name": "value",
+                            "description": "the value of Radio",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
+                            "type": ["string", "number", "boolean"]
+                        },
+                        {
+                            "name": "label",
+                            "description": "the label of Radio. If there's no `value`, `label` will act as `value`",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
+                            "type": ["string", "number", "boolean"]
+                        },
+                        {
+                            "name": "disabled",
+                            "description": "whether Radio is disabled",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "border",
+                            "description": "whether to add a border around Radio",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "size",
+                            "description": "size of the Radio",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
+                            "type": ["'large' | 'default' | 'small'"]
+                        },
+                        {
+                            "name": "name",
+                            "description": "native `name` attribute",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radio-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "title",
+                            "description": "radio默认插槽显示的默认值",
+                            "doc-url": "",
+                            "type": ["'string'|'number'|'boolean'"]
+                        }
+                    ],
+                    "slots": [{
+                        "name": "default",
+                        "description": "customize default content",
+                        "doc-url": "https://element-plus.org/en-US/component/radio.html#radio-slots"
+                    }],
+                    "js": {
+                        "events": [{
+                            "name": "change",
+                            "description": "triggers when the bound value changes",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radio-events"
+                        }]
+                    }
+                },
+                {
+                    "name": "jlg-radio-group",
+                    "source": { "symbol": "JlgRadioGroup" },
+                    "doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup",
+                    "props": [{
+                            "name": "model-value",
+                            "description": "binding value",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
+                            "type": ["string", "number", "boolean"]
+                        },
+                        {
+                            "name": "size",
+                            "description": "the size of radio buttons or bordered radios",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
+                            "type": ["string"],
+                            "default": "default"
+                        },
+                        {
+                            "name": "disabled",
+                            "description": "whether the nesting radios are disabled",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "text-color",
+                            "description": "font color when button is active",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
+                            "type": ["string"],
+                            "default": "#ffffff"
+                        },
+                        {
+                            "name": "fill",
+                            "description": "border and background color when button is active",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
+                            "type": ["string"],
+                            "default": "#409eff"
+                        },
+                        {
+                            "name": "validate-event",
+                            "description": "whether to trigger form validation",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "label",
+                            "description": "same as `aria-label` in RadioGroup",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "aria-label",
+                            "description": "same as `aria-label` in RadioGroup",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "name",
+                            "description": "native `name` attribute",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "id",
+                            "description": "native `id` attribute",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "radio-options",
+                            "description": "由jlg-option组件的props的数组",
+                            "doc-url": "",
+                            "type": ["T_Jlg_Radio_Props[]"]
+                        },
+                        {
+                            "name": "gather-props",
+                            "description": "数据采集单独object",
+                            "doc-url": "",
+                            "type": ["object"]
+                        }
+                    ],
+                    "slots": [{
+                        "name": "default",
+                        "description": "customize default content",
+                        "doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-slots"
+                    }],
+                    "js": {
+                        "events": [{
+                            "name": "change",
+                            "description": "triggers when the bound value changes",
+                            "doc-url": "https://element-plus.org/en-US/component/radio.html#radiogroup-events"
+                        }]
+                    }
+                },
+                {
+                    "name": "jlg-rate",
+                    "source": { "symbol": "JlgRate" },
+                    "description": "Used for rating",
+                    "doc-url": "https://element-plus.org/en-US/component/rate.html#rate",
+                    "props": [{
+                            "name": "model-value",
+                            "description": "binding value",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["number"],
+                            "default": "0"
+                        },
+                        {
+                            "name": "max",
+                            "description": "max rating score",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["number"],
+                            "default": "5"
+                        },
+                        {
+                            "name": "size",
+                            "description": "size of Rate",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["'large' | 'default' | 'small'"]
+                        },
+                        {
+                            "name": "disabled",
+                            "description": "whether Rate is read-only",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "allow-half",
+                            "description": "whether picking half start is allowed",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "low-threshold",
+                            "description": "threshold value between low and medium level. The value itself will be included in low level",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["number"],
+                            "default": "2"
+                        },
+                        {
+                            "name": "high-threshold",
+                            "description": "threshold value between medium and high level. The value itself will be included in high level",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["number"],
+                            "default": "4"
+                        },
+                        {
+                            "name": "colors",
+                            "description": "colors for icons. If array, it should have 3 elements, each of which corresponds with a score level, else if object, the key should be threshold value between two levels, and the value should be corresponding color",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["string[]", "Record<number, string>"],
+                            "default": "['#f7ba2a', '#f7ba2a', '#f7ba2a']"
+                        },
+                        {
+                            "name": "void-color",
+                            "description": "color of unselected icons",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["string"],
+                            "default": "#c6d1de"
+                        },
+                        {
+                            "name": "disabled-void-color",
+                            "description": "color of unselected read-only icons",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["string"],
+                            "default": "#eff2f7"
+                        },
+                        {
+                            "name": "icons",
+                            "description": "icon components. If array, it should have 3 elements, each of which corresponds with a score level, else if object, the key should be threshold value between two levels, and the value should be corresponding icon component",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": [
+                                "string[]",
+                                { "name": "Component[]", "source": { "symbol": "Component", "module": "vue" } },
+                                "Record<number, string | Component>"
+                            ],
+                            "default": "[StarFilled, StarFilled, StarFilled]"
+                        },
+                        {
+                            "name": "void-icon",
+                            "description": "component of unselected icons",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
+                            "default": "Star"
+                        },
+                        {
+                            "name": "disabled-void-icon",
+                            "description": "component of unselected read-only icons",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
+                            "default": "StarFilled"
+                        },
+                        {
+                            "name": "show-text",
+                            "description": "whether to display texts",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "show-score",
+                            "description": "whether to display current score. show-score and show-text cannot be true at the same time",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "text-color",
+                            "description": "color of texts",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["string"],
+                            "default": "''"
+                        },
+                        {
+                            "name": "texts",
+                            "description": "text array",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["string[]"],
+                            "default": "['Extremely bad', 'Disappointed', 'Fair', 'Satisfied', 'Surprise']"
+                        },
+                        {
+                            "name": "score-template",
+                            "description": "score template",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["string"],
+                            "default": "{value}"
+                        },
+                        {
+                            "name": "clearable",
+                            "description": "whether value can be reset to `0`",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "id",
+                            "description": "native `id` attribute",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "label",
+                            "description": "same as `aria-label` in Rate",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "aria-label",
+                            "description": "same as `aria-label` in Rate",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "tooltip-props",
+                            "description": "",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
+                            "type": ["ElTooltipContentProps"]
+                        },
+                        {
+                            "name": "gather-props",
+                            "description": "数据采集单独object",
+                            "doc-url": "",
+                            "type": ["object"]
+                        }
+                    ],
+                    "js": {
+                        "events": [{
+                            "name": "change",
+                            "description": "Triggers when rate value is changed",
+                            "doc-url": "https://element-plus.org/en-US/component/rate.html#events"
+                        }]
+                    }
+                },
+                {
+                    "name": "jlg-select",
+                    "source": { "symbol": "JlgSelect" },
+                    "description": "When there are plenty of options, use a drop-down menu to display and select desired ones.",
+                    "doc-url": "https://element-plus.org/en-US/component/select.html#select",
+                    "props": [{
+                            "name": "model-value",
+                            "description": "binding value",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["string", "number", "boolean", "object", "array"]
+                        },
+                        {
+                            "name": "multiple",
+                            "description": "whether multiple-select is activated",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "disabled",
+                            "description": "whether Select is disabled",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "value-key",
+                            "description": "unique identity key name for value, required when value is an object",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["string"],
+                            "default": "value"
+                        },
+                        {
+                            "name": "size",
+                            "description": "size of Input",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["'' | 'large' | 'default' | 'small'"]
+                        },
+                        {
+                            "name": "clearable",
+                            "description": "whether select can be cleared",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "collapse-tags",
+                            "description": "whether to collapse tags to a text when multiple selecting",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "collapse-tags-tooltip",
+                            "description": "whether show all selected tags when mouse hover text of collapse-tags. To use this, `collapse-tags` must be true",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "multiple-limit",
+                            "description": "maximum number of options user can select when `multiple` is `true`. No limit when set to 0",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["number"],
+                            "default": "0"
+                        },
+                        {
+                            "name": "name",
+                            "description": "the name attribute of select input",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "effect",
+                            "description": "tooltip theme, built-in theme: `dark` / `light`",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["'dark' | 'light'", "string"],
+                            "default": "light"
+                        },
+                        {
+                            "name": "autocomplete",
+                            "description": "the autocomplete attribute of select input",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["string"],
+                            "default": "off"
+                        },
+                        {
+                            "name": "placeholder",
+                            "description": "placeholder, default is 'Select'",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "filterable",
+                            "description": "whether Select is filterable",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "allow-create",
+                            "description": "whether creating new items is allowed. To use this, `filterable` must be true",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "filter-method",
+                            "description": "custom filter method",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["() => void"]
+                        },
+                        {
+                            "name": "remote",
+                            "description": "whether options are loaded from server",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "remote-method",
+                            "description": "custom remote search method",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["() => void"]
+                        },
+                        {
+                            "name": "remote-show-suffix",
+                            "description": "in remote search method show suffix icon",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "loading",
+                            "description": "whether Select is loading data from server",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "loading-text",
+                            "description": "displayed text while loading data from server, default is 'Loading'",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "no-match-text",
+                            "description": "displayed text when no data matches the filtering query, you can also use slot `empty`, default is 'No matching data'",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "no-data-text",
+                            "description": "displayed text when there is no options, you can also use slot `empty`, default is 'No data'",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "popper-class",
+                            "description": "custom class name for Select's dropdown",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["string"],
+                            "default": "''"
+                        },
+                        {
+                            "name": "reserve-keyword",
+                            "description": "when `multiple` and `filterable` is true, whether to reserve current keyword after selecting an option",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "default-first-option",
+                            "description": "select first matching option on enter key. Use with `filterable` or `remote`",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "teleported",
+                            "description": "whether select dropdown is teleported to the body",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "persistent",
+                            "description": "when select dropdown is inactive and `persistent` is `false`, select dropdown will be destroyed",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "automatic-dropdown",
+                            "description": "for non-filterable Select, this prop decides if the option menu pops up when the input is focused",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "clear-icon",
+                            "description": "custom clear icon component",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
+                            "default": "CircleClose"
+                        },
+                        {
+                            "name": "fit-input-width",
+                            "description": "whether the width of the dropdown is the same as the input",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "suffix-icon",
+                            "description": "custom suffix icon component",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
+                            "default": "ArrowDown"
+                        },
+                        {
+                            "name": "suffix-transition",
+                            "description": "animation when dropdown appears/disappears icon",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "tag-type",
+                            "description": "tag type",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["'' | 'success' | 'info' | 'warning' | 'danger'"],
+                            "default": "info"
+                        },
+                        {
+                            "name": "validate-event",
+                            "description": "whether to trigger form validation",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "placement",
+                            "description": "position of dropdown",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": [
+                                "'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'"
+                            ],
+                            "default": "bottom-start"
+                        },
+                        {
+                            "name": "fallback-placements",
+                            "description": "list of possible positions for dropdown [popper.js](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements)",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": [{ "name": "Placement[]", "source": { "symbol": "Placement" } }],
+                            "default": "['bottom-start', 'top-start', 'right', 'left']"
+                        },
+                        {
+                            "name": "max-collapse-tags",
+                            "description": "the max tags number to be shown. To use this, `collapse-tags` must be true",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["number"],
+                            "default": "1"
+                        },
+                        {
+                            "name": "popper-options",
+                            "description": "[popper.js](https://popper.js.org/docs/v2/) parameters",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": [{ "name": "objectrefer to  doc", "source": { "symbol": "objectrefer to  doc" } }],
+                            "default": "{}"
+                        },
+                        {
+                            "name": "aria-label",
+                            "description": "same as `aria-label` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "empty-values",
+                            "description": "empty values of component, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["array"]
+                        },
+                        {
+                            "name": "value-on-clear",
+                            "description": "clear return value, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-attributes",
+                            "type": ["string", "number", "boolean", "Function"]
+                        },
+                        {
+                            "name": "tooltip-props",
+                            "description": "",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
+                            "type": ["ElTooltipContentProps"]
+                        },
+                        {
+                            "name": "gather-props",
+                            "description": "数据采集单独object",
+                            "doc-url": "",
+                            "type": ["object"]
+                        },
+                        {
+                            "name": "option-options",
+                            "description": "jlg-option组件的props组成的数组，用来渲染option",
+                            "doc-url": "",
+                            "type": ["I_Jlg_Option_Props[]"]
+                        }
+                    ],
+                    "slots": [{
+                            "name": "default",
+                            "description": "option component list",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-slots"
+                        },
+                        {
+                            "name": "header",
+                            "description": "content at the top of the dropdown",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-slots"
+                        },
+                        {
+                            "name": "footer",
+                            "description": "content at the bottom of the dropdown",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-slots"
+                        },
+                        {
+                            "name": "prefix",
+                            "description": "content as Select prefix",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-slots"
+                        },
+                        {
+                            "name": "empty",
+                            "description": "content when there is no options",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-slots"
+                        },
+                        { "name": "tag", "description": "content as Select tag", "doc-url": "https://element-plus.org/en-US/component/select.html#select-slots" },
+                        {
+                            "name": "loading",
+                            "description": "content as Select loading",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#select-slots"
+                        }
+                    ],
+                    "js": {
+                        "events": [{
+                                "name": "change",
+                                "description": "triggers when the selected value changes",
+                                "doc-url": "https://element-plus.org/en-US/component/select.html#select-events"
+                            },
+                            {
+                                "name": "visible-change",
+                                "description": "triggers when the dropdown appears/disappears",
+                                "doc-url": "https://element-plus.org/en-US/component/select.html#select-events"
+                            },
+                            {
+                                "name": "remove-tag",
+                                "description": "triggers when a tag is removed in multiple mode",
+                                "doc-url": "https://element-plus.org/en-US/component/select.html#select-events"
+                            },
+                            {
+                                "name": "clear",
+                                "description": "triggers when the clear icon is clicked in a clearable Select",
+                                "doc-url": "https://element-plus.org/en-US/component/select.html#select-events"
+                            },
+                            {
+                                "name": "blur",
+                                "description": "triggers when Input blurs",
+                                "doc-url": "https://element-plus.org/en-US/component/select.html#select-events"
+                            },
+                            {
+                                "name": "focus",
+                                "description": "triggers when Input focuses",
+                                "doc-url": "https://element-plus.org/en-US/component/select.html#select-events"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "jlg-option",
+                    "source": { "symbol": "JlgOption" },
+                    "doc-url": "https://element-plus.org/en-US/component/select.html#option",
+                    "props": [{
+                            "name": "value",
+                            "description": "value of option",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#option-attributes",
+                            "type": ["string", "number", "boolean", "object"]
+                        },
+                        {
+                            "name": "label",
+                            "description": "label of option, same as `value` if omitted",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#option-attributes",
+                            "type": ["string", "number"]
+                        },
+                        {
+                            "name": "disabled",
+                            "description": "whether option is disabled",
+                            "doc-url": "https://element-plus.org/en-US/component/select.html#option-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        }
+                    ],
+                    "slots": [{
+                        "name": "default",
+                        "description": "customize default content",
+                        "doc-url": "https://element-plus.org/en-US/component/select.html#option-slots"
+                    }]
+                },
+                {
+                    "name": "jlg-time-select",
+                    "source": { "symbol": "JlgTimeSelect" },
+                    "description": "Use Time Select for time input.",
+                    "doc-url": "https://element-plus.org/en-US/component/time-select.html#timeselect",
+                    "props": [{
+                            "name": "model-value",
+                            "description": "binding value",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "disabled",
+                            "description": "whether TimeSelect is disabled",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "editable",
+                            "description": "whether the input is editable",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "clearable",
+                            "description": "whether to show clear button",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "size",
+                            "description": "size of Input",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["'large' | 'default' | 'small'"],
+                            "default": "default"
+                        },
+                        {
+                            "name": "placeholder",
+                            "description": "placeholder in non-range mode",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "name",
+                            "description": "same as `name` in native input",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "effect",
+                            "description": "Tooltip theme, built-in theme: `dark` / `light`",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["string", "'dark' | 'light'"],
+                            "default": "light"
+                        },
+                        {
+                            "name": "prefix-icon",
+                            "description": "custom prefix icon component",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
+                            "default": "Clock"
+                        },
+                        {
+                            "name": "clear-icon",
+                            "description": "custom clear icon component",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["string", { "name": "Component", "source": { "symbol": "Component", "module": "vue" } }],
+                            "default": "CircleClose"
+                        },
+                        {
+                            "name": "start",
+                            "description": "start time",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["string"],
+                            "default": "09:00"
+                        },
+                        {
+                            "name": "end",
+                            "description": "end time",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["string"],
+                            "default": "18:00"
+                        },
+                        {
+                            "name": "step",
+                            "description": "time step",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["string"],
+                            "default": "00:30"
+                        },
+                        {
+                            "name": "min-time",
+                            "description": "minimum time, any time before this time will be disabled",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "max-time",
+                            "description": "maximum time, any time after this time will be disabled",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "format",
+                            "description": "set format of time",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": [{ "name": "string see", "source": { "symbol": "string see" } }],
+                            "default": "HH:mm"
+                        },
+                        {
+                            "name": "empty-values",
+                            "description": "empty values of component, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["array"]
+                        },
+                        {
+                            "name": "value-on-clear",
+                            "description": "clear return value, [see config-provider](/en-US/component/config-provider#empty-values-configurations)",
+                            "doc-url": "https://element-plus.org/en-US/component/time-select.html#attributes",
+                            "type": ["string", "number", "boolean", "Function"]
+                        },
+                        {
+                            "name": "tooltip-props",
+                            "description": "",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
+                            "type": ["ElTooltipContentProps"]
+                        },
+                        {
+                            "name": "gather-props",
+                            "description": "数据采集单独object",
+                            "doc-url": "",
+                            "type": ["object"]
+                        }
+                    ],
+                    "js": {
+                        "events": [{
+                                "name": "change",
+                                "description": "triggers when user confirms the value",
+                                "doc-url": "https://element-plus.org/en-US/component/time-select.html#events"
+                            },
+                            {
+                                "name": "blur",
+                                "description": "triggers when Input blurs",
+                                "doc-url": "https://element-plus.org/en-US/component/time-select.html#events"
+                            },
+                            {
+                                "name": "focus",
+                                "description": "triggers when Input focuses",
+                                "doc-url": "https://element-plus.org/en-US/component/time-select.html#events"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "jlg-tooltip",
+                    "source": { "symbol": "JlgTooltip" },
+                    "description": "Display prompt information for mouse hover.",
+                    "doc-url": "https://element-plus.org/en-US/component/tooltip.html#tooltip",
+                    "props": [{
+                            "name": "append-to",
+                            "description": "which element the tooltip CONTENT appends to",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": [{ "name": "CSSSelector", "source": { "symbol": "CSSSelector" } }, "HTMLElement"]
+                        },
+                        {
+                            "name": "effect",
+                            "description": "Tooltip theme, built-in theme: `dark` / `light`",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["'dark' | 'light'"],
+                            "default": "dark"
+                        },
+                        {
+                            "name": "content",
+                            "description": "display content, can be overridden by `slot#content`",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["string"],
+                            "default": "''"
+                        },
+                        {
+                            "name": "raw-content",
+                            "description": "whether `content` is treated as HTML string",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "placement",
+                            "description": "position of Tooltip",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": [
+                                "'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'"
+                            ],
+                            "default": "bottom"
+                        },
+                        {
+                            "name": "fallback-placements",
+                            "description": "list of possible positions for Tooltip [popper.js](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements)",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": [{ "name": "Placement[]", "source": { "symbol": "Placement" } }]
+                        },
+                        {
+                            "name": "visible",
+                            "description": "visibility of Tooltip",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["boolean"]
+                        },
+                        {
+                            "name": "disabled",
+                            "description": "whether Tooltip is disabled",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["boolean"]
+                        },
+                        {
+                            "name": "offset",
+                            "description": "offset of the Tooltip",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["number"],
+                            "default": "12"
+                        },
+                        {
+                            "name": "transition",
+                            "description": "animation name",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "popper-options",
+                            "description": "[popper.js](https://popper.js.org/docs/v2/) parameters",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": [{ "name": "objectrefer to  doc", "source": { "symbol": "objectrefer to  doc" } }],
+                            "default": "{}"
+                        },
+                        {
+                            "name": "show-after",
+                            "description": "delay of appearance, in millisecond",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["number"],
+                            "default": "0"
+                        },
+                        {
+                            "name": "show-arrow",
+                            "description": "whether the tooltip content has an arrow",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "hide-after",
+                            "description": "delay of disappear, in millisecond",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["number"],
+                            "default": "200"
+                        },
+                        {
+                            "name": "auto-close",
+                            "description": "timeout in milliseconds to hide tooltip",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["number"],
+                            "default": "0"
+                        },
+                        {
+                            "name": "popper-class",
+                            "description": "custom class name for Tooltip's popper",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["string"]
+                        },
+                        {
+                            "name": "enterable",
+                            "description": "whether the mouse can enter the tooltip",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "teleported",
+                            "description": "whether tooltip content is teleported, if `true` it will be teleported to where `append-to` sets",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["boolean"],
+                            "default": "true"
+                        },
+                        {
+                            "name": "trigger",
+                            "description": "How should the tooltip be triggered (to show)",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["'hover' | 'click' | 'focus' | 'contextmenu'"],
+                            "default": "hover"
+                        },
+                        {
+                            "name": "virtual-triggering",
+                            "description": "Indicates whether virtual triggering is enabled",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["boolean"]
+                        },
+                        {
+                            "name": "virtual-ref",
+                            "description": "Indicates the reference element to which the tooltip is attached",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["HTMLElement"]
+                        },
+                        {
+                            "name": "trigger-keys",
+                            "description": "When you click the mouse to focus on the trigger element, you can define a set of keyboard codes to control the display of tooltip through the keyboard",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["Array"],
+                            "default": "['Enter','Space']"
+                        },
+                        {
+                            "name": "persistent",
+                            "description": "when tooltip inactive and `persistent` is `false` , popconfirm will be destroyed",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["boolean"]
+                        },
+                        {
+                            "name": "aria-label",
+                            "description": "same as `aria-label`",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#attributes",
+                            "type": ["string"]
+                        }
+                    ],
+                    "slots": [{
+                            "name": "default",
+                            "description": "Tooltip triggering & reference element",
+                            "doc-url": "https://element-plus.org/en-US/component/tooltip.html#slots"
+                        },
+                        { "name": "content", "description": "customize content", "doc-url": "https://element-plus.org/en-US/component/tooltip.html#slots" }
+                    ]
+                }
+            ],
+            "attributes": []
+        }
+    }
 }

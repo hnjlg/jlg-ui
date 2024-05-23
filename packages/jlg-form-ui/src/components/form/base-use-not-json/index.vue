@@ -2,7 +2,7 @@
 	<el-button @click="gather">收集数据</el-button>
 	<el-button @click="validator">校验</el-button>
 	{{ formData }}
-	<jlg-form ref="JlgFormRef" :label-position="E_JlgForm_LabelPosition['内嵌']" :gather-props="{ col: 1, allCol: 3 }" :model="formData" :rules="rules">
+	<jlg-form ref="JlgFormRef" :label-position="E_JlgForm_LabelPosition['内嵌']" :gather-props="{ col: 1, allCol: 3 }" :model="formData">
 		<jlg-grid-layout v-bind="gridLayoutProps">
 			<jlg-grid-cell :width="1" :height="1">
 				<jlg-form-item
@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { T_JlgForm_Props, E_JlgForm_LabelPosition } from '@pac/form/type';
 import { JlgGridLayout, JlgGridCell } from 'jlg-ui';
 import { E_FormValidatorRulesValidateFunEnum } from '@pac/rule';
@@ -70,9 +70,7 @@ defineOptions({
 const JlgFormRef = ref();
 
 const formData = ref({
-	input: {
-		value: '',
-	},
+	input: {},
 	select: {
 		value: 1,
 	},
@@ -83,11 +81,11 @@ const formData = ref({
 	radio: '',
 });
 
-const rules = reactive({
-	// input: {
-	// 	value: [{ required: true, message: 'Please input input', trigger: 'blur' }],
-	// },
-});
+// const rules = reactive({
+// 	// input: {
+// 	// 	value: [{ required: true, message: 'Please input input', trigger: 'blur' }],
+// 	// },
+// });
 
 const gridLayoutProps = ref<T_JlgForm_Props['gridLayoutProps']>({
 	padding: '0px',
