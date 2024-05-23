@@ -6,7 +6,7 @@
 		<div>
 			<el-popover
 				v-for="firstLevelMenu in handleMenuData"
-				:key="firstLevelMenu[props.menuDataRecord.key]"
+				:key="firstLevelMenu[menuDataRecordComputed.key]"
 				placement="right"
 				:width="400"
 				trigger="click"
@@ -17,40 +17,40 @@
 					<div
 						:class="[
 							'jlg-menu-first-level-menu',
-							props.defaultActive === firstLevelMenu[props.menuDataRecord.key]
+							props.defaultActive === firstLevelMenu[menuDataRecordComputed.key]
 								? 'jlg-menu-first-level-menu-selected'
 								: 'jlg-menu-first-level-menu-no-selected',
 						]"
 					>
 						<div class="jlg-menu-first-level-menu-icon">
-							<slot :name="'first-menu-icon' + firstLevelMenu[props.menuDataRecord.key]">
-								<i v-if="firstLevelMenu[props.menuDataRecord.iconClass]" :class="firstLevelMenu[props.menuDataRecord.iconClass]"></i>
+							<slot :name="'first-menu-icon' + firstLevelMenu[menuDataRecordComputed.key]">
+								<i v-if="firstLevelMenu[menuDataRecordComputed.iconClass]" :class="firstLevelMenu[menuDataRecordComputed.iconClass]"></i>
 							</slot>
 						</div>
-						<p class="jlg-menu-first-level-menu-text">{{ firstLevelMenu[props.menuDataRecord.title] }}</p>
+						<p class="jlg-menu-first-level-menu-text">{{ firstLevelMenu[menuDataRecordComputed.title] }}</p>
 					</div>
 				</template>
 				<dir class="jlg-menu-popover">
 					<div
-						v-for="secondLevelMenu in firstLevelMenu[props.menuDataRecord.children]"
-						:key="secondLevelMenu[props.menuDataRecord.key]"
+						v-for="secondLevelMenu in firstLevelMenu[menuDataRecordComputed.children]"
+						:key="secondLevelMenu[menuDataRecordComputed.key]"
 						class="second-level-menu"
 					>
 						<div class="second-level-menu-title">
-							{{ secondLevelMenu[props.menuDataRecord.title] }}
+							{{ secondLevelMenu[menuDataRecordComputed.title] }}
 						</div>
 						<div
-							v-for="threeLevelMenu in secondLevelMenu[props.menuDataRecord.children]"
-							:key="threeLevelMenu[props.menuDataRecord.key]"
+							v-for="threeLevelMenu in secondLevelMenu[menuDataRecordComputed.children]"
+							:key="threeLevelMenu[menuDataRecordComputed.key]"
 							class="three-level-menu-title"
 							@mouseenter="threeLevelMenu._isShowCollect = true"
 							@mouseleave="threeLevelMenu._isShowCollect = false"
 							@click="emits('threeLevelMenuClick', threeLevelMenu, [firstLevelMenu, secondLevelMenu, threeLevelMenu])"
 						>
-							{{ threeLevelMenu[props.menuDataRecord.title] }}
+							{{ threeLevelMenu[menuDataRecordComputed.title] }}
 							<div class="show-collect">
 								<show-collect
-									:is-collect="props.collectMenuKeys.some((i) => i === threeLevelMenu[props.menuDataRecord.key])"
+									:is-collect="props.collectMenuKeys.some((i) => i === threeLevelMenu[menuDataRecordComputed.key])"
 									:is-show="threeLevelMenu._isShowCollect"
 									@click.stop="emits('collectClick', threeLevelMenu, [firstLevelMenu, secondLevelMenu, threeLevelMenu])"
 								></show-collect>
@@ -64,22 +64,14 @@
 </template>
 
 <script setup lang="ts">
-import { I_Jlg_Menu_Props, I_Jlg_Menu_Emits, T_MenuDataRecord } from './type';
+import { I_Jlg_Menu_Props, I_Jlg_Menu_Emits } from './type';
 import ShowCollect from './components/show-collect/index.vue';
 
 defineOptions({
 	name: 'JlgMenu',
 });
 
-const props = withDefaults(defineProps<I_Jlg_Menu_Props>(), {
-	menuDataRecord: () =>
-		({
-			title: 'title',
-			iconClass: 'iconClass',
-			key: 'key',
-			children: 'children',
-		}) as T_MenuDataRecord,
-});
+const props = withDefaults(defineProps<I_Jlg_Menu_Props>(), {});
 
 const emits = defineEmits<I_Jlg_Menu_Emits>();
 
@@ -87,13 +79,23 @@ const slots = useSlots();
 
 const handleMenuData = ref();
 
+const menuDataRecordComputed = computed(() => ({
+	...{
+		title: 'title',
+		iconClass: 'iconClass',
+		key: 'key',
+		children: 'children',
+	},
+	...(props.menuDataRecord ?? {}),
+}));
+
 // 处理得到新的格式数据
 function addMenuDataFields(menuData) {
 	return menuData.map((item) => {
 		return {
 			...item,
 			_isShowCollect: false,
-			children: addMenuDataFields(item[props.menuDataRecord.children] ?? []),
+			children: addMenuDataFields(item[menuDataRecordComputed.value.children] ?? []),
 		};
 	});
 }
@@ -139,6 +141,7 @@ watch(
 					var(--second-level-menu-title-left-padding);
 				border-bottom: 1px solid #394341;
 				color: var(--second-level-menu-title-color);
+				font-size: var(--second-level-menu-title-font-size);
 			}
 			.three-level-menu-title {
 				font-size: var(--three-level-menu-title-font-size);

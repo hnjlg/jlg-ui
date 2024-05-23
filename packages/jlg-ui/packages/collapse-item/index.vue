@@ -22,7 +22,9 @@ defineOptions({
 	name: 'JlgCollapseItem',
 });
 
-const props = withDefaults(defineProps<T_Jlg_CollapseItem_Props>(), {});
+const props = withDefaults(defineProps<T_Jlg_CollapseItem_Props>(), {
+	disabled: false,
+});
 
 const attrs = useAttrs();
 

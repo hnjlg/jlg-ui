@@ -5,6 +5,7 @@ export declare interface I_JlgMenu_MenuDataItem {
     iconClass: string;
     key: number | string;
     children?: I_JlgMenu_MenuDataItem[];
+    [k: string]: any;
 }
 export declare type T_MenuDataRecord = {
     [k in keyof I_JlgMenu_MenuDataItem]: string;
