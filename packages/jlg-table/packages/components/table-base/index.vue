@@ -8,7 +8,6 @@
 				:columns="propsColumns"
 				:proxy-config="computeProxyOpts"
 				:auto-resize="true"
-				:sync-resize="reactData.isFolding"
 				:stripe="customStore.stripe"
 				:size="customStore.size"
 				:align="customStore.align"
@@ -24,10 +23,26 @@
 							@reset="handleFilterReset"
 							@save="handleFilterSave"
 							@folding="handleFolding"
-						></table-filter>
+						>
+							<template #filter_divider="{ isFolding }">
+								<slot name="filter_divider" :is-folding="isFolding">
+									<el-divider v-show="!isFolding">
+										<div class="table-filter__divider">
+											<span style="margin-right: 5px" @click="onHandleFolding(!isFolding)">收起筛选</span>
+											<el-icon>
+												<ArrowUp />
+											</el-icon>
+										</div>
+									</el-divider>
+									<div v-show="isFolding" class="filter-folding" @click="onHandleFolding(!isFolding)">
+										<span class="filter-folding--text">展开筛选</span>
+									</div>
+								</slot>
+							</template>
+						</table-filter>
 					</div>
 
-					<slot name="top"></slot>
+					<!--					<slot name="top"></slot>-->
 				</template>
 				<template v-for="(_, name) in $slots" #[name]="slotData" :key="name">
 					<slot :name v-bind="slotData || {}"></slot>
@@ -46,14 +61,15 @@ import findTree from 'xe-utils/findTree';
 import toArrayTree from 'xe-utils/toArrayTree';
 import findIndexOf from 'xe-utils/findIndexOf';
 import TableFilter from '../table-filter/index.vue';
-import { I_Table_Grid_Props, T_Msg, T_RenderCustomTemplate, T_Save_Config_Type } from './type';
+import type { I_Table_Grid_Props, T_Msg, T_RenderCustomTemplate, T_Save_Config_Type } from './type';
+import type { I_Table_Filter_Item, I_Table_Filter_Props } from '../../components/table-filter/type';
 import { computed, nextTick, reactive, Ref, useAttrs } from 'vue';
 import GlobalConfig from '../../../lib/useGlobalConfig';
 import { VxeGridEventProps, VxeGridInstance, VxeGridPropTypes, VxeGridDefines, VxeTableDefines } from 'vxe-table';
 import { ElMessage, ElMessageBox } from 'element-plus';
-import { I_Table_Filter_Item, I_Table_Filter_Props } from '@pac/components/table-filter/type';
 import Sortable from 'sortablejs';
 import { useRenderCustomTemplate } from './useRenderCustomTemplate';
+import { ArrowUp } from '@element-plus/icons-vue';
 
 defineOptions({
 	name: 'JlgGrid',
@@ -137,7 +153,7 @@ const customVirtualPopoverRef = ref<HTMLElement>();
 const initPopoverButton = (popoverRef: HTMLElement | Ref<HTMLElement>) => {
 	customVirtualPopoverRef.value = unref(popoverRef);
 	const button = customVirtualPopoverRef.value?.ref || customVirtualPopoverRef.value;
-	if (!button) return;
+	if (!button || !tableFilterRef.value) return;
 	button.removeEventListener('click', tableFilterRef.value.handleQuickSearch);
 	button.addEventListener('click', tableFilterRef.value.handleQuickSearch);
 	return nextTick();
@@ -241,9 +257,9 @@ const beforeQuery = async (args) => {
 			args.form = props.tableFilterConfig?.items ?? [];
 		}
 	} else {
-		args.form = tableFilterRef.value.getFormData();
+		args.form = tableFilterRef.value?.getFormData() || null;
 	}
-	tableFilterRef.value.handleInitialValue();
+	tableFilterRef.value?.handleInitialValue();
 	reactData.$grid = args.$grid;
 	reactData.isInited = args.isInited;
 	reactData.isReload = args.isReload;
@@ -520,6 +536,14 @@ const handleResizableChange = (params: any) => {
 
 function handleFolding(bool: boolean) {
 	reactData.isFolding = bool;
+	const { recalculate } = xGrid.value;
+	nextTick(() => {
+		recalculate();
+		setTimeout(() => recalculate());
+	});
+}
+function onHandleFolding(bool: boolean) {
+	tableFilterRef.value!.handleFolding(bool);
 }
 
 function handleFilterSave() {
@@ -613,17 +637,5 @@ defineExpose({
 });
 </script>
 <style lang="scss">
-.jlg-table-base {
-	.jlg-table-container {
-		height: 100%;
-	}
-}
-.jlg-table-base .vxe-header--row .vxe-header--column.sortable-ghost,
-.jlg-table-base .vxe-header--row .vxe-header--column.sortable-chosen {
-	background-color: #dfecfb;
-}
-
-.jlg-table-base .vxe-header--row .vxe-header--column.col--fixed {
-	cursor: no-drop;
-}
+@import url('../../../styles/table-base.scss');
 </style>

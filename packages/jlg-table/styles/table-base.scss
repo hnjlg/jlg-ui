@@ -1,0 +1,13 @@
+.jlg-table-base {
+  .jlg-table-container {
+    height: 100%;
+  }
+}
+.jlg-table-base .vxe-header--row .vxe-header--column.sortable-ghost,
+.jlg-table-base .vxe-header--row .vxe-header--column.sortable-chosen {
+  background-color: #dfecfb;
+}
+
+.jlg-table-base .vxe-header--row .vxe-header--column.col--fixed {
+  cursor: no-drop;
+}

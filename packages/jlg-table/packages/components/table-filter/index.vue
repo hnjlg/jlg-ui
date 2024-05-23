@@ -35,15 +35,17 @@
 		</div>
 		<!--  展开/折叠 操作区域   -->
 		<div v-show="items.length > 0" class="table-filter__operation">
-			<el-divider>
-				<div class="table-filter__divider" @click="handleFolding(!isFolding)">
-					<span style="margin-right: 5px">{{ isFolding ? '展开筛选' : '收起筛选' }}</span>
-					<el-icon>
-						<ArrowDown v-if="isFolding" />
-						<ArrowUp v-else />
-					</el-icon>
-				</div>
-			</el-divider>
+			<slot name="filter_divider" :is-folding="isFolding">
+				<el-divider>
+					<div class="table-filter__divider" @click="handleFolding(!isFolding)">
+						<span style="margin-right: 5px">{{ isFolding ? '展开筛选' : '收起筛选' }}</span>
+						<el-icon>
+							<ArrowDown v-if="isFolding" />
+							<ArrowUp v-else />
+						</el-icon>
+					</div>
+				</el-divider>
+			</slot>
 		</div>
 
 		<!--  快捷搜索弹出窗口   -->
@@ -248,7 +250,10 @@ function handleReset() {
 
 function handleFolding(bool: boolean) {
 	isFolding.value = bool;
-	emit('folding', bool);
+	/// 通过 setTimeout 保证折叠动画完成后再触发事件，不然视觉上会出现卡顿
+	setTimeout(() => {
+		emit('folding', bool);
+	});
 }
 
 const popoverRef = ref();
