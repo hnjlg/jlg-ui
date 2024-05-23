@@ -3,6 +3,7 @@ export {};
 declare module '@vue/runtime-core' {
 	export interface GlobalComponents {
 		JlgInput: (typeof import('jlg-form-ui'))['JlgInput'];
+		JlgInputNumber: (typeof import('jlg-form-ui'))['JlgInputNumber'];
 		JlgForm: (typeof import('jlg-form-ui'))['JlgForm'];
 		JlgDatePicker: (typeof import('jlg-form-ui'))['JlgDatePicker'];
 		JlgFormItem: (typeof import('jlg-form-ui'))['JlgFormItem'];

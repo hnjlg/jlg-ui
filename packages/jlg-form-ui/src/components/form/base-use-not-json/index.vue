@@ -7,11 +7,11 @@
 			<jlg-grid-cell :width="1" :height="1">
 				<jlg-form-item
 					label="Input测试placeholder"
-					prop="input"
+					prop="input.value"
 					:validate-rules="[[E_FormValidatorRulesValidateFunEnum.必填校验], [E_FormValidatorRulesValidateFunEnum.小数位校验, 0]]"
 				>
 					<jlg-input
-						v-model="formData.input"
+						v-model="formData.input.value"
 						:tooltip-props="{
 							effect: 'light',
 						}"
@@ -29,8 +29,8 @@
 				</jlg-form-item>
 			</jlg-grid-cell>
 			<jlg-grid-cell v-for="i in 30" :key="i" :width="1" :height="1">
-				<jlg-form-item :label="'Select测试placeholder' + i">
-					<jlg-select v-model="formData.select">
+				<jlg-form-item prop="select.value" :label="'Select测试placeholder' + i">
+					<jlg-select v-model="formData.select.value">
 						<jlg-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
 					</jlg-select>
 				</jlg-form-item>
@@ -70,8 +70,12 @@ defineOptions({
 const JlgFormRef = ref();
 
 const formData = ref({
-	input: '',
-	select: 1,
+	input: {
+		value: '',
+	},
+	select: {
+		value: 1,
+	},
 	number: 0,
 	datePicker: '',
 	timeSelect: '',
@@ -80,7 +84,9 @@ const formData = ref({
 });
 
 const rules = reactive({
-	input: [{ required: true, message: 'Please input input', trigger: 'blur' }],
+	// input: {
+	// 	value: [{ required: true, message: 'Please input input', trigger: 'blur' }],
+	// },
 });
 
 const gridLayoutProps = ref<T_JlgForm_Props['gridLayoutProps']>({
