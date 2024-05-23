@@ -17,7 +17,7 @@
 					<div
 						:class="[
 							'jlg-menu-first-level-menu',
-							props.defaultActive === firstLevelMenu[menuDataRecordComputed.key]
+							props.defaultActive?.[0] === firstLevelMenu[menuDataRecordComputed.key]
 								? 'jlg-menu-first-level-menu-selected'
 								: 'jlg-menu-first-level-menu-no-selected',
 						]"
@@ -34,7 +34,12 @@
 					<div
 						v-for="secondLevelMenu in firstLevelMenu[menuDataRecordComputed.children]"
 						:key="secondLevelMenu[menuDataRecordComputed.key]"
-						class="second-level-menu"
+						:class="[
+							'second-level-menu',
+							props.defaultActive?.[1] === secondLevelMenu[menuDataRecordComputed.key]
+								? 'jlg-menu-second-level-menu-selected'
+								: 'jlg-menu-second-level-menu-no-selected',
+						]"
 					>
 						<div class="second-level-menu-title">
 							{{ secondLevelMenu[menuDataRecordComputed.title] }}
@@ -42,7 +47,12 @@
 						<div
 							v-for="threeLevelMenu in secondLevelMenu[menuDataRecordComputed.children]"
 							:key="threeLevelMenu[menuDataRecordComputed.key]"
-							class="three-level-menu-title"
+							:class="[
+								'three-level-menu-title',
+								props.defaultActive?.[2] === threeLevelMenu[menuDataRecordComputed.key]
+									? 'jlg-menu-three-level-menu-selected'
+									: 'jlg-menu-three-level-menu-no-selected',
+							]"
 							@mouseenter="threeLevelMenu._isShowCollect = true"
 							@mouseleave="threeLevelMenu._isShowCollect = false"
 							@click="emits('threeLevelMenuClick', threeLevelMenu, [firstLevelMenu, secondLevelMenu, threeLevelMenu])"
@@ -148,6 +158,7 @@ watch(
 				padding: var(--three-level-menu-title-top-padding) var(--three-level-menu-title-right-padding) var(--three-level-menu-title-bottom-padding)
 					var(--three-level-menu-title-left-padding);
 				display: flex;
+				color: var(--three-level-menu-title-color);
 
 				&:hover {
 					cursor: pointer;

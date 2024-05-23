@@ -2,7 +2,7 @@
 	<div class="menu-base-use">
 		<jlg-menu
 			:menu-data="menuData"
-			default-active="2"
+			:default-active="['1', '1-1']"
 			:collect-menu-keys="['1-1-2']"
 			:menu-data-record="{
 				title: 'label',

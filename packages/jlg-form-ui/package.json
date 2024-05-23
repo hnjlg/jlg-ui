@@ -48,7 +48,7 @@
 		"@element-plus/utils": "^0.0.5",
 		"async-validator": "^4.2.5",
 		"element-plus": "^2.7.0",
-		"jlg-ui": "^0.0.15",
+		"jlg-ui": "^0.0.18",
 		"lodash-unified": "^1.0.3",
 		"vue": "^3.4.21"
 	},

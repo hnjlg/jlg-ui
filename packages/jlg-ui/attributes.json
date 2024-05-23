@@ -110,8 +110,8 @@
 		"description": "变基menuData属性名"
 	},
 	"jlg-menu/defaultActive": {
-		"type": "I_JlgMenu_MenuDataItem['key']",
-		"description": "当前选中的菜单项key"
+		"type": "I_JlgMenu_MenuDataItem['key'][]",
+		"description": "当前选中的菜单项key数组"
 	},
 	"jlg-menu/elPopoverProps": {
 		"type": "PopoverProps",
