@@ -42,7 +42,7 @@
 		"allowSyntheticDefaultImports": true
 	},
 	"include": [
-		"node_modules/jlg-ui"
+		// "node_modules/jlg-ui"
 	],
 	"exclude": [],
 	"references": [

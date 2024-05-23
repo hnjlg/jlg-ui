@@ -3,7 +3,9 @@ import { T_Jlg_Input_Props } from './type';
 declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_Input_Props>, {
     type: string;
     validateEvent: boolean;
-}>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+}>, {
+    _ref: globalThis.Ref<any>;
+}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     blur: (event: FocusEvent) => void;
     "update:modelValue": (value: import('element-plus/es/utils/index.mjs').EpPropMergeType<(new (...args: any[]) => string | number) | (() => string | number) | ((new (...args: any[]) => string | number) | (() => string | number))[], unknown, unknown>) => void;
 }, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_Input_Props>, {

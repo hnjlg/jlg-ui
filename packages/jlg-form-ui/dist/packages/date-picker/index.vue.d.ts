@@ -5,7 +5,9 @@ declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__
     clearable: boolean;
     validateEvent: boolean;
     teleported: boolean;
-}>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+}>, {
+    _ref: globalThis.Ref<any>;
+}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (v: import('element-plus/es/utils/index.mjs').EpPropMergeType<(new (...args: any[]) => string | number | Date | [import('element-plus').DateModelType, import('element-plus').DateModelType]) | (() => import('element-plus').ModelValueType) | ((new (...args: any[]) => string | number | Date | [import('element-plus').DateModelType, import('element-plus').DateModelType]) | (() => import('element-plus').ModelValueType))[], unknown, unknown>) => void;
 }, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_DatePicker_Props>, {
     editable: boolean;

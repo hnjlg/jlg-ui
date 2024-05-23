@@ -56,6 +56,10 @@ watch(
 		deep: true,
 	}
 );
+
+defineExpose({
+	_ref,
+});
 </script>
 
 <style scoped lang="scss">

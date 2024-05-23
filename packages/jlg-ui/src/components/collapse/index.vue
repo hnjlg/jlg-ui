@@ -67,6 +67,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import JlgCollapse from '../../../packages/collapse/index.vue';
+import JlgCollapseItem from '../../../packages/collapse-item/index.vue';
 
 defineOptions({
 	name: 'CollapseDemo',

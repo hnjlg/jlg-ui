@@ -7,5 +7,7 @@ declare module '@vue/runtime-core' {
 		JlgGridCell: (typeof import('jlg-ui'))['JlgGridCell'];
 		JlgCollapse: (typeof import('jlg-ui'))['JlgCollapse'];
 		JlgCollapseItem: (typeof import('jlg-ui'))['JlgCollapseItem'];
+		JlgFlexLayout: (typeof import('jlg-ui'))['JlgFlexLayout'];
+		JlgFlexCell: (typeof import('jlg-ui'))['JlgFlexCell'];
 	}
 }

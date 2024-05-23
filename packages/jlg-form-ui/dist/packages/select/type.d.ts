@@ -1,5 +1,5 @@
-import { I_Jlg_Option_Props } from '../option/type';
 import { ElTooltipContentProps, SelectContext } from 'element-plus';
+import { I_Jlg_Option_Props } from '../option/type';
 
 export declare type T_Jlg_Select_Props = {
     tooltipProps?: ElTooltipContentProps;

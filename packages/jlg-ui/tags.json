@@ -15,5 +15,17 @@
 	"jlg-collapse-item": {
 		"attributes": ["name", "title", "disabled"],
 		"description": "[element-plus el-collapse-item](https://element-plus.org/en-US/component/collapse.html#collapse-item)"
+	},
+	"jlg-flex-layout": {
+		"attributes": ["col", "gap"],
+		"description": "追加属性: \n\n col: number 一行摆几个元素\n\n gap?: string 0px 每个元素的水平间隔\n\n"
+	},
+	"jlg-flex-cell": {
+		"attributes": ["col"],
+		"description": "追加属性: \n\n col: number 当前元素占据的份额\n\n"
+	},
+	"jlg-menu": {
+		"attributes": ["menuData", "collectMenuKeys", "menuDataRecord", "defaultActive", "elPopoverProps"],
+		"description": "追加属性: \n\n menuData: I_JlgMenu_MenuDataItem[] 菜单树形结构数据\n\n collectMenuKeys: I_JlgMenu_MenuDataItem['key'][] 收藏的菜单key数组\n\n menuDataRecord?: T_MenuDataRecord 变基menuData属性名\n\n defaultActive?: I_JlgMenu_MenuDataItem['key'] 当前选中的菜单项key\n\n elPopoverProps?: PopoverProps [element-plus el-popover](https://element-plus.org/zh-CN/component/popover.html)设置菜单弹出框"
 	}
 }

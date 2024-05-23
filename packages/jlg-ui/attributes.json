@@ -81,5 +81,40 @@
 	"jlg-collapse-item/disabled": {
 		"type": "boolean",
 		"description": "disable the collapse item, default: false.\n\n[Docs](https://element-plus.org/en-US/component/collapse.html#collapse-item-attributes)"
+	},
+
+	"jlg-flex-layout/col": {
+		"type": "number",
+		"description": "number 一行摆几个元素"
+	},
+	"jlg-flex-layout/gap": {
+		"type": "string",
+		"description": "string 0px 每个元素的水平间隔"
+	},
+
+	"jlg-flex-cell/col": {
+		"type": "number",
+		"description": "number 当前元素占据的份额"
+	},
+
+	"jlg-menu/menuData": {
+		"type": "I_JlgMenu_MenuDataItem[]",
+		"description": "菜单树形结构数据"
+	},
+	"jlg-menu/collectMenuKeys": {
+		"type": "I_JlgMenu_MenuDataItem['key'][]",
+		"description": "收藏的菜单key数组"
+	},
+	"jlg-menu/menuDataRecord": {
+		"type": "T_MenuDataRecord",
+		"description": "变基menuData属性名"
+	},
+	"jlg-menu/defaultActive": {
+		"type": "I_JlgMenu_MenuDataItem['key']",
+		"description": "当前选中的菜单项key"
+	},
+	"jlg-menu/elPopoverProps": {
+		"type": "PopoverProps",
+		"description": "[element-plus el-popover](https://element-plus.org/zh-CN/component/popover.html)设置菜单弹出框"
 	}
 }

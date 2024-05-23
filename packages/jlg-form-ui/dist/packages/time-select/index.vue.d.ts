@@ -3,7 +3,9 @@ import { T_Jlg_TimeSelect_Props } from './type';
 declare const _default: import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_TimeSelect_Props>, {
     editable: boolean;
     clearable: boolean;
-}>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+}>, {
+    _ref: globalThis.Ref<any>;
+}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (v: string) => void;
 }, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_TimeSelect_Props>, {
     editable: boolean;

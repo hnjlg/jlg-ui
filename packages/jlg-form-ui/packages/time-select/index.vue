@@ -1,6 +1,7 @@
 <template>
 	<jlg-tooltip v-bind="mergeTooltipPropsComputed">
 		<el-time-select
+			ref="_ref"
 			:model-value="props.modelValue"
 			v-bind="mergeTimeSelectPropsComputed"
 			:placeholder="placeholderComputed"
@@ -29,6 +30,8 @@ const props = withDefaults(defineProps<T_Jlg_TimeSelect_Props>(), {
 const attrs = useAttrs();
 
 const emits = defineEmits<I_Jlg_TimeSelect_Emits>();
+
+const _ref = ref(null);
 
 const context: FormItemContext | undefined = inject(formItemContextKey);
 
@@ -82,6 +85,10 @@ onMounted(() => {
 				};
 			},
 		});
+});
+
+defineExpose({
+	_ref,
 });
 </script>
 

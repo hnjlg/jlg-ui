@@ -2,7 +2,9 @@ import { T_Jlg_Rate_Props } from './type';
 
 declare const _default: import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_Rate_Props>, {
     max: number;
-}>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+}>, {
+    _ref: globalThis.Ref<any>;
+}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (v: number) => void;
 }, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_Rate_Props>, {
     max: number;

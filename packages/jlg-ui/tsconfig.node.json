@@ -7,7 +7,6 @@
 		"allowSyntheticDefaultImports": true
 	},
 	"include": [
-		"lib/**/*.ts",
 		"packages/**/*.ts",
 		"packages/**/*.d.ts",
 		"packages/**/*.tsx",

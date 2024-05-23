@@ -1,6 +1,8 @@
 import { I_Jlg_Option_Props } from './type';
 
-declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_Jlg_Option_Props>, {}>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_Jlg_Option_Props>, {}>>>, {}, {}>, Partial<Record<NonNullable<string | number>, (_: {}) => any>>>;
+declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_Jlg_Option_Props>, {}>, {
+    _ref: globalThis.Ref<any>;
+}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_Jlg_Option_Props>, {}>>>, {}, {}>, Partial<Record<NonNullable<string | number>, (_: {}) => any>>>;
 export default _default;
 type __VLS_NonUndefinedable<T> = T extends undefined ? never : T;
 type __VLS_TypePropsToRuntimeProps<T> = {
