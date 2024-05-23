@@ -16,7 +16,7 @@ export declare interface I_Jlg_Menu_Props {
 	menuData: I_JlgMenu_MenuDataItem[];
 	collectMenuKeys: I_JlgMenu_MenuDataItem['key'][];
 	menuDataRecord?: T_MenuDataRecord;
-	defaultActive?: I_JlgMenu_MenuDataItem['key'];
+	defaultActive?: I_JlgMenu_MenuDataItem['key'][];
 	elPopoverProps?: PopoverProps;
 }
 
