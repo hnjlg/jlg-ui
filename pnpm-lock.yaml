@@ -46,8 +46,8 @@ importers:
         specifier: ^2.7.0
         version: 2.7.3(vue@3.4.27(typescript@5.4.5))
       jlg-ui:
-        specifier: ^0.0.18
-        version: 0.0.18(typescript@5.4.5)
+        specifier: ^0.0.19
+        version: 0.0.19(typescript@5.4.5)
       lodash-unified:
         specifier: ^1.0.3
         version: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21)
@@ -167,8 +167,8 @@ importers:
         specifier: ^2.7.0
         version: 2.7.3(vue@3.4.27(typescript@5.4.5))
       jlg-ui:
-        specifier: ^0.0.18
-        version: 0.0.18(typescript@5.4.5)
+        specifier: ^0.0.19
+        version: 0.0.19(typescript@5.4.5)
       lodash-unified:
         specifier: ^1.0.3
         version: 1.0.3(@types/lodash-es@4.17.12)(lodash-es@4.17.21)(lodash@4.17.21)
@@ -2590,8 +2590,8 @@ packages:
   jju@1.4.0:
     resolution: {integrity: sha512-8wb9Yw966OSxApiCt0K3yNJL8pnNeIv+OEq2YMidz4FKP6nonSRoOXc80iXY4JaN2FC11B9qsNmDsm+ZOfMROA==}
 
-  jlg-ui@0.0.18:
-    resolution: {integrity: sha512-J6L4K+eCtDxkWu3+r2ugc7DEPUBRgCXVCjafCIVxvRgU2pSo25f+9dg/Zx7OqTtJz8V1C0bUK1/W2kpNWbNSgw==}
+  jlg-ui@0.0.19:
+    resolution: {integrity: sha512-BPx6o74rqaSEJrcSNqg9BvdlyDjqrEvymmuy4rKJFKcSbVAI2efucAYqn9pHr2ipdpLjLh3JtHeBnybzu14bxg==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -6367,7 +6367,7 @@ snapshots:
 
   jju@1.4.0: {}
 
-  jlg-ui@0.0.18(typescript@5.4.5):
+  jlg-ui@0.0.19(typescript@5.4.5):
     dependencies:
       '@element-plus/icons-vue': 2.3.1(vue@3.4.27(typescript@5.4.5))
       element-plus: 2.7.3(vue@3.4.27(typescript@5.4.5))
