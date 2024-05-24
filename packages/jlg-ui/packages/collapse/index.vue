@@ -1,5 +1,5 @@
 <template>
-	<el-collapse ref="_ref" v-bind="mergeCollapsePropsComputed">
+	<el-collapse ref="_ref" v-bind="mergeCollapsePropsComputed" :class="mergeCollapsePropsComputed.border ? '' : 'is-disable-border'">
 		<template v-for="(_index, name) in slots" #[name]>
 			<slot :name="name" />
 		</template>
@@ -14,7 +14,10 @@ defineOptions({
 	name: 'JlgCollapse',
 });
 
-const props = withDefaults(defineProps<T_Jlg_Collapse_Props>(), {});
+const props = withDefaults(defineProps<T_Jlg_Collapse_Props>(), {
+	border: true,
+	accordion: false,
+});
 
 const attrs = useAttrs();
 
@@ -40,11 +43,14 @@ const jumpAnchor = (name: T_Jlg_CollapseItem_Props['name']) => {
 };
 
 const collapseItems: Set<T_Jlg_CollapseItem_Props> = new Set();
+
 const addCollapseItem: T_Add_Collapse_Item = (value) => {
 	collapseItems.add(value);
 };
 
 provide('addCollapseItem', addCollapseItem);
+
+provide('collapseBorder', mergeCollapsePropsComputed.value.border);
 
 defineExpose({
 	_ref,
@@ -55,4 +61,8 @@ defineExpose({
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.is-disable-border {
+	border: none;
+}
+</style>

@@ -1,274 +1,268 @@
 {
-	"$schema": "http://json.schemastore.org/web-types",
-	"framework": "vue",
-	"name": "jlg-ui",
-	"version": "0.0.18",
-	"js-types-syntax": "typescript",
-	"description-markup": "markdown",
-	"contributions": {
-		"html": {
-			"vue-components": [
-				{
-					"name": "jlg-collapse",
-					"source": {
-						"symbol": "JlgCollapse"
-					},
-					"description": "Use Collapse to store contents.",
-					"doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse",
-					"props": [
-						{
-							"name": "model-value",
-							"description": "currently active panel, the type is `string` in accordion mode, otherwise it is `array`",
-							"doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-attributes",
-							"type": ["string", "array"],
-							"default": "[]"
-						},
-						{
-							"name": "accordion",
-							"description": "whether to activate accordion mode",
-							"doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						}
-					],
-					"slots": [
-						{
-							"name": "default",
-							"description": "customize default content",
-							"doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-slots"
-						}
-					],
-					"js": {
-						"events": [
-							{
-								"name": "change",
-								"description": "triggers when active panels change, the parameter type is `string` in accordion mode, otherwise it is `array`",
-								"doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-events"
-							}
-						]
-					}
-				},
-				{
-					"name": "jlg-collapse-item",
-					"source": {
-						"symbol": "JlgCollapseItem"
-					},
-					"doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-item",
-					"props": [
-						{
-							"name": "name",
-							"description": "unique identification of the panel",
-							"doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-item-attributes",
-							"type": ["string", "number"]
-						},
-						{
-							"name": "title",
-							"description": "title of the panel",
-							"doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-item-attributes",
-							"type": ["string"],
-							"default": "''"
-						},
-						{
-							"name": "disabled",
-							"description": "disable the collapse item",
-							"doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-item-attributes",
-							"type": ["boolean"],
-							"default": "false"
-						}
-					]
-				},
-				{
-					"name": "jlg-grid-cell",
-					"source": {
-						"symbol": "JlgGridCell"
-					},
-					"doc-url": "",
-					"props": [
-						{
-							"name": "top",
-							"description": "number 0 顶部空白份额",
-							"doc-url": "",
-							"type": ["number"],
-							"default": "0"
-						},
-						{
-							"name": "height",
-							"description": "number 0 占据高度份额",
-							"doc-url": "",
-							"type": ["string"],
-							"default": "0"
-						},
-						{
-							"name": "width",
-							"description": "number 0 占据宽度的份额",
-							"doc-url": "",
-							"type": ["number"],
-							"default": "0"
-						},
-						{
-							"name": "left",
-							"description": "number 0 左侧空白份额",
-							"doc-url": "",
-							"type": ["number"],
-							"default": "0"
-						},
-						{
-							"name": "center",
-							"description": "boolean false 内容是否居中",
-							"doc-url": "",
-							"type": ["boolean"],
-							"default": "false"
-						}
-					]
-				},
-				{
-					"name": "jlg-grid-layout",
-					"source": {
-						"symbol": "JlgGridLayout"
-					},
-					"doc-url": "",
-					"props": [
-						{
-							"name": "padding",
-							"description": "string 0px 每个网格之间的间隔",
-							"doc-url": "",
-							"type": ["string"],
-							"default": "0px"
-						},
-						{
-							"name": "flow",
-							"description": "[grid-auto-flow](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-auto-flow)",
-							"doc-url": "",
-							"type": ["'row' | 'column' | 'dense' | 'row dense' | 'column dense' | 'inherit' | 'initial' | 'unset'"],
-							"default": "row"
-						},
-						{
-							"name": "rows",
-							"description": "number 将宽度分为几份",
-							"doc-url": "",
-							"type": ["number"]
-						},
-						{
-							"name": "columns",
-							"description": "number 将高度分为几份",
-							"doc-url": "",
-							"type": ["number"]
-						},
-						{
-							"name": "gap",
-							"description": "string 0px 间隔",
-							"doc-url": "",
-							"type": ["string"],
-							"default": "0px"
-						},
-						{
-							"name": "width",
-							"description": "string 100% [style width](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width)",
-							"doc-url": "",
-							"type": ["string"],
-							"default": "100%"
-						},
-						{
-							"name": "height",
-							"description": "string auto [style height](https://developer.mozilla.org/zh-CN/docs/Web/CSS/height)",
-							"doc-url": "",
-							"type": ["string"],
-							"default": "auto"
-						},
-						{
-							"name": "inline",
-							"description": "boolean false 是否行内布局",
-							"doc-url": "",
-							"type": ["boolean"],
-							"default": "false"
-						},
-						{
-							"name": "border",
-							"description": "boolean false 是否显示边框",
-							"doc-url": "",
-							"type": ["boolean"],
-							"default": "false"
-						}
-					]
-				},
-				{
-					"name": "jlg-flex-layout",
-					"source": {
-						"symbol": "JlgFlexLayout"
-					},
-					"doc-url": "",
-					"props": [
-						{
-							"name": "col",
-							"description": "number 一行摆几个元素",
-							"doc-url": "",
-							"type": ["number"]
-						},
-						{
-							"name": "gap",
-							"description": "string 0px 每个元素的水平间隔",
-							"doc-url": "",
-							"type": ["string"],
-							"default": "10px"
-						}
-					]
-				},
-				{
-					"name": "jlg-flex-cell",
-					"source": {
-						"symbol": "JlgFlexCell"
-					},
-					"doc-url": "",
-					"props": [
-						{
-							"name": "col",
-							"description": "number 当前元素占据的份额",
-							"doc-url": "",
-							"type": ["number"]
-						}
-					]
-				},
-				{
-					"name": "jlg-menu",
-					"source": {
-						"symbol": "JlgMenu"
-					},
-					"doc-url": "",
-					"props": [
-						{
-							"name": "menuData",
-							"description": "菜单树形结构数据",
-							"doc-url": "",
-							"type": ["I_JlgMenu_MenuDataItem[]"]
-						},
-						{
-							"name": "collectMenuKeys",
-							"description": "收藏的菜单key数组",
-							"doc-url": "",
-							"type": ["I_JlgMenu_MenuDataItem['key'][]"]
-						},
-						{
-							"name": "menuDataRecord",
-							"description": "变基menuData属性名",
-							"doc-url": "",
-							"type": ["T_MenuDataRecord"]
-						},
-						{
-							"name": "defaultActive",
-							"description": "当前选中的菜单项key数组",
-							"doc-url": "",
-							"type": ["I_JlgMenu_MenuDataItem['key'][]"]
-						},
-						{
-							"name": "elPopoverProps",
-							"description": "[element-plus el-popover](https://element-plus.org/zh-CN/component/popover.html)设置菜单弹出框",
-							"doc-url": "",
-							"type": ["PopoverProps"]
-						}
-					]
-				}
-			],
-			"attributes": []
-		}
-	}
+    "$schema": "http://json.schemastore.org/web-types",
+    "framework": "vue",
+    "name": "jlg-ui",
+    "version": "0.0.19",
+    "js-types-syntax": "typescript",
+    "description-markup": "markdown",
+    "contributions": {
+        "html": {
+            "vue-components": [{
+                    "name": "jlg-collapse",
+                    "source": {
+                        "symbol": "JlgCollapse"
+                    },
+                    "description": "Use Collapse to store contents.",
+                    "doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse",
+                    "props": [{
+                            "name": "model-value",
+                            "description": "currently active panel, the type is `string` in accordion mode, otherwise it is `array`",
+                            "doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-attributes",
+                            "type": ["string", "array"],
+                            "default": "[]"
+                        },
+                        {
+                            "name": "accordion",
+                            "description": "whether to activate accordion mode",
+                            "doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "border",
+                            "description": "boolean true 是否显示border",
+                            "doc-url": "",
+                            "type": ["boolean"],
+                            "default": "true"
+                        }
+                    ],
+                    "slots": [{
+                        "name": "default",
+                        "description": "customize default content",
+                        "doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-slots"
+                    }],
+                    "js": {
+                        "events": [{
+                            "name": "change",
+                            "description": "triggers when active panels change, the parameter type is `string` in accordion mode, otherwise it is `array`",
+                            "doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-events"
+                        }]
+                    }
+                },
+                {
+                    "name": "jlg-collapse-item",
+                    "source": {
+                        "symbol": "JlgCollapseItem"
+                    },
+                    "doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-item",
+                    "props": [{
+                            "name": "name",
+                            "description": "unique identification of the panel",
+                            "doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-item-attributes",
+                            "type": ["string", "number"]
+                        },
+                        {
+                            "name": "title",
+                            "description": "title of the panel",
+                            "doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-item-attributes",
+                            "type": ["string"],
+                            "default": "''"
+                        },
+                        {
+                            "name": "disabled",
+                            "description": "disable the collapse item",
+                            "doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-item-attributes",
+                            "type": ["boolean"],
+                            "default": "false"
+                        }
+                    ]
+                },
+                {
+                    "name": "jlg-grid-cell",
+                    "source": {
+                        "symbol": "JlgGridCell"
+                    },
+                    "doc-url": "",
+                    "props": [{
+                            "name": "top",
+                            "description": "number 0 顶部空白份额",
+                            "doc-url": "",
+                            "type": ["number"],
+                            "default": "0"
+                        },
+                        {
+                            "name": "height",
+                            "description": "number 0 占据高度份额",
+                            "doc-url": "",
+                            "type": ["string"],
+                            "default": "0"
+                        },
+                        {
+                            "name": "width",
+                            "description": "number 0 占据宽度的份额",
+                            "doc-url": "",
+                            "type": ["number"],
+                            "default": "0"
+                        },
+                        {
+                            "name": "left",
+                            "description": "number 0 左侧空白份额",
+                            "doc-url": "",
+                            "type": ["number"],
+                            "default": "0"
+                        },
+                        {
+                            "name": "center",
+                            "description": "boolean false 内容是否居中",
+                            "doc-url": "",
+                            "type": ["boolean"],
+                            "default": "false"
+                        }
+                    ]
+                },
+                {
+                    "name": "jlg-grid-layout",
+                    "source": {
+                        "symbol": "JlgGridLayout"
+                    },
+                    "doc-url": "",
+                    "props": [{
+                            "name": "padding",
+                            "description": "string 0px 每个网格之间的间隔",
+                            "doc-url": "",
+                            "type": ["string"],
+                            "default": "0px"
+                        },
+                        {
+                            "name": "flow",
+                            "description": "[grid-auto-flow](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-auto-flow)",
+                            "doc-url": "",
+                            "type": ["'row' | 'column' | 'dense' | 'row dense' | 'column dense' | 'inherit' | 'initial' | 'unset'"],
+                            "default": "row"
+                        },
+                        {
+                            "name": "rows",
+                            "description": "number 将宽度分为几份",
+                            "doc-url": "",
+                            "type": ["number"]
+                        },
+                        {
+                            "name": "columns",
+                            "description": "number 将高度分为几份",
+                            "doc-url": "",
+                            "type": ["number"]
+                        },
+                        {
+                            "name": "gap",
+                            "description": "string 0px 间隔",
+                            "doc-url": "",
+                            "type": ["string"],
+                            "default": "0px"
+                        },
+                        {
+                            "name": "width",
+                            "description": "string 100% [style width](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width)",
+                            "doc-url": "",
+                            "type": ["string"],
+                            "default": "100%"
+                        },
+                        {
+                            "name": "height",
+                            "description": "string auto [style height](https://developer.mozilla.org/zh-CN/docs/Web/CSS/height)",
+                            "doc-url": "",
+                            "type": ["string"],
+                            "default": "auto"
+                        },
+                        {
+                            "name": "inline",
+                            "description": "boolean false 是否行内布局",
+                            "doc-url": "",
+                            "type": ["boolean"],
+                            "default": "false"
+                        },
+                        {
+                            "name": "border",
+                            "description": "boolean false 是否显示边框",
+                            "doc-url": "",
+                            "type": ["boolean"],
+                            "default": "false"
+                        }
+                    ]
+                },
+                {
+                    "name": "jlg-flex-layout",
+                    "source": {
+                        "symbol": "JlgFlexLayout"
+                    },
+                    "doc-url": "",
+                    "props": [{
+                            "name": "col",
+                            "description": "number 一行摆几个元素",
+                            "doc-url": "",
+                            "type": ["number"]
+                        },
+                        {
+                            "name": "gap",
+                            "description": "string 0px 每个元素的水平间隔",
+                            "doc-url": "",
+                            "type": ["string"],
+                            "default": "10px"
+                        }
+                    ]
+                },
+                {
+                    "name": "jlg-flex-cell",
+                    "source": {
+                        "symbol": "JlgFlexCell"
+                    },
+                    "doc-url": "",
+                    "props": [{
+                        "name": "col",
+                        "description": "number 当前元素占据的份额",
+                        "doc-url": "",
+                        "type": ["number"]
+                    }]
+                },
+                {
+                    "name": "jlg-menu",
+                    "source": {
+                        "symbol": "JlgMenu"
+                    },
+                    "doc-url": "",
+                    "props": [{
+                            "name": "menuData",
+                            "description": "菜单树形结构数据",
+                            "doc-url": "",
+                            "type": ["I_JlgMenu_MenuDataItem[]"]
+                        },
+                        {
+                            "name": "collectMenuKeys",
+                            "description": "收藏的菜单key数组",
+                            "doc-url": "",
+                            "type": ["I_JlgMenu_MenuDataItem['key'][]"]
+                        },
+                        {
+                            "name": "menuDataRecord",
+                            "description": "变基menuData属性名",
+                            "doc-url": "",
+                            "type": ["T_MenuDataRecord"]
+                        },
+                        {
+                            "name": "defaultActive",
+                            "description": "当前选中的菜单项key数组",
+                            "doc-url": "",
+                            "type": ["I_JlgMenu_MenuDataItem['key'][]"]
+                        },
+                        {
+                            "name": "elPopoverProps",
+                            "description": "[element-plus el-popover](https://element-plus.org/zh-CN/component/popover.html)设置菜单弹出框",
+                            "doc-url": "",
+                            "type": ["PopoverProps"]
+                        }
+                    ]
+                }
+            ],
+            "attributes": []
+        }
+    }
 }

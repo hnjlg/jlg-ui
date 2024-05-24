@@ -1,5 +1,10 @@
 <template>
-	<el-collapse-item :id="collapseKey + mergeCollapseItemPropsComputed.name" ref="_ref" v-bind="mergeCollapseItemPropsComputed">
+	<el-collapse-item
+		:id="collapseKey + mergeCollapseItemPropsComputed.name"
+		ref="_ref"
+		v-bind="mergeCollapseItemPropsComputed"
+		:class="collapseBorder ? '' : 'is-disable-item-border'"
+	>
 		<template v-for="name in slotsComputed" #[name]>
 			<slot :name="name" />
 		</template>
@@ -47,6 +52,8 @@ const collapseKey: string = inject('collapseKey');
 
 const addCollapseItem: T_Add_Collapse_Item = inject('addCollapseItem');
 
+const collapseBorder: boolean = inject('collapseBorder');
+
 watch(
 	() => mergeCollapseItemPropsComputed.value,
 	(newValue) => {
@@ -73,6 +80,16 @@ defineExpose({
 
 	.customize {
 		display: block;
+	}
+}
+
+.is-disable-item-border {
+	:deep(.el-collapse-item__header) {
+		border: none;
+	}
+
+	:deep(.el-collapse-item__wrap) {
+		border: none;
 	}
 }
 </style>
