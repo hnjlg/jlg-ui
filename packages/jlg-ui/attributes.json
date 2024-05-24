@@ -69,6 +69,10 @@
 		"type": "event",
 		"description": "triggers when active panels change, the parameter type is `string` in accordion mode, otherwise it is `array`\n\n[Docs](https://element-plus.org/en-US/component/collapse.html#collapse-events)"
 	},
+	"jlg-collapse/border": {
+		"type": "boolean",
+		"description": "boolean true 是否显示border"
+	},
 
 	"jlg-collapse-item/name": {
 		"type": "string | number",
@@ -110,8 +114,8 @@
 		"description": "变基menuData属性名"
 	},
 	"jlg-menu/defaultActive": {
-		"type": "I_JlgMenu_MenuDataItem['key']",
-		"description": "当前选中的菜单项key"
+		"type": "I_JlgMenu_MenuDataItem['key'][]",
+		"description": "当前选中的菜单项key数组"
 	},
 	"jlg-menu/elPopoverProps": {
 		"type": "PopoverProps",

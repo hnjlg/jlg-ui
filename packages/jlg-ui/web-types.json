@@ -2,7 +2,7 @@
     "$schema": "http://json.schemastore.org/web-types",
     "framework": "vue",
     "name": "jlg-ui",
-    "version": "0.0.14",
+    "version": "0.0.20",
     "js-types-syntax": "typescript",
     "description-markup": "markdown",
     "contributions": {
@@ -27,6 +27,13 @@
                             "doc-url": "https://element-plus.org/en-US/component/collapse.html#collapse-attributes",
                             "type": ["boolean"],
                             "default": "false"
+                        },
+                        {
+                            "name": "border",
+                            "description": "boolean true 是否显示border",
+                            "doc-url": "",
+                            "type": ["boolean"],
+                            "default": "true"
                         }
                     ],
                     "slots": [{
@@ -242,9 +249,9 @@
                         },
                         {
                             "name": "defaultActive",
-                            "description": "当前选中的菜单项key",
+                            "description": "当前选中的菜单项key数组",
                             "doc-url": "",
-                            "type": ["I_JlgMenu_MenuDataItem['key']"]
+                            "type": ["I_JlgMenu_MenuDataItem['key'][]"]
                         },
                         {
                             "name": "elPopoverProps",

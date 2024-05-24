@@ -2,16 +2,16 @@
 	<el-button @click="gather">收集数据</el-button>
 	<el-button @click="validator">校验</el-button>
 	{{ formData }}
-	<jlg-form ref="JlgFormRef" :label-position="E_JlgForm_LabelPosition['内嵌']" :gather-props="{ col: 1, allCol: 3 }" :model="formData" :rules="rules">
+	<jlg-form ref="JlgFormRef" :label-position="E_JlgForm_LabelPosition['内嵌']" :gather-props="{ col: 1, allCol: 3 }" :model="formData">
 		<jlg-grid-layout v-bind="gridLayoutProps">
 			<jlg-grid-cell :width="1" :height="1">
 				<jlg-form-item
 					label="Input测试placeholder"
-					prop="input"
+					prop="input.value"
 					:validate-rules="[[E_FormValidatorRulesValidateFunEnum.必填校验], [E_FormValidatorRulesValidateFunEnum.小数位校验, 0]]"
 				>
 					<jlg-input
-						v-model="formData.input"
+						v-model="formData.input.value"
 						:tooltip-props="{
 							effect: 'light',
 						}"
@@ -29,8 +29,8 @@
 				</jlg-form-item>
 			</jlg-grid-cell>
 			<jlg-grid-cell v-for="i in 30" :key="i" :width="1" :height="1">
-				<jlg-form-item :label="'Select测试placeholder' + i">
-					<jlg-select v-model="formData.select">
+				<jlg-form-item prop="select.value" :label="'Select测试placeholder' + i">
+					<jlg-select v-model="formData.select.value">
 						<jlg-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" />
 					</jlg-select>
 				</jlg-form-item>
@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { T_JlgForm_Props, E_JlgForm_LabelPosition } from '@pac/form/type';
 import { JlgGridLayout, JlgGridCell } from 'jlg-ui';
 import { E_FormValidatorRulesValidateFunEnum } from '@pac/rule';
@@ -70,8 +70,10 @@ defineOptions({
 const JlgFormRef = ref();
 
 const formData = ref({
-	input: '',
-	select: 1,
+	input: {},
+	select: {
+		value: 1,
+	},
 	number: 0,
 	datePicker: '',
 	timeSelect: '',
@@ -79,9 +81,11 @@ const formData = ref({
 	radio: '',
 });
 
-const rules = reactive({
-	input: [{ required: true, message: 'Please input input', trigger: 'blur' }],
-});
+// const rules = reactive({
+// 	// input: {
+// 	// 	value: [{ required: true, message: 'Please input input', trigger: 'blur' }],
+// 	// },
+// });
 
 const gridLayoutProps = ref<T_JlgForm_Props['gridLayoutProps']>({
 	padding: '0px',

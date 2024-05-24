@@ -15,10 +15,10 @@ declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__
     border: boolean;
     gap: string;
 }>>>, {
+    border: boolean;
     width: string;
     gap: string;
     height: string;
-    border: boolean;
     padding: string;
     inline: boolean;
 }, {}>, {

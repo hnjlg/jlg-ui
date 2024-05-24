@@ -2,6 +2,7 @@
 	<jlg-tooltip v-bind="mergeTooltipPropsComputed">
 		<el-input-number
 			ref="_ref"
+			class="jlg-input-number"
 			:model-value="props.modelValue"
 			v-bind="mergeNumberPropsComputed"
 			@update:model-value="(v) => emits('update:modelValue', v)"
@@ -101,4 +102,8 @@ defineExpose({
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.jlg-input-number {
+	width: var(--jlg-input-number-width);
+}
+</style>

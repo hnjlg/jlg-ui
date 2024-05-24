@@ -26,6 +26,7 @@ import { T_Jlg_RadioGroup_Props } from './radio-group/type';
 import { T_Jlg_Radio_Props } from './radio/type';
 import { FormValidatorRules } from './rule';
 export * from './rule';
+import './theme.scss';
 
 export {
 	JlgForm,

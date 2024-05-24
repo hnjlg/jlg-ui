@@ -1,18 +1,12 @@
-import { I_Jlg_Menu_Props, T_MenuDataRecord } from './type';
+import { I_Jlg_Menu_Props } from './type';
 
-declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_Jlg_Menu_Props>, {
-    menuDataRecord: () => T_MenuDataRecord;
-}>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
+declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_Jlg_Menu_Props>, {}>, {}, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     collectClick: (jlgMenuDataItem: import('./type').I_JlgMenu_MenuDataItem, meneArr: [import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem]) => void;
     threeLevelMenuClick: (jlgMenuDataItem: import('./type').I_JlgMenu_MenuDataItem, meneArr: [import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem]) => void;
-}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_Jlg_Menu_Props>, {
-    menuDataRecord: () => T_MenuDataRecord;
-}>>> & {
+}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<I_Jlg_Menu_Props>, {}>>> & {
     onCollectClick?: (jlgMenuDataItem: import('./type').I_JlgMenu_MenuDataItem, meneArr: [import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem]) => any;
     onThreeLevelMenuClick?: (jlgMenuDataItem: import('./type').I_JlgMenu_MenuDataItem, meneArr: [import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem, import('./type').I_JlgMenu_MenuDataItem]) => any;
-}, {
-    menuDataRecord: T_MenuDataRecord;
-}, {}>, Partial<Record<string, (_: {}) => any>> & {
+}, {}, {}>, Partial<Record<string, (_: {}) => any>> & {
     logo?(_: {}): any;
 }>;
 export default _default;

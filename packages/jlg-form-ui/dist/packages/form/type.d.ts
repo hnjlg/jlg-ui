@@ -71,7 +71,8 @@ export declare type T_Add_Gather_Fn = (config: {
     formItemLabel: T_Jlg_FormItem_Props['label'];
     fn: () => object;
 }) => void;
-export declare type T_Assign_Rules_Fn = (source?: {
+export declare type T_Assign_Rules_Fn_Params_Source = {
     record: T_Jlg_FormItem_Props['prop'];
     recordValidate: FormValidatorRules;
-}) => void;
+};
+export declare type T_Assign_Rules_Fn = (source?: T_Assign_Rules_Fn_Params_Source) => void;
