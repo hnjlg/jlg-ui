@@ -555,10 +555,6 @@
 		"type": "event",
 		"description": "triggers when the bound value changes\n\n[Docs](https://element-plus.org/en-US/component/radio.html#radio-events)"
 	},
-	"jlg-radio/title": {
-		"type": "string|number|boolean",
-		"description": "radio默认插槽显示的默认值"
-	},
 	"jlg-radio-group/model-value": {
 		"type": "string | number | boolean",
 		"description": "binding value\n\n[Docs](https://element-plus.org/en-US/component/radio.html#radiogroup-attributes)"

@@ -9,9 +9,7 @@
 			}
 		"
 	>
-		<slot>
-			{{ props.title }}
-		</slot>
+		<slot> </slot>
 	</el-radio>
 </template>
 

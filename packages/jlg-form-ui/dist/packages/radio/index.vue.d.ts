@@ -1,10 +1,8 @@
-import { T_Jlg_Radio_Props } from './type';
-
-declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_Radio_Props>, {}>, {
+declare const _default: __VLS_WithTemplateSlots<import('vue').DefineComponent<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<import('element-plus').RadioProps>, {}>, {
     _ref: globalThis.Ref<any>;
 }, unknown, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (value: import('element-plus/es/utils/index.mjs').EpPropMergeType<(BooleanConstructor | StringConstructor | NumberConstructor)[], unknown, unknown>) => void;
-}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<T_Jlg_Radio_Props>, {}>>> & {
+}, string, import('vue').PublicProps, Readonly<globalThis.ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<import('element-plus').RadioProps>, {}>>> & {
     "onUpdate:modelValue"?: (value: import('element-plus/es/utils/index.mjs').EpPropMergeType<(BooleanConstructor | StringConstructor | NumberConstructor)[], unknown, unknown>) => any;
 }, {}, {}>, {
     default?(_: {}): any;

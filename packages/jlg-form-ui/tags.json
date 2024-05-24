@@ -156,8 +156,8 @@
 		"description": "追加属性:\n\n tooltip-props?: [element-plus tooltip组件Props,点击查看](https://element-plus.org/en-US/component/tooltip.html#tooltip) \n\n gather-props?: 数据采集单独object \n\n [element-plus el-input,点击查看](https://element-plus.org/en-US/component/input.html#input)"
 	},
 	"jlg-radio": {
-		"attributes": ["model-value", "value", "label", "disabled", "border", "size", "name", "change", "title"],
-		"description": "追加属性:\n\n title?: string|number|boolean radio默认插槽显示的默认值\n\n [element-plus el-radio,点击查看](https://element-plus.org/en-US/component/radio.html#radio)"
+		"attributes": ["model-value", "value", "label", "disabled", "border", "size", "name", "change"],
+		"description": "[element-plus el-radio,点击查看](https://element-plus.org/en-US/component/radio.html#radio)"
 	},
 	"jlg-radio-group": {
 		"attributes": [
