@@ -5,6 +5,7 @@ export declare interface I_JlgMenu_MenuDataItem {
 	iconClass: string;
 	key: number | string;
 	children?: I_JlgMenu_MenuDataItem[];
+	[k: string]: any;
 }
 
 export declare type T_MenuDataRecord = {
@@ -15,7 +16,7 @@ export declare interface I_Jlg_Menu_Props {
 	menuData: I_JlgMenu_MenuDataItem[];
 	collectMenuKeys: I_JlgMenu_MenuDataItem['key'][];
 	menuDataRecord?: T_MenuDataRecord;
-	defaultActive?: I_JlgMenu_MenuDataItem['key'];
+	defaultActive?: I_JlgMenu_MenuDataItem['key'][];
 	elPopoverProps?: PopoverProps;
 }
 

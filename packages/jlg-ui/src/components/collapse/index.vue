@@ -5,7 +5,7 @@
 		<span>{{ value }}</span>
 		<br />
 		<div style="height: 200px; overflow: auto">
-			<jlg-collapse ref="CollapseRef" v-model="value" accordion>
+			<jlg-collapse ref="CollapseRef" v-model="value" accordion :border="false">
 				<jlg-collapse-item name="1" title="Consistency">
 					<template #title="{ _ref }">{{ _ref?.isActive }} Consistency </template>
 					<div>

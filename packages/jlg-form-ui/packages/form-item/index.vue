@@ -22,7 +22,7 @@ import { CSSProperties } from 'vue';
 import { isNumber, isString } from 'lodash-unified';
 import { T_Jlg_FormItem_Props } from './type';
 import { globalComponentConfig } from '../index';
-import { FormValidatorRules, E_FormValidatorRulesValidateFunEnum } from '../rule';
+import { FormValidatorRules } from '../rule';
 import { E_JlgForm_LabelPosition, T_Assign_Rules_Fn } from '../form/type';
 
 defineOptions({
@@ -98,7 +98,7 @@ watch(
 			assignRulesFn({
 				record,
 				recordValidate: new FormValidatorRules({
-					[record]: [[E_FormValidatorRulesValidateFunEnum.必填校验], [E_FormValidatorRulesValidateFunEnum.小数位校验, 0]],
+					[record]: newValue[0],
 				}),
 			});
 		}

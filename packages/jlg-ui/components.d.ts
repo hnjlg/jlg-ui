@@ -14,5 +14,7 @@ declare module 'vue' {
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElPopover: typeof import('element-plus/es')['ElPopover']
     FlexLayout: typeof import('./src/components/flex-layout/index.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
   }
 }
