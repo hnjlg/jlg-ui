@@ -290,7 +290,7 @@ const computeProxyOpts = computed(() => {
 
 // 获取表单元素的宽度
 function getFormElementWidth() {
-	return formElemRef.value.offsetWidth || 0;
+	return formElemRef.value?.offsetWidth || 0;
 }
 
 function commitProxy(code: string, msg: T_Msg = true, ...args: any[]) {
