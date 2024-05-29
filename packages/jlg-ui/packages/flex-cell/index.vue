@@ -29,7 +29,10 @@ const styleComputed = computed(() => {
 	const gapWidth = (parseFloat(flexLayoutProps.gap) * (colLengthComputed.value - 1)) / colLengthComputed.value;
 	const width = `calc(${widthPercentage} - ${gapWidth}${flexLayoutProps.gap.replace(/\d+/g, '')})`;
 	// 计算右边距
-	const marginRight = isFirstOrEndOrNotComputed.value.type === E_Cell_Position.尾部 ? '0px' : `calc(${flexLayoutProps.gap})`;
+	const { type, length } = isFirstOrEndOrNotComputed.value;
+
+	const marginRight = type === E_Cell_Position.尾部 || length === 1 ? '0px' : `calc(${flexLayoutProps.gap})`;
+
 	return { width, marginRight };
 });
 

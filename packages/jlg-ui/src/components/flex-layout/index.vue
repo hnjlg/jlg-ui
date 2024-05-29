@@ -1,7 +1,7 @@
 <template>
 	<el-form>
 		<jlg-flex-layout :col="8" gap="50px">
-			<jlg-flex-cell :col="1">
+			<jlg-flex-cell :col="8">
 				<el-form-item>
 					<el-input></el-input>
 				</el-form-item>

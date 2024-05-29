@@ -3441,7 +3441,7 @@ const Yu = O({
 }), Qu = /* @__PURE__ */ O({
   ...Yu,
   props: {
-    accordion: { type: Boolean },
+    accordion: { type: Boolean, default: !1 },
     modelValue: {},
     border: { type: Boolean, default: !0 }
   },
@@ -3481,7 +3481,7 @@ const Yu = O({
     };
   }
 });
-const wt = /* @__PURE__ */ st(Qu, [["__scopeId", "data-v-af14a5e1"]]);
+const wt = /* @__PURE__ */ st(Qu, [["__scopeId", "data-v-3c3e6cbc"]]);
 wt.install = (e) => {
   e.component(wt.name, wt);
 };
@@ -3547,7 +3547,7 @@ const Xu = O({
     };
   }
 });
-const Et = /* @__PURE__ */ st(ed, [["__scopeId", "data-v-939b80fd"]]);
+const Et = /* @__PURE__ */ st(ed, [["__scopeId", "data-v-e2999e52"]]);
 Et.install = (e) => {
   e.component(Et.name, Et);
 };
@@ -3611,8 +3611,8 @@ const Po = (e, t) => {
   },
   setup(e) {
     const t = e, n = H("flexLayoutProps"), r = H("flexLayoutCollectFlexCellPropsFn"), o = H("flexCellProps"), s = String((/* @__PURE__ */ new Date()).getTime()), a = b(() => {
-      const u = t.col / n.col * 100 + "%", f = parseFloat(n.gap) * (c.value - 1) / c.value, m = `calc(${u} - ${f}${n.gap.replace(/\d+/g, "")})`, h = i.value.type === qe.尾部 ? "0px" : `calc(${n.gap})`;
-      return { width: m, marginRight: h };
+      const u = t.col / n.col * 100 + "%", f = parseFloat(n.gap) * (c.value - 1) / c.value, m = `calc(${u} - ${f}${n.gap.replace(/\d+/g, "")})`, { type: h, length: y } = i.value, v = h === qe.尾部 || y === 1 ? "0px" : `calc(${n.gap})`;
+      return { width: m, marginRight: v };
     }), i = b(() => rd(Po(o.value, n.col), s)), c = b(() => sd(Po(o.value, n.col), s));
     return j(
       t,
