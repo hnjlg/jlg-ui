@@ -1,0 +1,36 @@
+{
+	"name": "error-sdk",
+	"version": "0.0.0",
+	"description": "",
+	"scripts": {
+		"dev": "ts-node-dev --respawn ./src/index.ts",
+		"build": "npx webpack",
+		"prettier:fix": "prettier --write ./src",
+		"eslint:fix": "eslint fix ./src",
+		"pre-commit": "concurrently \"tsc\" \"lint-staged\"",
+		"preinstall": "npx only-allow pnpm"
+	},
+	"main": "dist/index.js",
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {},
+	"devDependencies": {
+		"@types/node": "^20.8.10",
+		"@typescript-eslint/eslint-plugin": "^6.9.1",
+		"concurrently": "^8.2.2",
+		"eslint": "^8.52.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-prettier": "^5.0.1",
+		"husky": "^8.0.3",
+		"only-allow": "^1.2.1",
+		"prettier": "^3.0.3",
+		"ts-node-dev": "^2.0.0",
+		"typescript": "^5.2.2",
+		"clean-webpack-plugin": "^4.0.0",
+		"webpack": "^5.89.0",
+		"webpack-cli": "^5.1.4",
+		"ts-loader": "^9.5.1",
+		"lint-staged": "^15.0.2"
+	}
+}
